@@ -1,0 +1,86 @@
+.language-dd-wrapper .language-button-body {
+  border: none;
+  padding: 0px;
+  border-radius: 5px;
+  background-color: #f5d418;
+  width: 60px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.language-dd-wrapper .language-button-body .language-text-container {
+  width: 44px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.language-dd-wrapper .language-button-body .language-text-container .language-text {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0px;
+}
+.language-dd-wrapper .language-button-body .language-arrow-cointainer {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.language-dd-wrapper .language-button-body .language-arrow-cointainer .language-arrow-expand {
+  width: 16px;
+  height: 16px;
+}
+.language-dd-wrapper .dd-panel-wrapper {
+  position: absolute;
+}
+.language-dd-wrapper .dd-panel-wrapper .dd-panel-triangle {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #2a2c3b;
+  border-left: 1px solid aliceblue;
+  border-top: 1px solid aliceblue;
+  position: absolute;
+  left: 49px;
+  top: 3px;
+}
+.language-dd-wrapper .dd-panel-wrapper .dd-panel-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid aliceblue;
+  width: 60px;
+  border-radius: 5px;
+  margin-top: 6px;
+  background-color: #2a2c3b;
+}
+.language-dd-wrapper .dd-panel-wrapper .dd-panel-container .dd-panel-tile {
+  padding: 5px 0px 5px 0px;
+}
+.language-dd-wrapper .dd-panel-wrapper .dd-panel-container .dd-panel-tile .dd-panel-btn {
+  border: none;
+  background-color: #2a2c3b;
+  color: aliceblue;
+  padding: 0px;
+  width: 100%;
+  cursor: pointer;
+}
+.language-dd-wrapper .dd-panel-wrapper .dd-panel-container .dd-panel-tile .dd-panel-btn .dd-panel-btn-text {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0px;
+}
+
+.dark .language-dd-wrapper .language-button-body {
+  background-color: #2a2c3b;
+}
+.dark .language-dd-wrapper .language-button-body .language-text-container .language-text {
+  color: aliceblue;
+}
+.dark .language-dd-wrapper .language-button-body .language-arrow-cointainer {
+  color: aliceblue;
+}/*# sourceMappingURL=LanguageDropDownStyle.css.map */

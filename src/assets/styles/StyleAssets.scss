@@ -1,0 +1,142 @@
+//Common Colors
+$mainColor: aliceblue;
+$greenColor: #0d9b44;
+$redColor: #e41f1f;
+$gray1Color: #d9d9d9;
+$gray2Color: #8e8e8e;
+$gray3Color: #757566;
+$errWindowColor: rgb(212, 236, 255);
+
+//Colors for light Theme
+$bg-light: rgb(227, 237, 245);
+$accentColor: #1058f5;
+$accent2Color: #f5d418;
+
+//Colors for Dark Theme
+$bg-dark: #1f212b;
+$mainColorDark: #2a2c3b;
+$accentColorDark: #e26411;
+
+//Fonts
+$mainFont: 'Nunito', sans-serif; //'Ubuntu', sans-serif;
+$contentFont: 'Work Sans', sans-serif;
+$nameAndButtonFont: 'Inter', sans-serif;
+
+//nav style used in login/signup modals
+@mixin NavActive {
+    background-color: transparent;
+    border: 0px;
+    font-family: $contentFont;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-color: $accentColor;
+}
+
+@mixin NavUnactive {
+    background-color: transparent;
+    border: 0px;
+    font-family: $contentFont;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+//input used in auth modal
+@mixin AuthInputAsset {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-family: $contentFont;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    outline: none;
+    border: 1px solid $gray1Color;
+    background-color: $mainColor;
+}
+
+@mixin AuthInputFocus {
+    border: 1px solid $accentColor;
+    box-shadow: 5px 5px rgb(0 0 0 / 0.6);
+}
+
+//err icon used in auth modal
+@mixin ErrIconAuthAsset {
+    font-size: 16px;
+    color: $redColor;
+    display: none;
+    position: absolute;
+}
+
+//error msg window asset used in log in and sign up modals
+@mixin ErrMsgAsset {
+    position: absolute;
+    border: 1px solid $redColor;
+    padding: 5px;
+    display: flex;
+    border-radius: 5px;
+    background-color: $errWindowColor;
+}
+
+//error msg window font used in log in and sign up modals
+@mixin ErrMsgFont {
+    margin: 0px;
+    font-family: $contentFont;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+//borders
+@mixin BorderBlack {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+//FlexBoxes
+@mixin JustifySpaceBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin JustifyCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+//Links
+@mixin DecorNone($color, $fontSize, $font) {
+    color: $color;
+    font-size: $fontSize;
+    font-family: $font;
+    text-decoration: none;
+}
+
+//ScrollBars
+@mixin ScrollTiny {
+    ::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        visibility: hidden;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: rgb(143, 143, 143);
+        border-radius: 3px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(221, 221, 221);
+    }
+}

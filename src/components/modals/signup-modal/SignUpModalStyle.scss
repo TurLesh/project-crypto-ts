@@ -1,0 +1,214 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.signup-modal-wrapper {
+    .modal-form-container {
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            text-align: left !important;
+
+            .email-lable {
+                font-family: $contentFont;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .email-input {
+                @include AuthInputAsset();
+            }
+
+            .email-input:focus {
+                @include AuthInputFocus();
+            }
+
+            .signup-email-err-icon {
+                @include ErrIconAuthAsset();
+                top: 68px;
+                left: 131.16px;
+            }
+
+            .signup-email-valid:invalid ~ .signup-email-err-icon {
+                display: block;
+            }
+
+            .email-error {
+                @include ErrMsgAsset();
+                top: 61px;
+                left: 147.16px;
+
+                .email-error-msg {
+                    @include ErrMsgFont();
+                }
+            }
+
+            .pass-lable {
+                font-family: $contentFont;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .pass-input {
+                @include AuthInputAsset();
+            }
+
+            .pass-input:focus {
+                @include AuthInputFocus();
+            }
+
+            .signup-pass-err-icon {
+                @include ErrIconAuthAsset();
+                top: 144px;
+                left: 95.17px;
+            }
+
+            .signup-pass-valid:invalid ~ .signup-pass-err-icon {
+                display: block;
+            }
+
+            .pass-error {
+                @include ErrMsgAsset();
+                top: 137px;
+                left: 111.17px;
+                .pass-error-msg {
+                    @include ErrMsgFont();
+                }
+            }
+
+            .signup-confirm-err-icon {
+                @include ErrIconAuthAsset();
+                top: 220.4px;
+                left: 163px;
+            }
+
+            .signup-confirm-valid:invalid ~ .signup-confirm-err-icon {
+                display: block;
+            }
+
+            .confirm-error {
+                @include ErrMsgAsset();
+                top: 213px;
+                left: 179px;
+
+                .confirm-error-msg {
+                    @include ErrMsgFont();
+                }
+            }
+
+            .eye-icon-container {
+                cursor: pointer;
+                position: absolute;
+                right: 40px;
+                top: 175px;
+                display: flex;
+
+                .icon-visiblity {
+                    color: $gray2Color;
+                }
+            }
+
+            .eye-icon-container-confirm {
+                cursor: pointer;
+                position: absolute;
+                right: 40px;
+                top: 251px;
+                display: flex;
+
+                .icon-visiblity {
+                    color: $gray2Color;
+                }
+            }
+
+            .submit-signup-form-button {
+                background-color: $accentColor;
+                border: 0;
+                border-radius: 5px;
+                padding: 10px 0px;
+                font-family: $mainFont;
+                font-size: 18px;
+                font-weight: 500;
+                color: $mainColor;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .modal-continuewith-container {
+        .continue-with-or {
+            font-family: $mainFont;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: default;
+        }
+
+        .continue-with-button {
+            width: 100%;
+            background-color: $mainColor;
+            border-radius: 5px;
+            font-family: $mainFont;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 10px 0px;
+            border: 1px solid $gray2Color;
+            @include JustifyCenter();
+            cursor: pointer;
+
+            .continue-with-icon {
+                width: 20px;
+                padding-right: 5px;
+            }
+        }
+    }
+}
+//dark mode styles
+.dark {
+    .signup-modal-wrapper {
+        .modal-form-container {
+            .signup-form {
+                .email-input {
+                    background-color: $mainColorDark;
+                    border: 1px solid $gray3Color;
+                    color: $mainColor;
+                }
+
+                .email-input:focus {
+                    border: 1px solid $accentColorDark;
+                }
+
+                .email-error {
+                    background-color: $mainColorDark;
+                }
+
+                .pass-input {
+                    background-color: $mainColorDark;
+                    border: 1px solid $gray3Color;
+                    color: $mainColor;
+                }
+
+                .pass-input:focus {
+                    border: 1px solid $accentColorDark;
+                }
+
+                .pass-error {
+                    background-color: $mainColorDark;
+                }
+
+                .confirm-error {
+                    background-color: $mainColorDark;
+                }
+
+                .submit-signup-form-button {
+                    background-color: $accentColorDark;
+                }
+            }
+        }
+
+        .modal-continuewith-container {
+            .continue-with-button {
+                background-color: $mainColorDark;
+                color: $mainColor;
+                border: 1px solid $gray2Color;
+            }
+        }
+    }
+}

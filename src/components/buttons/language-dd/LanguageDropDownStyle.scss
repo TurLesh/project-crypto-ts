@@ -1,0 +1,101 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.language-dd-wrapper {
+    .language-button-body {
+        border: none;
+        padding: 0px;
+        border-radius: 5px;
+        background-color: $accent2Color;
+        width: 60px;
+        height: 28px;
+        @include JustifyCenter();
+        cursor: pointer;
+
+        .language-text-container {
+            width: 44px;
+            height: 28px;
+            @include JustifyCenter();
+
+            .language-text {
+                font-family: $nameAndButtonFont;
+                font-size: 12px;
+                font-weight: 500;
+                margin: 0px;
+            }
+        }
+
+        .language-arrow-cointainer {
+            width: 16px;
+            height: 16px;
+            @include JustifyCenter();
+
+            .language-arrow-expand {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+
+    .dd-panel-wrapper {
+        position: absolute;
+
+        .dd-panel-triangle {
+            width: 6px;
+            height: 6px;
+            transform: rotate(45deg);
+            background-color: $mainColorDark;
+            border-left: 1px solid $mainColor;
+            border-top: 1px solid $mainColor;
+            position: absolute;
+            left: 49px;
+            top: 3px;
+        }
+
+        .dd-panel-container {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid $mainColor;
+            width: 60px;
+            border-radius: 5px;
+            margin-top: 6px;
+            background-color: $mainColorDark;
+
+            .dd-panel-tile {
+                padding: 5px 0px 5px 0px;
+                .dd-panel-btn {
+                    border: none;
+                    background-color: $mainColorDark;
+                    color: $mainColor;
+                    padding: 0px;
+                    width: 100%;
+                    cursor: pointer;
+
+                    .dd-panel-btn-text {
+                        font-family: $nameAndButtonFont;
+                        font-size: 12px;
+                        font-weight: 500;
+                        margin: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dark {
+    .language-dd-wrapper {
+        .language-button-body {
+            background-color: $mainColorDark;
+
+            .language-text-container {
+                .language-text {
+                    color: $mainColor;
+                }
+            }
+
+            .language-arrow-cointainer {
+                color: $mainColor;
+            }
+        }
+    }
+}

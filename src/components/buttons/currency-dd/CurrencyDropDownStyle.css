@@ -1,0 +1,43 @@
+.currency-button-body {
+  border-radius: 5px;
+  background-color: #f5d418;
+  width: 60px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currency-button-body .currency-text-container {
+  width: 44px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currency-button-body .currency-text-container .currency-text {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0px;
+}
+.currency-button-body .currency-arrow-cointainer {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currency-button-body .currency-arrow-cointainer .currency-arrow-expand {
+  width: 16px;
+  height: 16px;
+}
+
+.dark .currency-button-body {
+  background-color: #2a2c3b;
+}
+.dark .currency-button-body .currency-text-container .currency-text {
+  color: aliceblue;
+}
+.dark .currency-button-body .currency-arrow-cointainer {
+  color: aliceblue;
+}/*# sourceMappingURL=CurrencyDropDownStyle.css.map */

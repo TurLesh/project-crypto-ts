@@ -1,0 +1,49 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.currency-button-body {
+    border-radius: 5px;
+    background-color: $accent2Color;
+    width: 60px;
+    height: 28px;
+    @include JustifyCenter();
+
+    .currency-text-container {
+        width: 44px;
+        height: 28px;
+        @include JustifyCenter();
+
+        .currency-text {
+            font-family: $nameAndButtonFont;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 0px;
+        }
+    }
+
+    .currency-arrow-cointainer {
+        width: 16px;
+        height: 16px;
+        @include JustifyCenter();
+
+        .currency-arrow-expand {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+.dark {
+    .currency-button-body {
+        background-color: $mainColorDark;
+
+        .currency-text-container {
+            .currency-text {
+                color: $mainColor;
+            }
+        }
+
+        .currency-arrow-cointainer {
+            color: $mainColor;
+        }
+    }
+}

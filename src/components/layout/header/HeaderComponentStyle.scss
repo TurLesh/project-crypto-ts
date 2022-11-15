@@ -1,0 +1,115 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+header {
+    .top-container {
+        background-color: $accentColor;
+        @include JustifySpaceBetween();
+        padding-left: 20px;
+        padding-right: 20px;
+
+        .header-buttons-container {
+            @include JustifyCenter();
+
+            .language-button-body {
+                margin-right: 10px;
+            }
+
+            .currency-button-body {
+                margin-right: 10px;
+            }
+
+            .header-top-hr {
+                border: none;
+                width: 1px;
+                height: 20px;
+                margin-right: 10px;
+                background-color: black;
+            }
+
+            .modal-overlay-div {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: 1000;
+            }
+
+            .auth-modal-body {
+                position: fixed;
+                border-radius: 15px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $mainColor;
+                z-index: 1000;
+                width: 460px;
+                padding: 20px;
+            }
+        }
+    }
+    .bottom-container {
+        background-color: $accent2Color;
+        height: 40px;
+
+        .header-nav-list {
+            height: 40px;
+            margin-left: 120px;
+            margin-right: 120px;
+            @include JustifySpaceBetween();
+
+            .cryptocurrency-nav {
+                width: 200px;
+            }
+            .exchanges-nav {
+                width: 200px;
+            }
+            .analytics-nav {
+                width: 200px;
+            }
+            .news-nav {
+                width: 200px;
+            }
+            .learn-nav {
+                width: 200px;
+            }
+            .not-active-item {
+                @include DecorNone(black, 20px, $mainFont);
+            }
+            .active-item {
+                @include DecorNone($accentColor, 20px, $mainFont);
+            }
+        }
+    }
+}
+// dark mode styles
+.dark {
+    .top-container {
+        background-color: $bg-dark;
+
+        .header-buttons-container {
+            .header-top-hr {
+                background-color: $mainColor;
+            }
+
+            .auth-modal-body {
+                background-color: $bg-dark;
+            }
+        }
+    }
+
+    .bottom-container {
+        background-color: $mainColorDark;
+
+        .header-nav-list {
+            .not-active-item {
+                color: $mainColor;
+            }
+
+            .active-item {
+                color: $accentColorDark;
+            }
+        }
+    }
+}

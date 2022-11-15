@@ -1,0 +1,23 @@
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-title-container .logo-container {
+  height: 60px;
+}
+.logo-title-container .logo-container .logo {
+  height: 50px;
+  margin-top: 5px;
+}
+.logo-title-container .title-container .title {
+  color: #f5d418;
+  font-size: 30px;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dark .logo-title-container .title-container .title {
+  color: aliceblue;
+}/*# sourceMappingURL=LogoTitleButtonStyle.css.map */

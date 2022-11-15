@@ -1,0 +1,104 @@
+header .top-container {
+  background-color: #1058f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+header .top-container .header-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header .top-container .header-buttons-container .language-button-body {
+  margin-right: 10px;
+}
+header .top-container .header-buttons-container .currency-button-body {
+  margin-right: 10px;
+}
+header .top-container .header-buttons-container .header-top-hr {
+  border: none;
+  width: 1px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: black;
+}
+header .top-container .header-buttons-container .modal-overlay-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+header .top-container .header-buttons-container .auth-modal-body {
+  position: fixed;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: aliceblue;
+  z-index: 1000;
+  width: 460px;
+  padding: 20px;
+}
+header .bottom-container {
+  background-color: #f5d418;
+  height: 40px;
+}
+header .bottom-container .header-nav-list {
+  height: 40px;
+  margin-left: 120px;
+  margin-right: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .bottom-container .header-nav-list .cryptocurrency-nav {
+  width: 200px;
+}
+header .bottom-container .header-nav-list .exchanges-nav {
+  width: 200px;
+}
+header .bottom-container .header-nav-list .analytics-nav {
+  width: 200px;
+}
+header .bottom-container .header-nav-list .news-nav {
+  width: 200px;
+}
+header .bottom-container .header-nav-list .learn-nav {
+  width: 200px;
+}
+header .bottom-container .header-nav-list .not-active-item {
+  color: black;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none;
+}
+header .bottom-container .header-nav-list .active-item {
+  color: #1058f5;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none;
+}
+
+.dark .top-container {
+  background-color: #1f212b;
+}
+.dark .top-container .header-buttons-container .header-top-hr {
+  background-color: aliceblue;
+}
+.dark .top-container .header-buttons-container .auth-modal-body {
+  background-color: #1f212b;
+}
+.dark .bottom-container {
+  background-color: #2a2c3b;
+}
+.dark .bottom-container .header-nav-list .not-active-item {
+  color: aliceblue;
+}
+.dark .bottom-container .header-nav-list .active-item {
+  color: #e26411;
+}/*# sourceMappingURL=HeaderComponentStyle.css.map */

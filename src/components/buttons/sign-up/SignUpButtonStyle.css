@@ -1,0 +1,27 @@
+.signup-button-body {
+  margin-right: 10px;
+  width: 60px;
+  height: 28px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5d418;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+.signup-button-body:hover {
+  opacity: 0.95;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+
+.dark .signup-button-body {
+  background-color: #2a2c3b;
+  color: aliceblue;
+}/*# sourceMappingURL=SignUpButtonStyle.css.map */

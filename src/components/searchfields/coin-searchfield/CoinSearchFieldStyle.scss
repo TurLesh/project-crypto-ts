@@ -1,0 +1,65 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.coin-searchfield-container {
+    background-color: $accent2Color;
+    position: absolute;
+    margin: 0 auto;
+    left: calc(50% - 97px);
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+
+    .coin-searchfield {
+        background-color: $accent2Color;
+        font-family: $contentFont;
+        color: $gray3Color;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        padding: 5px 5px 5px 10px;
+        outline: none;
+        border-radius: 5px;
+        width: 150px !important;
+    }
+
+    .coin-searchfield:focus {
+        color: black;
+    }
+
+    .coin-seach-icon {
+        color: $gray3Color;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    .coin-search-icon-active {
+        color: black;
+    }
+
+    &.searchfield-active {
+        border: 2px solid black;
+        left: calc(50% - 99px);
+    }
+}
+
+.dark {
+    .coin-searchfield-container {
+        background-color: $mainColorDark;
+
+        .coin-searchfield {
+            background-color: $mainColorDark;
+        }
+
+        .coin-searchfield:focus {
+            color: $mainColor;
+        }
+
+        .coin-search-icon-active {
+            color: $mainColor;
+        }
+
+        &.searchfield-active {
+            border: 2px solid $mainColor;
+        }
+    }
+}

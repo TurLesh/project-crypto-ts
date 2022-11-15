@@ -1,0 +1,24 @@
+.dark-mode-btn {
+  border-radius: 100%;
+  background-color: #f5d418;
+  width: 22px;
+  height: 22px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.dark-mode-btn:hover {
+  opacity: 0.95;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+.dark-mode-btn .dark-mode-icon {
+  width: 18px;
+}
+
+.dark .dark-mode-btn {
+  background-color: #2a2c3b;
+  color: aliceblue;
+}/*# sourceMappingURL=DarkModeButtonStyle.css.map */

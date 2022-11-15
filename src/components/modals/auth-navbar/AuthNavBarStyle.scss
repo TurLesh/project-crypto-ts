@@ -1,0 +1,55 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.modal-nav-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .modal-nav-login {
+        @include NavActive();
+        margin-right: 50px;
+    }
+
+    .modal-nav-login-unactive {
+        @include NavUnactive();
+        margin-right: 50px;
+    }
+
+    .modal-nav-signup {
+        @include NavActive();
+    }
+
+    .modal-nav-signup-unactive {
+        @include NavUnactive();
+    }
+
+    .modal-nav-close {
+        position: absolute;
+        left: 94%;
+        top: 1%;
+        color: $gray2Color;
+        cursor: pointer;
+    }
+}
+//dark mode styles
+.dark {
+    .modal-nav-container {
+        .modal-nav-login {
+            color: $mainColor;
+            text-decoration-color: $accentColorDark;
+        }
+
+        .modal-nav-login-unactive {
+            color: $mainColor;
+        }
+
+        .modal-nav-signup {
+            color: $mainColor;
+            text-decoration-color: $accentColorDark;
+        }
+
+        .modal-nav-signup-unactive {
+            color: $mainColor;
+        }
+    }
+}

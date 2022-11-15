@@ -1,0 +1,44 @@
+.cryptocurrency-page-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.cryptocurrency-page-wrapper .slider-wrapper {
+  background-color: aliceblue;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container {
+  height: 160px;
+  width: 96%;
+}
+.cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container .slick-prev:before,
+.cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container .slick-next:before {
+  color: #2a2c3b !important;
+}
+.cryptocurrency-page-wrapper .content-wrapper {
+  margin-top: 40px;
+  height: 1000px;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+
+.dark .cryptocurrency-page-wrapper .slider-wrapper {
+  background-color: #2a2c3b;
+}
+.dark .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container .slick-prev:before,
+.dark .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container .slick-next:before {
+  color: aliceblue !important;
+}
+.dark .cryptocurrency-page-wrapper .content-wrapper {
+  background-color: #2a2c3b;
+}
+
+@media screen and (max-width: 1440px) {
+  .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container {
+    width: 94%;
+  }
+}/*# sourceMappingURL=CryptocurrencyPageStyle.css.map */

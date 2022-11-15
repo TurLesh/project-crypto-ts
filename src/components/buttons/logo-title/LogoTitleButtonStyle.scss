@@ -1,0 +1,30 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.logo-title-container {
+    @include JustifyCenter();
+
+    .logo-container {
+        height: 60px;
+        .logo {
+            height: 50px;
+            margin-top: 5px;
+        }
+    }
+
+    .title-container {
+        .title {
+            @include DecorNone($accent2Color, 30px, $nameAndButtonFont);
+            font-weight: 500;
+        }
+    }
+}
+
+.dark {
+    .logo-title-container {
+        .title-container {
+            .title {
+                color: $mainColor;
+            }
+        }
+    }
+}

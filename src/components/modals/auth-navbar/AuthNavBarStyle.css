@@ -1,0 +1,71 @@
+.modal-nav-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.modal-nav-container .modal-nav-login {
+  background-color: transparent;
+  border: 0px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+  -webkit-text-decoration-style: solid;
+          text-decoration-style: solid;
+  -webkit-text-decoration-color: #1058f5;
+          text-decoration-color: #1058f5;
+  margin-right: 50px;
+}
+.modal-nav-container .modal-nav-login-unactive {
+  background-color: transparent;
+  border: 0px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 50px;
+}
+.modal-nav-container .modal-nav-signup {
+  background-color: transparent;
+  border: 0px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+  -webkit-text-decoration-style: solid;
+          text-decoration-style: solid;
+  -webkit-text-decoration-color: #1058f5;
+          text-decoration-color: #1058f5;
+}
+.modal-nav-container .modal-nav-signup-unactive {
+  background-color: transparent;
+  border: 0px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.modal-nav-container .modal-nav-close {
+  position: absolute;
+  left: 94%;
+  top: 1%;
+  color: #8e8e8e;
+  cursor: pointer;
+}
+
+.dark .modal-nav-container .modal-nav-login {
+  color: aliceblue;
+  -webkit-text-decoration-color: #e26411;
+          text-decoration-color: #e26411;
+}
+.dark .modal-nav-container .modal-nav-login-unactive {
+  color: aliceblue;
+}
+.dark .modal-nav-container .modal-nav-signup {
+  color: aliceblue;
+  -webkit-text-decoration-color: #e26411;
+          text-decoration-color: #e26411;
+}
+.dark .modal-nav-container .modal-nav-signup-unactive {
+  color: aliceblue;
+}/*# sourceMappingURL=AuthNavBarStyle.css.map */

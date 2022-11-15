@@ -1,0 +1,18 @@
+@import './assets/styles/StyleAssets.scss';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+body {
+    margin: 0;
+    background-color: $bg-light;
+    text-align: center;
+    text-decoration-color: $accentColor;
+}
+
+.dark {
+    background-color: $bg-dark;
+    color: $mainColor;
+    text-decoration-color: $accentColorDark;
+}

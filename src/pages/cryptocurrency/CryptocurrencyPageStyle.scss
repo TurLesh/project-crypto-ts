@@ -1,0 +1,61 @@
+@import '../../assets/styles/StyleAssets.scss';
+
+.cryptocurrency-page-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .slider-wrapper {
+        background-color: $mainColor;
+        width: 100%;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        .currency-slider-container {
+            height: 160px;
+            width: 96%;
+
+            .slick-prev:before,
+            .slick-next:before {
+                color: $mainColorDark !important;
+            }
+        }
+    }
+
+    .content-wrapper {
+        margin-top: 40px;
+        height: 1000px;
+        background-color: $mainColor;
+        border-radius: 10px;
+    }
+}
+
+.dark {
+    .cryptocurrency-page-wrapper {
+        .slider-wrapper {
+            background-color: $mainColorDark;
+            .currency-slider-container {
+                .slick-prev:before,
+                .slick-next:before {
+                    color: $mainColor !important;
+                }
+            }
+        }
+
+        .content-wrapper {
+            background-color: $mainColorDark;
+        }
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .cryptocurrency-page-wrapper {
+        .slider-wrapper {
+            .currency-slider-container {
+                width: 94%;
+            }
+        }
+    }
+}
