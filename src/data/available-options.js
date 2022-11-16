@@ -34,12 +34,21 @@ export const AvailibleCurrencies = [
         id: 'usd',
         symbol: 'USD',
         name: 'United States dollar',
-        isAvailable: true
+        isAvailable: true,
+        isActive: true
+    },
+    {
+        id: 'eur',
+        symbol: 'EUR',
+        name: 'Esposizione Universale di Roma',
+        isAvailable: true,
+        isActive: false
     },
     {
         id: 'btc',
         symbol: 'BTC',
         name: 'Bitcoin',
-        isAvailable: true
+        isAvailable: true,
+        isActive: false
     }
 ];

@@ -1,49 +1,128 @@
 @import '../../../assets/styles/StyleAssets.scss';
 
-.currency-button-body {
-    border-radius: 5px;
-    background-color: $accent2Color;
-    width: 60px;
-    height: 28px;
-    @include JustifyCenter();
+@import '../../../assets/styles/StyleAssets.scss';
 
-    .currency-text-container {
-        width: 44px;
+.currency-dd-wrapper {
+    .currency-button-body {
+        border: none;
+        padding: 0px;
+        border-radius: 5px;
+        background-color: $accent2Color;
+        width: 60px;
         height: 28px;
         @include JustifyCenter();
+        cursor: pointer;
 
-        .currency-text {
-            font-family: $nameAndButtonFont;
-            font-size: 12px;
-            font-weight: 500;
-            margin: 0px;
+        .currency-text-container {
+            width: 44px;
+            height: 28px;
+            @include JustifyCenter();
+
+            .currency-text {
+                font-family: $nameAndButtonFont;
+                font-size: 12px;
+                font-weight: 500;
+                margin: 0px;
+            }
+        }
+
+        .currency-arrow-cointainer {
+            width: 16px;
+            height: 16px;
+            @include JustifyCenter();
+
+            .currency-arrow-expand {
+                width: 16px;
+                height: 16px;
+            }
         }
     }
 
-    .currency-arrow-cointainer {
-        width: 16px;
-        height: 16px;
-        @include JustifyCenter();
+    .currency-dd-panel-wrapper {
+        position: absolute;
 
-        .currency-arrow-expand {
-            width: 16px;
-            height: 16px;
+        .currency-dd-panel-triangle {
+            width: 6px;
+            height: 6px;
+            transform: rotate(45deg);
+            background-color: $accent2Color;
+            border-left: 1px solid black;
+            border-top: 1px solid black;
+            position: absolute;
+            left: 49px;
+            top: 3px;
+        }
+
+        .currency-dd-panel-container {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            width: 60px;
+            border-radius: 5px;
+            margin-top: 6px;
+            background-color: $accent2Color;
+
+            .currency-dd-panel-tile {
+                padding: 5px 0px 5px 0px;
+
+                .currency-dd-panel-btn {
+                    border: none;
+                    background-color: $accent2Color;
+                    padding: 0px;
+                    width: 100%;
+                    cursor: pointer;
+
+                    .currency-dd-panel-btn-text {
+                        font-family: $nameAndButtonFont;
+                        font-size: 12px;
+                        font-weight: 500;
+                        margin: 0px;
+                    }
+                }
+            }
         }
     }
 }
 
 .dark {
-    .currency-button-body {
-        background-color: $mainColorDark;
+    .currency-dd-wrapper {
+        .currency-button-body {
+            background-color: $mainColorDark;
 
-        .currency-text-container {
-            .currency-text {
-                color: $mainColor;
+            .currency-text-container {
+                .currency-text {
+                    color: $mainColor;
+                }
+            }
+
+            .currency-arrow-cointainer {
+                .currency-arrow-expand {
+                    color: $mainColor;
+                }
             }
         }
+    }
 
-        .currency-arrow-cointainer {
-            color: $mainColor;
+    .currency-dd-panel-wrapper {
+        .currency-dd-panel-triangle {
+            background-color: $mainColorDark;
+            border-left: 1px solid $mainColor;
+            border-top: 1px solid $mainColor;
+        }
+
+        .currency-dd-panel-container {
+            border: 1px solid $mainColor;
+            background-color: $mainColorDark;
+
+            .currency-dd-panel-tile {
+                .currency-dd-panel-btn {
+                    background-color: $mainColorDark;
+
+                    .currency-dd-panel-btn-text {
+                        color: $mainColor;
+                    }
+                }
+            }
         }
     }
 }

@@ -36,41 +36,41 @@
         }
     }
 
-    .dd-panel-wrapper {
+    .language-dd-panel-wrapper {
         position: absolute;
 
-        .dd-panel-triangle {
+        .language-dd-panel-triangle {
             width: 6px;
             height: 6px;
             transform: rotate(45deg);
-            background-color: $mainColorDark;
-            border-left: 1px solid $mainColor;
-            border-top: 1px solid $mainColor;
+            background-color: $accent2Color;
+            border-left: 1px solid black;
+            border-top: 1px solid black;
             position: absolute;
             left: 49px;
             top: 3px;
         }
 
-        .dd-panel-container {
+        .language-dd-panel-container {
             display: flex;
             flex-direction: column;
-            border: 1px solid $mainColor;
+            border: 1px solid black;
             width: 60px;
             border-radius: 5px;
             margin-top: 6px;
-            background-color: $mainColorDark;
+            background-color: $accent2Color;
 
-            .dd-panel-tile {
+            .language-dd-panel-tile {
                 padding: 5px 0px 5px 0px;
-                .dd-panel-btn {
+
+                .language-dd-panel-btn {
                     border: none;
-                    background-color: $mainColorDark;
-                    color: $mainColor;
+                    background-color: $accent2Color;
                     padding: 0px;
                     width: 100%;
                     cursor: pointer;
 
-                    .dd-panel-btn-text {
+                    .language-dd-panel-btn-text {
                         font-family: $nameAndButtonFont;
                         font-size: 12px;
                         font-weight: 500;
@@ -94,7 +94,32 @@
             }
 
             .language-arrow-cointainer {
-                color: $mainColor;
+                .language-arrow-expand {
+                    color: $mainColor;
+                }
+            }
+        }
+    }
+
+    .language-dd-panel-wrapper {
+        .language-dd-panel-triangle {
+            background-color: $mainColorDark;
+            border-left: 1px solid $mainColor;
+            border-top: 1px solid $mainColor;
+        }
+
+        .language-dd-panel-container {
+            border: 1px solid $mainColor;
+            background-color: $mainColorDark;
+
+            .language-dd-panel-tile {
+                .language-dd-panel-btn {
+                    background-color: $mainColorDark;
+
+                    .language-dd-panel-btn-text {
+                        color: $mainColor;
+                    }
+                }
             }
         }
     }

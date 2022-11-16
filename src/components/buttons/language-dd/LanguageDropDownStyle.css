@@ -34,41 +34,40 @@
   width: 16px;
   height: 16px;
 }
-.language-dd-wrapper .dd-panel-wrapper {
+.language-dd-wrapper .language-dd-panel-wrapper {
   position: absolute;
 }
-.language-dd-wrapper .dd-panel-wrapper .dd-panel-triangle {
+.language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-triangle {
   width: 6px;
   height: 6px;
   transform: rotate(45deg);
-  background-color: #2a2c3b;
-  border-left: 1px solid aliceblue;
-  border-top: 1px solid aliceblue;
+  background-color: #f5d418;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
   position: absolute;
   left: 49px;
   top: 3px;
 }
-.language-dd-wrapper .dd-panel-wrapper .dd-panel-container {
+.language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid aliceblue;
+  border: 1px solid black;
   width: 60px;
   border-radius: 5px;
   margin-top: 6px;
-  background-color: #2a2c3b;
+  background-color: #f5d418;
 }
-.language-dd-wrapper .dd-panel-wrapper .dd-panel-container .dd-panel-tile {
+.language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile {
   padding: 5px 0px 5px 0px;
 }
-.language-dd-wrapper .dd-panel-wrapper .dd-panel-container .dd-panel-tile .dd-panel-btn {
+.language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn {
   border: none;
-  background-color: #2a2c3b;
-  color: aliceblue;
+  background-color: #f5d418;
   padding: 0px;
   width: 100%;
   cursor: pointer;
 }
-.language-dd-wrapper .dd-panel-wrapper .dd-panel-container .dd-panel-tile .dd-panel-btn .dd-panel-btn-text {
+.language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn .language-dd-panel-btn-text {
   font-family: "Inter", sans-serif;
   font-size: 12px;
   font-weight: 500;
@@ -81,6 +80,21 @@
 .dark .language-dd-wrapper .language-button-body .language-text-container .language-text {
   color: aliceblue;
 }
-.dark .language-dd-wrapper .language-button-body .language-arrow-cointainer {
+.dark .language-dd-wrapper .language-button-body .language-arrow-cointainer .language-arrow-expand {
+  color: aliceblue;
+}
+.dark .language-dd-panel-wrapper .language-dd-panel-triangle {
+  background-color: #2a2c3b;
+  border-left: 1px solid aliceblue;
+  border-top: 1px solid aliceblue;
+}
+.dark .language-dd-panel-wrapper .language-dd-panel-container {
+  border: 1px solid aliceblue;
+  background-color: #2a2c3b;
+}
+.dark .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn {
+  background-color: #2a2c3b;
+}
+.dark .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn .language-dd-panel-btn-text {
   color: aliceblue;
 }/*# sourceMappingURL=LanguageDropDownStyle.css.map */

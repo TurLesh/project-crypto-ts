@@ -1,4 +1,6 @@
-.currency-button-body {
+.currency-dd-wrapper .currency-button-body {
+  border: none;
+  padding: 0px;
   border-radius: 5px;
   background-color: #f5d418;
   width: 60px;
@@ -6,38 +8,93 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
-.currency-button-body .currency-text-container {
+.currency-dd-wrapper .currency-button-body .currency-text-container {
   width: 44px;
   height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.currency-button-body .currency-text-container .currency-text {
+.currency-dd-wrapper .currency-button-body .currency-text-container .currency-text {
   font-family: "Inter", sans-serif;
   font-size: 12px;
   font-weight: 500;
   margin: 0px;
 }
-.currency-button-body .currency-arrow-cointainer {
+.currency-dd-wrapper .currency-button-body .currency-arrow-cointainer {
   width: 16px;
   height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.currency-button-body .currency-arrow-cointainer .currency-arrow-expand {
+.currency-dd-wrapper .currency-button-body .currency-arrow-cointainer .currency-arrow-expand {
   width: 16px;
   height: 16px;
 }
+.currency-dd-wrapper .currency-dd-panel-wrapper {
+  position: absolute;
+}
+.currency-dd-wrapper .currency-dd-panel-wrapper .currency-dd-panel-triangle {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #f5d418;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  position: absolute;
+  left: 49px;
+  top: 3px;
+}
+.currency-dd-wrapper .currency-dd-panel-wrapper .currency-dd-panel-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 60px;
+  border-radius: 5px;
+  margin-top: 6px;
+  background-color: #f5d418;
+}
+.currency-dd-wrapper .currency-dd-panel-wrapper .currency-dd-panel-container .currency-dd-panel-tile {
+  padding: 5px 0px 5px 0px;
+}
+.currency-dd-wrapper .currency-dd-panel-wrapper .currency-dd-panel-container .currency-dd-panel-tile .currency-dd-panel-btn {
+  border: none;
+  background-color: #f5d418;
+  padding: 0px;
+  width: 100%;
+  cursor: pointer;
+}
+.currency-dd-wrapper .currency-dd-panel-wrapper .currency-dd-panel-container .currency-dd-panel-tile .currency-dd-panel-btn .currency-dd-panel-btn-text {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0px;
+}
 
-.dark .currency-button-body {
+.dark .currency-dd-wrapper .currency-button-body {
   background-color: #2a2c3b;
 }
-.dark .currency-button-body .currency-text-container .currency-text {
+.dark .currency-dd-wrapper .currency-button-body .currency-text-container .currency-text {
   color: aliceblue;
 }
-.dark .currency-button-body .currency-arrow-cointainer {
+.dark .currency-dd-wrapper .currency-button-body .currency-arrow-cointainer .currency-arrow-expand {
+  color: aliceblue;
+}
+.dark .currency-dd-panel-wrapper .currency-dd-panel-triangle {
+  background-color: #2a2c3b;
+  border-left: 1px solid aliceblue;
+  border-top: 1px solid aliceblue;
+}
+.dark .currency-dd-panel-wrapper .currency-dd-panel-container {
+  border: 1px solid aliceblue;
+  background-color: #2a2c3b;
+}
+.dark .currency-dd-panel-wrapper .currency-dd-panel-container .currency-dd-panel-tile .currency-dd-panel-btn {
+  background-color: #2a2c3b;
+}
+.dark .currency-dd-panel-wrapper .currency-dd-panel-container .currency-dd-panel-tile .currency-dd-panel-btn .currency-dd-panel-btn-text {
   color: aliceblue;
 }/*# sourceMappingURL=CurrencyDropDownStyle.css.map */
