@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import ReactApexCharts from 'react-apexcharts';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './CryptocurrencySliderCardStyle.css';
@@ -12,9 +13,52 @@ type CryptocurrencySliderCardDataType = {
     up24h: boolean;
     up7d: boolean;
     up30d: boolean;
+    name: string;
+    priceHistory: number[];
 };
 
-const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = ({ symbol, value, oneday, oneweek, onemonth, up24h, up7d, up30d }) => {
+const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = ({ symbol, value, oneday, oneweek, onemonth, up24h, up7d, up30d, name, priceHistory }) => {
+    //options for chart component
+    const options = {
+        stroke: {
+            curve: 'smooth',
+            width: 3
+        },
+        chart: {
+            toolbar: {
+                show: false
+            }
+        },
+        grid: {
+            show: false
+        },
+        tooltip: {
+            enabled: false
+        },
+        xaxis: {
+            labels: {
+                show: false
+            }
+        },
+        yaxis: {
+            labels: {
+                show: false
+            }
+        }
+    } as const;
+
+    const priceChangeUp = up24h;
+    const colorTernar: string = priceChangeUp === true ? '#0d9b44' : '#e41f1f';
+
+    const series = [
+        {
+            name: name,
+            color: colorTernar,
+            legend: { show: false },
+            data: priceHistory
+        }
+    ];
+
     return (
         <div className="currency-card-body">
             <div className="card-top-container">
@@ -27,7 +71,7 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = ({ symbol
                     </div>
                 </div>
                 <div className="card-chart-container">
-                    <p>Chart here</p>
+                    <ReactApexCharts series={series} width={220} height={92} options={options} />
                 </div>
             </div>
 
@@ -86,3 +130,4 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = ({ symbol
 };
 
 export default CryptocurrencySliderCard;
+//abo

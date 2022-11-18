@@ -1,22 +1,23 @@
 import { FC } from 'react';
 import CryptocurrencySliderCard from '../../components/cards/cryptocurrency-slider-card/CryptocurrencySliderCard';
-import { SliderCoins } from '../../data/currency-slider';
+import SliderData from '../../data/cryptocurrency-slider-data.json';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CryptocurrencyPageStyle.css';
 
-type SliderCardDataType = {
+type SliderDataType = {
     id: string;
     symbol: string;
     name: string;
-    value: ValueType;
+    current_value: CurrentValueType;
     price_change_percentage_24h: PriceChangePercentage24hType;
     price_change_percentage_7d: PriceChangePercentage7dType;
     price_change_percentage_30d: PriceChangePercentage30dType;
+    price_history_hourly_24h_usd: number[];
 };
 
-type ValueType = {
+type CurrentValueType = {
     usd: number;
     eur: number;
     btc: number;
@@ -40,9 +41,9 @@ type PriceChangePercentage30dType = {
 };
 
 const CryptocurrencyPage: FC = () => {
-    const data: SliderCardDataType[] = SliderCoins;
+    const data: SliderDataType[] = SliderData.slider_cryptocurrency_data;
 
-    //props for slider component
+    //options for slider component
     const settings = {
         dots: false,
         infinite: true,
@@ -61,13 +62,15 @@ const CryptocurrencyPage: FC = () => {
             <CryptocurrencySliderCard
                 key={item.id}
                 symbol={item.symbol}
-                value={item.value.usd}
+                value={item.current_value.usd}
                 oneday={item.price_change_percentage_24h.percentage}
                 oneweek={item.price_change_percentage_7d.percentage}
                 onemonth={item.price_change_percentage_30d.percentage}
                 up24h={item.price_change_percentage_24h.up}
                 up7d={item.price_change_percentage_7d.up}
                 up30d={item.price_change_percentage_30d.up}
+                name={item.name}
+                priceHistory={item.price_history_hourly_24h_usd}
             />
         );
     });

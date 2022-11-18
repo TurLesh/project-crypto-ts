@@ -1,5 +1,5 @@
 import { FC, useRef, useEffect, useState } from 'react';
-import { AvailableLanguages } from '../../../data/available-options';
+import AvailableOptions from '../../../data/available-options.json';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './LanguageDropDownStyle.css';
@@ -7,7 +7,7 @@ import './LanguageDropDownStyle.css';
 type LanguageDropDownOptionsType = {
     id: string;
     symbol: string;
-    name?: string;
+    name: string;
     isAvailable: boolean;
     isActive: boolean;
 };
@@ -34,9 +34,7 @@ const LanguageDropDown: FC = () => {
         }
     }, [isLanguageExpanded]);
 
-    console.log(isLanguageExpanded);
-
-    const languageData: LanguageDropDownOptionsType[] = AvailableLanguages;
+    const languageData: LanguageDropDownOptionsType[] = AvailableOptions.AvailableLanguages;
 
     const languagePannelMapFunc = languageData.map(({ isAvailable, isActive, id, symbol }) => {
         return (

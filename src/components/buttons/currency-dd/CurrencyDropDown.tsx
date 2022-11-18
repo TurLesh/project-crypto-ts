@@ -1,5 +1,5 @@
 import { FC, useState, useRef, useEffect } from 'react';
-import { AvailibleCurrencies } from '../../../data/available-options';
+import AvailableOptions from '../../../data/available-options.json';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './CurrencyDropDownStyle.css';
@@ -7,7 +7,7 @@ import './CurrencyDropDownStyle.css';
 type CurrencyDropDownOptionsType = {
     id: string;
     symbol: string;
-    name?: string;
+    name: string;
     isAvailable: boolean;
     isActive: boolean;
 };
@@ -34,7 +34,7 @@ const CurrencyDropDown: FC = () => {
         }
     }, [isCurrencyExpanded]);
 
-    const currencyData: CurrencyDropDownOptionsType[] = AvailibleCurrencies;
+    const currencyData: CurrencyDropDownOptionsType[] = AvailableOptions.AvailibleCurrencies;
 
     const currencyPannelMapFunc = currencyData.map(({ isAvailable, isActive, id, symbol }) => {
         return (
