@@ -43,7 +43,31 @@ $nameAndButtonFont: 'Inter', sans-serif;
     cursor: pointer;
 }
 
-//input used in auth modal
+//inputs used in auth modal
+@mixin AuthInputWrapperWithIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid $gray1Color;
+    background-color: $mainColor;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+@mixin AuthInputWithIcon {
+    width: 100%;
+    border-radius: 5px;
+    font-family: $contentFont;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    outline: none;
+    background-color: $mainColor;
+    border: none;
+}
+
 @mixin AuthInputAsset {
     border-radius: 5px;
     margin-bottom: 10px;

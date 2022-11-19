@@ -12,9 +12,12 @@ const SignUpModal: FC = () => {
         confirmSignUp: ''
     });
 
+    const [isFocusedOnPassInput, setIsFocusedOnPassInput] = useState(false);
+    const [isFocusedOnConfirmInput, setIsFocusedOnConfirmInput] = useState(false);
+    const [isFocusedOnConfirmInputWrapper, setIsFocusedOnConfirmInputWrapper] = useState(false);
+
     const [wasFocusedOnEmailInput, setWasFocusedOnEmailInput] = useState(false);
     const [wasFocusedOnPassInput, setWasFocusedOnPassInput] = useState(false);
-    const [isFocusedOnConfirmInput, setIsFocusedOnConfirmInput] = useState(false);
 
     const [isHoveringEmailIcon, setIsHoveringEmailIcon] = useState(false);
     const [isHoveringPassIcon, setIsHoveringPassIcon] = useState(false);
@@ -36,17 +39,28 @@ const SignUpModal: FC = () => {
         setValuesSignUp({ ...valuesSignUp, confirmSignUp: event.target.value });
     };
 
-    // input blur event handlers; confirm input focus event handler
+    //inputs focus event handlers
+    const passInputOnFocusHandler = () => {
+        setIsFocusedOnPassInput(true);
+    };
+
+    const confirmInputOnFocusHandler = () => {
+        setIsFocusedOnConfirmInput(true);
+        setIsFocusedOnConfirmInputWrapper(true);
+    };
+
+    // input blur event handlers
     const emailInputOnBlurHandler = () => {
         setWasFocusedOnEmailInput(true);
     };
 
     const passInputOnBlurHandler = () => {
         setWasFocusedOnPassInput(true);
+        setIsFocusedOnPassInput(false);
     };
 
-    const confirmInputOnFocusHandler = () => {
-        setIsFocusedOnConfirmInput(true);
+    const confirmInputOnBlurHandler = () => {
+        setIsFocusedOnConfirmInputWrapper(false);
     };
 
     // error icons event handlers
@@ -85,15 +99,15 @@ const SignUpModal: FC = () => {
 
     // classNames with conditional(ternary) operator
     const emailInputClassName: string = wasFocusedOnEmailInput ? 'email-input signup-email-valid' : 'email-input';
+    const passInputWrapperClassName: string = isFocusedOnPassInput ? 'pass-input-wrapper pass-input-wrapper-focused' : 'pass-input-wrapper';
     const passInputClassName: string = wasFocusedOnPassInput ? 'pass-input signup-pass-valid' : 'pass-input';
-    const confirmInputClassName: string = isFocusedOnConfirmInput ? 'pass-input signup-confirm-valid' : 'pass-input';
+    const confirmInputWrapperClassName: string = isFocusedOnConfirmInputWrapper ? 'confirm-input-wrapper confirm-input-wrapper-focused' : 'confirm-input-wrapper';
+    const confirmInputClassName: string = isFocusedOnConfirmInput ? 'confirm-input signup-confirm-valid' : 'confirm-input';
 
     return (
         <div className="signup-modal-wrapper">
             <div className="modal-form-container">
-                {/* watch scss!!! */}
                 <form id="signup" className="signup-form">
-                    {/* onSubmit={(e) => submitHandler(e)} */}
                     <label htmlFor="email" className="email-lable">
                         Email Address
                     </label>
@@ -118,52 +132,54 @@ const SignUpModal: FC = () => {
                     <label htmlFor="password" className="pass-lable">
                         Password
                     </label>
-                    <input
-                        onChange={passInputOnChangeHandler}
-                        onBlur={passInputOnBlurHandler}
-                        className={passInputClassName}
-                        type={inputPasswordType}
-                        autoComplete="new-password"
-                        placeholder="Enter your password"
-                        id="new-password"
-                        name="new-password"
-                        value={valuesSignUp.passwordSignUp}
-                        pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
-                        required
-                    />
-                    <InfoOutlinedIcon className="signup-pass-err-icon" onMouseOver={passErrorIconOnMouseOverHandler} onMouseOut={passErrorIconOnMouseOutHandler} />
-                    {isHoveringPassIcon && (
-                        <div className="pass-error">
-                            <p className="pass-error-msg">8-20 characters, 1 letter and 1 number at least</p>
-                        </div>
-                    )}
-                    <div onClick={eyeOnClickHandler} className="eye-icon-container">
-                        {isPassVisible ? <VisibilityIcon className="icon-visiblity visible-true" /> : <VisibilityOffIcon className="icon-visiblity visible-false" />}
+                    <div className={passInputWrapperClassName}>
+                        <input
+                            onChange={passInputOnChangeHandler}
+                            onFocus={passInputOnFocusHandler}
+                            onBlur={passInputOnBlurHandler}
+                            className={passInputClassName}
+                            type={inputPasswordType}
+                            autoComplete="new-password"
+                            placeholder="Enter your password"
+                            id="new-password"
+                            name="new-password"
+                            value={valuesSignUp.passwordSignUp}
+                            pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
+                            required
+                        />
+                        {isPassVisible ? <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" /> : <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />}
+                        <InfoOutlinedIcon className="signup-pass-err-icon" onMouseOver={passErrorIconOnMouseOverHandler} onMouseOut={passErrorIconOnMouseOutHandler} />
+                        {isHoveringPassIcon && (
+                            <div className="pass-error">
+                                <p className="pass-error-msg">8-20 characters, only letters and numbers</p>
+                            </div>
+                        )}
                     </div>
                     <label htmlFor="password" className="pass-lable">
                         Confirm password
                     </label>
-                    <input
-                        onChange={confirmInputOnChangeHandler}
-                        onFocus={confirmInputOnFocusHandler}
-                        className={confirmInputClassName}
-                        type={inputPasswordType}
-                        autoComplete="new-password"
-                        placeholder="Confirm your password"
-                        id="new-password-repeat"
-                        name="new-password-repeat"
-                        value={valuesSignUp.confirmSignUp}
-                        pattern={valuesSignUp.passwordSignUp}
-                        required
-                    />
-                    <InfoOutlinedIcon className="signup-confirm-err-icon" onMouseOver={confirmErrorIconOnMouseOverHandler} onMouseOut={confirmErrorIconOnMouseOutHandler} />
-                    {isHoveringConfirmIcon && (
-                        <div className="confirm-error">
-                            <p className="confirm-error-msg">Passwords don't match!</p>
-                        </div>
-                    )}
-                    <div onClick={eyeOnClickHandler} className="eye-icon-container-confirm">
-                        {isPassVisible ? <VisibilityIcon className="icon-visiblity visible-true" /> : <VisibilityOffIcon className="icon-visiblity visible-false" />}
+                    <div className={confirmInputWrapperClassName}>
+                        <input
+                            onChange={confirmInputOnChangeHandler}
+                            onFocus={confirmInputOnFocusHandler}
+                            onBlur={confirmInputOnBlurHandler}
+                            className={confirmInputClassName}
+                            type={inputPasswordType}
+                            autoComplete="new-password"
+                            placeholder="Confirm your password"
+                            id="new-password-repeat"
+                            name="new-password-repeat"
+                            value={valuesSignUp.confirmSignUp}
+                            pattern={valuesSignUp.passwordSignUp}
+                            required
+                        />
+                        {isPassVisible ? <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" /> : <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />}
+                        <InfoOutlinedIcon className="signup-confirm-err-icon" onMouseOver={confirmErrorIconOnMouseOverHandler} onMouseOut={confirmErrorIconOnMouseOutHandler} />
+                        {isHoveringConfirmIcon && (
+                            <div className="confirm-error">
+                                <p className="confirm-error-msg">Passwords don't match!</p>
+                            </div>
+                        )}
                     </div>
                     <button type="submit" className="submit-signup-form-button">
                         Sign Up

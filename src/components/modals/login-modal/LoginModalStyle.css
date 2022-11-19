@@ -36,7 +36,7 @@
   top: 68px;
   left: 131.16px;
 }
-.login-modal-wrapper .modal-form-container .login-form .login-email-valid:invalid ~ .login-email-err-icon {
+.login-modal-wrapper .modal-form-container .login-form .login-email-valid:invalid .login-email-err-icon {
   display: block;
 }
 .login-modal-wrapper .modal-form-container .login-form .email-error {
@@ -75,25 +75,37 @@
   align-self: flex-end;
   cursor: pointer;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-input {
-  border-radius: 5px;
+.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  background-color: aliceblue;
   margin-bottom: 10px;
   margin-top: 5px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-input {
+  width: 100%;
+  border-radius: 5px;
   font-family: "Work Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
   padding: 12px 20px;
-  box-sizing: border-box;
-  transition: 0.5s;
   outline: none;
-  border: 1px solid #d9d9d9;
   background-color: aliceblue;
+  border: none;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-input:focus {
-  border: 1px solid #1058f5;
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
+.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .icon-visibility {
+  color: #8e8e8e;
+  margin-right: 20px;
+  cursor: pointer;
 }
-.login-modal-wrapper .modal-form-container .login-form .login-pass-err-icon {
+.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .login-pass-valid:invalid ~ .login-pass-err-icon {
+  display: block;
+}
+.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .login-pass-err-icon {
   font-size: 16px;
   color: #e41f1f;
   display: none;
@@ -101,10 +113,7 @@
   top: 144px;
   left: 95.17px;
 }
-.login-modal-wrapper .modal-form-container .login-form .login-pass-valid:invalid ~ .login-pass-err-icon {
-  display: block;
-}
-.login-modal-wrapper .modal-form-container .login-form .pass-error {
+.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-error {
   position: absolute;
   border: 1px solid #e41f1f;
   padding: 5px;
@@ -114,21 +123,15 @@
   top: 137px;
   left: 111.17px;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-error .pass-error-msg {
+.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-error .pass-error-msg {
   margin: 0px;
   font-family: "Work Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
-.login-modal-wrapper .modal-form-container .login-form .eye-icon-container {
-  cursor: pointer;
-  position: absolute;
-  right: 40px;
-  top: 175px;
-  display: flex;
-}
-.login-modal-wrapper .modal-form-container .login-form .eye-icon-container .icon-visiblity {
-  color: #8e8e8e;
+.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {
+  border: 1px solid #1058f5;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
 }
 .login-modal-wrapper .modal-form-container .login-form .submit-login-form-button {
   background-color: #1058f5;
@@ -177,16 +180,22 @@
 .dark .login-modal-wrapper .modal-form-container .login-form .email-error {
   background-color: #2a2c3b;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-input {
+.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper {
   background-color: #2a2c3b;
   border: 1px solid #757566;
+}
+.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-input {
+  background-color: #2a2c3b;
   color: aliceblue;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-input:focus {
-  border: 1px solid #e26411;
-}
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-error {
+.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-error {
   background-color: #2a2c3b;
+}
+.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-error .pass-error-msg {
+  color: aliceblue;
+}
+.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {
+  border: 1px solid #e26411;
 }
 .dark .login-modal-wrapper .modal-form-container .login-form .submit-login-form-button {
   background-color: #e26411;

@@ -59,25 +59,37 @@
   font-size: 16px;
   font-weight: 500;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .pass-input {
-  border-radius: 5px;
+.signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  background-color: aliceblue;
   margin-bottom: 10px;
   margin-top: 5px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+.signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .pass-input {
+  width: 100%;
+  border-radius: 5px;
   font-family: "Work Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
   padding: 12px 20px;
-  box-sizing: border-box;
-  transition: 0.5s;
   outline: none;
-  border: 1px solid #d9d9d9;
   background-color: aliceblue;
+  border: none;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .pass-input:focus {
-  border: 1px solid #1058f5;
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
+.signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .icon-visibility {
+  color: #8e8e8e;
+  margin-right: 20px;
+  cursor: pointer;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .signup-pass-err-icon {
+.signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .signup-pass-valid:invalid ~ .signup-pass-err-icon {
+  display: block;
+}
+.signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .signup-pass-err-icon {
   font-size: 16px;
   color: #e41f1f;
   display: none;
@@ -85,10 +97,7 @@
   top: 144px;
   left: 95.17px;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .signup-pass-valid:invalid ~ .signup-pass-err-icon {
-  display: block;
-}
-.signup-modal-wrapper .modal-form-container .signup-form .pass-error {
+.signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .pass-error {
   position: absolute;
   border: 1px solid #e41f1f;
   padding: 5px;
@@ -98,13 +107,44 @@
   top: 137px;
   left: 111.17px;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .pass-error .pass-error-msg {
+.signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .pass-error .pass-error-msg {
   margin: 0px;
   font-family: "Work Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .signup-confirm-err-icon {
+.signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper-focused {
+  border: 1px solid #1058f5;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
+}
+.signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  background-color: aliceblue;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+.signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .confirm-input {
+  width: 100%;
+  border-radius: 5px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 20px;
+  outline: none;
+  background-color: aliceblue;
+  border: none;
+}
+.signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .icon-visibility {
+  color: #8e8e8e;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .signup-confirm-err-icon {
   font-size: 16px;
   color: #e41f1f;
   display: none;
@@ -112,10 +152,10 @@
   top: 220.4px;
   left: 163px;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .signup-confirm-valid:invalid ~ .signup-confirm-err-icon {
+.signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .signup-confirm-valid:invalid ~ .signup-confirm-err-icon {
   display: block;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .confirm-error {
+.signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .confirm-error {
   position: absolute;
   border: 1px solid #e41f1f;
   padding: 5px;
@@ -125,31 +165,15 @@
   top: 213px;
   left: 179px;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .confirm-error .confirm-error-msg {
+.signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .confirm-error .confirm-error-msg {
   margin: 0px;
   font-family: "Work Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
-.signup-modal-wrapper .modal-form-container .signup-form .eye-icon-container {
-  cursor: pointer;
-  position: absolute;
-  right: 40px;
-  top: 175px;
-  display: flex;
-}
-.signup-modal-wrapper .modal-form-container .signup-form .eye-icon-container .icon-visiblity {
-  color: #8e8e8e;
-}
-.signup-modal-wrapper .modal-form-container .signup-form .eye-icon-container-confirm {
-  cursor: pointer;
-  position: absolute;
-  right: 40px;
-  top: 251px;
-  display: flex;
-}
-.signup-modal-wrapper .modal-form-container .signup-form .eye-icon-container-confirm .icon-visiblity {
-  color: #8e8e8e;
+.signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper-focused {
+  border: 1px solid #1058f5;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
 }
 .signup-modal-wrapper .modal-form-container .signup-form .submit-signup-form-button {
   background-color: #1058f5;
@@ -198,19 +222,39 @@
 .dark .signup-modal-wrapper .modal-form-container .signup-form .email-error {
   background-color: #2a2c3b;
 }
-.dark .signup-modal-wrapper .modal-form-container .signup-form .pass-input {
+.dark .signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper {
   background-color: #2a2c3b;
   border: 1px solid #757566;
+}
+.dark .signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .pass-input {
+  background-color: #2a2c3b;
   color: aliceblue;
 }
-.dark .signup-modal-wrapper .modal-form-container .signup-form .pass-input:focus {
+.dark .signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .pass-error {
+  background-color: #2a2c3b;
+}
+.dark .signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper .pass-error .pass-error-msg {
+  color: aliceblue;
+}
+.dark .signup-modal-wrapper .modal-form-container .signup-form .pass-input-wrapper-focused {
   border: 1px solid #e26411;
 }
-.dark .signup-modal-wrapper .modal-form-container .signup-form .pass-error {
+.dark .signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper {
+  background-color: #2a2c3b;
+  border: 1px solid #757566;
+}
+.dark .signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .confirm-input {
+  background-color: #2a2c3b;
+  color: aliceblue;
+}
+.dark .signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .confirm-error {
   background-color: #2a2c3b;
 }
-.dark .signup-modal-wrapper .modal-form-container .signup-form .confirm-error {
-  background-color: #2a2c3b;
+.dark .signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper .confirm-error .confirm-error-msg {
+  color: aliceblue;
+}
+.dark .signup-modal-wrapper .modal-form-container .signup-form .confirm-input-wrapper-focused {
+  border: 1px solid #e26411;
 }
 .dark .signup-modal-wrapper .modal-form-container .signup-form .submit-signup-form-button {
   background-color: #e26411;

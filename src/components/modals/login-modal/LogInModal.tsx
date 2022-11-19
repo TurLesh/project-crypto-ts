@@ -11,6 +11,8 @@ const LogInModal: FC = () => {
         passwordLogIn: ''
     });
 
+    const [isFocusedOnPassInput, setIsFocusedOnPassInput] = useState(false);
+
     const [wasFocusedOnEmailInput, setWasFocusedOnEmailInput] = useState(false);
     const [wasFocusedOnPassInput, setWasFocusedOnPassInput] = useState(false);
 
@@ -19,6 +21,11 @@ const LogInModal: FC = () => {
 
     const [inputPasswordType, setInputPasswordType] = useState('password');
     const [isPassVisible, setPassVisible] = useState(false);
+
+    //input focus event handler
+    const passInputOnFocusHandler = () => {
+        setIsFocusedOnPassInput(true);
+    };
 
     //input values change event handlers
     const emailInputOnChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +43,7 @@ const LogInModal: FC = () => {
 
     const passInputOnBlurHandler = () => {
         setWasFocusedOnPassInput(true);
+        setIsFocusedOnPassInput(false);
     };
 
     // error icons event handlers
@@ -67,6 +75,7 @@ const LogInModal: FC = () => {
     // classNames with conditional(ternary) operator
     const emailInputClassName: string = wasFocusedOnEmailInput ? 'email-input login-email-valid' : 'email-input';
     const passInputClassName: string = wasFocusedOnPassInput ? 'pass-input login-pass-valid' : 'pass-input';
+    const passInputWrapperClassName: string = isFocusedOnPassInput ? 'pass-input-wrapper pass-input-wrapper-focused' : 'pass-input-wrapper';
 
     return (
         <div className="login-modal-wrapper">
@@ -100,27 +109,28 @@ const LogInModal: FC = () => {
                         </label>
                         <button className="pass-forgot">Forgot password?</button>
                     </div>
-                    <input
-                        onChange={passInputOnChangeHandler}
-                        onBlur={passInputOnBlurHandler}
-                        className={passInputClassName}
-                        type={inputPasswordType}
-                        autoComplete="current-password"
-                        placeholder="Enter your password"
-                        id="password"
-                        name="password"
-                        value={valuesLogIn.passwordLogIn}
-                        pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
-                        required
-                    />
-                    <InfoOutlinedIcon onMouseOver={passErrorIconOnMouseOverHandler} onMouseOut={passErrorIconOnMouseOutHandler} className="login-pass-err-icon" />
-                    {isHoveringPassIcon && (
-                        <div className="pass-error">
-                            <p className="pass-error-msg">8-20 characters, 1 letter and 1 number at least</p>
-                        </div>
-                    )}
-                    <div onClick={eyeOnClickHandler} className="eye-icon-container">
-                        {isPassVisible ? <VisibilityIcon className="icon-visiblity visible-true" /> : <VisibilityOffIcon className="icon-visiblity visible-false" />}
+                    <div className={passInputWrapperClassName}>
+                        <input
+                            onFocus={passInputOnFocusHandler}
+                            onChange={passInputOnChangeHandler}
+                            onBlur={passInputOnBlurHandler}
+                            className={passInputClassName}
+                            type={inputPasswordType}
+                            autoComplete="current-password"
+                            placeholder="Enter your password"
+                            id="password"
+                            name="password"
+                            value={valuesLogIn.passwordLogIn}
+                            pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
+                            required
+                        />
+                        {isPassVisible ? <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" /> : <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />}
+                        <InfoOutlinedIcon onMouseOver={passErrorIconOnMouseOverHandler} onMouseOut={passErrorIconOnMouseOutHandler} className="login-pass-err-icon" />
+                        {isHoveringPassIcon && (
+                            <div className="pass-error">
+                                <p className="pass-error-msg">8-20 characters, only letters and numbers</p>
+                            </div>
+                        )}
                     </div>
                     <button type="submit" className="submit-login-form-button">
                         Log In
