@@ -78,4 +78,35 @@
 .dark .currency-card-body .currency-info-container {
   color: aliceblue;
   border-bottom: 1px solid #e26411;
+}
+
+@media screen and (min-width: 2550px) {
+  .currency-card-body {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .currency-card-body {
+    margin-left: 76px;
+    margin-right: 76px;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .currency-card-body {
+    margin-left: 58px;
+    margin-right: 58px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .currency-card-body {
+    margin-left: 38px;
+    margin-right: 37px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .currency-card-body {
+    margin-left: 107px;
+    margin-right: 106px;
+  }
 }/*# sourceMappingURL=CryptocurrencySliderCardStyle.css.map */

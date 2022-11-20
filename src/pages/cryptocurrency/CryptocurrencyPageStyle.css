@@ -35,4 +35,20 @@
 }
 .dark .cryptocurrency-page-wrapper .content-wrapper {
   background-color: #2a2c3b;
+}
+
+@media screen and (max-width: 1536px) {
+  .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container {
+    width: 94%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container {
+    width: 86%;
+  }
 }/*# sourceMappingURL=CryptocurrencyPageStyle.css.map */
