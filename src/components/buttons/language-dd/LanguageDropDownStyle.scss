@@ -36,6 +36,11 @@
         }
     }
 
+    .language-button-body:hover {
+        transform: scale(1.1);
+        transition-duration: 0.2s;
+    }
+
     .language-dd-panel-wrapper {
         position: absolute;
 
@@ -75,6 +80,14 @@
                         font-size: 12px;
                         font-weight: 500;
                         margin: 0px;
+                    }
+                }
+
+                .language-dd-panel-btn:hover {
+                    .language-dd-panel-btn-text {
+                        color: $accentColor;
+                        transform: scale(1.1);
+                        transition-duration: 0.2s;
                     }
                 }
             }
@@ -118,6 +131,12 @@
 
                     .language-dd-panel-btn-text {
                         color: $mainColor;
+                    }
+                }
+
+                .language-dd-panel-btn:hover {
+                    .language-dd-panel-btn-text {
+                        color: $accentColorDark;
                     }
                 }
             }

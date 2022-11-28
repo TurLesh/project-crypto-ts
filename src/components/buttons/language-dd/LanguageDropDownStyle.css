@@ -34,6 +34,10 @@
   width: 16px;
   height: 16px;
 }
+.language-dd-wrapper .language-button-body:hover {
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
 .language-dd-wrapper .language-dd-panel-wrapper {
   position: absolute;
 }
@@ -73,6 +77,11 @@
   font-weight: 500;
   margin: 0px;
 }
+.language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn:hover .language-dd-panel-btn-text {
+  color: #1058f5;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
 
 .dark .language-dd-wrapper .language-button-body {
   background-color: #2a2c3b;
@@ -97,4 +106,7 @@
 }
 .dark .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn .language-dd-panel-btn-text {
   color: aliceblue;
+}
+.dark .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn:hover .language-dd-panel-btn-text {
+  color: #e26411;
 }/*# sourceMappingURL=LanguageDropDownStyle.css.map */

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import CryptocurrencySliderCard from '../../components/cards/cryptocurrency-slider-card/CryptocurrencySliderCard';
 import SliderData from '../../data/cryptocurrency-slider-data.json';
 import Slider from 'react-slick';
@@ -41,6 +42,8 @@ type PriceChangePercentage30dType = {
 };
 
 const CryptocurrencyPage: FC = () => {
+    const { t } = useTranslation();
+
     const data: SliderDataType[] = SliderData.slider_cryptocurrency_data;
 
     //options for slider component
@@ -82,7 +85,9 @@ const CryptocurrencyPage: FC = () => {
                     <Slider {...settings}>{sliderMapFunc}</Slider>
                 </div>
             </div>
-            <div className="content-wrapper" />
+            <div className="content-wrapper">
+                <h2>{t('text1')}</h2>
+            </div>
         </div>
     );
 };

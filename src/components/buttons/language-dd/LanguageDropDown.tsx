@@ -1,23 +1,49 @@
 import { FC, useRef, useEffect, useState } from 'react';
-import AvailableOptions from '../../../data/available-options.json';
+import { useTranslation } from 'react-i18next';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './LanguageDropDownStyle.css';
 
-type LanguageDropDownOptionsType = {
-    id: string;
-    symbol: string;
+type LanguageListType = {
+    code: string;
     name: string;
-    isAvailable: boolean;
-    isActive: boolean;
 };
 
 const LanguageDropDown: FC = () => {
     const [isLanguageExpanded, setIsLanguageExpanded] = useState(false);
     const languageDropDownRef = useRef<HTMLDivElement>(null);
 
+    const { i18n } = useTranslation();
+
+    const languageList: LanguageListType[] = [
+        {
+            code: 'en',
+            name: 'ENG'
+        },
+        {
+            code: 'ua',
+            name: 'UKR'
+        },
+        {
+            code: 'pl',
+            name: 'POL'
+        },
+        {
+            code: 'ru',
+            name: 'RUS'
+        }
+    ];
+
+    const findNameByCode = (code: string) => {
+        return Object.values(languageList).find((obj) => obj.code === code)?.name;
+    };
+
     const languageDropDownOnClickHandler = () => {
         setIsLanguageExpanded((current) => !current);
+    };
+
+    const changeLanguageHandler = (lang: string) => {
+        i18n.changeLanguage(lang);
     };
 
     useEffect(() => {
@@ -34,14 +60,19 @@ const LanguageDropDown: FC = () => {
         }
     }, [isLanguageExpanded]);
 
-    const languageData: LanguageDropDownOptionsType[] = AvailableOptions.AvailableLanguages;
+    // used to close dropdown after each new language selection action
+    useEffect(() => {
+        setIsLanguageExpanded(false);
+    }, [i18n.language]);
 
-    const languagePannelMapFunc = languageData.map(({ isAvailable, isActive, id, symbol }) => {
+    const langTestMap = languageList.map(({ code, name }) => {
         return (
-            <div key={id}>
-                {isActive === false && (
+            <div key={code}>
+                {i18n.language !== code && (
                     <div className="language-dd-panel-tile">
-                        <button className="language-dd-panel-btn">{isAvailable && <p className="language-dd-panel-btn-text">{symbol}</p>}</button>
+                        <button onClick={() => changeLanguageHandler(code)} className="language-dd-panel-btn">
+                            <p className="language-dd-panel-btn-text">{name}</p>
+                        </button>
                     </div>
                 )}
             </div>
@@ -52,14 +83,14 @@ const LanguageDropDown: FC = () => {
         <div ref={languageDropDownRef} className="language-dd-wrapper">
             <button onClick={languageDropDownOnClickHandler} className="language-button-body">
                 <div className="language-text-container">
-                    <p className="language-text">ENG</p>
+                    <p className="language-text">{findNameByCode(i18n.language)}</p>
                 </div>
                 <div className="language-arrow-cointainer">{isLanguageExpanded ? <ArrowDropUpIcon className="language-arrow-expand" /> : <ArrowDropDownIcon className="language-arrow-expand" />}</div>
             </button>
             {isLanguageExpanded && (
                 <div className="language-dd-panel-wrapper">
                     <div className="language-dd-panel-triangle" />
-                    <div className="language-dd-panel-container">{languagePannelMapFunc}</div>
+                    <div className="language-dd-panel-container">{langTestMap}</div>
                 </div>
             )}
         </div>

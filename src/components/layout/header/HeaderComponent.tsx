@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../hooks/useTheme';
 import LanguageDropDown from '../../buttons/language-dd/LanguageDropDown';
 import CurrencyDropDown from '../../buttons/currency-dd/CurrencyDropDown';
@@ -16,6 +17,8 @@ import './HeaderComponentStyle.css';
 const Header: FC = () => {
     const [isOpenedModalLogIn, setOpenedModalLogIn] = useState(false);
     const [isOpenedModalSignUp, setOpenedModalSignUp] = useState(false);
+
+    const { t } = useTranslation();
 
     const { currentTheme, changeCurrentTheme } = useTheme();
 
@@ -96,27 +99,27 @@ const Header: FC = () => {
                 <div className="header-nav-list">
                     <div className="cryptocurrency-nav">
                         <NavLink to={'/cryptocurrency'} className={({ isActive }) => (isActive ? 'active-item' : 'not-active-item')}>
-                            Cryptocurrency
+                            {t('cryptocurrency')}
                         </NavLink>
                     </div>
                     <div className="exchanges-nav">
                         <NavLink to={'/exchanges'} className={({ isActive }) => (isActive ? 'active-item' : 'not-active-item')}>
-                            Exchanges
+                            {t('exchanges')}
                         </NavLink>
                     </div>
                     <div className="analytics-nav">
                         <NavLink to={'/analytics'} className={({ isActive }) => (isActive ? 'active-item' : 'not-active-item')}>
-                            Analytics
+                            {t('analytics')}
                         </NavLink>
                     </div>
                     <div className="news-nav">
                         <NavLink to={'/news'} className={({ isActive }) => (isActive ? 'active-item' : 'not-active-item')}>
-                            News
+                            {t('news')}
                         </NavLink>
                     </div>
                     <div className="learn-nav">
                         <NavLink to={'/learn'} className={({ isActive }) => (isActive ? 'active-item' : 'not-active-item')}>
-                            Learn
+                            {t('learn')}
                         </NavLink>
                     </div>
                 </div>

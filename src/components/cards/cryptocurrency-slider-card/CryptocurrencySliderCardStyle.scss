@@ -104,6 +104,13 @@
     }
 }
 
+@media screen and (max-width: 1884px) {
+    .currency-card-body {
+        margin-left: 3px;
+        margin-right: 4px;
+    }
+}
+
 @media screen and (max-width: 1440px) {
     .currency-card-body {
         margin-left: 76px;
