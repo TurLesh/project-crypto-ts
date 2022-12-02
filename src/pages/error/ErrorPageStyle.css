@@ -1,0 +1,9 @@
+.error-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}
+.error-wrapper .error-text {
+  font-size: 28px;
+}/*# sourceMappingURL=ErrorPageStyle.css.map */

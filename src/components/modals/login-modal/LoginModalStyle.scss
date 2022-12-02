@@ -13,6 +13,30 @@
                 font-size: 16px;
                 font-weight: 500;
                 display: flex;
+                // align-items: center;
+
+                .email-err-icon {
+                    margin-left: 3px;
+                    margin-right: 5px;
+                    font-size: 16px;
+                    color: $redColor;
+                }
+
+                .email-error {
+                    border: 1px solid $redColor;
+                    padding: 1px 5px;
+                    display: flex;
+                    border-radius: 5px;
+                    background-color: $bg-light;
+                    position: absolute;
+
+                    .email-error-msg {
+                        margin: 0px;
+                        font-family: $contentFont;
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                }
             }
 
             .email-input {
@@ -21,26 +45,6 @@
 
             .email-input:focus {
                 @include AuthInputFocus();
-            }
-
-            .login-email-err-icon {
-                @include ErrIconAuthAsset();
-                top: 68px;
-                left: 131.16px;
-            }
-
-            .login-email-valid:invalid .login-email-err-icon {
-                display: block;
-            }
-
-            .email-error {
-                @include ErrMsgAsset();
-                top: 61px;
-                left: 147.16px;
-
-                .email-error-msg {
-                    @include ErrMsgFont();
-                }
             }
 
             .pass-top-info {
@@ -52,6 +56,29 @@
                     font-size: 16px;
                     font-weight: 500;
                     display: flex;
+
+                    .pass-err-icon {
+                        margin-left: 3px;
+                        margin-right: 5px;
+                        font-size: 16px;
+                        color: $redColor;
+                    }
+
+                    .pass-error {
+                        border: 1px solid $redColor;
+                        padding: 1px 5px;
+                        display: flex;
+                        border-radius: 5px;
+                        background-color: $bg-light;
+                        position: absolute;
+
+                        .pass-error-msg {
+                            margin: 0px;
+                            font-family: $contentFont;
+                            font-size: 12px;
+                            font-weight: 500;
+                        }
+                    }
                 }
 
                 .pass-forgot {
@@ -77,26 +104,6 @@
                     color: $gray2Color;
                     margin-right: 20px;
                     cursor: pointer;
-                }
-
-                .login-pass-valid:invalid ~ .login-pass-err-icon {
-                    display: block;
-                }
-
-                .login-pass-err-icon {
-                    @include ErrIconAuthAsset();
-                    top: 144px;
-                    left: 95.17px;
-                }
-
-                .pass-error {
-                    @include ErrMsgAsset();
-                    top: 137px;
-                    left: 111.17px;
-
-                    .pass-error-msg {
-                        @include ErrMsgFont();
-                    }
                 }
             }
 
@@ -150,6 +157,12 @@
     .login-modal-wrapper {
         .modal-form-container {
             .login-form {
+                .email-lable {
+                    .email-error {
+                        background-color: $mainColorDark;
+                    }
+                }
+
                 .email-input {
                     background-color: $mainColorDark;
                     border: 1px solid $gray3Color;
@@ -160,8 +173,16 @@
                     border: 1px solid $accentColorDark;
                 }
 
-                .email-error {
-                    background-color: $mainColorDark;
+                .pass-top-info {
+                    .pass-lable {
+                        .pass-error {
+                            background-color: $mainColorDark;
+
+                            .pass-error-msg {
+                                color: $mainColor;
+                            }
+                        }
+                    }
                 }
 
                 .pass-input-wrapper {
@@ -171,14 +192,6 @@
                     .pass-input {
                         background-color: $mainColorDark;
                         color: $mainColor;
-                    }
-
-                    .pass-error {
-                        background-color: $mainColorDark;
-
-                        .pass-error-msg {
-                            color: $mainColor;
-                        }
                     }
                 }
 

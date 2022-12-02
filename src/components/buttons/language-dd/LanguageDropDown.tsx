@@ -1,5 +1,6 @@
 import { FC, useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './LanguageDropDownStyle.css';
@@ -12,6 +13,8 @@ type LanguageListType = {
 const LanguageDropDown: FC = () => {
     const [isLanguageExpanded, setIsLanguageExpanded] = useState(false);
     const languageDropDownRef = useRef<HTMLDivElement>(null);
+
+    const navigate = useNavigate();
 
     const { i18n } = useTranslation();
 
@@ -60,9 +63,13 @@ const LanguageDropDown: FC = () => {
         }
     }, [isLanguageExpanded]);
 
-    // used to close dropdown after each new language selection action
+    // close dd after language change + navigation with language prefix
     useEffect(() => {
+        const currentPath = window.location.pathname;
+        const lastSegment = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+        navigate(`/${lastSegment}`);
         setIsLanguageExpanded(false);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [i18n.language]);
 
     const langTestMap = languageList.map(({ code, name }) => {

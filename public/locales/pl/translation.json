@@ -1,0 +1,25 @@
+{
+    "login": "Zalogować",
+    "signup": "Zapisać",
+    "cryptocurrency": "Kryptowaluta",
+    "exchanges": "Wymiana",
+    "analytics": "Analityka",
+    "news": "Aktualności",
+    "learn": "Nauczanie",
+    "coin_searchfield": "Znajdź moją monetę...",
+
+    "modal_login_signup": {
+        "email": "Adres e-mail",
+        "email_input_placeholder": "Wprowadź swój email",
+        "pass": "Hasło",
+        "pass_input_placeholder": "Wprowadź hasło",
+        "pass_confirm": "Potwierdzenie hasła",
+        "pass_confirm_placeholder": "Potwierdź swoje hasło",
+        "pass_forgot": "Zapomniałeś hasła?",
+        "or": "LUB",
+        "continue_with": "Kontynuuj z Google"
+    },
+
+    "text1": "O kurwa",
+    "text2": "Ja pierdole"
+}

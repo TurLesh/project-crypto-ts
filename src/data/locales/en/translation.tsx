@@ -7,7 +7,7 @@ const enTranslation = {
     exchanges: 'Exchanges',
     analytics: 'Analytics',
     news: 'News',
-    learn: 'learn',
+    learn: 'Learn',
     coin_searchfield: 'Search for my coin...',
 
     text1: 'English enabled',

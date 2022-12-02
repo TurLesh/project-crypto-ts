@@ -1,0 +1,25 @@
+{
+    "login": "Log In",
+    "signup": "Sign Up",
+    "cryptocurrency": "Cryptocurrency",
+    "exchanges": "Exchanges",
+    "analytics": "Analytics",
+    "news": "News",
+    "learn": "Learn",
+    "coin_searchfield": "Search for my coin...",
+
+    "modal_login_signup": {
+        "email": "Email Address",
+        "email_input_placeholder": "Enter your email",
+        "pass": "Password",
+        "pass_input_placeholder": "Enter your password",
+        "pass_confirm": "Confirm password",
+        "pass_confirm_placeholder": "Confirm your password",
+        "pass_forgot": "Forgot password?",
+        "or": "OR",
+        "continue_with": "Continue with Google"
+    },
+
+    "text1": "English enabled",
+    "text2": "Aboba"
+}

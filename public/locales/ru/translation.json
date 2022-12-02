@@ -1,0 +1,25 @@
+{
+    "login": "Войти",
+    "signup": "Регистрация",
+    "cryptocurrency": "Криптовалюта",
+    "exchanges": "Обмен",
+    "analytics": "Аналитика",
+    "news": "Новости",
+    "learn": "Учеба",
+    "coin_searchfield": "Найти мою монету...",
+
+    "modal_login_signup": {
+        "email": "Электронная почта",
+        "email_input_placeholder": "Введите электронную почту",
+        "pass": "Пароль",
+        "pass_input_placeholder": "Введите ваш пароль",
+        "pass_confirm": "Подтверждение пароля",
+        "pass_confirm_placeholder": "Подтвердите свой пароль",
+        "pass_forgot": "Забыли пароль?",
+        "or": "ИЛИ",
+        "continue_with": "Продолжить с Google"
+    },
+
+    "text1": "фзидхзйдизу",
+    "text2": "йиуйлуийл"
+}

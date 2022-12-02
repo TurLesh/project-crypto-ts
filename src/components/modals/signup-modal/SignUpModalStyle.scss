@@ -12,6 +12,30 @@
                 font-family: $contentFont;
                 font-size: 16px;
                 font-weight: 500;
+                display: flex;
+
+                .email-err-icon {
+                    margin-left: 3px;
+                    margin-right: 5px;
+                    font-size: 16px;
+                    color: $redColor;
+                }
+
+                .email-error {
+                    border: 1px solid $redColor;
+                    padding: 1px 5px;
+                    display: flex;
+                    border-radius: 5px;
+                    background-color: $bg-light;
+                    position: absolute;
+
+                    .email-error-msg {
+                        margin: 0px;
+                        font-family: $contentFont;
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                }
             }
 
             .email-input {
@@ -22,30 +46,34 @@
                 @include AuthInputFocus();
             }
 
-            .signup-email-err-icon {
-                @include ErrIconAuthAsset();
-                top: 68px;
-                left: 131.16px;
-            }
-
-            .signup-email-valid:invalid ~ .signup-email-err-icon {
-                display: block;
-            }
-
-            .email-error {
-                @include ErrMsgAsset();
-                top: 61px;
-                left: 147.16px;
-
-                .email-error-msg {
-                    @include ErrMsgFont();
-                }
-            }
-
             .pass-lable {
                 font-family: $contentFont;
                 font-size: 16px;
                 font-weight: 500;
+                display: flex;
+
+                .pass-err-icon {
+                    margin-left: 3px;
+                    margin-right: 5px;
+                    font-size: 16px;
+                    color: $redColor;
+                }
+
+                .pass-error {
+                    border: 1px solid $redColor;
+                    padding: 1px 5px;
+                    display: flex;
+                    border-radius: 5px;
+                    background-color: $bg-light;
+                    position: absolute;
+
+                    .pass-error-msg {
+                        margin: 0px;
+                        font-family: $contentFont;
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                }
             }
 
             .pass-input-wrapper {
@@ -60,30 +88,40 @@
                     margin-right: 20px;
                     cursor: pointer;
                 }
-
-                .signup-pass-valid:invalid ~ .signup-pass-err-icon {
-                    display: block;
-                }
-
-                .signup-pass-err-icon {
-                    @include ErrIconAuthAsset();
-                    top: 144px;
-                    left: 95.17px;
-                }
-
-                .pass-error {
-                    @include ErrMsgAsset();
-                    top: 137px;
-                    left: 111.17px;
-
-                    .pass-error-msg {
-                        @include ErrMsgFont();
-                    }
-                }
             }
 
             .pass-input-wrapper-focused {
                 @include AuthInputFocus();
+            }
+
+            .confirm-lable {
+                font-family: $contentFont;
+                font-size: 16px;
+                font-weight: 500;
+                display: flex;
+
+                .confirm-err-icon {
+                    margin-left: 3px;
+                    margin-right: 5px;
+                    font-size: 16px;
+                    color: $redColor;
+                }
+
+                .confirm-error {
+                    border: 1px solid $redColor;
+                    padding: 1px 5px;
+                    display: flex;
+                    border-radius: 5px;
+                    background-color: $bg-light;
+                    position: absolute;
+
+                    .confirm-error-msg {
+                        margin: 0px;
+                        font-family: $contentFont;
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                }
             }
 
             .confirm-input-wrapper {
@@ -97,26 +135,6 @@
                     color: $gray2Color;
                     margin-right: 20px;
                     cursor: pointer;
-                }
-
-                .signup-confirm-err-icon {
-                    @include ErrIconAuthAsset();
-                    top: 220.4px;
-                    left: 163px;
-                }
-
-                .signup-confirm-valid:invalid ~ .signup-confirm-err-icon {
-                    display: block;
-                }
-
-                .confirm-error {
-                    @include ErrMsgAsset();
-                    top: 213px;
-                    left: 179px;
-
-                    .confirm-error-msg {
-                        @include ErrMsgFont();
-                    }
                 }
             }
 

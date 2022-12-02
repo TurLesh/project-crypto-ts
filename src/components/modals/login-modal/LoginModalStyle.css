@@ -10,6 +10,26 @@
   font-weight: 500;
   display: flex;
 }
+.login-modal-wrapper .modal-form-container .login-form .email-lable .email-err-icon {
+  margin-left: 3px;
+  margin-right: 5px;
+  font-size: 16px;
+  color: #e41f1f;
+}
+.login-modal-wrapper .modal-form-container .login-form .email-lable .email-error {
+  border: 1px solid #e41f1f;
+  padding: 1px 5px;
+  display: flex;
+  border-radius: 5px;
+  background-color: rgb(227, 237, 245);
+  position: absolute;
+}
+.login-modal-wrapper .modal-form-container .login-form .email-lable .email-error .email-error-msg {
+  margin: 0px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
 .login-modal-wrapper .modal-form-container .login-form .email-input {
   border-radius: 5px;
   margin-bottom: 10px;
@@ -28,33 +48,6 @@
   border: 1px solid #1058f5;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
 }
-.login-modal-wrapper .modal-form-container .login-form .login-email-err-icon {
-  font-size: 16px;
-  color: #e41f1f;
-  display: none;
-  position: absolute;
-  top: 68px;
-  left: 131.16px;
-}
-.login-modal-wrapper .modal-form-container .login-form .login-email-valid:invalid .login-email-err-icon {
-  display: block;
-}
-.login-modal-wrapper .modal-form-container .login-form .email-error {
-  position: absolute;
-  border: 1px solid #e41f1f;
-  padding: 5px;
-  display: flex;
-  border-radius: 5px;
-  background-color: rgb(212, 236, 255);
-  top: 61px;
-  left: 147.16px;
-}
-.login-modal-wrapper .modal-form-container .login-form .email-error .email-error-msg {
-  margin: 0px;
-  font-family: "Work Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-}
 .login-modal-wrapper .modal-form-container .login-form .pass-top-info {
   display: flex;
   justify-content: space-between;
@@ -64,6 +57,26 @@
   font-size: 16px;
   font-weight: 500;
   display: flex;
+}
+.login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-err-icon {
+  margin-left: 3px;
+  margin-right: 5px;
+  font-size: 16px;
+  color: #e41f1f;
+}
+.login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error {
+  border: 1px solid #e41f1f;
+  padding: 1px 5px;
+  display: flex;
+  border-radius: 5px;
+  background-color: rgb(227, 237, 245);
+  position: absolute;
+}
+.login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error .pass-error-msg {
+  margin: 0px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
 }
 .login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-forgot {
   background-color: transparent;
@@ -101,33 +114,6 @@
   color: #8e8e8e;
   margin-right: 20px;
   cursor: pointer;
-}
-.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .login-pass-valid:invalid ~ .login-pass-err-icon {
-  display: block;
-}
-.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .login-pass-err-icon {
-  font-size: 16px;
-  color: #e41f1f;
-  display: none;
-  position: absolute;
-  top: 144px;
-  left: 95.17px;
-}
-.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-error {
-  position: absolute;
-  border: 1px solid #e41f1f;
-  padding: 5px;
-  display: flex;
-  border-radius: 5px;
-  background-color: rgb(212, 236, 255);
-  top: 137px;
-  left: 111.17px;
-}
-.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-error .pass-error-msg {
-  margin: 0px;
-  font-family: "Work Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
 }
 .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {
   border: 1px solid #1058f5;
@@ -169,6 +155,9 @@
   padding-right: 5px;
 }
 
+.dark .login-modal-wrapper .modal-form-container .login-form .email-lable .email-error {
+  background-color: #2a2c3b;
+}
 .dark .login-modal-wrapper .modal-form-container .login-form .email-input {
   background-color: #2a2c3b;
   border: 1px solid #757566;
@@ -177,8 +166,11 @@
 .dark .login-modal-wrapper .modal-form-container .login-form .email-input:focus {
   border: 1px solid #e26411;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .email-error {
+.dark .login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error {
   background-color: #2a2c3b;
+}
+.dark .login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error .pass-error-msg {
+  color: aliceblue;
 }
 .dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper {
   background-color: #2a2c3b;
@@ -186,12 +178,6 @@
 }
 .dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-input {
   background-color: #2a2c3b;
-  color: aliceblue;
-}
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-error {
-  background-color: #2a2c3b;
-}
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-error .pass-error-msg {
   color: aliceblue;
 }
 .dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {

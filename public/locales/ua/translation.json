@@ -1,0 +1,25 @@
+{
+    "login": "Увійти",
+    "signup": "Реєстрація",
+    "cryptocurrency": "Криптовалюта",
+    "exchanges": "Обмін",
+    "analytics": "Аналітика",
+    "news": "Новини",
+    "learn": "Навчання",
+    "coin_searchfield": "Знайти мою монету...",
+
+    "modal_login_signup": {
+        "email": "Електронна адреса",
+        "email_input_placeholder": "Введіть електронну адресу",
+        "pass": "Пароль",
+        "pass_input_placeholder": "Введіть пароль",
+        "pass_confirm": "Підтвердження паролю",
+        "pass_confirm_placeholder": "Підтвердіть ваш пароль",
+        "pass_forgot": "Забули пароль?",
+        "or": "АБО",
+        "continue_with": "Продовжити з Google"
+    },
+
+    "text1": "Батько наш Бандера",
+    "text2": "Абоба"
+}

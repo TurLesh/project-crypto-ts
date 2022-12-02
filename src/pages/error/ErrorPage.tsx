@@ -1,10 +1,10 @@
 import React from 'react';
-import ErrGif from '../../assets/images/404.gif';
+import './ErrorPageStyle.css';
 
 const Error: React.FunctionComponent = () => {
     return (
-        <div>
-            <img src={ErrGif} alt="errgif" />
+        <div className="error-wrapper">
+            <p className="error-text">PAGE NOT FOUND</p>
         </div>
     );
 };
