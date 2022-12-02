@@ -169,9 +169,6 @@
 .dark .login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error {
   background-color: #2a2c3b;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error .pass-error-msg {
-  color: aliceblue;
-}
 .dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper {
   background-color: #2a2c3b;
   border: 1px solid #757566;

@@ -20,6 +20,7 @@ const SignUpModal: FC = () => {
 
     const [wasFocusedOnEmailInput, setWasFocusedOnEmailInput] = useState(false);
     const [wasFocusedOnPassInput, setWasFocusedOnPassInput] = useState(false);
+    const [wasFocusedOnConfirmInput, setWasFocusedOnConfirmInput] = useState(false);
 
     const [isHoveringEmailIcon, setIsHoveringEmailIcon] = useState(false);
     const [isHoveringPassIcon, setIsHoveringPassIcon] = useState(false);
@@ -70,6 +71,17 @@ const SignUpModal: FC = () => {
         if (wasFocusedOnPassInput) {
             passInputValidity();
         }
+        const passInput = document.getElementById('new-password') as HTMLInputElement | null;
+        const passInputValue = passInput?.value;
+        const confirmInput = document.getElementById('new-password-confirm') as HTMLInputElement | null;
+        const confirmInputValue = confirmInput?.value;
+        if (wasFocusedOnConfirmInput) {
+            if (passInputValue !== confirmInputValue) {
+                setIsConfirmInputValid(false);
+            } else {
+                setIsConfirmInputValid(true);
+            }
+        }
     };
 
     const confirmInputOnChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -101,6 +113,7 @@ const SignUpModal: FC = () => {
 
     const confirmInputOnBlurHandler = () => {
         setIsFocusedOnConfirmInput(false);
+        setWasFocusedOnConfirmInput(true);
     };
 
     // error icons event handlers

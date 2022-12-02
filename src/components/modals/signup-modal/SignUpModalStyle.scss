@@ -188,6 +188,12 @@
     .signup-modal-wrapper {
         .modal-form-container {
             .signup-form {
+                .email-lable {
+                    .email-error {
+                        background-color: $mainColorDark;
+                    }
+                }
+
                 .email-input {
                     background-color: $mainColorDark;
                     border: 1px solid $gray3Color;
@@ -198,8 +204,10 @@
                     border: 1px solid $accentColorDark;
                 }
 
-                .email-error {
-                    background-color: $mainColorDark;
+                .pass-lable {
+                    .pass-error {
+                        background-color: $mainColorDark;
+                    }
                 }
 
                 .pass-input-wrapper {
@@ -210,18 +218,16 @@
                         background-color: $mainColorDark;
                         color: $mainColor;
                     }
-
-                    .pass-error {
-                        background-color: $mainColorDark;
-
-                        .pass-error-msg {
-                            color: $mainColor;
-                        }
-                    }
                 }
 
                 .pass-input-wrapper-focused {
                     border: 1px solid $accentColorDark;
+                }
+
+                .confirm-lable {
+                    .confirm-error {
+                        background-color: $mainColorDark;
+                    }
                 }
 
                 .confirm-input-wrapper {
@@ -231,14 +237,6 @@
                     .confirm-input {
                         background-color: $mainColorDark;
                         color: $mainColor;
-                    }
-
-                    .confirm-error {
-                        background-color: $mainColorDark;
-
-                        .confirm-error-msg {
-                            color: $mainColor;
-                        }
                     }
                 }
 
