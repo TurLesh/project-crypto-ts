@@ -47,6 +47,11 @@ const LanguageDropDown: FC = () => {
 
     const changeLanguageHandler = (lang: string) => {
         i18n.changeLanguage(lang);
+
+        const currentLocation = window.location.pathname;
+        const slicedLocation = currentLocation.slice(4);
+        navigate(`/${lang}/${slicedLocation}`);
+        //continue here
     };
 
     useEffect(() => {
@@ -63,16 +68,12 @@ const LanguageDropDown: FC = () => {
         }
     }, [isLanguageExpanded]);
 
-    // close dd after language change + navigation with language prefix
+    // close dd after language change
     useEffect(() => {
-        const currentPath = window.location.pathname;
-        const lastSegment = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-        navigate(`/${lastSegment}`);
         setIsLanguageExpanded(false);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [i18n.language]);
 
-    const langTestMap = languageList.map(({ code, name }) => {
+    const langItemMap = languageList.map(({ code, name }) => {
         return (
             <div key={code}>
                 {i18n.language !== code && (
@@ -97,7 +98,7 @@ const LanguageDropDown: FC = () => {
             {isLanguageExpanded && (
                 <div className="language-dd-panel-wrapper">
                     <div className="language-dd-panel-triangle" />
-                    <div className="language-dd-panel-container">{langTestMap}</div>
+                    <div className="language-dd-panel-container">{langItemMap}</div>
                 </div>
             )}
         </div>
