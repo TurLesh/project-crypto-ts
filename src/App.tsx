@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Layout from './components/layout/Layout';
@@ -13,22 +13,23 @@ import ThemeProvider from './providers/ThemeProvider';
 const App: FC = () => {
     const { i18n } = useTranslation();
 
+    useEffect(() => {
+        const splitedPath = window.location.pathname.split('/');
+        const languageFromUrl = splitedPath[1];
+        if (!i18n.languages.includes(languageFromUrl)) {
+            window.location.replace(`/${i18n.language}`);
+        }
+    });
+
     return (
         <ThemeProvider>
             <BrowserRouter>
                 <Layout>
                     <Routes>
                         {/* startpoint redirects */}
-                        <Route path={'/'} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
-                        <Route path={'/home'} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
                         <Route path={`/${i18n.language}`} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
                         <Route path={`/${i18n.language}/`} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
-                        {/* redirect for case with no language parameter in url */}
-                        <Route path={'/cryptocurrency'} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
-                        <Route path={'/exchanges'} element={<Navigate to={`/${i18n.language}/exchanges`} />} />
-                        <Route path={'/analytics'} element={<Navigate to={`/${i18n.language}/analytics`} />} />
-                        <Route path={'/news'} element={<Navigate to={`/${i18n.language}/news`} />} />
-                        <Route path={'/learn'} element={<Navigate to={`/${i18n.language}/learn`} />} />
+                        <Route path={`/${i18n.language}/home`} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
                         {/* endpoint routes */}
                         <Route path="/:param/cryptocurrency" element={<CryptocurrencyPage />} />
                         <Route path="/:param/exchanges" element={<Exchanges />} />
