@@ -43,13 +43,6 @@
             "name": "Esposizione Universale di Roma",
             "isAvailable": true,
             "isActive": false
-        },
-        {
-            "id": "btc",
-            "symbol": "BTC",
-            "name": "Bitcoin",
-            "isAvailable": true,
-            "isActive": false
         }
     ]
 }

@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../../../services/hooks/useTheme';
 import LanguageDropDown from '../../buttons/language-dd/LanguageDropDown';
 import CurrencyDropDown from '../../buttons/currency-dd/CurrencyDropDown';
 import LogInModal from '../../modals/login-modal/LogInModal';

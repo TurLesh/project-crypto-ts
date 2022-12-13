@@ -1,6 +1,11 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import CryptocurrencySliderCard from '../../components/cards/cryptocurrency-slider-card/CryptocurrencySliderCard';
+import GetBitcoinData from '../../services/requests/GetBitcoinSliderData';
+import GetEthereumData from '../../services/requests/GetEthereumData';
+import GetBnbData from '../../services/requests/GetBnbData';
+import GetCardanoData from '../../services/requests/GetCardanoData';
+import GetPolkadotData from '../../services/requests/GetPolkadotData';
 import SliderData from '../../data/cryptocurrency-slider-data.json';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -43,6 +48,17 @@ type PriceChangePercentage30dType = {
 
 const CryptocurrencyPage: FC = () => {
     const { t } = useTranslation();
+
+    const bitcoinDataRes = GetBitcoinData();
+    const ethereumDataRes = GetEthereumData();
+    const bnbDataRes = GetBnbData();
+    const cardanoDataRes = GetCardanoData();
+    const polkadotDataRes = GetPolkadotData();
+
+    if (bitcoinDataRes && ethereumDataRes && bnbDataRes && cardanoDataRes && polkadotDataRes) {
+        const dataArr = [bitcoinDataRes[0], ethereumDataRes[0], bnbDataRes[0], cardanoDataRes[0], polkadotDataRes[0]];
+        console.log(dataArr);
+    }
 
     const data: SliderDataType[] = SliderData.slider_cryptocurrency_data;
 

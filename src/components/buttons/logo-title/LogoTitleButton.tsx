@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../../../services/hooks/useTheme';
 import logoYellow from '../../../assets/images/crypto-logo-yellow.png';
 import logoAliceblue from '../../../assets/images/crypto-logo-aliceblue.png';
 import './LogoTitleButtonStyle.css';
