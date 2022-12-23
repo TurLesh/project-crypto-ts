@@ -20,7 +20,7 @@ const LanguageDropDown: FC = () => {
 
     const languageList: LanguageListType[] = [
         {
-            code: 'en',
+            code: 'en', //refactoring
             name: 'ENG'
         },
         {

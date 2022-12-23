@@ -17,7 +17,8 @@ type CryptocurrencySliderCardDataType = {
     priceHistory: number[];
 };
 
-const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = ({ symbol, value, oneday, oneweek, onemonth, up24h, up7d, up30d, name, priceHistory }) => {
+const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) => {
+    const { symbol, value, oneday, oneweek, onemonth, up24h, up7d, up30d, name, priceHistory } = props;
     //options for chart component
     const options = {
         stroke: {

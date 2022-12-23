@@ -6,7 +6,7 @@ import HttpApi from 'i18next-http-backend';
 // import enTranslation from './data/locales/en/translation';
 // import plTranslation from './data/locales/pl/translation';
 // import ruTranslation from './data/locales/ru/translation';
-// import uaTranslation from './data/locales/ua/translation';
+// import uaTranslation from './data/locales/ua/translation'
 
 i18n.use(initReactI18next)
     .use(LanguageDetector)

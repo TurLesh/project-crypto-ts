@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Layout from './components/layout/Layout';
 import Analytics from './pages/analytics/AnalyticsPage';
-import CryptocurrencyPage from './pages/cryptocurrency/CryptocurrencyPage';
+import CryptocurrencyPageHardcode from './pages/cryptocurrency/CryptocurrencyPageHardcode';
+// import CryptocurrencyPageWithApi from './pages/cryptocurrency/CryptocurrencyPageWithApi';
 import Error from './pages/error/ErrorPage';
 import Exchanges from './pages/exchanges/ExchangesPage';
 import Learn from './pages/learn/LearnPage';
@@ -31,7 +32,7 @@ const App: FC = () => {
                         <Route path={`/${i18n.language}/`} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
                         <Route path={`/${i18n.language}/home`} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
                         {/* endpoint routes */}
-                        <Route path="/:param/cryptocurrency" element={<CryptocurrencyPage />} />
+                        <Route path="/:param/cryptocurrency" element={<CryptocurrencyPageHardcode />} />
                         <Route path="/:param/exchanges" element={<Exchanges />} />
                         <Route path="/:param/analytics" element={<Analytics />} />
                         <Route path="/:param/news" element={<News />} />

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CryptocurrencySliderCard from '../../components/cards/cryptocurrency-slider-card/CryptocurrencySliderCard';
 import GetBitcoinData from '../../services/requests/GetBitcoinSliderData';
@@ -6,8 +6,8 @@ import GetEthereumData from '../../services/requests/GetEthereumData';
 import GetBnbData from '../../services/requests/GetBnbData';
 import GetCardanoData from '../../services/requests/GetCardanoData';
 import GetPolkadotData from '../../services/requests/GetPolkadotData';
-import SliderData from '../../data/cryptocurrency-slider-data.json';
 import Slider from 'react-slick';
+import { sliderSettings } from '../../configs/sliderConfigs';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CryptocurrencyPageStyle.css';
@@ -26,9 +26,6 @@ type SliderDataType = {
 type CurrentValueType = {
     usd: number;
     eur: number;
-    btc: number;
-    eth: number;
-    bnb: number;
 };
 
 type PriceChangePercentage24hType = {
@@ -46,38 +43,24 @@ type PriceChangePercentage30dType = {
     up: boolean;
 };
 
-const CryptocurrencyPage: FC = () => {
+const CryptocurrencyPageWithApi: FC = () => {
     const { t } = useTranslation();
 
-    const bitcoinDataRes = GetBitcoinData();
-    const ethereumDataRes = GetEthereumData();
-    const bnbDataRes = GetBnbData();
-    const cardanoDataRes = GetCardanoData();
-    const polkadotDataRes = GetPolkadotData();
+    const [sliderCoinsData, setSliderCoinsData] = useState<SliderDataType[]>([]);
 
-    if (bitcoinDataRes && ethereumDataRes && bnbDataRes && cardanoDataRes && polkadotDataRes) {
-        const dataArr = [bitcoinDataRes[0], ethereumDataRes[0], bnbDataRes[0], cardanoDataRes[0], polkadotDataRes[0]];
-        console.log(dataArr);
+    const bitcoinData = GetBitcoinData();
+    const ethereumData = GetEthereumData();
+    const bnbData = GetBnbData();
+    const cardanoData = GetCardanoData();
+    const polkaData = GetPolkadotData();
+
+    if (bitcoinData && ethereumData && bnbData && cardanoData && polkaData) {
+        setSliderCoinsData([bitcoinData, ethereumData, bnbData, cardanoData, polkaData]);
     }
 
-    const data: SliderDataType[] = SliderData.slider_cryptocurrency_data;
-
-    //options for slider component
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        variableWidth: true,
-        initialSlide: 0,
-        autoplay: true,
-        autoplaySpeed: 10000,
-        pauseOnHover: true
-    };
-
-    const sliderMapFunc = data.map((item) => {
+    const sliderMapFunc = sliderCoinsData.map((item) => {
         return (
+            //refactoring
             <CryptocurrencySliderCard
                 key={item.id}
                 symbol={item.symbol}
@@ -98,7 +81,7 @@ const CryptocurrencyPage: FC = () => {
         <div className="cryptocurrency-page-wrapper">
             <div className="slider-wrapper">
                 <div className="currency-slider-container">
-                    <Slider {...settings}>{sliderMapFunc}</Slider>
+                    <Slider {...sliderSettings}>{sliderMapFunc}</Slider>
                 </div>
             </div>
             <div className="content-wrapper">
@@ -108,4 +91,4 @@ const CryptocurrencyPage: FC = () => {
     );
 };
 
-export default CryptocurrencyPage;
+export default CryptocurrencyPageWithApi;
