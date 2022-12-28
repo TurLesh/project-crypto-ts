@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import ReactApexCharts from 'react-apexcharts';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { listChartOptions } from '../../../configs/listChartConfigs';
 import './CryptocurrencySliderCardStyle.css';
 
 type CryptocurrencySliderCardDataType = {
@@ -19,34 +20,6 @@ type CryptocurrencySliderCardDataType = {
 
 const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) => {
     const { symbol, value, oneday, oneweek, onemonth, up24h, up7d, up30d, name, priceHistory } = props;
-    //options for chart component
-    const options = {
-        stroke: {
-            curve: 'smooth',
-            width: 3
-        },
-        chart: {
-            toolbar: {
-                show: false
-            }
-        },
-        grid: {
-            show: false
-        },
-        tooltip: {
-            enabled: false
-        },
-        xaxis: {
-            labels: {
-                show: false
-            }
-        },
-        yaxis: {
-            labels: {
-                show: false
-            }
-        }
-    } as const;
 
     const priceChangeUp = up24h;
     const colorTernar: string = priceChangeUp === true ? '#0d9b44' : '#e41f1f';
@@ -72,7 +45,7 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
                     </div>
                 </div>
                 <div className="card-chart-container">
-                    <ReactApexCharts series={series} width={220} height={92} options={options} />
+                    <ReactApexCharts series={series} width={220} height={92} options={listChartOptions} />
                 </div>
             </div>
 
