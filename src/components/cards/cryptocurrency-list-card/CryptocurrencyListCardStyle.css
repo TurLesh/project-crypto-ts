@@ -3,6 +3,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 5px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
 }
 .cryptocurrency-list-card-wrapper .name-wrapper {
   display: flex;

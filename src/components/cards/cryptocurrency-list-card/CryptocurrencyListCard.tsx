@@ -20,6 +20,8 @@ type CoinListDataType = {
     priceChangePercentage24h: string;
     isChange7dRising: boolean;
     priceChangePercentage7d: string;
+    isChange30dRising: boolean;
+    priceChangePercentage30d: string;
     marketCap: string;
     volume24h: string;
     coinHistory7dData: number[];
@@ -40,6 +42,8 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
         priceChangePercentage24h,
         isChange7dRising,
         priceChangePercentage7d,
+        isChange30dRising,
+        priceChangePercentage30d,
         coinHistory7dData
     } = props;
     const [isStarActive, setIsStartActive] = useState(false);
@@ -61,6 +65,10 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
     //7d
     const activeArrow7d = isChange7dRising ? <ExpandLessIcon className="rising-arrow rise" /> : <ExpandMoreIcon className="rising-arrow fall" />;
     const risingValue7dClassName = isChange7dRising ? 'rising-value value-rise' : 'rising-value value-fall';
+
+    //30d
+    const activeArrow30d = isChange30dRising ? <ExpandLessIcon className="rising-arrow rise" /> : <ExpandMoreIcon className="rising-arrow fall" />;
+    const risingValue30dClassName = isChange30dRising ? 'rising-value value-rise' : 'rising-value value-fall';
 
     //chart options
     const chartChangeUp = isChange7dRising;
@@ -101,6 +109,10 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
                 <div className="price-change-container">
                     <div className="rising-arrow-container">{activeArrow7d}</div>
                     <div className={risingValue7dClassName}>{priceChangePercentage7d}%</div>
+                </div>
+                <div className="price-change-container">
+                    <div className="rising-arrow-container">{activeArrow30d}</div>
+                    <div className={risingValue30dClassName}>{priceChangePercentage30d}%</div>
                 </div>
             </div>
             <div className="market-info-wrapper">

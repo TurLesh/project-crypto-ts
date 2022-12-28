@@ -6,22 +6,23 @@ import { listChartOptions } from '../../../configs/listChartConfigs';
 import './CryptocurrencySliderCardStyle.css';
 
 type CryptocurrencySliderCardDataType = {
-    symbol: string;
-    value: number;
-    oneday: number;
-    oneweek: number;
-    onemonth: number;
-    up24h: boolean;
-    up7d: boolean;
-    up30d: boolean;
     name: string;
-    priceHistory: number[];
+    symbol: string;
+    currentPrice: number;
+    isChange24hRising: boolean;
+    priceChangePercentage24h: string;
+    isChange7dRising: boolean;
+    priceChangePercentage7d: string;
+    isChange30dRising: boolean;
+    priceChangePercentage30d: string;
+    priceHistory7dData: number[];
 };
 
 const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) => {
-    const { symbol, value, oneday, oneweek, onemonth, up24h, up7d, up30d, name, priceHistory } = props;
+    const { symbol, currentPrice, priceChangePercentage24h, priceChangePercentage7d, priceChangePercentage30d, isChange24hRising, isChange7dRising, isChange30dRising, name, priceHistory7dData } =
+        props;
 
-    const priceChangeUp = up24h;
+    const priceChangeUp = isChange24hRising;
     const colorTernar: string = priceChangeUp === true ? '#0d9b44' : '#e41f1f';
 
     const series = [
@@ -29,7 +30,7 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
             name: name,
             color: colorTernar,
             legend: { show: false },
-            data: priceHistory
+            data: priceHistory7dData
         }
     ];
 
@@ -41,7 +42,7 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
                         <p className="currency-info">{symbol}</p>
                     </div>
                     <div className="currency-info-container">
-                        <p className="currency-info">{value}</p>
+                        <p className="currency-info">{currentPrice}</p>
                     </div>
                 </div>
                 <div className="card-chart-container">
@@ -54,15 +55,15 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
                     <div className="percentage-static-label 24h-container">
                         <p className="static-label 24h-label">24h:</p>
                     </div>
-                    {up24h ? (
+                    {isChange24hRising ? (
                         <div className="percentage-dinamic-info">
                             <ExpandLessIcon className="icon-up" />
-                            <p className="dinamic-info raise-up">{oneday}%</p>
+                            <p className="dinamic-info raise-up">{priceChangePercentage24h}%</p>
                         </div>
                     ) : (
                         <div className="percentage-dinamic-info">
                             <ExpandMoreIcon className="icon-down" />
-                            <p className="dinamic-info fall-dawn">{oneday}%</p>
+                            <p className="dinamic-info fall-dawn">{priceChangePercentage24h}%</p>
                         </div>
                     )}
                 </div>
@@ -70,15 +71,15 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
                     <div className="percentage-static-label 7d-container">
                         <p className="static-label 7d-label">7d:</p>
                     </div>
-                    {up7d ? (
+                    {isChange7dRising ? (
                         <div className="percentage-dinamic-info">
                             <ExpandLessIcon className="icon-up" />
-                            <p className="dinamic-info raise-up">{oneweek}%</p>
+                            <p className="dinamic-info raise-up">{priceChangePercentage7d}%</p>
                         </div>
                     ) : (
                         <div className="percentage-dinamic-info">
                             <ExpandMoreIcon className="icon-down" />
-                            <p className="dinamic-info fall-dawn">{oneweek}%</p>
+                            <p className="dinamic-info fall-dawn">{priceChangePercentage7d}%</p>
                         </div>
                     )}
                 </div>
@@ -86,15 +87,15 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
                     <div className="percentage-static-label 30d-container">
                         <p className="static-label 30d-label">30d:</p>
                     </div>
-                    {up30d ? (
+                    {isChange30dRising ? (
                         <div className="percentage-dinamic-info">
                             <ExpandLessIcon className="icon-up" />
-                            <p className="dinamic-info raise-up">{onemonth}%</p>
+                            <p className="dinamic-info raise-up">{priceChangePercentage30d}%</p>
                         </div>
                     ) : (
                         <div className="percentage-dinamic-info">
                             <ExpandMoreIcon className="icon-down" />
-                            <p className="dinamic-info fall-dawn">{onemonth}%</p>
+                            <p className="dinamic-info fall-dawn">{priceChangePercentage30d}%</p>
                         </div>
                     )}
                 </div>
