@@ -5,7 +5,7 @@
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  border-bottom: 1px solid #1f212b;
+  border-bottom: 1px solid rgb(227, 237, 245);
 }
 .cryptocurrency-list-card-wrapper .star-container {
   width: 2%;
@@ -86,4 +86,8 @@
   opacity: 0.95;
   transform: scale(1.1);
   transition-duration: 0.2s;
+}
+
+.dark .cryptocurrency-list-card-wrapper {
+  border-bottom: 1px solid #1f212b;
 }/*# sourceMappingURL=CryptocurrencyListCardStyle.css.map */

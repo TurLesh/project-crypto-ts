@@ -8,7 +8,7 @@
     font-size: 16px;
     font-weight: 500;
 
-    border-bottom: 1px solid $bg-dark;
+    border-bottom: 1px solid $bg-light;
 
     .star-container {
         width: 2%;
@@ -110,5 +110,11 @@
             transform: scale(1.1);
             transition-duration: 0.2s;
         }
+    }
+}
+
+.dark {
+    .cryptocurrency-list-card-wrapper {
+        border-bottom: 1px solid $bg-dark;
     }
 }

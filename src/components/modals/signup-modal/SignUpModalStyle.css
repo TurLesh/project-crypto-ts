@@ -14,10 +14,10 @@
   margin-left: 3px;
   margin-right: 5px;
   font-size: 16px;
-  color: #e41f1f;
+  color: #fb3131;
 }
 .signup-modal-wrapper .modal-form-container .signup-form .email-lable .email-error {
-  border: 1px solid #e41f1f;
+  border: 1px solid #fb3131;
   padding: 1px 5px;
   display: flex;
   border-radius: 5px;
@@ -58,10 +58,10 @@
   margin-left: 3px;
   margin-right: 5px;
   font-size: 16px;
-  color: #e41f1f;
+  color: #fb3131;
 }
 .signup-modal-wrapper .modal-form-container .signup-form .pass-lable .pass-error {
-  border: 1px solid #e41f1f;
+  border: 1px solid #fb3131;
   padding: 1px 5px;
   display: flex;
   border-radius: 5px;
@@ -115,10 +115,10 @@
   margin-left: 3px;
   margin-right: 5px;
   font-size: 16px;
-  color: #e41f1f;
+  color: #fb3131;
 }
 .signup-modal-wrapper .modal-form-container .signup-form .confirm-lable .confirm-error {
-  border: 1px solid #e41f1f;
+  border: 1px solid #fb3131;
   padding: 1px 5px;
   display: flex;
   border-radius: 5px;
