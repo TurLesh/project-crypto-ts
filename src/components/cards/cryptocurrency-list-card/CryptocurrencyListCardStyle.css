@@ -1,29 +1,66 @@
 .cryptocurrency-list-card-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0px 5px;
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
+  border-bottom: 1px solid #1f212b;
+}
+.cryptocurrency-list-card-wrapper .star-container {
+  width: 2%;
+  cursor: pointer;
+}
+.cryptocurrency-list-card-wrapper .star-container:hover {
+  opacity: 0.95;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+.cryptocurrency-list-card-wrapper .numeration-container {
+  width: 3%;
 }
 .cryptocurrency-list-card-wrapper .name-wrapper {
   display: flex;
+  width: 12%;
+  padding-right: 7px;
+}
+.cryptocurrency-list-card-wrapper .name-wrapper .icon-container {
+  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .cryptocurrency-list-card-wrapper .name-wrapper .icon-container .cryptocurrency-icon {
   width: 20px;
 }
+.cryptocurrency-list-card-wrapper .name-wrapper .name-text {
+  margin-right: 5px;
+}
+.cryptocurrency-list-card-wrapper .name-wrapper .symbol-text {
+  color: #8e8e8e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cryptocurrency-list-card-wrapper .current-price {
+  width: 10%;
+  padding-left: 5px;
+  text-align: end;
+}
 .cryptocurrency-list-card-wrapper .price-change-percentage-wrapper {
   display: flex;
+  width: 26%;
 }
 .cryptocurrency-list-card-wrapper .price-change-percentage-wrapper .price-change-container {
   display: flex;
+  width: 25%;
+  justify-content: end;
 }
 .cryptocurrency-list-card-wrapper .price-change-percentage-wrapper .price-change-container .rising-arrow-container .rising-arrow {
   font-size: 16px;
 }
 .cryptocurrency-list-card-wrapper .price-change-percentage-wrapper .price-change-container .rising-arrow-container .fall {
-  color: #e41f1f;
+  color: #fb3131;
 }
 .cryptocurrency-list-card-wrapper .price-change-percentage-wrapper .price-change-container .rising-arrow-container .rise {
   color: #0d9b44;
@@ -32,8 +69,21 @@
   color: #0d9b44;
 }
 .cryptocurrency-list-card-wrapper .price-change-percentage-wrapper .price-change-container .value-fall {
-  color: #e41f1f;
+  color: #fb3131;
 }
 .cryptocurrency-list-card-wrapper .market-info-wrapper {
   display: flex;
+  width: 25%;
+  text-align: end;
+}
+.cryptocurrency-list-card-wrapper .market-info-wrapper .market-info-item {
+  width: 50%;
+}
+.cryptocurrency-list-card-wrapper .more-icon-container {
+  cursor: pointer;
+}
+.cryptocurrency-list-card-wrapper .more-icon-container:hover {
+  opacity: 0.95;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
 }/*# sourceMappingURL=CryptocurrencyListCardStyle.css.map */

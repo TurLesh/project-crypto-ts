@@ -56,7 +56,7 @@
 }
 .currency-card-body .currency-info-container .percentage-dinamic-info .icon-down {
   font-size: 16px;
-  color: #e41f1f;
+  color: #fb3131;
 }
 .currency-card-body .currency-info-container .percentage-dinamic-info .dinamic-info {
   margin: 0px !important;
@@ -68,7 +68,7 @@
   color: #0d9b44;
 }
 .currency-card-body .currency-info-container .percentage-dinamic-info .fall-dawn {
-  color: #e41f1f;
+  color: #fb3131;
 }
 
 .dark .currency-card-body {

@@ -3,27 +3,70 @@
 .cryptocurrency-list-card-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0px 5px;
     font-family: $contentFont;
     font-size: 16px;
     font-weight: 500;
 
+    border-bottom: 1px solid $bg-dark;
+
+    .star-container {
+        width: 2%;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.95;
+            transform: scale(1.1);
+            transition-duration: 0.2s;
+        }
+    }
+
+    .numeration-container {
+        width: 3%;
+    }
+
     .name-wrapper {
         display: flex;
+        width: 12%; //15%
+        padding-right: 7px;
 
         .icon-container {
+            padding-right: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
             .cryptocurrency-icon {
                 width: 20px;
             }
         }
+
+        .name-text {
+            margin-right: 5px;
+        }
+
+        .symbol-text {
+            color: $gray2Color;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .current-price {
+        width: 10%;
+        padding-left: 5px;
+        text-align: end;
     }
 
     .price-change-percentage-wrapper {
         display: flex;
+        width: 26%;
 
         .price-change-container {
             display: flex;
+            width: 25%;
+            justify-content: end;
 
             .rising-arrow-container {
                 .rising-arrow {
@@ -51,5 +94,21 @@
 
     .market-info-wrapper {
         display: flex;
+        width: 25%;
+        text-align: end;
+
+        .market-info-item {
+            width: 50%;
+        }
+    }
+
+    .more-icon-container {
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.95;
+            transform: scale(1.1);
+            transition-duration: 0.2s;
+        }
     }
 }

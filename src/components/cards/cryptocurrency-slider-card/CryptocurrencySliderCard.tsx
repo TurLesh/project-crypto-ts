@@ -23,7 +23,7 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
         props;
 
     const priceChangeUp = isChange24hRising;
-    const colorTernar: string = priceChangeUp === true ? '#0d9b44' : '#e41f1f';
+    const colorTernar: string = priceChangeUp === true ? '#0d9b44' : '#fb3131';
 
     const series = [
         {

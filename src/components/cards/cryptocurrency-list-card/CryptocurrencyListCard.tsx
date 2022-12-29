@@ -72,7 +72,7 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
 
     //chart options
     const chartChangeUp = isChange7dRising;
-    const colorTernar: string = chartChangeUp === true ? '#0d9b44' : '#e41f1f';
+    const colorTernar: string = chartChangeUp === true ? '#0d9b44' : '#fb3131';
 
     const series = [
         {
@@ -116,11 +116,11 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
                 </div>
             </div>
             <div className="market-info-wrapper">
-                <div className="market-cap">${marketCap}</div>
-                <div className="volume-24h">${volume24h}</div>
+                <div className="market-cap market-info-item">${marketCap}</div>
+                <div className="volume-24h market-info-item">${volume24h}</div>
             </div>
             <div className="chart-container">
-                <ReactApexCharts series={series} width={220} height={92} options={listChartOptions} />
+                <ReactApexCharts series={series} width={200} height={80} options={listChartOptions} />
             </div>
             <div className="more-icon-container">
                 <MoreVertIcon />
