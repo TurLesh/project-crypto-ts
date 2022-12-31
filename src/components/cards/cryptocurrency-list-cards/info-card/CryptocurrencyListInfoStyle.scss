@@ -11,11 +11,11 @@
     border-bottom: 2px solid $bg-light;
 
     .favourites-space {
-        width: 2%;
+        width: 3%;
     }
 
     .numeration-info {
-        width: 3%;
+        width: 4%;
         margin-right: 10px;
     }
 
@@ -33,7 +33,7 @@
 
     .change-percentage-info {
         display: flex;
-        width: 26%;
+        width: 30%;
 
         .change-time-info {
             display: flex;
@@ -67,5 +67,33 @@
 .dark {
     .list-info-wrapper {
         border-bottom: 1px solid $bg-dark;
+    }
+}
+
+@media screen and (max-width: 1536px) {
+    .list-info-wrapper {
+        .favourites-space {
+            width: 2%;
+        }
+
+        .numeration-info {
+            width: 3%;
+        }
+
+        .name-info {
+            width: 12%;
+        }
+
+        .price-info {
+            width: 10%;
+        }
+
+        .change-percentage-info {
+            width: 26%;
+        }
+
+        .market-info-wrapper {
+            width: 25%;
+        }
     }
 }

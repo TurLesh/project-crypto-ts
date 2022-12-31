@@ -8,10 +8,10 @@
   border-bottom: 2px solid rgb(227, 237, 245);
 }
 .list-info-wrapper .favourites-space {
-  width: 2%;
+  width: 3%;
 }
 .list-info-wrapper .numeration-info {
-  width: 3%;
+  width: 4%;
   margin-right: 10px;
 }
 .list-info-wrapper .name-info {
@@ -26,7 +26,7 @@
 }
 .list-info-wrapper .change-percentage-info {
   display: flex;
-  width: 26%;
+  width: 30%;
 }
 .list-info-wrapper .change-percentage-info .change-time-info {
   display: flex;
@@ -50,4 +50,25 @@
 
 .dark .list-info-wrapper {
   border-bottom: 1px solid #1f212b;
+}
+
+@media screen and (max-width: 1536px) {
+  .list-info-wrapper .favourites-space {
+    width: 2%;
+  }
+  .list-info-wrapper .numeration-info {
+    width: 3%;
+  }
+  .list-info-wrapper .name-info {
+    width: 12%;
+  }
+  .list-info-wrapper .price-info {
+    width: 10%;
+  }
+  .list-info-wrapper .change-percentage-info {
+    width: 26%;
+  }
+  .list-info-wrapper .market-info-wrapper {
+    width: 25%;
+  }
 }/*# sourceMappingURL=CryptocurrencyListInfoStyle.css.map */
