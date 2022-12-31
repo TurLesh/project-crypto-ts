@@ -19,8 +19,13 @@
 .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container .slick-next:before {
   color: #2a2c3b !important;
 }
-.cryptocurrency-page-wrapper .content-wrapper {
+.cryptocurrency-page-wrapper .list-filters-wrapper {
   margin-top: 40px;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+.cryptocurrency-page-wrapper .content-wrapper {
+  margin-top: 20px;
   background-color: aliceblue;
   border-radius: 10px;
 }
@@ -31,6 +36,9 @@
 .dark .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container .slick-prev:before,
 .dark .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container .slick-next:before {
   color: aliceblue !important;
+}
+.dark .cryptocurrency-page-wrapper .list-filters-wrapper {
+  background-color: #2a2c3b;
 }
 .dark .cryptocurrency-page-wrapper .content-wrapper {
   background-color: #2a2c3b;

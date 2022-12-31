@@ -24,8 +24,14 @@
         }
     }
 
-    .content-wrapper {
+    .list-filters-wrapper {
         margin-top: 40px;
+        background-color: $mainColor;
+        border-radius: 10px;
+    }
+
+    .content-wrapper {
+        margin-top: 20px;
         background-color: $mainColor;
         border-radius: 10px;
     }
@@ -41,6 +47,10 @@
                     color: $mainColor !important;
                 }
             }
+        }
+
+        .list-filters-wrapper {
+            background-color: $mainColorDark;
         }
 
         .content-wrapper {

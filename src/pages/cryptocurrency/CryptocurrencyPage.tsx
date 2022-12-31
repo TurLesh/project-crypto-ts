@@ -2,6 +2,8 @@ import { FC, useState } from 'react';
 import { ICoinListData } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
 import GetCoinListData from '../../services/requests/GetCoinListData';
 import CryptocurrencySliderContainer from '../../components/containers/cryptocurrency-page/CryptocurrencySliderContainer';
+import CryptocurrencyListFilters from '../../components/cards/cryptocurrency-list-filters/CryptocurrencyListFilters';
+import CryptocurrencyListInfo from '../../components/cards/cryptocurrency-list-cards/info-card/CryptocurrencyListInfo';
 import CryptocurrencyListContainer from '../../components/containers/cryptocurrency-page/CryptocurrencyListContainer';
 import './CryptocurrencyPageStyle.css';
 
@@ -22,7 +24,11 @@ const CryptocurrencyPage: FC = () => {
                     <CryptocurrencySliderContainer coinListData={coinListData} />
                 </div>
             </div>
+            <div className="list-filters-wrapper">
+                <CryptocurrencyListFilters />
+            </div>
             <div className="content-wrapper">
+                <CryptocurrencyListInfo />
                 <CryptocurrencyListContainer coinListData={coinListData} />
             </div>
         </div>

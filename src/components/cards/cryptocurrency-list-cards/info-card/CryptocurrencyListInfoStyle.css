@@ -1,0 +1,53 @@
+.list-info-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid rgb(227, 237, 245);
+}
+.list-info-wrapper .favourites-space {
+  width: 2%;
+}
+.list-info-wrapper .numeration-info {
+  width: 3%;
+  margin-right: 10px;
+}
+.list-info-wrapper .name-info {
+  width: 12%;
+  text-align: start;
+  padding-right: 7px;
+}
+.list-info-wrapper .price-info {
+  width: 10%;
+  text-align: end;
+  padding-left: 5px;
+}
+.list-info-wrapper .change-percentage-info {
+  display: flex;
+  width: 26%;
+}
+.list-info-wrapper .change-percentage-info .change-time-info {
+  display: flex;
+  width: 25%;
+  justify-content: end;
+}
+.list-info-wrapper .market-info-wrapper {
+  display: flex;
+  width: 25%;
+  text-align: end;
+}
+.list-info-wrapper .market-info-wrapper .market-info-item {
+  width: 50%;
+}
+.list-info-wrapper .chart-info {
+  width: 200px;
+  text-align: end;
+  position: relative;
+  right: 5px;
+}
+
+.dark .list-info-wrapper {
+  border-bottom: 1px solid #1f212b;
+}/*# sourceMappingURL=CryptocurrencyListInfoStyle.css.map */

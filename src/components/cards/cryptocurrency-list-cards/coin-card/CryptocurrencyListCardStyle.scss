@@ -1,4 +1,4 @@
-@import '../../../assets/styles/StyleAssets.scss';
+@import '../../../../assets/styles/StyleAssets.scss';
 
 .cryptocurrency-list-card-wrapper {
     display: flex;
@@ -8,7 +8,7 @@
     font-size: 16px;
     font-weight: 500;
 
-    border-bottom: 1px solid $bg-light;
+    border-bottom: 2px solid $bg-light;
 
     .star-container {
         width: 2%;
@@ -23,6 +23,7 @@
 
     .numeration-container {
         width: 3%;
+        margin-right: 10px;
     }
 
     .name-wrapper {

@@ -1,0 +1,22 @@
+.filters-wrapper {
+  display: flex;
+  padding: 0px 5px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.filters-wrapper .filter-watchlist {
+  display: flex;
+}
+.filters-wrapper .filter-watchlist .watchlist-star-icon-container .watchlist-star-icon {
+  font-size: 16px;
+}
+.filters-wrapper .filter-show-rows-wrapper {
+  display: flex;
+}
+.filters-wrapper .filter-show-rows-wrapper .show-rows-dd-wrapper {
+  display: flex;
+}
+.filters-wrapper .filter-show-rows-wrapper .show-rows-dd-wrapper .show-rows-dd-icon-container .show-rows-dd-icon {
+  font-size: 16px;
+}/*# sourceMappingURL=CryptocurrencyListFiltersStyle.css.map */

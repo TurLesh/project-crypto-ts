@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 import ReactApexCharts from 'react-apexcharts';
-import { listChartOptions } from '../../../configs/listChartConfigs';
+import { listChartOptions } from '../../../../configs/listChartConfigs';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import StarIcon from '@mui/icons-material/Star';
 import './CryptocurrencyListCardStyle.css';
 
 type CoinListDataType = {
