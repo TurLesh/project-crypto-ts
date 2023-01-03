@@ -38,6 +38,20 @@
   transform: scale(1.1);
   transition-duration: 0.2s;
 }
+.language-dd-wrapper .display-enter {
+  opacity: 0;
+}
+.language-dd-wrapper .display-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.language-dd-wrapper .display-exit {
+  opacity: 1;
+}
+.language-dd-wrapper .display-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
 .language-dd-wrapper .language-dd-panel-wrapper {
   position: absolute;
 }

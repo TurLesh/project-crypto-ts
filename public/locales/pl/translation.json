@@ -20,6 +20,30 @@
         "continue_with": "Kontynuuj z Google"
     },
 
-    "text1": "O kurwa",
-    "text2": "Ja pierdole"
+    "cryptocurrency-info-panel": {
+        "favourites-help-panel": {
+            "favourites-help-panel-text-1": "Ulubione elementy są wyświetlane na suwaku.",
+            "favourites-help-panel-text-2": "Możesz także śledzić swoje ulubione przedmioty za pomocą odpowiedniego filtra."
+        },
+        "name-info": "Nazwa",
+        "price-info": "Cena",
+        "change-percentage-info": {
+            "1h-info": "1g%",
+            "24h-info": "24g%",
+            "7d-info": "7d%",
+            "30d-info": "30d%"
+        },
+        "market-info": {
+            "market-cap-info": "Kapitalizacja",
+            "market-cap-help-panel": {
+                "market-cap-help-panel-1": "Całkowita wartość rynkowa krążącej podaży kryptowaluty. Jest to analogiczne do kapitalizacji w wolnym obrocie na giełdzie.",
+                "market-cap-help-panel-2": "Kapitalizacja rynkowa = Aktualna cena x Podaż w obiegu."
+            },
+            "volume-24h-info": "Głośność(24g)",
+            "volume-24h-help-panel": {
+                "volume-24h-help-panel-1": "Wyświetla kwotę kryptowaluty będącej przedmiotem obrotu w ciągu ostatnich 24 godzin."
+            }
+        },
+        "chart-info": "Ostatnie 7 Dni"
+    }
 }

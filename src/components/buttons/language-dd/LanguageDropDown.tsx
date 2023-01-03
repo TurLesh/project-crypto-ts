@@ -1,6 +1,7 @@
 import { FC, useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './LanguageDropDownStyle.css';
@@ -95,12 +96,12 @@ const LanguageDropDown: FC = () => {
                 </div>
                 <div className="language-arrow-cointainer">{isLanguageExpanded ? <ArrowDropUpIcon className="language-arrow-expand" /> : <ArrowDropDownIcon className="language-arrow-expand" />}</div>
             </button>
-            {isLanguageExpanded && (
+            <CSSTransition in={isLanguageExpanded} timeout={200} classNames="display" unmountOnExit>
                 <div className="language-dd-panel-wrapper">
                     <div className="language-dd-panel-triangle" />
                     <div className="language-dd-panel-container">{langItemMap}</div>
                 </div>
-            )}
+            </CSSTransition>
         </div>
     );
 };

@@ -7,8 +7,57 @@
   font-weight: 500;
   border-bottom: 2px solid rgb(227, 237, 245);
 }
+.list-info-wrapper .display-enter {
+  opacity: 0;
+}
+.list-info-wrapper .display-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.list-info-wrapper .display-exit {
+  opacity: 1;
+}
+.list-info-wrapper .display-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.list-info-wrapper .favourites-help-panel {
+  position: absolute;
+  margin-bottom: 100px;
+}
+.list-info-wrapper .favourites-help-panel .favourites-help-panel-container {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 6px;
+  background-color: #f5d418;
+  padding: 5px 5px;
+}
+.list-info-wrapper .favourites-help-panel .favourites-help-panel-container .favourites-help-panel-text {
+  padding: 2px 5px;
+  font-size: 14px;
+}
+.list-info-wrapper .favourites-help-panel .favourites-help-panel-triangle {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #f5d418;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  position: absolute;
+  left: 20px;
+  bottom: -3px;
+}
 .list-info-wrapper .favourites-space {
   width: 3%;
+  display: flex;
+  justify-content: center;
+}
+.list-info-wrapper .favourites-space .info-help-icon {
+  font-size: 16px;
+  cursor: pointer;
 }
 .list-info-wrapper .numeration-info {
   width: 4%;
@@ -38,8 +87,75 @@
   width: 25%;
   text-align: end;
 }
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel {
+  position: absolute;
+  margin-bottom: 132px;
+}
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel .market-cap-help-panel-container {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 6px;
+  background-color: #f5d418;
+  width: 342px;
+  padding: 5px 5px;
+}
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel .market-cap-help-panel-container .market-cap-help-panel-text {
+  padding: 2px 5px;
+  font-size: 14px;
+}
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel .market-cap-help-panel-triangle {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #f5d418;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  position: absolute;
+  right: 4px;
+  bottom: -3px;
+}
+.list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel {
+  position: absolute;
+  margin-bottom: 96px;
+}
+.list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel .volume-24h-help-panel-container {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 6px;
+  background-color: #f5d418;
+  width: 317px;
+  padding: 5px 5px;
+}
+.list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel .volume-24h-help-panel-container .volume-24h-help-panel-text {
+  padding: 2px 5px;
+  font-size: 14px;
+}
+.list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel .volume-24h-help-panel-triangle {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #f5d418;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  position: absolute;
+  right: 4px;
+  bottom: -3px;
+}
 .list-info-wrapper .market-info-wrapper .market-info-item {
   width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.list-info-wrapper .market-info-wrapper .market-info-item .info-help-icon {
+  font-size: 16px;
+  cursor: pointer;
 }
 .list-info-wrapper .chart-info {
   width: 200px;
@@ -51,8 +167,38 @@
 .dark .list-info-wrapper {
   border-bottom: 1px solid #1f212b;
 }
+.dark .list-info-wrapper .favourites-help-panel .favourites-help-panel-triangle {
+  background-color: #2a2c3b;
+  border-right: 1px solid aliceblue;
+  border-bottom: 1px solid aliceblue;
+}
+.dark .list-info-wrapper .favourites-help-panel .favourites-help-panel-container {
+  border: 1px solid aliceblue;
+  background-color: #2a2c3b;
+}
+.dark .list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel .market-cap-help-panel-triangle {
+  background-color: #2a2c3b;
+  border-right: 1px solid aliceblue;
+  border-bottom: 1px solid aliceblue;
+}
+.dark .list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel .market-cap-help-panel-container {
+  border: 1px solid aliceblue;
+  background-color: #2a2c3b;
+}
+.dark .list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel .volume-24h-help-panel-triangle {
+  background-color: #2a2c3b;
+  border-right: 1px solid aliceblue;
+  border-bottom: 1px solid aliceblue;
+}
+.dark .list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel .volume-24h-help-panel-container {
+  border: 1px solid aliceblue;
+  background-color: #2a2c3b;
+}
 
 @media screen and (max-width: 1536px) {
+  .list-info-wrapper .favourites-help-panel .favourites-help-panel-triangle {
+    left: 8px;
+  }
   .list-info-wrapper .favourites-space {
     width: 2%;
   }

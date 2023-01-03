@@ -20,6 +20,30 @@
         "continue_with": "Продовжити з Google"
     },
 
-    "text1": "Батько наш Бандера",
-    "text2": "Абоба"
+    "cryptocurrency-info-panel": {
+        "favourites-help-panel": {
+            "favourites-help-panel-text-1": "Обрані предмети відображаються у слайдері.",
+            "favourites-help-panel-text-2": "Також можливо відстежувати обрані предмети, використовуючи відповідний фільтр."
+        },
+        "name-info": "Назва",
+        "price-info": "Ціна",
+        "change-percentage-info": {
+            "1h-info": "1год%",
+            "24h-info": "24год%",
+            "7d-info": "7д%",
+            "30d-info": "30д%"
+        },
+        "market-info": {
+            "market-cap-info": "Капіталізація",
+            "market-cap-help-panel": {
+                "market-cap-help-panel-1": "Загальна ринкова вартість циркулюючої пропозиції криптовалюти. Це аналог капіталізації у вільному обігу на фондовому ринку.",
+                "market-cap-help-panel-2": "Ринкова капіталізація = Поточна ціна x Циркулююча пропозиція."
+            },
+            "volume-24h-info": "Об'єм (24год)",
+            "volume-24h-help-panel": {
+                "volume-24h-help-panel-1": "Відображає кількість обміняної криптовалюті за останні 24 години."
+            }
+        },
+        "chart-info": "Останні 7 Днів"
+    }
 }

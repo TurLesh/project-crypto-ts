@@ -41,6 +41,8 @@
         transition-duration: 0.2s;
     }
 
+    @include smoothOpacity();
+
     .language-dd-panel-wrapper {
         position: absolute;
 

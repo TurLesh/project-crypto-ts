@@ -20,6 +20,30 @@
         "continue_with": "Continue with Google"
     },
 
-    "text1": "English enabled",
-    "text2": "Aboba"
+    "cryptocurrency-info-panel": {
+        "favourites-help-panel": {
+            "favourites-help-panel-text-1": "Favorite items are displayed in the slider.",
+            "favourites-help-panel-text-2": "You can also track your favorite items using the appropriate filter."
+        },
+        "name-info": "Name",
+        "price-info": "Price",
+        "change-percentage-info": {
+            "1h-info": "1h%",
+            "24h-info": "24h%",
+            "7d-info": "7d%",
+            "30d-info": "30d%"
+        },
+        "market-info": {
+            "market-cap-info": "Market Cap",
+            "market-cap-help-panel": {
+                "market-cap-help-panel-1": "The total market value of a cryptocurrency's circulating supply. It is analogous to the free-float capitalization in the stock market.",
+                "market-cap-help-panel-2": "Market Cap = Current Price x Circulating Supply."
+            },
+            "volume-24h-info": "Volume(24h)",
+            "volume-24h-help-panel": {
+                "volume-24h-help-panel-1": "Displays amount of traded cryptocurrency in the last 24 hours."
+            }
+        },
+        "chart-info": "Last 7 Days"
+    }
 }

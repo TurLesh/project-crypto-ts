@@ -20,6 +20,30 @@
         "continue_with": "Продолжить с Google"
     },
 
-    "text1": "фзидхзйдизу",
-    "text2": "йиуйлуийл"
+    "cryptocurrency-info-panel": {
+        "favourites-help-panel": {
+            "favourites-help-panel-text-1": "Избранные предметы отображаются в слайдере.",
+            "favourites-help-panel-text-2": "Также возможно отслеживать избранные предметы, используя соответствующий фильтр."
+        },
+        "name-info": "Название",
+        "price-info": "Цена",
+        "change-percentage-info": {
+            "1h-info": "1ч%",
+            "24h-info": "24ч%",
+            "7d-info": "7д%",
+            "30d-info": "30д%"
+        },
+        "market-info": {
+            "market-cap-info": "Капитализация",
+            "market-cap-help-panel": {
+                "market-cap-help-panel-1": "Общая рыночная стоимость циркулирующего предложения криптовалюты. Это аналог капитализации в свободном обращении на фондовом рынке.",
+                "market-cap-help-panel-2": "Рыночная капитализация = Текущая цена х Циркулирующее предложение."
+            },
+            "volume-24h-info": "Объем(24ч)",
+            "volume-24h-help-panel": {
+                "volume-24h-help-panel-1": "Отображает колличество обменяной криптовалюты за последние 24 часа."
+            }
+        },
+        "chart-info": "Последние 7 Дней"
+    }
 }

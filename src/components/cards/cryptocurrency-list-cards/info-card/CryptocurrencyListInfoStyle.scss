@@ -10,8 +10,50 @@
 
     border-bottom: 2px solid $bg-light;
 
+    @include smoothOpacity();
+
+    .favourites-help-panel {
+        position: absolute;
+        margin-bottom: 100px; //110px
+
+        .favourites-help-panel-container {
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-top: 6px;
+            background-color: $accent2Color;
+            padding: 5px 5px;
+
+            .favourites-help-panel-text {
+                padding: 2px 5px;
+                font-size: 14px;
+            }
+        }
+
+        .favourites-help-panel-triangle {
+            width: 6px;
+            height: 6px;
+            transform: rotate(45deg);
+            background-color: $accent2Color;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            position: absolute;
+            left: 20px;
+            bottom: -3px;
+        }
+    }
+
     .favourites-space {
         width: 3%;
+        display: flex;
+        justify-content: center;
+
+        .info-help-icon {
+            font-size: 16px;
+            cursor: pointer;
+        }
     }
 
     .numeration-info {
@@ -47,8 +89,89 @@
         width: 25%;
         text-align: end;
 
+        .market-cap-info {
+            .market-cap-help-panel {
+                position: absolute;
+                margin-bottom: 132px; //142px
+
+                .market-cap-help-panel-container {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: start;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    margin-top: 6px;
+                    background-color: $accent2Color;
+                    width: 342px;
+                    padding: 5px 5px;
+
+                    .market-cap-help-panel-text {
+                        padding: 2px 5px;
+                        font-size: 14px;
+                    }
+                }
+
+                .market-cap-help-panel-triangle {
+                    width: 6px;
+                    height: 6px;
+                    transform: rotate(45deg);
+                    background-color: $accent2Color;
+                    border-right: 1px solid black;
+                    border-bottom: 1px solid black;
+                    position: absolute;
+                    right: 4px;
+                    bottom: -3px;
+                }
+            }
+        }
+
+        .volume-24h-info {
+            .volume-24h-help-panel {
+                position: absolute;
+                margin-bottom: 96px;
+
+                .volume-24h-help-panel-container {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: start;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    margin-top: 6px;
+                    background-color: $accent2Color;
+                    width: 317px;
+                    padding: 5px 5px;
+
+                    .volume-24h-help-panel-text {
+                        padding: 2px 5px;
+                        font-size: 14px;
+                    }
+                }
+
+                .volume-24h-help-panel-triangle {
+                    width: 6px;
+                    height: 6px;
+                    transform: rotate(45deg);
+                    background-color: $accent2Color;
+                    border-right: 1px solid black;
+                    border-bottom: 1px solid black;
+                    position: absolute;
+                    right: 4px;
+                    bottom: -3px;
+                }
+            }
+        }
+
         .market-info-item {
             width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .info-help-icon {
+                font-size: 16px;
+                cursor: pointer;
+                // margin-left: 1px;
+            }
         }
     }
 
@@ -67,11 +190,62 @@
 .dark {
     .list-info-wrapper {
         border-bottom: 1px solid $bg-dark;
+
+        .favourites-help-panel {
+            .favourites-help-panel-triangle {
+                background-color: $mainColorDark;
+                border-right: 1px solid $mainColor;
+                border-bottom: 1px solid $mainColor;
+            }
+
+            .favourites-help-panel-container {
+                border: 1px solid $mainColor;
+                background-color: $mainColorDark;
+            }
+        }
+
+        .market-info-wrapper {
+            .market-cap-info {
+                .market-cap-help-panel {
+                    .market-cap-help-panel-triangle {
+                        background-color: $mainColorDark;
+                        border-right: 1px solid $mainColor;
+                        border-bottom: 1px solid $mainColor;
+                    }
+
+                    .market-cap-help-panel-container {
+                        border: 1px solid $mainColor;
+                        background-color: $mainColorDark;
+                    }
+                }
+            }
+
+            .volume-24h-info {
+                .volume-24h-help-panel {
+                    .volume-24h-help-panel-triangle {
+                        background-color: $mainColorDark;
+                        border-right: 1px solid $mainColor;
+                        border-bottom: 1px solid $mainColor;
+                    }
+
+                    .volume-24h-help-panel-container {
+                        border: 1px solid $mainColor;
+                        background-color: $mainColorDark;
+                    }
+                }
+            }
+        }
     }
 }
 
 @media screen and (max-width: 1536px) {
     .list-info-wrapper {
+        .favourites-help-panel {
+            .favourites-help-panel-triangle {
+                left: 8px;
+            }
+        }
+
         .favourites-space {
             width: 2%;
         }

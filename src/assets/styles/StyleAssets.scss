@@ -22,6 +22,27 @@ $mainFont: 'Nunito', sans-serif; //'Ubuntu', sans-serif;
 $contentFont: 'Work Sans', sans-serif;
 $nameAndButtonFont: 'Inter', sans-serif;
 
+//css transitions smooth opacity
+@mixin smoothOpacity {
+    .display-enter {
+        opacity: 0;
+    }
+
+    .display-enter-active {
+        opacity: 1;
+        transition: opacity 200ms;
+    }
+
+    .display-exit {
+        opacity: 1;
+    }
+
+    .display-exit-active {
+        opacity: 0;
+        transition: opacity 200ms;
+    }
+}
+
 //nav style used in login/signup modals
 @mixin NavActive {
     background-color: transparent;
