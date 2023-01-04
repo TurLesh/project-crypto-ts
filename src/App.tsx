@@ -9,15 +9,21 @@ import Exchanges from './pages/exchanges/ExchangesPage';
 import Learn from './pages/learn/LearnPage';
 import News from './pages/news/NewsPage';
 import ThemeProvider from './providers/ThemeProvider';
+import { listOfPaths } from './configs/listOfPaths';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
 
     useEffect(() => {
+        const arrayOfPaths = Object.values(listOfPaths);
         const splitedPath = window.location.pathname.split('/');
         const languageFromUrl = splitedPath[1];
         if (!i18n.languages.includes(languageFromUrl)) {
-            window.location.replace(`/${i18n.language}`);
+            if (arrayOfPaths.includes(languageFromUrl)) {
+                window.location.replace(`/${i18n.language}${window.location.pathname}`);
+            } else {
+                window.location.replace(`/${i18n.language}`);
+            }
         }
     });
 
