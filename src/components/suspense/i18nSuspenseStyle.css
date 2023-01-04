@@ -1,0 +1,49 @@
+.i18n-suspense-wrapper {
+  background-color: #2a2c3b;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1100;
+}
+.i18n-suspense-wrapper .spiner-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1100;
+}
+.i18n-suspense-wrapper .spiner-container .lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.i18n-suspense-wrapper .spiner-container .lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #e26411;
+  border-color: #e26411 transparent #e26411 transparent;
+  -webkit-animation: lds-dual-ring 1.2s linear infinite;
+          animation: lds-dual-ring 1.2s linear infinite;
+}
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=i18nSuspenseStyle.css.map */

@@ -34,7 +34,7 @@ i18n.use(initReactI18next)
             loadPath: '/locales/{{lng}}/translation.json'
         },
         react: {
-            useSuspense: false
+            useSuspense: true
         },
         supportedLngs: ['en', 'pl', 'ua', 'ru'],
         fallbackLng: 'en'

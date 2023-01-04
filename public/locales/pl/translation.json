@@ -39,7 +39,7 @@
                 "market-cap-help-panel-1": "Całkowita wartość rynkowa krążącej podaży kryptowaluty. Jest to analogiczne do kapitalizacji w wolnym obrocie na giełdzie.",
                 "market-cap-help-panel-2": "Kapitalizacja rynkowa = Aktualna cena x Podaż w obiegu."
             },
-            "volume-24h-info": "Głośność(24g)",
+            "volume-24h-info": "Głośność(24god)",
             "volume-24h-help-panel": {
                 "volume-24h-help-panel-1": "Wyświetla kwotę kryptowaluty będącej przedmiotem obrotu w ciągu ostatnich 24 godzin."
             }
