@@ -9,7 +9,9 @@ const CryptocurrencyListInfo = () => {
     const [isHoveringMarketCapInfoIcon, setIsHoveringMarketCapInfoIcon] = useState(false);
     const [isHoveringVolume24hInfoIcon, setIsHoveringVolume24hInfoIcon] = useState(false);
 
-    const { t } = useTranslation();
+    const { i18n, t } = useTranslation();
+
+    const lang = i18n.language;
 
     //favourites info icon handlers
     const favouritesInfoIconOnMouseOverHandler = () => {
@@ -38,10 +40,14 @@ const CryptocurrencyListInfo = () => {
         setIsHoveringVolume24hInfoIcon(false);
     };
 
+    const favouritesHelpPanelClassName = `favourites-help-panel favourites-help-panel-${lang}`;
+    const marketCapHelpPanelClassName = `market-cap-help-panel market-cap-help-panel-${lang}`;
+    const volume24hHelpPanelClassName = `volume-24h-help-panel volume-24h-help-panel-${lang}`;
+
     return (
         <div className="list-info-wrapper">
             <CSSTransition in={isHoveringFavouritesInfoIcon} timeout={200} classNames="display" unmountOnExit>
-                <div className="favourites-help-panel">
+                <div className={favouritesHelpPanelClassName}>
                     <div className="favourites-help-panel-container">
                         <div className="favourites-help-panel-text">{t('cryptocurrency-info-panel.favourites-help-panel.favourites-help-panel-text-1')}</div>
                         <div className="favourites-help-panel-text">{t('cryptocurrency-info-panel.favourites-help-panel.favourites-help-panel-text-2')}</div>
@@ -64,7 +70,7 @@ const CryptocurrencyListInfo = () => {
             <div className="market-info-wrapper">
                 <div className="market-cap-info market-info-item">
                     <CSSTransition in={isHoveringMarketCapInfoIcon} timeout={200} classNames="display" unmountOnExit>
-                        <div className="market-cap-help-panel">
+                        <div className={marketCapHelpPanelClassName}>
                             <div className="market-cap-help-panel-container">
                                 <div className="market-cap-help-panel-text">{t('cryptocurrency-info-panel.market-info.market-cap-help-panel.market-cap-help-panel-1')}</div>
                                 <div className="market-cap-help-panel-text">{t('cryptocurrency-info-panel.market-info.market-cap-help-panel.market-cap-help-panel-2')}</div>
@@ -77,7 +83,7 @@ const CryptocurrencyListInfo = () => {
                 </div>
                 <div className="volume-24h-info market-info-item">
                     <CSSTransition in={isHoveringVolume24hInfoIcon} timeout={200} classNames="display" unmountOnExit>
-                        <div className="volume-24h-help-panel">
+                        <div className={volume24hHelpPanelClassName}>
                             <div className="volume-24h-help-panel-container">
                                 <div className="volume-24h-help-panel-text">{t('cryptocurrency-info-panel.market-info.volume-24h-help-panel.volume-24h-help-panel-1')}</div>
                             </div>

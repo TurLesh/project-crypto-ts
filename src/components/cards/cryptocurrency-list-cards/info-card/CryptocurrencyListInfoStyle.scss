@@ -45,6 +45,10 @@
         }
     }
 
+    // .favourites-help-panel-ru{
+
+    // }
+
     .favourites-space {
         width: 3%;
         display: flex;
@@ -123,6 +127,26 @@
                     bottom: -3px;
                 }
             }
+
+            .market-cap-help-panel-ru {
+                margin-bottom: 116px !important;
+                .market-cap-help-panel-container {
+                    width: 505px !important;
+                }
+            }
+
+            .market-cap-help-panel-ua {
+                margin-bottom: 116px !important;
+                .market-cap-help-panel-container {
+                    width: 445px !important;
+                }
+            }
+
+            .market-cap-help-panel-pl {
+                .market-cap-help-panel-container {
+                    width: 401px !important;
+                }
+            }
         }
 
         .volume-24h-info {
@@ -157,6 +181,25 @@
                     position: absolute;
                     right: 4px;
                     bottom: -3px;
+                }
+            }
+
+            .volume-24h-help-panel-ru {
+                .volume-24h-help-panel-container {
+                    width: 256px !important;
+                }
+            }
+
+            .volume-24h-help-panel-ua {
+                .volume-24h-help-panel-container {
+                    width: 309px !important;
+                }
+            }
+
+            .volume-24h-help-panel-pl {
+                margin-bottom: 112px !important;
+                .volume-24h-help-panel-container {
+                    width: 222px !important;
                 }
             }
         }

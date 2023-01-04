@@ -15,7 +15,7 @@ const CryptocurrencyPage: FC = () => {
         setCoinListData(coinListDataGet);
     }
 
-    console.log(coinListData);
+    // console.log(coinListData);
 
     return (
         <div className="cryptocurrency-page-wrapper">

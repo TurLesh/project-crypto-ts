@@ -117,6 +117,21 @@
   right: 4px;
   bottom: -3px;
 }
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel-ru {
+  margin-bottom: 116px !important;
+}
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel-ru .market-cap-help-panel-container {
+  width: 505px !important;
+}
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel-ua {
+  margin-bottom: 116px !important;
+}
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel-ua .market-cap-help-panel-container {
+  width: 445px !important;
+}
+.list-info-wrapper .market-info-wrapper .market-cap-info .market-cap-help-panel-pl .market-cap-help-panel-container {
+  width: 401px !important;
+}
 .list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel {
   position: absolute;
   margin-bottom: 96px;
@@ -146,6 +161,18 @@
   position: absolute;
   right: 4px;
   bottom: -3px;
+}
+.list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel-ru .volume-24h-help-panel-container {
+  width: 256px !important;
+}
+.list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel-ua .volume-24h-help-panel-container {
+  width: 309px !important;
+}
+.list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel-pl {
+  margin-bottom: 112px !important;
+}
+.list-info-wrapper .market-info-wrapper .volume-24h-info .volume-24h-help-panel-pl .volume-24h-help-panel-container {
+  width: 222px !important;
 }
 .list-info-wrapper .market-info-wrapper .market-info-item {
   width: 50%;

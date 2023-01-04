@@ -28,8 +28,8 @@
         "name-info": "Nazwa",
         "price-info": "Cena",
         "change-percentage-info": {
-            "1h-info": "1g%",
-            "24h-info": "24g%",
+            "1h-info": "1god%",
+            "24h-info": "24god%",
             "7d-info": "7d%",
             "30d-info": "30d%"
         },
