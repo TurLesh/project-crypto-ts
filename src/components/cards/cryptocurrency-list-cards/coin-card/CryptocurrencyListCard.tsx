@@ -25,6 +25,7 @@ type CoinListDataType = {
     marketCap: string;
     volume24h: string;
     coinHistory7dData: number[];
+    activeCurrency: string;
 };
 
 const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
@@ -44,7 +45,8 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
         priceChangePercentage7d,
         isChange30dRising,
         priceChangePercentage30d,
-        coinHistory7dData
+        coinHistory7dData,
+        activeCurrency
     } = props;
     const [isStarActive, setIsStartActive] = useState(false);
 
@@ -83,6 +85,29 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
         }
     ];
 
+    //refactoring
+    const getCurrencyPrefix = (activeCurrency: string) => {
+        switch (activeCurrency) {
+            case 'usd':
+                const currencyPrefixUSD = '$';
+                return currencyPrefixUSD;
+            case 'eur':
+                const currencyPrefixEUR = '€';
+                return currencyPrefixEUR;
+            case 'uah':
+                const currencyPrefixUAH = '₴';
+                return currencyPrefixUAH;
+            case 'pln':
+                const currencyPrefixPLN = 'zł';
+                return currencyPrefixPLN;
+            default:
+                const currencyPrefixDefault = '$';
+                return currencyPrefixDefault;
+        }
+    };
+
+    const currencyPrefix = getCurrencyPrefix(activeCurrency);
+
     return (
         <div className="cryptocurrency-list-card-wrapper">
             <div className="star-container" onClick={starClickHandler}>
@@ -96,7 +121,10 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
                 <div className="name-text">{name}</div>
                 <div className="symbol-text">{symbol}</div>
             </div>
-            <div className="current-price">${currentPrice}</div>
+            <div className="current-price">
+                {currencyPrefix}
+                {currentPrice}
+            </div>
             <div className="price-change-percentage-wrapper">
                 <div className="price-change-container">
                     <div className="rising-arrow-container">{activeArrow1h}</div>
@@ -116,8 +144,14 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
                 </div>
             </div>
             <div className="market-info-wrapper">
-                <div className="market-cap market-info-item">${marketCap}</div>
-                <div className="volume-24h market-info-item">${volume24h}</div>
+                <div className="market-cap market-info-item">
+                    {currencyPrefix}
+                    {marketCap}
+                </div>
+                <div className="volume-24h market-info-item">
+                    {currencyPrefix}
+                    {volume24h}
+                </div>
             </div>
             <div className="chart-container">
                 <ReactApexCharts series={series} width={200} height={80} options={listChartOptions} />

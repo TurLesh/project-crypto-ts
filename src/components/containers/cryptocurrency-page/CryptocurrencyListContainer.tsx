@@ -62,6 +62,18 @@ const CryptocurrencyListContainer: FC<ICoinList> = (props) => {
         const priceChangePercentage30dNumber = Math.abs(item.price_change_percentage_30d_in_currency);
         const priceChangePercentage30dRounded = priceChangePercentage30dNumber.toFixed(2);
 
+        const getActiveCurrency = () => {
+            const activeCurrencyGet = localStorage.getItem('activeCurrency');
+
+            if (activeCurrencyGet) {
+                const activeCurrency: string = activeCurrencyGet;
+                return activeCurrency;
+            } else {
+                const activeCurrency = 'usd';
+                return activeCurrency;
+            }
+        };
+
         return (
             <CryptocurrencyListCard
                 key={item.id}
@@ -81,6 +93,7 @@ const CryptocurrencyListContainer: FC<ICoinList> = (props) => {
                 marketCap={marketCapWithSeparatop}
                 volume24h={volume24hWithSeparator}
                 coinHistory7dData={item.sparkline_in_7d.price}
+                activeCurrency={getActiveCurrency()}
             />
         );
     });

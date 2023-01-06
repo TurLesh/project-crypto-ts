@@ -34,6 +34,20 @@
   width: 16px;
   height: 16px;
 }
+.currency-dd-wrapper .display-enter {
+  opacity: 0;
+}
+.currency-dd-wrapper .display-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.currency-dd-wrapper .display-exit {
+  opacity: 1;
+}
+.currency-dd-wrapper .display-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
 .currency-dd-wrapper .currency-dd-panel-wrapper {
   position: absolute;
 }

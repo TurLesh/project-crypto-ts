@@ -2,6 +2,7 @@ import { FC, useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import { languageConfigs } from '../../../configs/ddConfigs';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './LanguageDropDownStyle.css';
@@ -14,29 +15,10 @@ type LanguageListType = {
 const LanguageDropDown: FC = () => {
     const [isLanguageExpanded, setIsLanguageExpanded] = useState(false);
     const languageDropDownRef = useRef<HTMLDivElement>(null);
+    const languageList: LanguageListType[] = languageConfigs;
 
     const navigate = useNavigate();
-
     const { i18n } = useTranslation();
-
-    const languageList: LanguageListType[] = [
-        {
-            code: 'en', //refactoring
-            name: 'ENG'
-        },
-        {
-            code: 'ua',
-            name: 'UKR'
-        },
-        {
-            code: 'pl',
-            name: 'POL'
-        },
-        {
-            code: 'ru',
-            name: 'RUS'
-        }
-    ];
 
     const findNameByCode = (code: string) => {
         return Object.values(languageList).find((obj) => obj.code === code)?.name;
@@ -52,7 +34,6 @@ const LanguageDropDown: FC = () => {
         const currentLocation = window.location.pathname;
         const slicedLocation = currentLocation.slice(4);
         navigate(`/${lang}/${slicedLocation}`);
-        //continue here
     };
 
     useEffect(() => {

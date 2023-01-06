@@ -38,6 +38,8 @@
         }
     }
 
+    @include smoothOpacity();
+
     .currency-dd-panel-wrapper {
         position: absolute;
 

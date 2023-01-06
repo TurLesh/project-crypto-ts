@@ -1,20 +1,30 @@
 import { FC, useState, useRef, useEffect } from 'react';
-import AvailableOptions from '../../../data/available-options.json';
+import { CSSTransition } from 'react-transition-group';
+import { currencyConfigs } from '../../../configs/ddConfigs';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './CurrencyDropDownStyle.css';
 
-type CurrencyDropDownOptionsType = {
-    id: string;
-    symbol: string;
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../services/store';
+import { CHANGE_ACTIVE_CURRENCY } from '../../../services/store/currencyReducer';
+
+type CurrencyListType = {
+    code: string;
     name: string;
-    isAvailable: boolean;
-    isActive: boolean;
 };
 
 const CurrencyDropDown: FC = () => {
     const [isCurrencyExpanded, setIsCurrencyExpanded] = useState(false);
+
     const currencyDropDownRef = useRef<HTMLDivElement>(null);
+
+    const currencyList: CurrencyListType[] = currencyConfigs;
+    const activeCurrency = localStorage.getItem('activeCurrency');
+
+    const findNameByCode = (code: string) => {
+        return Object.values(currencyList).find((obj) => obj.code === code)?.name;
+    };
 
     const currencyDropDownOnClickHandler = () => {
         setIsCurrencyExpanded((current) => !current);
@@ -34,14 +44,24 @@ const CurrencyDropDown: FC = () => {
         }
     }, [isCurrencyExpanded]);
 
-    const currencyData: CurrencyDropDownOptionsType[] = AvailableOptions.AvailibleCurrencies;
+    const dispatch: AppDispatch = useDispatch();
 
-    const currencyPannelMapFunc = currencyData.map(({ isAvailable, isActive, id, symbol }) => {
+    const changeCurrencyHandler = (currency: string) => {
+        localStorage.setItem('activeCurrency', currency);
+        setIsCurrencyExpanded((current) => !current);
+
+        //set value to storage
+        dispatch({ type: CHANGE_ACTIVE_CURRENCY, payload: currency });
+    };
+
+    const currencyItemMap = currencyList.map(({ code, name }) => {
         return (
-            <div key={id}>
-                {isActive === false && (
+            <div key={code}>
+                {activeCurrency !== code && (
                     <div className="currency-dd-panel-tile">
-                        <button className="currency-dd-panel-btn">{isAvailable && <p className="currency-dd-panel-btn-text">{symbol}</p>}</button>
+                        <button onClick={() => changeCurrencyHandler(code)} className="currency-dd-panel-btn">
+                            <p className="currency-dd-panel-btn-text">{name}</p>
+                        </button>
                     </div>
                 )}
             </div>
@@ -52,16 +72,16 @@ const CurrencyDropDown: FC = () => {
         <div ref={currencyDropDownRef} className="currency-dd-wrapper">
             <button onClick={currencyDropDownOnClickHandler} className="currency-button-body">
                 <div className="currency-text-container">
-                    <p className="currency-text">USD</p>
+                    <p className="currency-text">{activeCurrency ? findNameByCode(activeCurrency) : 'ERR'}</p>
                 </div>
                 <div className="currency-arrow-cointainer">{isCurrencyExpanded ? <ArrowDropUpIcon className="currency-arrow-expand" /> : <ArrowDropDownIcon className="currency-arrow-expand" />}</div>
             </button>
-            {isCurrencyExpanded && (
+            <CSSTransition in={isCurrencyExpanded} timeout={200} classNames="display" unmountOnExit>
                 <div className="currency-dd-panel-wrapper">
                     <div className="currency-dd-panel-triangle" />
-                    <div className="currency-dd-panel-container">{currencyPannelMapFunc}</div>
+                    <div className="currency-dd-panel-container">{currencyItemMap}</div>
                 </div>
-            )}
+            </CSSTransition>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { listOfPaths } from './configs/listOfPaths';
 import Layout from './components/layout/Layout';
 import Analytics from './pages/analytics/AnalyticsPage';
 import CryptocurrencyPage from './pages/cryptocurrency/CryptocurrencyPage';
@@ -9,7 +10,6 @@ import Exchanges from './pages/exchanges/ExchangesPage';
 import Learn from './pages/learn/LearnPage';
 import News from './pages/news/NewsPage';
 import ThemeProvider from './providers/ThemeProvider';
-import { listOfPaths } from './configs/listOfPaths';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -25,6 +25,11 @@ const App: FC = () => {
                 window.location.replace(`/${i18n.language}`);
             }
         }
+
+        const activeCurrency = localStorage.getItem('activeCurrency');
+        if (!activeCurrency) {
+            localStorage.setItem('activeCurrency', 'usd');
+        }
     });
 
     return (
@@ -33,15 +38,15 @@ const App: FC = () => {
                 <Layout>
                     <Routes>
                         {/* startpoint redirects */}
-                        <Route path={`/${i18n.language}`} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
-                        <Route path={`/${i18n.language}/`} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
-                        <Route path={`/${i18n.language}/home`} element={<Navigate to={`/${i18n.language}/cryptocurrency`} />} />
+                        <Route path={`/${i18n.language}`} element={<Navigate to={`/${i18n.language}/${listOfPaths.cryptocurrencyPath}`} />} />
+                        <Route path={`/${i18n.language}/`} element={<Navigate to={`/${i18n.language}/${listOfPaths.cryptocurrencyPath}`} />} />
+                        <Route path={`/${i18n.language}/home`} element={<Navigate to={`/${i18n.language}/${listOfPaths.cryptocurrencyPath}`} />} />
                         {/* endpoint routes */}
-                        <Route path="/:param/cryptocurrency" element={<CryptocurrencyPage />} />
-                        <Route path="/:param/exchanges" element={<Exchanges />} />
-                        <Route path="/:param/analytics" element={<Analytics />} />
-                        <Route path="/:param/news" element={<News />} />
-                        <Route path="/:param/learn" element={<Learn />} />
+                        <Route path={`/:param/${listOfPaths.cryptocurrencyPath}`} element={<CryptocurrencyPage />} />
+                        <Route path={`/:param/${listOfPaths.exchangesPath}`} element={<Exchanges />} />
+                        <Route path={`/:param/${listOfPaths.analyticsPath}`} element={<Analytics />} />
+                        <Route path={`/:param/${listOfPaths.newsPath}`} element={<News />} />
+                        <Route path={`/:param/${listOfPaths.learnPath}`} element={<Learn />} />
                         <Route path="*" element={<Error />} />
                     </Routes>
                 </Layout>

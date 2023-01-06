@@ -16,11 +16,23 @@ type CryptocurrencySliderCardDataType = {
     isChange30dRising: boolean;
     priceChangePercentage30d: string;
     priceHistory7dData: number[];
+    activeCurrency: string;
 };
 
 const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) => {
-    const { symbol, currentPrice, priceChangePercentage24h, priceChangePercentage7d, priceChangePercentage30d, isChange24hRising, isChange7dRising, isChange30dRising, name, priceHistory7dData } =
-        props;
+    const {
+        symbol,
+        currentPrice,
+        priceChangePercentage24h,
+        priceChangePercentage7d,
+        priceChangePercentage30d,
+        isChange24hRising,
+        isChange7dRising,
+        isChange30dRising,
+        name,
+        priceHistory7dData,
+        activeCurrency
+    } = props;
 
     const priceChangeUp = isChange24hRising;
     const colorTernar: string = priceChangeUp === true ? '#0d9b44' : '#fb3131';
@@ -34,6 +46,29 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
         }
     ];
 
+    //refactoring
+    const getCurrencyPrefix = (activeCurrency: string) => {
+        switch (activeCurrency) {
+            case 'usd':
+                const currencyPrefixUSD = '$';
+                return currencyPrefixUSD;
+            case 'eur':
+                const currencyPrefixEUR = '€';
+                return currencyPrefixEUR;
+            case 'uah':
+                const currencyPrefixUAH = '₴';
+                return currencyPrefixUAH;
+            case 'pln':
+                const currencyPrefixPLN = 'zł';
+                return currencyPrefixPLN;
+            default:
+                const currencyPrefixDefault = '$';
+                return currencyPrefixDefault;
+        }
+    };
+
+    const currencyPrefix = getCurrencyPrefix(activeCurrency);
+
     return (
         <div className="currency-card-body">
             <div className="card-top-container">
@@ -42,7 +77,10 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
                         <p className="currency-info">{symbol}</p>
                     </div>
                     <div className="currency-info-container">
-                        <p className="currency-info">{currentPrice}</p>
+                        <p className="currency-info">
+                            {currencyPrefix}
+                            {currentPrice}
+                        </p>
                     </div>
                 </div>
                 <div className="card-chart-container">
