@@ -38,6 +38,11 @@
         }
     }
 
+    .currency-button-body:hover {
+        transform: scale(1.1);
+        transition-duration: 0.2s;
+    }
+
     @include smoothOpacity();
 
     .currency-dd-panel-wrapper {
@@ -81,6 +86,14 @@
                         margin: 0px;
                     }
                 }
+
+                .currency-dd-panel-btn:hover {
+                    .currency-dd-panel-btn-text {
+                        color: $accentColor;
+                        transform: scale(1.1);
+                        transition-duration: 0.2s;
+                    }
+                }
             }
         }
     }
@@ -122,6 +135,12 @@
 
                     .currency-dd-panel-btn-text {
                         color: $mainColor;
+                    }
+                }
+
+                .currency-dd-panel-btn:hover {
+                    .currency-dd-panel-btn-text {
+                        color: $accentColorDark;
                     }
                 }
             }

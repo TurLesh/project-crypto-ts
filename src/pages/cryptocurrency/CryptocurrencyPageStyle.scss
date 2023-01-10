@@ -34,6 +34,11 @@
         margin-top: 20px;
         background-color: $mainColor;
         border-radius: 10px;
+
+        .cryptocurrency-list-info-container {
+            position: sticky;
+            top: 0px;
+        }
     }
 }
 

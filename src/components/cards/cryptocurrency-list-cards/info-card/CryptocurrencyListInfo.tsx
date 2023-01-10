@@ -46,18 +46,18 @@ const CryptocurrencyListInfo = () => {
 
     return (
         <div className="list-info-wrapper">
+            <div className="favourites-space">
+                <InfoOutlinedIcon className="info-help-icon" onMouseOver={favouritesInfoIconOnMouseOverHandler} onMouseOut={favouritesInfoIconOnMouseOutHandler} />
+            </div>
             <CSSTransition in={isHoveringFavouritesInfoIcon} timeout={200} classNames="display" unmountOnExit>
                 <div className={favouritesHelpPanelClassName}>
+                    <div className="favourites-help-panel-triangle" />
                     <div className="favourites-help-panel-container">
                         <div className="favourites-help-panel-text">{t('cryptocurrency-info-panel.favourites-help-panel.favourites-help-panel-text-1')}</div>
                         <div className="favourites-help-panel-text">{t('cryptocurrency-info-panel.favourites-help-panel.favourites-help-panel-text-2')}</div>
                     </div>
-                    <div className="favourites-help-panel-triangle" />
                 </div>
             </CSSTransition>
-            <div className="favourites-space">
-                <InfoOutlinedIcon className="info-help-icon" onMouseOver={favouritesInfoIconOnMouseOverHandler} onMouseOut={favouritesInfoIconOnMouseOutHandler} />
-            </div>
             <div className="numeration-info">#</div>
             <div className="name-info">{t('cryptocurrency-info-panel.name-info')}</div>
             <div className="price-info">{t('cryptocurrency-info-panel.price-info')}</div>
@@ -69,29 +69,29 @@ const CryptocurrencyListInfo = () => {
             </div>
             <div className="market-info-wrapper">
                 <div className="market-cap-info market-info-item">
+                    {t('cryptocurrency-info-panel.market-info.market-cap-info')}
+                    <InfoOutlinedIcon className="info-help-icon" onMouseOver={marketCapInfoIconOnMouseOverHandler} onMouseOut={marketCapInfoIconOnMouseOutHandler} />
                     <CSSTransition in={isHoveringMarketCapInfoIcon} timeout={200} classNames="display" unmountOnExit>
                         <div className={marketCapHelpPanelClassName}>
+                            <div className="market-cap-help-panel-triangle" />
                             <div className="market-cap-help-panel-container">
                                 <div className="market-cap-help-panel-text">{t('cryptocurrency-info-panel.market-info.market-cap-help-panel.market-cap-help-panel-1')}</div>
                                 <div className="market-cap-help-panel-text">{t('cryptocurrency-info-panel.market-info.market-cap-help-panel.market-cap-help-panel-2')}</div>
                             </div>
-                            <div className="market-cap-help-panel-triangle" />
                         </div>
                     </CSSTransition>
-                    {t('cryptocurrency-info-panel.market-info.market-cap-info')}
-                    <InfoOutlinedIcon className="info-help-icon" onMouseOver={marketCapInfoIconOnMouseOverHandler} onMouseOut={marketCapInfoIconOnMouseOutHandler} />
                 </div>
                 <div className="volume-24h-info market-info-item">
+                    {t('cryptocurrency-info-panel.market-info.volume-24h-info')}
+                    <InfoOutlinedIcon className="info-help-icon" onMouseOver={volume24hInfoIconOnMouseOverHandler} onMouseOut={volume24hInfoIconOnMouseOutHandler} />
                     <CSSTransition in={isHoveringVolume24hInfoIcon} timeout={200} classNames="display" unmountOnExit>
                         <div className={volume24hHelpPanelClassName}>
+                            <div className="volume-24h-help-panel-triangle" />
                             <div className="volume-24h-help-panel-container">
                                 <div className="volume-24h-help-panel-text">{t('cryptocurrency-info-panel.market-info.volume-24h-help-panel.volume-24h-help-panel-1')}</div>
                             </div>
-                            <div className="volume-24h-help-panel-triangle" />
                         </div>
                     </CSSTransition>
-                    {t('cryptocurrency-info-panel.market-info.volume-24h-info')}
-                    <InfoOutlinedIcon className="info-help-icon" onMouseOver={volume24hInfoIconOnMouseOverHandler} onMouseOut={volume24hInfoIconOnMouseOutHandler} />
                 </div>
             </div>
             <div className="chart-info">{t('cryptocurrency-info-panel.chart-info')}</div>

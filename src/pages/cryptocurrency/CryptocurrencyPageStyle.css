@@ -29,6 +29,11 @@
   background-color: aliceblue;
   border-radius: 10px;
 }
+.cryptocurrency-page-wrapper .content-wrapper .cryptocurrency-list-info-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+}
 
 .dark .cryptocurrency-page-wrapper .slider-wrapper {
   background-color: #2a2c3b;

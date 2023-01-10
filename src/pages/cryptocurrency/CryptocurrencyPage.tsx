@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import { ICoinListData } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
-import { getCoinListDataUSD, getCoinListDataEUR, getCoinListDataUAH, getCoinListDataPLN } from '../../services/requests/GetCoinListData';
+import { getCoinListData } from '../../services/requests/GetCoinListData';
 import CryptocurrencySliderContainer from '../../components/containers/cryptocurrency-page/CryptocurrencySliderContainer';
 import CryptocurrencyListFilters from '../../components/cards/cryptocurrency-list-filters/CryptocurrencyListFilters';
 import CryptocurrencyListInfo from '../../components/cards/cryptocurrency-list-cards/info-card/CryptocurrencyListInfo';
@@ -35,25 +35,10 @@ const CryptocurrencyPage: FC = () => {
         setActiveCurrency(activeCurrencyState);
     }
 
-    // get data by active currency value
+    //get data by active currency value
     const getDataByCurrency = async (activeCurrency: string) => {
-        switch (activeCurrency) {
-            case 'usd':
-                const coinListDataGetUSD = await getCoinListDataUSD();
-                return Promise.resolve(coinListDataGetUSD);
-            case 'eur':
-                const coinListDataGetEUR = await getCoinListDataEUR();
-                return Promise.resolve(coinListDataGetEUR);
-            case 'uah':
-                const coinListDataGetUAH = await getCoinListDataUAH();
-                return Promise.resolve(coinListDataGetUAH);
-            case 'pln':
-                const coinListDataGetPLN = await getCoinListDataPLN();
-                return Promise.resolve(coinListDataGetPLN);
-            default:
-                const coinListDataGetDefault = getCoinListDataUSD();
-                return Promise.resolve(coinListDataGetDefault);
-        }
+        const coinListDataGet = getCoinListData(activeCurrency);
+        return Promise.resolve(coinListDataGet);
     };
 
     return (
@@ -67,8 +52,12 @@ const CryptocurrencyPage: FC = () => {
                 <CryptocurrencyListFilters />
             </div>
             <div className="content-wrapper">
-                <CryptocurrencyListInfo />
-                <CryptocurrencyListContainer coinListData={coinListData} />
+                <div className="cryptocurrency-list-info-container">
+                    <CryptocurrencyListInfo />
+                </div>
+                <div className="cryptocurrency-list-container">
+                    <CryptocurrencyListContainer coinListData={coinListData} />
+                </div>
             </div>
         </div>
     );
