@@ -27,7 +27,7 @@
 
     .favourites-help-panel {
         position: absolute;
-        margin-top: 100px; //110px
+        margin-top: 89px; //100px
 
         .favourites-help-panel-triangle {
             width: 6px;
@@ -37,6 +37,7 @@
             border-left: 1px solid black;
             border-top: 1px solid black;
             position: absolute;
+            left: 19px;
             top: 2.5px;
         }
 
@@ -55,6 +56,14 @@
                 font-size: 14px;
             }
         }
+    }
+
+    .favourites-help-panel-ru {
+        margin-top: 90px !important;
+    }
+
+    .favourites-help-panel-ua {
+        margin-top: 90px !important;
     }
 
     .numeration-info {
@@ -93,7 +102,7 @@
         .market-cap-info {
             .market-cap-help-panel {
                 position: absolute;
-                margin-top: 132px; //142px
+                margin-top: 120px; //132px
 
                 .market-cap-help-panel-triangle {
                     width: 6px;
@@ -126,14 +135,14 @@
             }
 
             .market-cap-help-panel-ru {
-                margin-top: 116px !important;
+                margin-top: 106px !important; //116px
                 .market-cap-help-panel-container {
                     width: 505px !important;
                 }
             }
 
             .market-cap-help-panel-ua {
-                margin-top: 116px !important;
+                margin-top: 106px !important; //116px
                 .market-cap-help-panel-container {
                     width: 445px !important;
                 }
@@ -149,7 +158,7 @@
         .volume-24h-info {
             .volume-24h-help-panel {
                 position: absolute;
-                margin-top: 96px;
+                margin-top: 84px; //96px
 
                 .volume-24h-help-panel-triangle {
                     width: 6px;
@@ -182,19 +191,21 @@
             }
 
             .volume-24h-help-panel-ru {
+                margin-top: 86px; //96px
                 .volume-24h-help-panel-container {
                     width: 256px !important;
                 }
             }
 
             .volume-24h-help-panel-ua {
+                margin-top: 86px; //96px
                 .volume-24h-help-panel-container {
                     width: 309px !important;
                 }
             }
 
             .volume-24h-help-panel-pl {
-                margin-top: 112px !important;
+                margin-top: 100px !important; //112px
                 .volume-24h-help-panel-container {
                     width: 222px !important;
                 }

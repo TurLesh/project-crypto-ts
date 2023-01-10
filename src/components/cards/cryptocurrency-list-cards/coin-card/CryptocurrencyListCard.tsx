@@ -154,7 +154,7 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
                 </div>
             </div>
             <div className="chart-container">
-                <ReactApexCharts series={series} width={200} height={80} options={listChartOptions} />
+                <ReactApexCharts series={series} width={200} height={80} options={listChartOptions} className="zalupa-chart" />
             </div>
             <div className="more-icon-container">
                 <MoreVertIcon />
