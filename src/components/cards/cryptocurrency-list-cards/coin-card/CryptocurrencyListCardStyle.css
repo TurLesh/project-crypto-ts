@@ -55,7 +55,7 @@
 .cryptocurrency-list-card-wrapper .price-change-percentage-wrapper .price-change-container {
   display: flex;
   width: 25%;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .cryptocurrency-list-card-wrapper .price-change-percentage-wrapper .price-change-container .rising-arrow-container .rising-arrow {
   font-size: 16px;

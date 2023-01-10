@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useTranslation } from 'react-i18next';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -12,6 +12,8 @@ const CryptocurrencyListInfo = () => {
     const { i18n, t } = useTranslation();
 
     const lang = i18n.language;
+
+    const nodeRef = useRef(null);
 
     //favourites info icon handlers
     const favouritesInfoIconOnMouseOverHandler = () => {
@@ -49,8 +51,8 @@ const CryptocurrencyListInfo = () => {
             <div className="favourites-space">
                 <InfoOutlinedIcon className="info-help-icon" onMouseOver={favouritesInfoIconOnMouseOverHandler} onMouseOut={favouritesInfoIconOnMouseOutHandler} />
             </div>
-            <CSSTransition in={isHoveringFavouritesInfoIcon} timeout={200} classNames="display" unmountOnExit>
-                <div className={favouritesHelpPanelClassName}>
+            <CSSTransition nodeRef={nodeRef} in={isHoveringFavouritesInfoIcon} timeout={200} classNames="display" unmountOnExit>
+                <div ref={nodeRef} className={favouritesHelpPanelClassName}>
                     <div className="favourites-help-panel-triangle" />
                     <div className="favourites-help-panel-container">
                         <div className="favourites-help-panel-text">{t('cryptocurrency-info-panel.favourites-help-panel.favourites-help-panel-text-1')}</div>
@@ -71,8 +73,8 @@ const CryptocurrencyListInfo = () => {
                 <div className="market-cap-info market-info-item">
                     {t('cryptocurrency-info-panel.market-info.market-cap-info')}
                     <InfoOutlinedIcon className="info-help-icon" onMouseOver={marketCapInfoIconOnMouseOverHandler} onMouseOut={marketCapInfoIconOnMouseOutHandler} />
-                    <CSSTransition in={isHoveringMarketCapInfoIcon} timeout={200} classNames="display" unmountOnExit>
-                        <div className={marketCapHelpPanelClassName}>
+                    <CSSTransition nodeRef={nodeRef} in={isHoveringMarketCapInfoIcon} timeout={200} classNames="display" unmountOnExit>
+                        <div ref={nodeRef} className={marketCapHelpPanelClassName}>
                             <div className="market-cap-help-panel-triangle" />
                             <div className="market-cap-help-panel-container">
                                 <div className="market-cap-help-panel-text">{t('cryptocurrency-info-panel.market-info.market-cap-help-panel.market-cap-help-panel-1')}</div>
@@ -84,8 +86,8 @@ const CryptocurrencyListInfo = () => {
                 <div className="volume-24h-info market-info-item">
                     {t('cryptocurrency-info-panel.market-info.volume-24h-info')}
                     <InfoOutlinedIcon className="info-help-icon" onMouseOver={volume24hInfoIconOnMouseOverHandler} onMouseOut={volume24hInfoIconOnMouseOutHandler} />
-                    <CSSTransition in={isHoveringVolume24hInfoIcon} timeout={200} classNames="display" unmountOnExit>
-                        <div className={volume24hHelpPanelClassName}>
+                    <CSSTransition nodeRef={nodeRef} in={isHoveringVolume24hInfoIcon} timeout={200} classNames="display" unmountOnExit>
+                        <div ref={nodeRef} className={volume24hHelpPanelClassName}>
                             <div className="volume-24h-help-panel-triangle" />
                             <div className="volume-24h-help-panel-container">
                                 <div className="volume-24h-help-panel-text">{t('cryptocurrency-info-panel.market-info.volume-24h-help-panel.volume-24h-help-panel-1')}</div>

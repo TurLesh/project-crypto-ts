@@ -67,7 +67,7 @@
         .price-change-container {
             display: flex;
             width: 25%;
-            justify-content: end;
+            justify-content: flex-end;
 
             .rising-arrow-container {
                 .rising-arrow {
@@ -102,12 +102,6 @@
             width: 50%;
         }
     }
-
-    // .chart-container {
-    //     .zalupa-chart {
-
-    //     }
-    // }
 
     .more-icon-container {
         cursor: pointer;
