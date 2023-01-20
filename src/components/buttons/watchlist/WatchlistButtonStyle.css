@@ -1,0 +1,41 @@
+.watchlist-btn-wrapper {
+  display: flex;
+}
+.watchlist-btn-wrapper .watchlist-btn {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 3px 7px 3px 3px;
+  background-color: #f5d418;
+  border: none;
+}
+.watchlist-btn-wrapper .watchlist-btn .watchlist-star-icon-container {
+  display: flex;
+}
+.watchlist-btn-wrapper .watchlist-btn .watchlist-star-icon-container .watchlist-star-icon {
+  font-size: 16px;
+}
+.watchlist-btn-wrapper .watchlist-btn .watchlist-text {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.watchlist-btn-wrapper .watchlist-btn:hover {
+  color: #1058f5;
+  transform: scale(1.05);
+  transition-duration: 0.2s;
+}
+.watchlist-btn-wrapper .watchlist-btn:hover .watchlist-star-icon-container {
+  color: #f5d418 !important;
+}
+
+.dark .watchlist-btn-wrapper .watchlist-btn {
+  background-color: #2a2c3b;
+  color: aliceblue;
+  border: 1px solid aliceblue;
+}/*# sourceMappingURL=WatchlistButtonStyle.css.map */

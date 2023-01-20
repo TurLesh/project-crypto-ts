@@ -1,0 +1,114 @@
+.category-dd-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.category-dd-wrapper .category-dd-btn {
+  display: flex;
+  border: none;
+  background-color: #f5d418;
+  padding: 0px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 3px 5px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.category-dd-wrapper .category-dd-btn .category-dd-arrow {
+  font-size: 16px;
+}
+.category-dd-wrapper .category-dd-btn:hover {
+  color: #1058f5;
+  transform: scale(1.05);
+  transition-duration: 0.2s;
+}
+.category-dd-wrapper .display-enter {
+  opacity: 0;
+}
+.category-dd-wrapper .display-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.category-dd-wrapper .display-exit {
+  opacity: 1;
+}
+.category-dd-wrapper .display-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.category-dd-wrapper .category-dd-panel-wrapper {
+  z-index: 150;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 27px;
+}
+.category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-triangle {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #f5d418;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  position: absolute;
+  top: 2px;
+}
+.category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 0px 5px;
+  border-radius: 5px;
+  margin-top: 6px;
+  background-color: #f5d418;
+}
+.category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container .category-dd-panel-tile {
+  padding: 5px;
+}
+.category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container .category-dd-panel-tile .category-dd-panel-btn {
+  border: none;
+  background-color: #f5d418;
+  padding: 0px;
+  width: 100%;
+  cursor: pointer;
+}
+.category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container .category-dd-panel-tile .category-dd-panel-btn .category-dd-panel-btn-text {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0px;
+}
+.category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container .category-dd-panel-tile .category-dd-panel-btn:hover .category-dd-panel-btn-text {
+  color: #1058f5;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+
+.dark .category-dd-wrapper .category-dd-btn {
+  background-color: #2a2c3b;
+  color: aliceblue;
+  border: 1px solid aliceblue;
+}
+.dark .category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-triangle {
+  background-color: #2a2c3b;
+  border-left: 1px solid aliceblue;
+  border-top: 1px solid aliceblue;
+}
+.dark .category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container {
+  border: 1px solid aliceblue;
+  background-color: #2a2c3b;
+}
+.dark .category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container .category-dd-panel-tile .category-dd-panel-btn {
+  background-color: #2a2c3b;
+}
+.dark .category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container .category-dd-panel-tile .category-dd-panel-btn .category-dd-panel-btn-text {
+  color: aliceblue;
+}
+.dark .category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container .category-dd-panel-tile .category-dd-panel-btn:hover .category-dd-panel-btn-text {
+  color: #e26411;
+}/*# sourceMappingURL=CategoryDropDownStyle.css.map */

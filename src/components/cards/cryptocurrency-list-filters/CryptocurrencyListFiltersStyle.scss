@@ -3,31 +3,17 @@
 .filters-wrapper {
     display: flex;
     padding: 0px 5px;
-    font-family: $contentFont;
-    font-size: 16px;
+    font-family: $nameAndButtonFont;
+    font-size: 14px;
     font-weight: 500;
+    justify-content: space-between;
+    align-items: center;
 
-    .filter-watchlist {
+    .filters-right-panel {
         display: flex;
 
-        .watchlist-star-icon-container {
-            .watchlist-star-icon {
-                font-size: 16px;
-            }
-        }
-    }
-
-    .filter-show-rows-wrapper {
-        display: flex;
-
-        .show-rows-dd-wrapper {
-            display: flex;
-
-            .show-rows-dd-icon-container {
-                .show-rows-dd-icon {
-                    font-size: 16px;
-                }
-            }
+        .right-panel-item {
+            margin-left: 10px;
         }
     }
 }

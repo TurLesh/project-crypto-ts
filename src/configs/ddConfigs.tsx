@@ -35,3 +35,30 @@ export const currencyConfigs = [
         name: 'PLN'
     }
 ];
+
+export const showRowsConfigs = [20, 50, 100];
+
+export const chartTypeConfigs = ['line', 'candle'];
+
+export const categoryConfigs = [
+    {
+        category_id: 'charity',
+        name: 'Charity'
+    },
+    {
+        category_id: 'communication',
+        name: 'Communication'
+    },
+    {
+        category_id: 'collectibles',
+        name: 'Collectibles'
+    },
+    {
+        category_id: 'augmented-reality',
+        name: 'Augmented Reality'
+    },
+    {
+        category_id: 'gaming',
+        name: 'Gaming (GameFi)'
+    }
+];

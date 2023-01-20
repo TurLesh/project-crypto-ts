@@ -36,6 +36,7 @@ const LanguageDropDown: FC = () => {
         navigate(`/${lang}/${slicedLocation}`);
     };
 
+    // close dd on click out of dd panel
     useEffect(() => {
         if (isLanguageExpanded === true) {
             const handleClickOutside = (event: any) => {

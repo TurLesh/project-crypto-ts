@@ -1,0 +1,50 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.watchlist-btn-wrapper {
+    display: flex;
+
+    .watchlist-btn {
+        display: flex;
+        align-items: center;
+        padding: 0px;
+        border-radius: 5px;
+        @include JustifyCenter();
+        cursor: pointer;
+        padding: 3px 7px 3px 3px;
+        background-color: $accent2Color;
+        border: none;
+
+        .watchlist-star-icon-container {
+            display: flex;
+            .watchlist-star-icon {
+                font-size: 16px;
+            }
+        }
+
+        .watchlist-text {
+            font-size: 14px;
+            font-weight: 500;
+            font-family: $nameAndButtonFont;
+        }
+    }
+
+    .watchlist-btn:hover {
+        color: $accentColor;
+        transform: scale(1.05);
+        transition-duration: 0.2s;
+
+        .watchlist-star-icon-container {
+            color: $accent2Color !important;
+        }
+    }
+}
+
+.dark {
+    .watchlist-btn-wrapper {
+        .watchlist-btn {
+            background-color: $mainColorDark;
+            color: $mainColor;
+            border: 1px solid $mainColor;
+        }
+    }
+}
