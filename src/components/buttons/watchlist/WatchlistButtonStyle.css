@@ -30,9 +30,6 @@
   transform: scale(1.05);
   transition-duration: 0.2s;
 }
-.watchlist-btn-wrapper .watchlist-btn:hover .watchlist-star-icon-container {
-  color: #f5d418 !important;
-}
 
 .dark .watchlist-btn-wrapper .watchlist-btn {
   background-color: #2a2c3b;

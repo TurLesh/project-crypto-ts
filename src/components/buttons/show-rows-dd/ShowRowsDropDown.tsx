@@ -56,12 +56,14 @@ const ShowRowsDropDown: FC = () => {
     const showRowsArrow = isShowRowsExpanded ? <ArrowDropUpIcon className="show-rows-dd-arrow" /> : <ArrowDropDownIcon className="show-rows-dd-arrow" />;
 
     return (
-        <div className="show-rows-wrapper">
-            <div className="show-rows-text">Show rows:</div>
-            <button className="show-rows-dd-wrapper" onClick={expandShowRowsHandler}>
-                <div className="show-rows-dd-number">{selectedShowRows}</div>
-                <div className="show-rows-dd-arrow-container">{showRowsArrow}</div>
-            </button>
+        <div ref={showRowsDropDownRef} className="show-rows-wrapper">
+            <div className="show-rows-btn-wrapper">
+                <div className="show-rows-text">Show rows:</div>
+                <button className="show-rows-dd-wrapper" onClick={expandShowRowsHandler}>
+                    <div className="show-rows-dd-number">{selectedShowRows}</div>
+                    <div className="show-rows-dd-arrow-container">{showRowsArrow}</div>
+                </button>
+            </div>
             <CSSTransition in={isShowRowsExpanded} timeout={200} classNames="display" unmountOnExit>
                 <div className="show-rows-dd-panel-wrapper">
                     <div className="show-rows-dd-panel-triangle" />

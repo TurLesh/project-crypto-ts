@@ -2,32 +2,39 @@
 
 .show-rows-wrapper {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
 
-    .show-rows-text {
-        margin-right: 5px;
-    }
-
-    .show-rows-dd-wrapper {
+    .show-rows-btn-wrapper {
         display: flex;
-        border: none;
-        background-color: $accent2Color;
-        padding: 0px;
-        border-radius: 5px;
-        @include JustifyCenter();
-        cursor: pointer;
-        padding: 3px 5px;
+        align-items: center;
 
-        .show-rows-dd-number {
-            font-size: 14px;
-            font-weight: 500;
-            font-family: $nameAndButtonFont;
+        .show-rows-text {
+            margin-right: 5px;
         }
 
-        .show-rows-dd-arrow-container {
+        .show-rows-dd-wrapper {
             display: flex;
-            .show-rows-dd-arrow {
-                font-size: 16px;
+            border: none;
+            background-color: $accent2Color;
+            border-radius: 5px;
+            @include JustifyCenter();
+            cursor: pointer;
+            padding: 3px 0px;
+            width: 45px;
+
+            .show-rows-dd-number {
+                font-size: 14px;
+                font-weight: 500;
+                font-family: $nameAndButtonFont;
+                margin-left: 3px;
+            }
+
+            .show-rows-dd-arrow-container {
+                display: flex;
+                .show-rows-dd-arrow {
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -43,6 +50,10 @@
     .show-rows-dd-panel-wrapper {
         z-index: 150;
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 27px;
 
         .show-rows-dd-panel-triangle {
             width: 6px;
@@ -52,21 +63,20 @@
             border-left: 1px solid black;
             border-top: 1px solid black;
             position: absolute;
-            // left: 49px;
-            // top: 3px;
+            top: 2px;
         }
 
         .show-rows-dd-panel-container {
             display: flex;
             flex-direction: column;
             border: 1px solid black;
-            // width: 200px;
             border-radius: 5px;
             margin-top: 6px;
             background-color: $accent2Color;
 
             .show-rows-dd-panel-tile {
-                padding: 5px 0px 5px 0px;
+                padding: 5px;
+                width: 35px;
 
                 .show-rows-dd-panel-btn {
                     border: none;
@@ -76,9 +86,18 @@
                     cursor: pointer;
 
                     .show-rows-dd-panel-btn-text {
+                        font-family: $nameAndButtonFont;
                         font-size: 14px;
                         font-weight: 500;
-                        font-family: $nameAndButtonFont;
+                        margin: 0px;
+                    }
+                }
+
+                .show-rows-dd-panel-btn:hover {
+                    .show-rows-dd-panel-btn-text {
+                        color: $accentColor;
+                        transform: scale(1.1);
+                        transition-duration: 0.2s;
                     }
                 }
 

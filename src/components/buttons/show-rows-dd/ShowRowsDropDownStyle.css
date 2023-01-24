@@ -1,31 +1,37 @@
 .show-rows-wrapper {
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.show-rows-wrapper .show-rows-btn-wrapper {
+  display: flex;
   align-items: center;
 }
-.show-rows-wrapper .show-rows-text {
+.show-rows-wrapper .show-rows-btn-wrapper .show-rows-text {
   margin-right: 5px;
 }
-.show-rows-wrapper .show-rows-dd-wrapper {
+.show-rows-wrapper .show-rows-btn-wrapper .show-rows-dd-wrapper {
   display: flex;
   border: none;
   background-color: #f5d418;
-  padding: 0px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: 3px 5px;
+  padding: 3px 0px;
+  width: 45px;
 }
-.show-rows-wrapper .show-rows-dd-wrapper .show-rows-dd-number {
+.show-rows-wrapper .show-rows-btn-wrapper .show-rows-dd-wrapper .show-rows-dd-number {
   font-size: 14px;
   font-weight: 500;
   font-family: "Inter", sans-serif;
+  margin-left: 3px;
 }
-.show-rows-wrapper .show-rows-dd-wrapper .show-rows-dd-arrow-container {
+.show-rows-wrapper .show-rows-btn-wrapper .show-rows-dd-wrapper .show-rows-dd-arrow-container {
   display: flex;
 }
-.show-rows-wrapper .show-rows-dd-wrapper .show-rows-dd-arrow-container .show-rows-dd-arrow {
+.show-rows-wrapper .show-rows-btn-wrapper .show-rows-dd-wrapper .show-rows-dd-arrow-container .show-rows-dd-arrow {
   font-size: 16px;
 }
 .show-rows-wrapper .show-rows-dd-wrapper:hover {
@@ -50,6 +56,10 @@
 .show-rows-wrapper .show-rows-dd-panel-wrapper {
   z-index: 150;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 27px;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-triangle {
   width: 6px;
@@ -59,6 +69,7 @@
   border-left: 1px solid black;
   border-top: 1px solid black;
   position: absolute;
+  top: 2px;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container {
   display: flex;
@@ -69,7 +80,8 @@
   background-color: #f5d418;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile {
-  padding: 5px 0px 5px 0px;
+  padding: 5px;
+  width: 35px;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile .show-rows-dd-panel-btn {
   border: none;
@@ -79,9 +91,15 @@
   cursor: pointer;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile .show-rows-dd-panel-btn .show-rows-dd-panel-btn-text {
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  font-family: "Inter", sans-serif;
+  margin: 0px;
+}
+.show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile .show-rows-dd-panel-btn:hover .show-rows-dd-panel-btn-text {
+  color: #1058f5;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile .show-rows-dd-panel-btn:hover .show-rows-dd-panel-btn-icon .show-rows-dd-icon {
   color: #1058f5;
