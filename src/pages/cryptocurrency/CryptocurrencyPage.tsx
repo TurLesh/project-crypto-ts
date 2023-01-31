@@ -15,10 +15,21 @@ import { RootState } from '../../services/store';
 
 const CryptocurrencyPage: FC = () => {
     const [coinListData, setCoinListData] = useState<ICoinListData[]>([]);
-    const [activeCurrency, setActiveCurrency] = useState('');
 
-    const [selectedChartType, setSelectedChartType] = useState('');
+    // const [selectedChartType, setSelectedChartType] = useState('');
     const [candlestickSeriesData, setCandlestickSeriesData] = useState<object[]>([]);
+
+    //get active currency value from storage
+    const activeCurrencyStateObject = useSelector((state: RootState) => state.currency);
+    const activeCurrencyState: string = activeCurrencyStateObject.activeCurrency;
+
+    //get selected rows amount value from storage
+    const activeRowsAmountObject = useSelector((state: RootState) => state.rowsAmount);
+    const activeRowsAmountState: number = activeRowsAmountObject.rowsAmount;
+
+    //get chart type value from storage
+    const activeChartTypeObject = useSelector((state: RootState) => state.chartType);
+    const activeChartTypeState: string = activeChartTypeObject.selectedChartType;
 
     /////////////////////// CANDLESTICK DATA GET BLOCK STARTS HERE ///////////////////////////////
 
@@ -31,25 +42,17 @@ const CryptocurrencyPage: FC = () => {
             }
         }
 
-        if (selectedChartType === 'candlestick') {
-            getCandlestickChartData(activeCurrency);
+        if (activeChartTypeState === 'candlestick') {
+            getCandlestickChartData(activeCurrencyState);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedChartType]);
+    }, [activeChartTypeState]);
 
     // useCallback used here to call function only after 'candlestickChartData' state changed
     const dataTransformCaller = (data: []) => {
         const getCandlestickSeriesData = convertIntoArrayOfObjects(data);
         setCandlestickSeriesData(getCandlestickSeriesData);
     };
-
-    //get chart type value from storage
-    const activeChartTypeObject = useSelector((state: RootState) => state.chartType);
-    const activeChartTypeState: string = activeChartTypeObject.selectedChartType;
-
-    if (activeChartTypeState !== selectedChartType) {
-        setSelectedChartType(activeChartTypeState);
-    }
 
     //get candlestick data by active chart currency value
     const getCandlestickDataByCurrency = async (activeCurrency: string) => {
@@ -78,30 +81,23 @@ const CryptocurrencyPage: FC = () => {
 
     /////////////////////// LIST DATA GET BLOCK STARTS HERE ///////////////////////////////
 
-    // useEffect to get new data every time active currency changes
+    // useEffect to get new data every time active currency or selected rows amount changes
     useEffect(() => {
-        async function getData(activeCurrency: any) {
-            const coinListDataGet = await getDataByCurrency(activeCurrency);
+        async function getData(activeCurrency: any, activeRowsAmount: number) {
+            const rowsAmountStr = activeRowsAmount.toString();
+            const coinListDataGet = await getDataByCurrency(activeCurrency, rowsAmountStr);
             if (coinListDataGet !== undefined) {
                 setCoinListData(coinListDataGet.data);
             }
         }
 
-        getData(activeCurrency);
+        getData(activeCurrencyState, activeRowsAmountState);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activeCurrency]);
+    }, [activeCurrencyState, activeRowsAmountState]);
 
-    //get value from storage
-    const activeCurrencyStateObject = useSelector((state: RootState) => state.currency);
-    const activeCurrencyState: string = activeCurrencyStateObject.activeCurrency;
-
-    if (activeCurrencyState !== activeCurrency) {
-        setActiveCurrency(activeCurrencyState);
-    }
-
-    //get data by active currency value
-    const getDataByCurrency = async (activeCurrency: string) => {
-        const coinListDataGet = getCoinListData(activeCurrency);
+    //get data by active currency value and rows amount value
+    const getDataByCurrency = async (activeCurrency: string, rowsAmountStr: string) => {
+        const coinListDataGet = getCoinListData(activeCurrency, rowsAmountStr);
         return Promise.resolve(coinListDataGet);
     };
 
@@ -123,7 +119,7 @@ const CryptocurrencyPage: FC = () => {
                     <CryptocurrencyListContainer
                         coinListData={coinListData}
                         candlestickChartData={candlestickSeriesData}
-                        chartType={selectedChartType}
+                        chartType={activeChartTypeState}
                     />
                 </div>
             </div>

@@ -1,26 +1,65 @@
 import axios from 'axios';
 
-export const getCoinListData = (currency: string) => {
+const getLink = (currency: string, rows: string) => {
+    return `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${rows}&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d%2C30d`;
+};
+
+export const getCoinListData = (currency: string, rows: string) => {
     switch (currency) {
         case 'usd':
-            const coinUrlUsd = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d%2C30d';
-
-            return axios.get(coinUrlUsd);
+            switch (rows) {
+                case '20':
+                    return axios.get(getLink(currency, rows));
+                case '50':
+                    return axios.get(getLink(currency, rows));
+                case '100':
+                    return axios.get(getLink(currency, rows));
+                default:
+                    return axios.get(getLink(currency, '20'));
+            }
         case 'eur':
-            const coinUrlEur = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d%2C30d';
-
-            return axios.get(coinUrlEur);
+            switch (rows) {
+                case '20':
+                    return axios.get(getLink(currency, rows));
+                case '50':
+                    return axios.get(getLink(currency, rows));
+                case '100':
+                    return axios.get(getLink(currency, rows));
+                default:
+                    return axios.get(getLink(currency, '20'));
+            }
         case 'uah':
-            const coinUrlUah = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=uah&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d%2C30d';
-
-            return axios.get(coinUrlUah);
+            switch (rows) {
+                case '20':
+                    return axios.get(getLink(currency, rows));
+                case '50':
+                    return axios.get(getLink(currency, rows));
+                case '100':
+                    return axios.get(getLink(currency, rows));
+                default:
+                    return axios.get(getLink(currency, '20'));
+            }
         case 'pln':
-            const coinUrlPln = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=pln&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d%2C30d';
-
-            return axios.get(coinUrlPln);
+            switch (rows) {
+                case '20':
+                    return axios.get(getLink(currency, rows));
+                case '50':
+                    return axios.get(getLink(currency, rows));
+                case '100':
+                    return axios.get(getLink(currency, rows));
+                default:
+                    return axios.get(getLink(currency, '20'));
+            }
         default:
-            const coinUrlDefault = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d%2C30d';
-
-            return axios.get(coinUrlDefault);
+            switch (rows) {
+                case '20':
+                    return axios.get(getLink('usd', rows));
+                case '50':
+                    return axios.get(getLink('usd', rows));
+                case '100':
+                    return axios.get(getLink('usd', rows));
+                default:
+                    return axios.get(getLink('usd', '20'));
+            }
     }
 };

@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { currencyReducer } from './currencyReducer';
 import { chartTypeReducer } from './chartTypeReducer';
+import { showRowsReducer } from './showRowsReducer';
 
 export const store = configureStore({
     reducer: {
         currency: currencyReducer,
-        chartType: chartTypeReducer
+        chartType: chartTypeReducer,
+        rowsAmount: showRowsReducer
     }
 });
 

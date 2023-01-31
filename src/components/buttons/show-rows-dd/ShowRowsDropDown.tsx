@@ -5,6 +5,10 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './ShowRowsDropDownStyle.css';
 
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../services/store';
+import { CHANGE_ROWS_AMOUNT } from '../../../services/store/showRowsReducer';
+
 const ShowRowsDropDown: FC = () => {
     const [isShowRowsExpanded, setIsShowRowsExpanded] = useState(false);
     const showRowsDropDownRef = useRef<HTMLDivElement>(null);
@@ -28,10 +32,16 @@ const ShowRowsDropDown: FC = () => {
         }
     }, [isShowRowsExpanded]);
 
-    // close dd after show rows change
-    useEffect(() => {
+    const dispatch: AppDispatch = useDispatch();
+
+    // change amount of rows on number click inside dd panel and close panel
+    const changeRowsAmount = (number: number) => {
+        setSelectedShowRows(number);
         setIsShowRowsExpanded(false);
-    }, [selectedShowRows]);
+
+        //set value to storage
+        dispatch({ type: CHANGE_ROWS_AMOUNT, payload: number });
+    };
 
     //on show rows button click handler
     const expandShowRowsHandler = () => {
@@ -44,7 +54,7 @@ const ShowRowsDropDown: FC = () => {
             <div key={index}>
                 {selectedShowRows !== number && (
                     <div className="show-rows-dd-panel-tile">
-                        <button onClick={() => setSelectedShowRows(number)} className="show-rows-dd-panel-btn">
+                        <button onClick={() => changeRowsAmount(number)} className="show-rows-dd-panel-btn">
                             <p className="show-rows-dd-panel-btn-text">{number}</p>
                         </button>
                     </div>
@@ -53,7 +63,11 @@ const ShowRowsDropDown: FC = () => {
         );
     });
 
-    const showRowsArrow = isShowRowsExpanded ? <ArrowDropUpIcon className="show-rows-dd-arrow" /> : <ArrowDropDownIcon className="show-rows-dd-arrow" />;
+    const showRowsArrow = isShowRowsExpanded ? (
+        <ArrowDropUpIcon className="show-rows-dd-arrow" />
+    ) : (
+        <ArrowDropDownIcon className="show-rows-dd-arrow" />
+    );
 
     return (
         <div ref={showRowsDropDownRef} className="show-rows-wrapper">

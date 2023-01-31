@@ -74,7 +74,13 @@ const CurrencyDropDown: FC = () => {
                 <div className="currency-text-container">
                     <p className="currency-text">{activeCurrency ? findNameByCode(activeCurrency) : 'ERR'}</p>
                 </div>
-                <div className="currency-arrow-cointainer">{isCurrencyExpanded ? <ArrowDropUpIcon className="currency-arrow-expand" /> : <ArrowDropDownIcon className="currency-arrow-expand" />}</div>
+                <div className="currency-arrow-cointainer">
+                    {isCurrencyExpanded ? (
+                        <ArrowDropUpIcon className="currency-arrow-expand" />
+                    ) : (
+                        <ArrowDropDownIcon className="currency-arrow-expand" />
+                    )}
+                </div>
             </button>
             <CSSTransition in={isCurrencyExpanded} timeout={200} classNames="display" unmountOnExit>
                 <div className="currency-dd-panel-wrapper">

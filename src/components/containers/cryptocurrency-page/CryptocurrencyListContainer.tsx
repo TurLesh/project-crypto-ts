@@ -11,9 +11,6 @@ interface IListData {
 const CryptocurrencyListContainer: FC<IListData> = (props) => {
     const { coinListData, candlestickChartData, chartType } = props;
 
-    console.log('candlestick chart data: ', candlestickChartData);
-    console.log('chart type passed as prop: ', chartType);
-
     const listMapFunc = coinListData.map((item) => {
         const symbolInUpper = item.symbol.toUpperCase();
         const marketCapWithSeparatop = item.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

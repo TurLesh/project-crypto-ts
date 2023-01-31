@@ -35,20 +35,16 @@ const ChartTypeDropDown: FC = () => {
 
     const dispatch: AppDispatch = useDispatch();
 
-    // change chart type on icon click inside dd panel
+    // change chart type on icon click inside dd panel and close panel
     const changeChartTypeHandler = (item: string) => {
         setSelectedChartType(item);
+        setIsChartTypeExpanded(false);
 
         //set value to storage
         dispatch({ type: CHANGE_CHART_TYPE, payload: item });
     };
 
-    // close dd after chart type change
-    useEffect(() => {
-        setIsChartTypeExpanded(false);
-    }, [selectedChartType]);
-
-    //on chart type button click handler
+    //on chart type dd click handler (expand if closed / close if expanded)
     const expandChartTypeHandler = () => {
         setIsChartTypeExpanded((prevValue) => !prevValue);
     };
@@ -85,7 +81,11 @@ const ChartTypeDropDown: FC = () => {
     //get active chart icon
     const activeChartIcon = getChartIconByCode(selectedChartType);
 
-    const chartTypeArrow = isChartTypeExpanded ? <ArrowDropUpIcon className="chart-type-dd-arrow" /> : <ArrowDropDownIcon className="chart-type-dd-arrow" />;
+    const chartTypeArrow = isChartTypeExpanded ? (
+        <ArrowDropUpIcon className="chart-type-dd-arrow" />
+    ) : (
+        <ArrowDropDownIcon className="chart-type-dd-arrow" />
+    );
 
     return (
         <div ref={chartTypeDropDownRef} className="chart-type-wrapper">
