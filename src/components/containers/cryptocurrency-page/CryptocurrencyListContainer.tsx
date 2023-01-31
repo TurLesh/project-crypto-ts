@@ -2,12 +2,17 @@ import { FC } from 'react';
 import CryptocurrencyListCard from '../../cards/cryptocurrency-list-cards/coin-card/CryptocurrencyListCard';
 import { ICoinListData } from '../../../configs/interfaces/CryptocurrencyPageInterfaces';
 
-interface ICoinList {
+interface IListData {
     coinListData: ICoinListData[];
+    candlestickChartData: object[];
+    chartType: string;
 }
 
-const CryptocurrencyListContainer: FC<ICoinList> = (props) => {
-    const { coinListData } = props;
+const CryptocurrencyListContainer: FC<IListData> = (props) => {
+    const { coinListData, candlestickChartData, chartType } = props;
+
+    console.log('candlestick chart data: ', candlestickChartData);
+    console.log('chart type passed as prop: ', chartType);
 
     const listMapFunc = coinListData.map((item) => {
         const symbolInUpper = item.symbol.toUpperCase();
@@ -94,6 +99,8 @@ const CryptocurrencyListContainer: FC<ICoinList> = (props) => {
                 volume24h={volume24hWithSeparator}
                 coinHistory7dData={item.sparkline_in_7d.price}
                 activeCurrency={getActiveCurrency()}
+                chartType={chartType}
+                candlestickChartData={candlestickChartData}
             />
         );
     });

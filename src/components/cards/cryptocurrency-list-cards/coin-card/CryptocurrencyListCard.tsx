@@ -26,6 +26,8 @@ type CoinListDataType = {
     volume24h: string;
     coinHistory7dData: number[];
     activeCurrency: string;
+    chartType: string;
+    candlestickChartData: object[];
 };
 
 const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
@@ -46,8 +48,11 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
         isChange30dRising,
         priceChangePercentage30d,
         coinHistory7dData,
-        activeCurrency
+        activeCurrency,
+        chartType,
+        candlestickChartData
     } = props;
+
     const [isStarActive, setIsStartActive] = useState(false);
 
     const starClickHandler = () => {
@@ -76,7 +81,8 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
     const chartChangeUp = isChange7dRising;
     const colorTernar: string = chartChangeUp === true ? '#0d9b44' : '#fb3131';
 
-    const series = [
+    // chart series depend on chart type
+    const lineSeries = [
         {
             name: name,
             color: colorTernar,
@@ -85,7 +91,13 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
         }
     ];
 
-    //refactoring
+    const candlestickSeries = [
+        {
+            data: candlestickChartData as any[]
+        }
+    ];
+
+    // get currency symbol/prefix by currency
     const getCurrencyPrefix = (activeCurrency: string) => {
         switch (activeCurrency) {
             case 'usd':
@@ -154,7 +166,8 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
                 </div>
             </div>
             <div className="chart-container">
-                <ReactApexCharts series={series} width={200} height={80} options={listChartOptions} />
+                {chartType === 'line' && <ReactApexCharts series={lineSeries} width={200} height={80} options={listChartOptions} className="chart" />}
+                {chartType === 'candlestick' && <ReactApexCharts series={candlestickSeries} width={200} height={80} options={listChartOptions} type="candlestick" className="chart" />}
             </div>
             <div className="more-icon-container">
                 <MoreVertIcon />

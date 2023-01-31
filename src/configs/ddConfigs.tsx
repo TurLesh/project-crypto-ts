@@ -38,7 +38,7 @@ export const currencyConfigs = [
 
 export const showRowsConfigs = [20, 50, 100];
 
-export const chartTypeConfigs = ['line', 'candle'];
+export const chartTypeConfigs = ['line', 'candlestick'];
 
 export const categoryConfigs = [
     {

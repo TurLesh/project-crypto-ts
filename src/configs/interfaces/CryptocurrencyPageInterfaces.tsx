@@ -17,3 +17,8 @@ export interface ICoinListData {
 interface ICoinHistory7d {
     price: number[];
 }
+
+export interface IResultObject {
+    x: number;
+    y: number[];
+}

@@ -7,12 +7,15 @@ import ShowChartIcon from '@mui/icons-material/ShowChart';
 import CandlestickChartIcon from '@mui/icons-material/CandlestickChart';
 import './ChartTypeDropDownStyle.css';
 
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../services/store';
+import { CHANGE_CHART_TYPE } from '../../../services/store/chartTypeReducer';
+
 const ChartTypeDropDown: FC = () => {
     const [isChartTypeExpanded, setIsChartTypeExpanded] = useState(false);
     const chartTypeDropDownRef = useRef<HTMLDivElement>(null);
     const chartTypeList: string[] = chartTypeConfigs;
 
-    // temporary
     const [selectedChartType, setSelectedChartType] = useState('line');
 
     // close dd on click out of dd panel
@@ -30,6 +33,16 @@ const ChartTypeDropDown: FC = () => {
         }
     }, [isChartTypeExpanded]);
 
+    const dispatch: AppDispatch = useDispatch();
+
+    // change chart type on icon click inside dd panel
+    const changeChartTypeHandler = (item: string) => {
+        setSelectedChartType(item);
+
+        //set value to storage
+        dispatch({ type: CHANGE_CHART_TYPE, payload: item });
+    };
+
     // close dd after chart type change
     useEffect(() => {
         setIsChartTypeExpanded(false);
@@ -45,7 +58,7 @@ const ChartTypeDropDown: FC = () => {
         switch (code) {
             case 'line':
                 return <ShowChartIcon className="chart-type-dd-icon" />;
-            case 'candle':
+            case 'candlestick':
                 return <CandlestickChartIcon className="chart-type-dd-icon" />;
             default:
                 return <ShowChartIcon />;
@@ -60,7 +73,7 @@ const ChartTypeDropDown: FC = () => {
             <div key={index}>
                 {selectedChartType !== item && (
                     <div className="chart-type-dd-panel-tile">
-                        <button onClick={() => setSelectedChartType(item)} className="chart-type-dd-panel-btn">
+                        <button onClick={() => changeChartTypeHandler(item)} className="chart-type-dd-panel-btn">
                             <p className="chart-type-dd-panel-btn-icon">{chartIcon}</p>
                         </button>
                     </div>

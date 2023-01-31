@@ -103,6 +103,12 @@
         }
     }
 
+    .chart-container {
+        .chart {
+            min-height: 80px !important;
+        }
+    }
+
     .more-icon-container {
         cursor: pointer;
 
