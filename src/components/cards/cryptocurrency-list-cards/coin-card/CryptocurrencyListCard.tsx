@@ -62,19 +62,35 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
     const activeStar = isStarActive ? <StarIcon /> : <StarBorderIcon />;
 
     //1h
-    const activeArrow1h = isChange1hRising ? <ExpandLessIcon className="rising-arrow rise" /> : <ExpandMoreIcon className="rising-arrow fall" />;
+    const activeArrow1h = isChange1hRising ? (
+        <ExpandLessIcon className="rising-arrow rise" />
+    ) : (
+        <ExpandMoreIcon className="rising-arrow fall" />
+    );
     const risingValue1hClassName = isChange1hRising ? 'rising-value value-rise' : 'rising-value value-fall';
 
     //24h
-    const activeArrow24h = isChange24hRising ? <ExpandLessIcon className="rising-arrow rise" /> : <ExpandMoreIcon className="rising-arrow fall" />;
+    const activeArrow24h = isChange24hRising ? (
+        <ExpandLessIcon className="rising-arrow rise" />
+    ) : (
+        <ExpandMoreIcon className="rising-arrow fall" />
+    );
     const risingValue24hClassName = isChange24hRising ? 'rising-value value-rise' : 'rising-value value-fall';
 
     //7d
-    const activeArrow7d = isChange7dRising ? <ExpandLessIcon className="rising-arrow rise" /> : <ExpandMoreIcon className="rising-arrow fall" />;
+    const activeArrow7d = isChange7dRising ? (
+        <ExpandLessIcon className="rising-arrow rise" />
+    ) : (
+        <ExpandMoreIcon className="rising-arrow fall" />
+    );
     const risingValue7dClassName = isChange7dRising ? 'rising-value value-rise' : 'rising-value value-fall';
 
     //30d
-    const activeArrow30d = isChange30dRising ? <ExpandLessIcon className="rising-arrow rise" /> : <ExpandMoreIcon className="rising-arrow fall" />;
+    const activeArrow30d = isChange30dRising ? (
+        <ExpandLessIcon className="rising-arrow rise" />
+    ) : (
+        <ExpandMoreIcon className="rising-arrow fall" />
+    );
     const risingValue30dClassName = isChange30dRising ? 'rising-value value-rise' : 'rising-value value-fall';
 
     //chart options
@@ -166,8 +182,25 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
                 </div>
             </div>
             <div className="chart-container">
-                {chartType === 'line' && <ReactApexCharts series={lineSeries} width={200} height={80} options={listChartOptions} className="chart" />}
-                {chartType === 'candlestick' && <ReactApexCharts series={candlestickSeries} width={200} height={80} options={listChartOptions} type="candlestick" className="chart" />}
+                {chartType === 'line' && (
+                    <ReactApexCharts
+                        series={lineSeries}
+                        width={200}
+                        height={80}
+                        options={listChartOptions}
+                        className="chart"
+                    />
+                )}
+                {chartType === 'candlestick' && (
+                    <ReactApexCharts
+                        series={candlestickSeries}
+                        width={200}
+                        height={80}
+                        options={listChartOptions}
+                        type="candlestick"
+                        className="chart"
+                    />
+                )}
             </div>
             <div className="more-icon-container">
                 <MoreVertIcon />

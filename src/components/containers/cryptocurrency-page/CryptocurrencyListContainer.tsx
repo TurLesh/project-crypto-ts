@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import CryptocurrencyListCard from '../../cards/cryptocurrency-list-cards/coin-card/CryptocurrencyListCard';
 import { ICoinListData } from '../../../configs/interfaces/CryptocurrencyPageInterfaces';
+import CryptocurrencyListCard from '../../cards/cryptocurrency-list-cards/coin-card/CryptocurrencyListCard';
 
 interface IListData {
     coinListData: ICoinListData[];

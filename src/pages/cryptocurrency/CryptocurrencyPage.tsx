@@ -18,7 +18,6 @@ const CryptocurrencyPage: FC = () => {
     const [activeCurrency, setActiveCurrency] = useState('');
 
     const [selectedChartType, setSelectedChartType] = useState('');
-
     const [candlestickSeriesData, setCandlestickSeriesData] = useState<object[]>([]);
 
     /////////////////////// CANDLESTICK DATA GET BLOCK STARTS HERE ///////////////////////////////
@@ -121,7 +120,11 @@ const CryptocurrencyPage: FC = () => {
                     <CryptocurrencyListInfo />
                 </div>
                 <div className="cryptocurrency-list-container">
-                    <CryptocurrencyListContainer coinListData={coinListData} candlestickChartData={candlestickSeriesData} chartType={selectedChartType} />
+                    <CryptocurrencyListContainer
+                        coinListData={coinListData}
+                        candlestickChartData={candlestickSeriesData}
+                        chartType={selectedChartType}
+                    />
                 </div>
             </div>
         </div>
