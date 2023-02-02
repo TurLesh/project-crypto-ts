@@ -15,13 +15,22 @@ const CoinSearchField: FC = () => {
     const placeholderTranslation = t('coin_searchfield');
 
     //classNames with conditional(ternary) operator
-    const containerClassName: string = isFocusedCoinSearchField ? 'coin-searchfield-container searchfield-active' : 'coin-searchfield-container';
-    const searchIconClassName: string = isFocusedCoinSearchField ? 'coin-seach-icon coin-search-icon-active' : 'coin-seach-icon';
+    const containerClassName: string = isFocusedCoinSearchField
+        ? 'coin-searchfield-container searchfield-active'
+        : 'coin-searchfield-container';
+    const searchIconClassName: string = isFocusedCoinSearchField
+        ? 'coin-seach-icon coin-search-icon-active'
+        : 'coin-seach-icon';
     const inputPlaceholder: string | undefined = isFocusedCoinSearchField ? undefined : placeholderTranslation;
 
     return (
         <div className={containerClassName}>
-            <input className="coin-searchfield" placeholder={inputPlaceholder} onFocus={inputFocusAndBlurHandler} onBlur={inputFocusAndBlurHandler} />
+            <input
+                className="coin-searchfield"
+                placeholder={inputPlaceholder}
+                onFocus={inputFocusAndBlurHandler}
+                onBlur={inputFocusAndBlurHandler}
+            />
             <SearchIcon className={searchIconClassName} />
         </div>
     );

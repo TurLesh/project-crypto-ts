@@ -66,6 +66,9 @@
   border-radius: 5px;
   margin-top: 6px;
   background-color: #f5d418;
+  max-height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container .category-dd-panel-tile {
   padding: 5px;

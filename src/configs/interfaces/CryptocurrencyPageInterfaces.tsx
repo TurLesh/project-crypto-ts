@@ -22,3 +22,8 @@ export interface IResultObject {
     x: number;
     y: number[];
 }
+
+export interface ICategoriesList {
+    category_id: string;
+    name: string;
+}

@@ -1,9 +1,11 @@
 import { FC, useState, useEffect } from 'react';
 import _ from 'lodash';
 import { ICoinListData } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
+import { ICategoriesList } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
 import { IResultObject } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
 import { getCoinListData } from '../../services/requests/GetCoinListData';
 import { getCandlestickChartData } from '../../services/requests/GetCandlestickData';
+import { getCategoriesList } from '../../services/requests/GetCategoriesList';
 import CryptocurrencySliderContainer from '../../components/containers/cryptocurrency-page/CryptocurrencySliderContainer';
 import CryptocurrencyListFilters from '../../components/cards/cryptocurrency-list-filters/CryptocurrencyListFilters';
 import CryptocurrencyListInfo from '../../components/cards/cryptocurrency-list-cards/info-card/CryptocurrencyListInfo';
@@ -15,9 +17,8 @@ import { RootState } from '../../services/store';
 
 const CryptocurrencyPage: FC = () => {
     const [coinListData, setCoinListData] = useState<ICoinListData[]>([]);
-
-    // const [selectedChartType, setSelectedChartType] = useState('');
     const [candlestickSeriesData, setCandlestickSeriesData] = useState<object[]>([]);
+    const [categoriesListData, setCategoriesListData] = useState<ICategoriesList[]>([]);
 
     //get active currency value from storage
     const activeCurrencyStateObject = useSelector((state: RootState) => state.currency);
@@ -30,6 +31,26 @@ const CryptocurrencyPage: FC = () => {
     //get chart type value from storage
     const activeChartTypeObject = useSelector((state: RootState) => state.chartType);
     const activeChartTypeState: string = activeChartTypeObject.selectedChartType;
+
+    /////////////////////// CATEGORIES LIST GET BLOCK STARTS HERE ///////////////////////////////
+
+    //get Categories List only at first render and pass value to 'categoriesListData' state
+    useEffect(() => {
+        async function getCategoriesList() {
+            const categoriesListResponseData = await resolveCategoriesListResponse();
+            if (categoriesListResponseData !== undefined) {
+                setCategoriesListData(categoriesListResponseData.data);
+            }
+        }
+
+        getCategoriesList();
+    }, []);
+
+    //resolve categories list response
+    const resolveCategoriesListResponse = async () => {
+        const categoriesListDataGet = getCategoriesList();
+        return Promise.resolve(categoriesListDataGet);
+    };
 
     /////////////////////// CANDLESTICK DATA GET BLOCK STARTS HERE ///////////////////////////////
 
@@ -109,7 +130,7 @@ const CryptocurrencyPage: FC = () => {
                 </div>
             </div>
             <div className="list-filters-wrapper">
-                <CryptocurrencyListFilters />
+                <CryptocurrencyListFilters categoriesListData={categoriesListData} />
             </div>
             <div className="content-wrapper">
                 <div className="cryptocurrency-list-info-container">

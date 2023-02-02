@@ -1,0 +1,35 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.category-searchfield-wrapper {
+    padding: 5px 0px;
+
+    .category-searchfield {
+        width: 90%;
+        background-color: $bg-light;
+        font-family: $contentFont;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        padding: 5px 5px 5px 10px;
+        outline: none;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .category-searchfield:focus {
+        outline: 1px solid $mainColorDark;
+    }
+}
+
+.dark {
+    .category-searchfield-wrapper {
+        .category-searchfield {
+            background-color: $bg-dark;
+            color: $mainColor;
+        }
+
+        .category-searchfield:focus {
+            outline: 1px solid $mainColor;
+        }
+    }
+}

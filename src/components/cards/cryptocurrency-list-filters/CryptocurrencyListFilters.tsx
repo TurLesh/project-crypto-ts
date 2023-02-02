@@ -1,11 +1,18 @@
 import { FC } from 'react';
+import { ICategoriesList } from '../../../configs/interfaces/CryptocurrencyPageInterfaces';
 import WatchlistButton from '../../buttons/watchlist/WatchlistButton';
 import ShowRowsDropDown from '../../buttons/show-rows-dd/ShowRowsDropDown';
 import ChartTypeDropDown from '../../buttons/chart-type-dd/ChartTypeDropDown';
 import CategoryDropDown from '../../buttons/category-dd/CategoryDropDown';
 import './CryptocurrencyListFiltersStyle.css';
 
-const CryptocurrencyListFilters: FC = () => {
+interface IFiltersList {
+    categoriesListData: ICategoriesList[];
+}
+
+const CryptocurrencyListFilters: FC<IFiltersList> = (props) => {
+    const { categoriesListData } = props;
+
     return (
         <div className="filters-wrapper">
             <div className="filters-left-panel">
@@ -13,7 +20,7 @@ const CryptocurrencyListFilters: FC = () => {
             </div>
             <div className="filters-right-panel">
                 <div className="right-panel-item">
-                    <CategoryDropDown />
+                    <CategoryDropDown categoriesListData={categoriesListData} />
                 </div>
                 <div className="right-panel-item">
                     <ShowRowsDropDown />

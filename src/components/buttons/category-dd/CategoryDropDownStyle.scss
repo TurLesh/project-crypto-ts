@@ -59,6 +59,9 @@
             border-radius: 5px;
             margin-top: 6px;
             background-color: $accent2Color;
+            max-height: 200px;
+            overflow-y: scroll;
+            overflow-x: hidden;
 
             .category-dd-panel-tile {
                 padding: 5px;
