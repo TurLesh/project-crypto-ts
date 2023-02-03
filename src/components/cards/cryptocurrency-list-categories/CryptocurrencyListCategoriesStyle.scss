@@ -1,0 +1,46 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.selected-categories-list-wrapper {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid $bg-light;
+    padding: 5px 10px;
+    font-family: $nameAndButtonFont;
+    font-size: 14px;
+    font-weight: 500;
+
+    .category-remove-btn {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        border: none;
+        background-color: $accent2Color;
+        border-radius: 5px;
+        @include JustifyCenter();
+        padding: 5px;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: $nameAndButtonFont;
+
+        .remove-icon-container {
+            cursor: pointer;
+            padding: 0px 3px;
+            display: flex;
+
+            .remove-icon {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.dark {
+    .selected-categories-list-wrapper {
+        border-top: 1px solid $bg-dark;
+        .category-remove-btn {
+            color: $mainColor;
+            background-color: $mainColorDark;
+            outline: 1px solid $mainColor;
+        }
+    }
+}

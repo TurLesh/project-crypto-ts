@@ -27,3 +27,8 @@ export interface ICategoriesList {
     category_id: string;
     name: string;
 }
+
+export interface ICategoryState {
+    category_id: string;
+    category_name: string;
+}

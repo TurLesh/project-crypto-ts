@@ -6,6 +6,10 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './CategoryDropDownStyle.css';
 
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../services/store';
+import { CHANGE_SELECTED_CATEGORY } from '../../../services/store/categoriesReducer';
+
 interface ICategoriesDD {
     categoriesListData: ICategoriesList[];
 }
@@ -15,9 +19,6 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
 
     const [isCategoryExpanded, setIsCategoryExpanded] = useState(false);
     const categoryDropDownRef = useRef<HTMLDivElement>(null);
-
-    // temporary
-    const [selectedCategory, setSelectedCategory] = useState('');
 
     // close dd on click out of dd panel
     useEffect(() => {
@@ -34,10 +35,19 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
         }
     }, [isCategoryExpanded]);
 
+    const dispatch: AppDispatch = useDispatch();
+
     // set selected category to state and close panel on item click inside panel
-    const selectCategory = (category_id: string) => {
-        setSelectedCategory(category_id);
+    const selectCategory = (category_id: string, name: string) => {
         setIsCategoryExpanded(false);
+
+        const selectedCategoryObject = {
+            category_id: category_id,
+            category_name: name
+        };
+
+        //set value to storage
+        dispatch({ type: CHANGE_SELECTED_CATEGORY, payload: selectedCategoryObject });
     };
 
     //on category dd button click handler
@@ -50,7 +60,7 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
         return (
             <div key={category_id}>
                 <div className="category-dd-panel-tile">
-                    <button onClick={() => selectCategory(category_id)} className="category-dd-panel-btn">
+                    <button onClick={() => selectCategory(category_id, name)} className="category-dd-panel-btn">
                         <p className="category-dd-panel-btn-text">{name}</p>
                     </button>
                 </div>

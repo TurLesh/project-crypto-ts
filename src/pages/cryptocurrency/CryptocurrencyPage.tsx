@@ -2,12 +2,14 @@ import { FC, useState, useEffect } from 'react';
 import _ from 'lodash';
 import { ICoinListData } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
 import { ICategoriesList } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
+import { ICategoryState } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
 import { IResultObject } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
 import { getCoinListData } from '../../services/requests/GetCoinListData';
 import { getCandlestickChartData } from '../../services/requests/GetCandlestickData';
 import { getCategoriesList } from '../../services/requests/GetCategoriesList';
 import CryptocurrencySliderContainer from '../../components/containers/cryptocurrency-page/CryptocurrencySliderContainer';
 import CryptocurrencyListFilters from '../../components/cards/cryptocurrency-list-filters/CryptocurrencyListFilters';
+import CryptocurrencyListCategories from '../../components/cards/cryptocurrency-list-categories/CryptocurrencyListCategories';
 import CryptocurrencyListInfo from '../../components/cards/cryptocurrency-list-cards/info-card/CryptocurrencyListInfo';
 import CryptocurrencyListContainer from '../../components/containers/cryptocurrency-page/CryptocurrencyListContainer';
 import './CryptocurrencyPageStyle.css';
@@ -19,10 +21,15 @@ const CryptocurrencyPage: FC = () => {
     const [coinListData, setCoinListData] = useState<ICoinListData[]>([]);
     const [candlestickSeriesData, setCandlestickSeriesData] = useState<object[]>([]);
     const [categoriesListData, setCategoriesListData] = useState<ICategoriesList[]>([]);
+    const [isCategorySelected, setIsCategorySelected] = useState(false);
 
     //get active currency value from storage
     const activeCurrencyStateObject = useSelector((state: RootState) => state.currency);
     const activeCurrencyState: string = activeCurrencyStateObject.activeCurrency;
+
+    //get selected category value from storage
+    const selectedCategoryObject = useSelector((state: RootState) => state.selectedCategory);
+    const selectedCategoryState: ICategoryState = selectedCategoryObject.selectedCategory;
 
     //get selected rows amount value from storage
     const activeRowsAmountObject = useSelector((state: RootState) => state.rowsAmount);
@@ -122,6 +129,19 @@ const CryptocurrencyPage: FC = () => {
         return Promise.resolve(coinListDataGet);
     };
 
+    /////////////////////// CATEGORIES BLOCK STARTS HERE ///////////////////////////////
+
+    // useEffect to change isCategorySelected state every time selectedCategoryState change (if no category -> false...)
+    useEffect(() => {
+        const selectedCategoryName: string = selectedCategoryState.category_name;
+
+        if (selectedCategoryName !== '') {
+            setIsCategorySelected(true);
+        } else {
+            setIsCategorySelected(false);
+        }
+    }, [selectedCategoryState]);
+
     return (
         <div className="cryptocurrency-page-wrapper">
             <div className="slider-wrapper">
@@ -131,6 +151,7 @@ const CryptocurrencyPage: FC = () => {
             </div>
             <div className="list-filters-wrapper">
                 <CryptocurrencyListFilters categoriesListData={categoriesListData} />
+                {isCategorySelected && <CryptocurrencyListCategories />}
             </div>
             <div className="content-wrapper">
                 <div className="cryptocurrency-list-info-container">

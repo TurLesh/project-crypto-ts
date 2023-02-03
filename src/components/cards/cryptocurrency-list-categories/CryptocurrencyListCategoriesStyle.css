@@ -1,0 +1,41 @@
+.selected-categories-list-wrapper {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid rgb(227, 237, 245);
+  padding: 5px 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+.selected-categories-list-wrapper .category-remove-btn {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  border: none;
+  background-color: #f5d418;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.selected-categories-list-wrapper .category-remove-btn .remove-icon-container {
+  cursor: pointer;
+  padding: 0px 3px;
+  display: flex;
+}
+.selected-categories-list-wrapper .category-remove-btn .remove-icon-container .remove-icon {
+  font-size: 14px;
+}
+
+.dark .selected-categories-list-wrapper {
+  border-top: 1px solid #1f212b;
+}
+.dark .selected-categories-list-wrapper .category-remove-btn {
+  color: aliceblue;
+  background-color: #2a2c3b;
+  outline: 1px solid aliceblue;
+}/*# sourceMappingURL=CryptocurrencyListCategoriesStyle.css.map */
