@@ -7,6 +7,7 @@ import { IResultObject } from '../../configs/interfaces/CryptocurrencyPageInterf
 import { getCoinListData } from '../../services/requests/GetCoinListData';
 import { getCandlestickChartData } from '../../services/requests/GetCandlestickData';
 import { getCategoriesList } from '../../services/requests/GetCategoriesList';
+import { getCategoryData } from '../../services/requests/GetCategoryData';
 import CryptocurrencySliderContainer from '../../components/containers/cryptocurrency-page/CryptocurrencySliderContainer';
 import CryptocurrencyListFilters from '../../components/cards/cryptocurrency-list-filters/CryptocurrencyListFilters';
 import CryptocurrencyListCategories from '../../components/cards/cryptocurrency-list-categories/CryptocurrencyListCategories';
@@ -21,6 +22,7 @@ const CryptocurrencyPage: FC = () => {
     const [coinListData, setCoinListData] = useState<ICoinListData[]>([]);
     const [candlestickSeriesData, setCandlestickSeriesData] = useState<object[]>([]);
     const [categoriesListData, setCategoriesListData] = useState<ICategoriesList[]>([]);
+    const [categoryData, setCategoryData] = useState<ICoinListData[]>([]);
     const [isCategorySelected, setIsCategorySelected] = useState(false);
 
     //get active currency value from storage
@@ -111,7 +113,7 @@ const CryptocurrencyPage: FC = () => {
 
     // useEffect to get new data every time active currency or selected rows amount changes
     useEffect(() => {
-        async function getData(activeCurrency: any, activeRowsAmount: number) {
+        async function getData(activeCurrency: string, activeRowsAmount: number) {
             const rowsAmountStr = activeRowsAmount.toString();
             const coinListDataGet = await getDataByCurrency(activeCurrency, rowsAmountStr);
             if (coinListDataGet !== undefined) {
@@ -134,13 +136,42 @@ const CryptocurrencyPage: FC = () => {
     // useEffect to change isCategorySelected state every time selectedCategoryState change (if no category -> false...)
     useEffect(() => {
         const selectedCategoryName: string = selectedCategoryState.category_name;
+        const selectedCategoryId: string = selectedCategoryState.category_id;
+
+        async function getCategoryDataFunc(
+            selectedCategoryId: string,
+            activeCurrency: string,
+            activeRowsAmount: number
+        ) {
+            const rowsAmountStr = activeRowsAmount.toString();
+            const categoryResponseData = await resolveCategoryDataResponse(
+                selectedCategoryId,
+                activeCurrency,
+                rowsAmountStr
+            );
+            if (categoryResponseData !== undefined) {
+                setCategoryData(categoryResponseData.data);
+            }
+        }
 
         if (selectedCategoryName !== '') {
             setIsCategorySelected(true);
+            getCategoryDataFunc(selectedCategoryId, activeCurrencyState, activeRowsAmountState);
         } else {
+            setCategoryData([]);
             setIsCategorySelected(false);
         }
-    }, [selectedCategoryState]);
+    }, [selectedCategoryState, activeCurrencyState, activeRowsAmountState]);
+
+    //resolve categories list response
+    const resolveCategoryDataResponse = async (
+        selectedCategoryId: string,
+        activeCurrency: string,
+        activeRowsAmount: string
+    ) => {
+        const categoryDataGet = getCategoryData(selectedCategoryId, activeCurrency, activeRowsAmount);
+        return Promise.resolve(categoryDataGet);
+    };
 
     return (
         <div className="cryptocurrency-page-wrapper">
@@ -162,6 +193,8 @@ const CryptocurrencyPage: FC = () => {
                         coinListData={coinListData}
                         candlestickChartData={candlestickSeriesData}
                         chartType={activeChartTypeState}
+                        isCategorySelected={isCategorySelected}
+                        categoryData={categoryData}
                     />
                 </div>
             </div>

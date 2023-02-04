@@ -9,7 +9,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './CryptocurrencyListCardStyle.css';
 
 type CoinListDataType = {
-    numerationNumber: number;
+    numerationNumber?: number;
     icon: string;
     symbol: string;
     name: string;
@@ -136,12 +136,21 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
 
     const currencyPrefix = getCurrencyPrefix(activeCurrency);
 
+    //if market_cap_rank exist -> return market_cap_rank, else (numerationNumber === null) return '-'
+    const checkNumerationNymber = () => {
+        if (numerationNumber) {
+            return numerationNumber;
+        } else {
+            return '-';
+        }
+    };
+
     return (
         <div className="cryptocurrency-list-card-wrapper">
             <div className="star-container" onClick={starClickHandler}>
                 {activeStar}
             </div>
-            <div className="numeration-container">{numerationNumber}</div>
+            <div className="numeration-container">{checkNumerationNymber()}</div>
             <div className="name-wrapper">
                 <div className="icon-container">
                     <img src={icon} className="cryptocurrency-icon" alt="cryptocurrency-icon" />

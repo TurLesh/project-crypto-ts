@@ -6,12 +6,17 @@ interface IListData {
     coinListData: ICoinListData[];
     candlestickChartData: object[];
     chartType: string;
+    isCategorySelected: boolean;
+    categoryData: ICoinListData[];
 }
 
 const CryptocurrencyListContainer: FC<IListData> = (props) => {
-    const { coinListData, candlestickChartData, chartType } = props;
+    const { coinListData, candlestickChartData, chartType, isCategorySelected, categoryData } = props;
 
-    const listMapFunc = coinListData.map((item) => {
+    console.log('is category selected?: ', isCategorySelected);
+    console.log('category data: ', categoryData);
+
+    const transformData = (item: ICoinListData) => {
         const symbolInUpper = item.symbol.toUpperCase();
         const marketCapWithSeparatop = item.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         const volume24hWithSeparator = item.total_volume.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -24,9 +29,6 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
         } else {
             isChange1hRisingValue = true;
         }
-
-        const priceChangePercentage1hNumber = Math.abs(item.price_change_percentage_1h_in_currency);
-        const priceChangePercentage1hRounded = priceChangePercentage1hNumber.toFixed(2);
 
         //24h
         let isChange24hRisingValue: boolean;
@@ -64,6 +66,9 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
         const priceChangePercentage30dNumber = Math.abs(item.price_change_percentage_30d_in_currency);
         const priceChangePercentage30dRounded = priceChangePercentage30dNumber.toFixed(2);
 
+        const priceChangePercentage1hNumber = Math.abs(item.price_change_percentage_1h_in_currency);
+        const priceChangePercentage1hRounded = priceChangePercentage1hNumber.toFixed(2);
+
         const getActiveCurrency = () => {
             const activeCurrencyGet = localStorage.getItem('activeCurrency');
 
@@ -76,33 +81,91 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
             }
         };
 
+        const transformedDataObject = {
+            symbolInUpper: symbolInUpper,
+            marketCapWithSeparatop: marketCapWithSeparatop,
+            volume24hWithSeparator: volume24hWithSeparator,
+            isChange1hRisingValue: isChange1hRisingValue,
+            priceChangePercentage1hRounded: priceChangePercentage1hRounded,
+            isChange24hRisingValue: isChange24hRisingValue,
+            priceChangePercentage24hRounded: priceChangePercentage24hRounded,
+            isChange7dRisingValue: isChange7dRisingValue,
+            priceChangePercentage7dRounded: priceChangePercentage7dRounded,
+            isChange30dRisingValue: isChange30dRisingValue,
+            priceChangePercentage30dRounded: priceChangePercentage30dRounded,
+            activeCurrency: getActiveCurrency()
+        };
+
+        return transformedDataObject;
+    };
+
+    const categoryMapFunc = categoryData.map((item) => {
+        const transformedDataObject = transformData(item);
+
         return (
             <CryptocurrencyListCard
                 key={item.id}
                 icon={item.image}
-                symbol={symbolInUpper}
+                symbol={transformedDataObject.symbolInUpper}
                 name={item.name}
                 numerationNumber={item.market_cap_rank}
                 currentPrice={item.current_price}
-                isChange1hRising={isChange1hRisingValue}
-                priceChangePercentage1h={priceChangePercentage1hRounded}
-                isChange24hRising={isChange24hRisingValue}
-                priceChangePercentage24h={priceChangePercentage24hRounded}
-                isChange7dRising={isChange7dRisingValue}
-                priceChangePercentage7d={priceChangePercentage7dRounded}
-                isChange30dRising={isChange30dRisingValue}
-                priceChangePercentage30d={priceChangePercentage30dRounded}
-                marketCap={marketCapWithSeparatop}
-                volume24h={volume24hWithSeparator}
+                isChange1hRising={transformedDataObject.isChange1hRisingValue}
+                priceChangePercentage1h={transformedDataObject.priceChangePercentage1hRounded}
+                isChange24hRising={transformedDataObject.isChange24hRisingValue}
+                priceChangePercentage24h={transformedDataObject.priceChangePercentage24hRounded}
+                isChange7dRising={transformedDataObject.isChange7dRisingValue}
+                priceChangePercentage7d={transformedDataObject.priceChangePercentage7dRounded}
+                isChange30dRising={transformedDataObject.isChange30dRisingValue}
+                priceChangePercentage30d={transformedDataObject.priceChangePercentage30dRounded}
+                marketCap={transformedDataObject.marketCapWithSeparatop}
+                volume24h={transformedDataObject.volume24hWithSeparator}
                 coinHistory7dData={item.sparkline_in_7d.price}
-                activeCurrency={getActiveCurrency()}
+                activeCurrency={transformedDataObject.activeCurrency}
                 chartType={chartType}
                 candlestickChartData={candlestickChartData}
             />
         );
     });
 
-    return <>{listMapFunc}</>;
+    const listMapFunc = coinListData.map((item) => {
+        const transformedDataObject = transformData(item);
+
+        return (
+            <CryptocurrencyListCard
+                key={item.id}
+                icon={item.image}
+                symbol={transformedDataObject.symbolInUpper}
+                name={item.name}
+                numerationNumber={item.market_cap_rank}
+                currentPrice={item.current_price}
+                isChange1hRising={transformedDataObject.isChange1hRisingValue}
+                priceChangePercentage1h={transformedDataObject.priceChangePercentage1hRounded}
+                isChange24hRising={transformedDataObject.isChange24hRisingValue}
+                priceChangePercentage24h={transformedDataObject.priceChangePercentage24hRounded}
+                isChange7dRising={transformedDataObject.isChange7dRisingValue}
+                priceChangePercentage7d={transformedDataObject.priceChangePercentage7dRounded}
+                isChange30dRising={transformedDataObject.isChange30dRisingValue}
+                priceChangePercentage30d={transformedDataObject.priceChangePercentage30dRounded}
+                marketCap={transformedDataObject.marketCapWithSeparatop}
+                volume24h={transformedDataObject.volume24hWithSeparator}
+                coinHistory7dData={item.sparkline_in_7d.price}
+                activeCurrency={transformedDataObject.activeCurrency}
+                chartType={chartType}
+                candlestickChartData={candlestickChartData}
+            />
+        );
+    });
+
+    const mapListFunc = () => {
+        if (isCategorySelected) {
+            return categoryMapFunc;
+        } else {
+            return listMapFunc;
+        }
+    };
+
+    return <div className="coins-list-map-wrapper">{mapListFunc()}</div>;
 };
 
 export default CryptocurrencyListContainer;
