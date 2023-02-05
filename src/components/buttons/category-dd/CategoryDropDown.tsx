@@ -17,6 +17,7 @@ interface ICategoriesDD {
 const CategoryDropDown: FC<ICategoriesDD> = (props) => {
     const { categoriesListData } = props;
 
+    const [categoriesList, setCategoriesList] = useState<ICategoriesList[]>(categoriesListData);
     const [isCategoryExpanded, setIsCategoryExpanded] = useState(false);
     const categoryDropDownRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +57,7 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
     };
 
     //categories tiles map inside panel container
-    const categoryItemMap = categoriesListData.map(({ category_id, name }) => {
+    const categoryItemMap = categoriesList.map(({ category_id, name }) => {
         return (
             <div key={category_id}>
                 <div className="category-dd-panel-tile">
@@ -74,6 +75,30 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
         <ArrowDropDownIcon className="category-dd-arrow" />
     );
 
+    ///////////// LIVE FILTERING BLOCK STARTS HERE /////////////
+    //input text state (for child input component)
+    const [inputText, setInputText] = useState<string>('');
+
+    // listen to input value change + set input value to 'inputText' state (passed to child component to set state in parent component)
+    const inputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+        setInputText(e.currentTarget.value);
+    };
+
+    // function to filter data using includes() if input text is not empty
+    const filterCatgories = (inputText: string, categoriesListData: ICategoriesList[]) => {
+        if (inputText === '') {
+            return categoriesListData;
+        }
+        return categoriesListData.filter(({ name }) => name.toLowerCase().includes(inputText.toLowerCase()));
+    };
+
+    // useEffect to call filter function on inputText state change and write filtered categories list to 'categoriesList' state
+    useEffect(() => {
+        const filteredCategories = filterCatgories(inputText, categoriesListData);
+        setCategoriesList(filteredCategories);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [inputText]);
+
     return (
         <div ref={categoryDropDownRef} className="category-dd-wrapper">
             <button className="category-dd-btn" onClick={expandCategoryHandler}>
@@ -83,7 +108,7 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
                 <div className="category-dd-panel-wrapper">
                     <div className="category-dd-panel-triangle" />
                     <div className="category-dd-panel-container">
-                        <CategorySearchField />
+                        <CategorySearchField inputText={inputText} setInputText={inputChangeHandler} />
                         {categoryItemMap}
                     </div>
                 </div>

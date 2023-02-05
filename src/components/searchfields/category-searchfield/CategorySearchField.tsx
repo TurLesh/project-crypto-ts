@@ -1,24 +1,23 @@
 import { FC, useState } from 'react';
 import './CategorySearchFieldStyle.css';
 
-const CategorySearchField: FC = () => {
+interface IInputChange {
+    inputText: string;
+    setInputText: (e: React.FormEvent<HTMLInputElement>) => void;
+}
+
+const CategorySearchField: FC<IInputChange> = (props) => {
+    const { inputText, setInputText } = props;
     const [isFocusedCategorySearchField, setIsFocusedCategorySearchField] = useState(false);
-    const [inputText, setInputText] = useState('');
 
     const inputFocusAndBlurHandler = () => {
         setIsFocusedCategorySearchField((prevIsFocusedCategorySearchField) => !prevIsFocusedCategorySearchField);
     };
 
-    // listen to input value change + set input value to 'inputText' state
-    const inputChangeHandler = () => {
-        const input = document.getElementById('category-input') as HTMLInputElement | null;
-        if (input != null) {
-            input?.addEventListener('input', function (event) {
-                const target = event.target as HTMLInputElement;
-                setInputText(target.value);
-            });
-        }
-    };
+    // // listen to input value change + set input value to 'inputText' state
+    // const inputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    //     setInputText(e.currentTarget.value);
+    // };
 
     const inputPlaceholder: string | undefined = isFocusedCategorySearchField ? undefined : 'Find category...';
 
@@ -27,9 +26,10 @@ const CategorySearchField: FC = () => {
             <input
                 className="category-searchfield"
                 id="category-input"
+                value={inputText}
                 onFocus={inputFocusAndBlurHandler}
                 onBlur={inputFocusAndBlurHandler}
-                onChange={inputChangeHandler}
+                onChange={setInputText}
                 placeholder={inputPlaceholder}
             />
         </div>
