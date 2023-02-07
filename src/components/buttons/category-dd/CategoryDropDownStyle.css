@@ -59,6 +59,7 @@
   top: 2px;
 }
 .category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container {
+  width: 250px;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
@@ -103,7 +104,6 @@
   border-top: 1px solid aliceblue;
 }
 .dark .category-dd-wrapper .category-dd-panel-wrapper .category-dd-panel-container {
-  width: 250px;
   border: 1px solid aliceblue;
   background-color: #2a2c3b;
 }

@@ -1,0 +1,135 @@
+.account-dd-wrapper {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.account-dd-wrapper .account-dd-btn {
+  border: none;
+  padding: 0px 3px 0px 8px;
+  border-radius: 5px;
+  background-color: #f5d418;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0px;
+}
+.account-dd-wrapper .account-dd-btn .account-dd-arrow {
+  font-size: 16px;
+}
+.account-dd-wrapper .account-dd-btn:hover {
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+.account-dd-wrapper .display-enter {
+  opacity: 0;
+}
+.account-dd-wrapper .display-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.account-dd-wrapper .display-exit {
+  opacity: 1;
+}
+.account-dd-wrapper .display-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.account-dd-wrapper .account-dd-panel-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 27px;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-triangle {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #f5d418;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  position: absolute;
+  top: 3px;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 0px 5px;
+  border-radius: 5px;
+  margin-top: 6px;
+  background-color: #f5d418;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-info-tile {
+  padding: 5px;
+  display: flex;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0px;
+  border-bottom: 1px solid #2a2c3b;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-info-tile .account-info-icon {
+  font-size: 14px;
+  margin-right: 1px;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile {
+  padding: 5px;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn {
+  border: none;
+  background-color: #f5d418;
+  padding: 0px;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn .account-dd-panel-btn-text {
+  display: flex;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0px;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn .account-dd-panel-btn-text .account-dd-panel-btn-icon {
+  font-size: 14px;
+  margin-left: 5px;
+}
+.account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn:hover .account-dd-panel-btn-text {
+  color: #1058f5;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+
+.dark .account-dd-wrapper .account-dd-btn {
+  background-color: #2a2c3b;
+  color: aliceblue;
+}
+.dark .account-dd-panel-wrapper .account-dd-panel-triangle {
+  background-color: #2a2c3b;
+  border-left: 1px solid aliceblue;
+  border-top: 1px solid aliceblue;
+}
+.dark .account-dd-panel-wrapper .account-dd-panel-container {
+  border: 1px solid aliceblue;
+  background-color: #2a2c3b;
+}
+.dark .account-dd-panel-wrapper .account-dd-panel-container .account-info-tile {
+  border-bottom: 1px solid aliceblue;
+}
+.dark .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn {
+  background-color: #2a2c3b;
+}
+.dark .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn .account-dd-panel-btn-text {
+  color: aliceblue;
+}
+.dark .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn:hover .account-dd-panel-btn-text {
+  color: #e26411;
+}/*# sourceMappingURL=AccountDropDownStyle.css.map */

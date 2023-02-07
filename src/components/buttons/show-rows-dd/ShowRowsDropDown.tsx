@@ -7,7 +7,7 @@ import './ShowRowsDropDownStyle.css';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../services/store';
-import { CHANGE_ROWS_AMOUNT } from '../../../services/store/showRowsReducer';
+import { CHANGE_ROWS_AMOUNT } from '../../../services/store/reducers/showRowsReducer';
 
 const ShowRowsDropDown: FC = () => {
     const [isShowRowsExpanded, setIsShowRowsExpanded] = useState(false);

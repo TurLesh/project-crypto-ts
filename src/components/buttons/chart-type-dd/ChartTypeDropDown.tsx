@@ -9,7 +9,7 @@ import './ChartTypeDropDownStyle.css';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../services/store';
-import { CHANGE_CHART_TYPE } from '../../../services/store/chartTypeReducer';
+import { CHANGE_CHART_TYPE } from '../../../services/store/reducers/chartTypeReducer';
 
 const ChartTypeDropDown: FC = () => {
     const [isChartTypeExpanded, setIsChartTypeExpanded] = useState(false);

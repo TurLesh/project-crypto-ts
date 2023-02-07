@@ -1,19 +1,47 @@
-import { FC, ChangeEvent, useState, useEffect } from 'react';
+import { FC, ChangeEvent, useState, useEffect, SyntheticEvent } from 'react';
+import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { useTranslation } from 'react-i18next';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
 import './SignUpModalStyle.css';
 
+import { setUser } from '../../../services/store/slices/userSlice';
+
+interface ISignUpData {
+    emailSignUp: string;
+    passwordSignUp: string;
+    confirmSignUp: string;
+}
+
 const SignUpModal: FC = () => {
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
 
-    const [valuesSignUp, setValuesSignUp] = useState<{ emailSignUp: string; passwordSignUp: string; confirmSignUp: string }>({
+    const [valuesSignUp, setValuesSignUp] = useState<ISignUpData>({
         emailSignUp: '',
         passwordSignUp: '',
         confirmSignUp: ''
     });
+
+    const handleSignUp = (e: SyntheticEvent, email: string, password: string) => {
+        e.preventDefault();
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(({ user }) => {
+                console.log('registered user: ', user);
+                dispatch(
+                    setUser({
+                        email: user.email,
+                        token: user.refreshToken,
+                        id: user.uid
+                    })
+                );
+            })
+            .catch(console.error);
+    };
 
     const [isFocusedOnPassInput, setIsFocusedOnPassInput] = useState(false);
     const [isFocusedOnConfirmInput, setIsFocusedOnConfirmInput] = useState(false);
@@ -151,8 +179,12 @@ const SignUpModal: FC = () => {
     }, [isPassVisible]);
 
     // classNames with conditional(ternary) operator
-    const passInputWrapperClassName: string = isFocusedOnPassInput ? 'pass-input-wrapper pass-input-wrapper-focused' : 'pass-input-wrapper';
-    const confirmInputWrapperClassName: string = isFocusedOnConfirmInput ? 'confirm-input-wrapper confirm-input-wrapper-focused' : 'confirm-input-wrapper';
+    const passInputWrapperClassName: string = isFocusedOnPassInput
+        ? 'pass-input-wrapper pass-input-wrapper-focused'
+        : 'pass-input-wrapper';
+    const confirmInputWrapperClassName: string = isFocusedOnConfirmInput
+        ? 'confirm-input-wrapper confirm-input-wrapper-focused'
+        : 'confirm-input-wrapper';
 
     //input placeholders with i18n
     const emailInputPlaceholder: string = t('modal_login_signup.email_input_placeholder');
@@ -162,10 +194,20 @@ const SignUpModal: FC = () => {
     return (
         <div className="signup-modal-wrapper">
             <div className="modal-form-container">
-                <form id="signup" className="signup-form">
+                <form
+                    id="signup"
+                    className="signup-form"
+                    onSubmit={(e) => handleSignUp(e, valuesSignUp.emailSignUp, valuesSignUp.passwordSignUp)}
+                >
                     <label htmlFor="email" className="email-lable">
                         {t('modal_login_signup.email')}
-                        {!isEmailInputValid && <InfoOutlinedIcon className="email-err-icon" onMouseOver={emailErrorIconOnMouseOverHandler} onMouseOut={emailErrorIconOnMouseOutHandler} />}
+                        {!isEmailInputValid && (
+                            <InfoOutlinedIcon
+                                className="email-err-icon"
+                                onMouseOver={emailErrorIconOnMouseOverHandler}
+                                onMouseOut={emailErrorIconOnMouseOutHandler}
+                            />
+                        )}
                         <div>
                             {isHoveringEmailIcon && (
                                 <div className="email-error">
@@ -188,11 +230,19 @@ const SignUpModal: FC = () => {
                     />
                     <label htmlFor="password" className="pass-lable">
                         {t('modal_login_signup.pass')}
-                        {!isPassInputValid && <InfoOutlinedIcon className="pass-err-icon" onMouseOver={passErrorIconOnMouseOverHandler} onMouseOut={passErrorIconOnMouseOutHandler} />}
+                        {!isPassInputValid && (
+                            <InfoOutlinedIcon
+                                className="pass-err-icon"
+                                onMouseOver={passErrorIconOnMouseOverHandler}
+                                onMouseOut={passErrorIconOnMouseOutHandler}
+                            />
+                        )}
                         <div>
                             {isHoveringPassIcon && (
                                 <div className="pass-error">
-                                    <p className="pass-error-msg">8-20 characters, only letters and numbers, both required</p>
+                                    <p className="pass-error-msg">
+                                        8-20 characters, only letters and numbers, both required
+                                    </p>
                                 </div>
                             )}
                         </div>
@@ -212,11 +262,21 @@ const SignUpModal: FC = () => {
                             pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
                             required
                         />
-                        {isPassVisible ? <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" /> : <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />}
+                        {isPassVisible ? (
+                            <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" />
+                        ) : (
+                            <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />
+                        )}
                     </div>
                     <label htmlFor="password" className="confirm-lable">
                         {t('modal_login_signup.pass_confirm')}
-                        {!isConfirmInputValid && <InfoOutlinedIcon className="confirm-err-icon" onMouseOver={confirmErrorIconOnMouseOverHandler} onMouseOut={confirmErrorIconOnMouseOutHandler} />}
+                        {!isConfirmInputValid && (
+                            <InfoOutlinedIcon
+                                className="confirm-err-icon"
+                                onMouseOver={confirmErrorIconOnMouseOverHandler}
+                                onMouseOut={confirmErrorIconOnMouseOutHandler}
+                            />
+                        )}
                         <div>
                             {isHoveringConfirmIcon && (
                                 <div className="confirm-error">
@@ -240,9 +300,13 @@ const SignUpModal: FC = () => {
                             pattern={valuesSignUp.passwordSignUp}
                             required
                         />
-                        {isPassVisible ? <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" /> : <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />}
+                        {isPassVisible ? (
+                            <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" />
+                        ) : (
+                            <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />
+                        )}
                     </div>
-                    <button type="submit" className="submit-signup-form-button">
+                    <button className="submit-signup-form-button" type="submit">
                         Sign Up
                     </button>
                 </form>

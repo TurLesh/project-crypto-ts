@@ -26,6 +26,10 @@ header {
                 background-color: black;
             }
 
+            .auth-buttons-container {
+                display: flex;
+            }
+
             .modal-overlay-div {
                 position: fixed;
                 top: 0;

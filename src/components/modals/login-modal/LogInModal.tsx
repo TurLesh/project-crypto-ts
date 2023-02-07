@@ -1,18 +1,45 @@
-import { FC, ChangeEvent, useState, useEffect } from 'react';
+import { FC, ChangeEvent, useState, useEffect, SyntheticEvent } from 'react';
+import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { useTranslation } from 'react-i18next';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
 import './LoginModalStyle.css';
 
+import { setUser } from '../../../services/store/slices/userSlice';
+
+interface ILogInData {
+    emailLogIn: string;
+    passwordLogIn: string;
+}
+
 const LogInModal: FC = () => {
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
 
-    const [valuesLogIn, setValuesLogIn] = useState<{ emailLogIn: string; passwordLogIn: string }>({
+    const [valuesLogIn, setValuesLogIn] = useState<ILogInData>({
         emailLogIn: '',
         passwordLogIn: ''
     });
+
+    const handleLogIn = (e: SyntheticEvent, email: string, password: string) => {
+        e.preventDefault();
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+            .then(({ user }) => {
+                console.log('logged in: ', user);
+                dispatch(
+                    setUser({
+                        email: user.email,
+                        token: user.refreshToken,
+                        id: user.uid
+                    })
+                );
+            })
+            .catch(console.error);
+    };
 
     const [isFocusedOnPassInput, setIsFocusedOnPassInput] = useState(false);
 
@@ -104,7 +131,9 @@ const LogInModal: FC = () => {
     }, [isPassVisible]);
 
     // classNames with conditional(ternary) operator
-    const passInputWrapperClassName: string = isFocusedOnPassInput ? 'pass-input-wrapper pass-input-wrapper-focused' : 'pass-input-wrapper';
+    const passInputWrapperClassName: string = isFocusedOnPassInput
+        ? 'pass-input-wrapper pass-input-wrapper-focused'
+        : 'pass-input-wrapper';
 
     //input placeholders with i18n
     const emailInputPlaceholder: string = t('modal_login_signup.email_input_placeholder');
@@ -113,11 +142,20 @@ const LogInModal: FC = () => {
     return (
         <div className="login-modal-wrapper">
             <div className="modal-form-container">
-                <form id="login" className="login-form">
-                    {/* onSubmit={(e) => submitHandler(e)} */}
+                <form
+                    id="login"
+                    className="login-form"
+                    onSubmit={(e) => handleLogIn(e, valuesLogIn.emailLogIn, valuesLogIn.passwordLogIn)}
+                >
                     <label htmlFor="email" className="email-lable">
                         {t('modal_login_signup.email')}
-                        {!isEmailInputValid && <InfoOutlinedIcon className="email-err-icon" onMouseOver={emailErrorIconOnMouseOverHandler} onMouseOut={emailErrorIconOnMouseOutHandler} />}
+                        {!isEmailInputValid && (
+                            <InfoOutlinedIcon
+                                className="email-err-icon"
+                                onMouseOver={emailErrorIconOnMouseOverHandler}
+                                onMouseOut={emailErrorIconOnMouseOutHandler}
+                            />
+                        )}
                         <div>
                             {isHoveringEmailIcon && (
                                 <div className="email-error">
@@ -141,11 +179,19 @@ const LogInModal: FC = () => {
                     <div className="pass-top-info">
                         <label htmlFor="password" className="pass-lable">
                             {t('modal_login_signup.pass')}
-                            {!isPassInputValid && <InfoOutlinedIcon className="pass-err-icon" onMouseOver={passErrorIconOnMouseOverHandler} onMouseOut={passErrorIconOnMouseOutHandler} />}
+                            {!isPassInputValid && (
+                                <InfoOutlinedIcon
+                                    className="pass-err-icon"
+                                    onMouseOver={passErrorIconOnMouseOverHandler}
+                                    onMouseOut={passErrorIconOnMouseOutHandler}
+                                />
+                            )}
                             <div>
                                 {isHoveringPassIcon && (
                                     <div className="pass-error">
-                                        <p className="pass-error-msg">8-20 characters, only letters and numbers, both required</p>
+                                        <p className="pass-error-msg">
+                                            8-20 characters, only letters and numbers, both required
+                                        </p>
                                     </div>
                                 )}
                             </div>
@@ -167,9 +213,13 @@ const LogInModal: FC = () => {
                             pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
                             required
                         />
-                        {isPassVisible ? <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" /> : <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />}
+                        {isPassVisible ? (
+                            <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" />
+                        ) : (
+                            <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />
+                        )}
                     </div>
-                    <button type="submit" className="submit-login-form-button">
+                    <button className="submit-login-form-button" type="submit">
                         Log In
                     </button>
                 </form>

@@ -24,6 +24,9 @@ header .top-container .header-buttons-container .header-top-hr {
   margin-right: 10px;
   background-color: black;
 }
+header .top-container .header-buttons-container .auth-buttons-container {
+  display: flex;
+}
 header .top-container .header-buttons-container .modal-overlay-div {
   position: fixed;
   top: 0;

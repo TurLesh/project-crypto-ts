@@ -1,0 +1,154 @@
+@import '../../../assets/styles/StyleAssets.scss';
+
+.account-dd-wrapper {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .account-dd-btn {
+        border: none;
+        padding: 0px 3px 0px 8px;
+        border-radius: 5px;
+        background-color: $accent2Color;
+        height: 28px;
+        @include JustifyCenter();
+        cursor: pointer;
+        font-family: $nameAndButtonFont;
+        font-size: 12px;
+        font-weight: 500;
+        margin: 0px;
+
+        .account-dd-arrow {
+            font-size: 16px;
+        }
+    }
+
+    .account-dd-btn:hover {
+        transform: scale(1.1);
+        transition-duration: 0.2s;
+    }
+
+    @include smoothOpacity();
+
+    .account-dd-panel-wrapper {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 27px;
+
+        .account-dd-panel-triangle {
+            width: 6px;
+            height: 6px;
+            transform: rotate(45deg);
+            background-color: $accent2Color;
+            border-left: 1px solid black;
+            border-top: 1px solid black;
+            position: absolute;
+            top: 3px;
+        }
+
+        .account-dd-panel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+            padding: 0px 5px;
+            border-radius: 5px;
+            margin-top: 6px;
+            background-color: $accent2Color;
+
+            .account-info-tile {
+                padding: 5px;
+                display: flex;
+                font-family: $nameAndButtonFont;
+                font-size: 12px;
+                font-weight: 500;
+                margin: 0px;
+                border-bottom: 1px solid $mainColorDark;
+
+                .account-info-icon {
+                    font-size: 14px;
+                    margin-right: 1px;
+                }
+            }
+
+            .account-dd-panel-tile {
+                padding: 5px;
+
+                .account-dd-panel-btn {
+                    border: none;
+                    background-color: $accent2Color;
+                    padding: 0px;
+                    width: 100%;
+                    cursor: pointer;
+                    display: flex;
+
+                    .account-dd-panel-btn-text {
+                        display: flex;
+                        font-family: $nameAndButtonFont;
+                        font-size: 12px;
+                        font-weight: 500;
+                        margin: 0px;
+
+                        .account-dd-panel-btn-icon {
+                            font-size: 14px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+
+                .account-dd-panel-btn:hover {
+                    .account-dd-panel-btn-text {
+                        color: $accentColor;
+                        transform: scale(1.1);
+                        transition-duration: 0.2s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dark {
+    .account-dd-wrapper {
+        .account-dd-btn {
+            background-color: $mainColorDark;
+            color: $mainColor;
+        }
+    }
+
+    .account-dd-panel-wrapper {
+        .account-dd-panel-triangle {
+            background-color: $mainColorDark;
+            border-left: 1px solid $mainColor;
+            border-top: 1px solid $mainColor;
+        }
+
+        .account-dd-panel-container {
+            border: 1px solid $mainColor;
+            background-color: $mainColorDark;
+
+            .account-info-tile {
+                border-bottom: 1px solid $mainColor;
+            }
+
+            .account-dd-panel-tile {
+                .account-dd-panel-btn {
+                    background-color: $mainColorDark;
+
+                    .account-dd-panel-btn-text {
+                        color: $mainColor;
+                    }
+                }
+
+                .account-dd-panel-btn:hover {
+                    .account-dd-panel-btn-text {
+                        color: $accentColorDark;
+                    }
+                }
+            }
+        }
+    }
+}

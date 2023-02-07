@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import './i18n';
-import I18nSuspense from './components/suspense/i18nSuspense';
-
 import { Provider } from 'react-redux';
 import { store } from './services/store';
+import App from './App';
+import I18nSuspense from './components/suspense/i18nSuspense';
+import './i18n';
+import './firebase';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

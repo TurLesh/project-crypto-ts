@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../services/store';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../services/store';
-import { CHANGE_SELECTED_CATEGORY } from '../../../services/store/categoriesReducer';
+import { CHANGE_SELECTED_CATEGORY } from '../../../services/store/reducers/categoriesReducer';
 
 interface ICategoryState {
     category_id: string;

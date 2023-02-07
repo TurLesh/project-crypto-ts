@@ -8,7 +8,7 @@ import './CategoryDropDownStyle.css';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../services/store';
-import { CHANGE_SELECTED_CATEGORY } from '../../../services/store/categoriesReducer';
+import { CHANGE_SELECTED_CATEGORY } from '../../../services/store/reducers/categoriesReducer';
 
 interface ICategoriesDD {
     categoriesListData: ICategoriesList[];
@@ -56,25 +56,6 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
         setIsCategoryExpanded((prevValue) => !prevValue);
     };
 
-    //categories tiles map inside panel container
-    const categoryItemMap = categoriesList.map(({ category_id, name }) => {
-        return (
-            <div key={category_id}>
-                <div className="category-dd-panel-tile">
-                    <button onClick={() => selectCategory(category_id, name)} className="category-dd-panel-btn">
-                        <p className="category-dd-panel-btn-text">{name}</p>
-                    </button>
-                </div>
-            </div>
-        );
-    });
-
-    const categoryArrow = isCategoryExpanded ? (
-        <ArrowDropUpIcon className="category-dd-arrow" />
-    ) : (
-        <ArrowDropDownIcon className="category-dd-arrow" />
-    );
-
     ///////////// LIVE FILTERING BLOCK STARTS HERE /////////////
     //input text state (for child input component)
     const [inputText, setInputText] = useState<string>('');
@@ -98,6 +79,25 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
         setCategoriesList(filteredCategories);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inputText]);
+
+    //categories tiles map inside panel container
+    const categoryItemMap = categoriesList.map(({ category_id, name }) => {
+        return (
+            <div key={category_id}>
+                <div className="category-dd-panel-tile">
+                    <button onClick={() => selectCategory(category_id, name)} className="category-dd-panel-btn">
+                        <p className="category-dd-panel-btn-text">{name}</p>
+                    </button>
+                </div>
+            </div>
+        );
+    });
+
+    const categoryArrow = isCategoryExpanded ? (
+        <ArrowDropUpIcon className="category-dd-arrow" />
+    ) : (
+        <ArrowDropDownIcon className="category-dd-arrow" />
+    );
 
     return (
         <div ref={categoryDropDownRef} className="category-dd-wrapper">

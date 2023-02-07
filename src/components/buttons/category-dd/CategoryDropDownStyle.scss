@@ -13,7 +13,6 @@
         border-radius: 5px;
         @include JustifyCenter();
         cursor: pointer;
-        // height: 24px;
         padding: 3px 5px;
         font-size: 14px;
         font-weight: 500;
@@ -52,6 +51,7 @@
         }
 
         .category-dd-panel-container {
+            width: 250px;
             display: flex;
             flex-direction: column;
             border: 1px solid black;
@@ -109,7 +109,6 @@
             }
 
             .category-dd-panel-container {
-                width: 250px;
                 border: 1px solid $mainColor;
                 background-color: $mainColorDark;
 

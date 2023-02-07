@@ -7,7 +7,7 @@ import './CurrencyDropDownStyle.css';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../services/store';
-import { CHANGE_ACTIVE_CURRENCY } from '../../../services/store/currencyReducer';
+import { CHANGE_ACTIVE_CURRENCY } from '../../../services/store/reducers/currencyReducer';
 
 type CurrencyListType = {
     code: string;
