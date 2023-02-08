@@ -6,16 +6,23 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
+import ToTheMoonGif from '../../../assets/images/to-the-moon.gif';
 import './LoginModalStyle.css';
 
 import { setUser } from '../../../services/store/slices/userSlice';
+
+interface ILogInModal {
+    isAuth: boolean;
+    closeModal: () => void;
+}
 
 interface ILogInData {
     emailLogIn: string;
     passwordLogIn: string;
 }
 
-const LogInModal: FC = () => {
+const LogInModal: FC<ILogInModal> = (props) => {
+    const { isAuth, closeModal } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
@@ -24,6 +31,40 @@ const LogInModal: FC = () => {
         passwordLogIn: ''
     });
 
+    const [isFocusedOnPassInput, setIsFocusedOnPassInput] = useState(false);
+
+    const [wasFocusedOnEmailInput, setWasFocusedOnEmailInput] = useState(false);
+    const [wasFocusedOnPassInput, setWasFocusedOnPassInput] = useState(false);
+
+    const [isHoveringEmailIcon, setIsHoveringEmailIcon] = useState(false);
+    const [isHoveringPassIcon, setIsHoveringPassIcon] = useState(false);
+
+    const [inputPasswordType, setInputPasswordType] = useState('password');
+    const [isPassVisible, setPassVisible] = useState(false);
+
+    const [isEmailInputValid, setIsEmailInputValid] = useState(true);
+    const [isPassInputValid, setIsPassInputValid] = useState(true);
+
+    const [showSuccessLogIn, setShowSuccessLogIn] = useState(false);
+
+    // use effect to show gif and close modal every time user log in
+    useEffect(() => {
+        if (isAuth) {
+            setShowSuccessLogIn(true);
+            const timer = setTimeout(() => {
+                closeModal();
+                setShowSuccessLogIn(false);
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+
+        if (!isAuth) {
+            setShowSuccessLogIn(false);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isAuth]);
+
+    // log in handler
     const handleLogIn = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
         const auth = getAuth();
@@ -40,20 +81,6 @@ const LogInModal: FC = () => {
             })
             .catch(console.error);
     };
-
-    const [isFocusedOnPassInput, setIsFocusedOnPassInput] = useState(false);
-
-    const [wasFocusedOnEmailInput, setWasFocusedOnEmailInput] = useState(false);
-    const [wasFocusedOnPassInput, setWasFocusedOnPassInput] = useState(false);
-
-    const [isHoveringEmailIcon, setIsHoveringEmailIcon] = useState(false);
-    const [isHoveringPassIcon, setIsHoveringPassIcon] = useState(false);
-
-    const [inputPasswordType, setInputPasswordType] = useState('password');
-    const [isPassVisible, setPassVisible] = useState(false);
-
-    const [isEmailInputValid, setIsEmailInputValid] = useState(true);
-    const [isPassInputValid, setIsPassInputValid] = useState(true);
 
     //functions to track input.validity.valid values (true/false); it was used for displaying error icons
     const emailInputValidity = () => {
@@ -141,96 +168,104 @@ const LogInModal: FC = () => {
 
     return (
         <div className="login-modal-wrapper">
-            <div className="modal-form-container">
-                <form
-                    id="login"
-                    className="login-form"
-                    onSubmit={(e) => handleLogIn(e, valuesLogIn.emailLogIn, valuesLogIn.passwordLogIn)}
-                >
-                    <label htmlFor="email" className="email-lable">
-                        {t('modal_login_signup.email')}
-                        {!isEmailInputValid && (
-                            <InfoOutlinedIcon
-                                className="email-err-icon"
-                                onMouseOver={emailErrorIconOnMouseOverHandler}
-                                onMouseOut={emailErrorIconOnMouseOutHandler}
-                            />
-                        )}
-                        <div>
-                            {isHoveringEmailIcon && (
-                                <div className="email-error">
-                                    <p className="email-error-msg">It should be a valid email address!</p>
+            {showSuccessLogIn ? (
+                <div className="modal-success-wrapper">
+                    <img src={ToTheMoonGif} className="to-the-moon-gif" alt="to-the-moon-gif" />
+                </div>
+            ) : (
+                <div className="modal-form-wrapper">
+                    <div className="modal-form-container">
+                        <form
+                            id="login"
+                            className="login-form"
+                            onSubmit={(e) => handleLogIn(e, valuesLogIn.emailLogIn, valuesLogIn.passwordLogIn)}
+                        >
+                            <label htmlFor="email" className="email-lable">
+                                {t('modal_login_signup.email')}
+                                {!isEmailInputValid && (
+                                    <InfoOutlinedIcon
+                                        className="email-err-icon"
+                                        onMouseOver={emailErrorIconOnMouseOverHandler}
+                                        onMouseOut={emailErrorIconOnMouseOutHandler}
+                                    />
+                                )}
+                                <div>
+                                    {isHoveringEmailIcon && (
+                                        <div className="email-error">
+                                            <p className="email-error-msg">It should be a valid email address!</p>
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                    </label>
-                    <input
-                        onChange={emailInputOnChangeHandler}
-                        onBlur={emailInputOnBlurHandler}
-                        className="email-input"
-                        type="email"
-                        placeholder={emailInputPlaceholder}
-                        id="username"
-                        name="username"
-                        autoComplete="username"
-                        value={valuesLogIn.emailLogIn}
-                        required
-                    />
-                    <div className="pass-top-info">
-                        <label htmlFor="password" className="pass-lable">
-                            {t('modal_login_signup.pass')}
-                            {!isPassInputValid && (
-                                <InfoOutlinedIcon
-                                    className="pass-err-icon"
-                                    onMouseOver={passErrorIconOnMouseOverHandler}
-                                    onMouseOut={passErrorIconOnMouseOutHandler}
-                                />
-                            )}
-                            <div>
-                                {isHoveringPassIcon && (
-                                    <div className="pass-error">
-                                        <p className="pass-error-msg">
-                                            8-20 characters, only letters and numbers, both required
-                                        </p>
+                            </label>
+                            <input
+                                onChange={emailInputOnChangeHandler}
+                                onBlur={emailInputOnBlurHandler}
+                                className="email-input"
+                                type="email"
+                                placeholder={emailInputPlaceholder}
+                                id="username"
+                                name="username"
+                                autoComplete="username"
+                                value={valuesLogIn.emailLogIn}
+                                required
+                            />
+                            <div className="pass-top-info">
+                                <label htmlFor="password" className="pass-lable">
+                                    {t('modal_login_signup.pass')}
+                                    {!isPassInputValid && (
+                                        <InfoOutlinedIcon
+                                            className="pass-err-icon"
+                                            onMouseOver={passErrorIconOnMouseOverHandler}
+                                            onMouseOut={passErrorIconOnMouseOutHandler}
+                                        />
+                                    )}
+                                    <div>
+                                        {isHoveringPassIcon && (
+                                            <div className="pass-error">
+                                                <p className="pass-error-msg">
+                                                    8-20 characters, only letters and numbers, both required
+                                                </p>
+                                            </div>
+                                        )}
                                     </div>
+                                </label>
+                                <button className="pass-forgot">{t('modal_login_signup.pass_forgot')}</button>
+                            </div>
+                            <div className={passInputWrapperClassName}>
+                                <input
+                                    onFocus={passInputOnFocusHandler}
+                                    onChange={passInputOnChangeHandler}
+                                    onBlur={passInputOnBlurHandler}
+                                    className="pass-input"
+                                    type={inputPasswordType}
+                                    autoComplete="current-password"
+                                    placeholder={passInputPlaceholder}
+                                    id="password"
+                                    name="password"
+                                    value={valuesLogIn.passwordLogIn}
+                                    pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
+                                    required
+                                />
+                                {isPassVisible ? (
+                                    <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" />
+                                ) : (
+                                    <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />
                                 )}
                             </div>
-                        </label>
-                        <button className="pass-forgot">{t('modal_login_signup.pass_forgot')}</button>
+                            <button className="submit-login-form-button" type="submit">
+                                Log In
+                            </button>
+                        </form>
                     </div>
-                    <div className={passInputWrapperClassName}>
-                        <input
-                            onFocus={passInputOnFocusHandler}
-                            onChange={passInputOnChangeHandler}
-                            onBlur={passInputOnBlurHandler}
-                            className="pass-input"
-                            type={inputPasswordType}
-                            autoComplete="current-password"
-                            placeholder={passInputPlaceholder}
-                            id="password"
-                            name="password"
-                            value={valuesLogIn.passwordLogIn}
-                            pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
-                            required
-                        />
-                        {isPassVisible ? (
-                            <VisibilityIcon onClick={eyeOnClickHandler} className="icon-visibility" />
-                        ) : (
-                            <VisibilityOffIcon onClick={eyeOnClickHandler} className="icon-visibility" />
-                        )}
+                    <div className="modal-continuewith-container">
+                        <p className="continue-with-or">{t('modal_login_signup.or')}</p>
+                        <button className="continue-with-button">
+                            <img src={GoogleIcon} className="continue-with-icon" alt="continue-with-icon" />
+                            {t('modal_login_signup.continue_with')}
+                        </button>
                     </div>
-                    <button className="submit-login-form-button" type="submit">
-                        Log In
-                    </button>
-                </form>
-            </div>
-            <div className="modal-continuewith-container">
-                <p className="continue-with-or">{t('modal_login_signup.or')}</p>
-                <button className="continue-with-button">
-                    <img src={GoogleIcon} className="continue-with-icon" alt="continue-with-icon" />
-                    {t('modal_login_signup.continue_with')}
-                </button>
-            </div>
+                </div>
+            )}
         </div>
     );
 };

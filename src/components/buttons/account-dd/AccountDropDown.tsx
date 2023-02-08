@@ -56,7 +56,7 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
     return (
         <div ref={accountDropDownRef} className="account-dd-wrapper">
             <button className="account-dd-btn" onClick={expandAccountHandler}>
-                Account {accountArrow}
+                {userName} {accountArrow}
             </button>
             <CSSTransition in={isAccountExpanded} timeout={200} classNames="display" unmountOnExit>
                 <div className="account-dd-panel-wrapper">

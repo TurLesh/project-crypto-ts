@@ -4,6 +4,7 @@
 .category-searchfield-wrapper .category-searchfield {
   width: 90%;
   background-color: rgb(227, 237, 245);
+  color: #757566;
   font-family: "Work Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -15,12 +16,14 @@
 }
 .category-searchfield-wrapper .category-searchfield:focus {
   outline: 1px solid #2a2c3b;
+  color: black;
 }
 
 .dark .category-searchfield-wrapper .category-searchfield {
   background-color: #1f212b;
-  color: aliceblue;
+  color: #757566;
 }
 .dark .category-searchfield-wrapper .category-searchfield:focus {
   outline: 1px solid aliceblue;
+  color: aliceblue;
 }/*# sourceMappingURL=CategorySearchFieldStyle.css.map */

@@ -31,7 +31,6 @@
 }
 .cryptocurrency-page-wrapper .content-wrapper .cryptocurrency-list-info-container {
   z-index: 100;
-  position: -webkit-sticky;
   position: sticky;
   top: 0px;
 }

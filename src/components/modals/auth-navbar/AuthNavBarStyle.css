@@ -10,10 +10,8 @@
   font-size: 22px;
   font-weight: 700;
   text-decoration: underline;
-  -webkit-text-decoration-style: solid;
-          text-decoration-style: solid;
-  -webkit-text-decoration-color: #1058f5;
-          text-decoration-color: #1058f5;
+  text-decoration-style: solid;
+  text-decoration-color: #1058f5;
   margin-right: 50px;
 }
 .modal-nav-container .modal-nav-login-unactive {
@@ -32,10 +30,8 @@
   font-size: 22px;
   font-weight: 700;
   text-decoration: underline;
-  -webkit-text-decoration-style: solid;
-          text-decoration-style: solid;
-  -webkit-text-decoration-color: #1058f5;
-          text-decoration-color: #1058f5;
+  text-decoration-style: solid;
+  text-decoration-color: #1058f5;
 }
 .modal-nav-container .modal-nav-signup-unactive {
   background-color: transparent;
@@ -55,16 +51,14 @@
 
 .dark .modal-nav-container .modal-nav-login {
   color: aliceblue;
-  -webkit-text-decoration-color: #e26411;
-          text-decoration-color: #e26411;
+  text-decoration-color: #e26411;
 }
 .dark .modal-nav-container .modal-nav-login-unactive {
   color: aliceblue;
 }
 .dark .modal-nav-container .modal-nav-signup {
   color: aliceblue;
-  -webkit-text-decoration-color: #e26411;
-          text-decoration-color: #e26411;
+  text-decoration-color: #e26411;
 }
 .dark .modal-nav-container .modal-nav-signup-unactive {
   color: aliceblue;

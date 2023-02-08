@@ -54,6 +54,16 @@ const Header: FC = () => {
         setOpenedModalSignUp(true);
     };
 
+    // function passed to child 'LogInModal' component to change state from child
+    const closeLogInModal = () => {
+        setOpenedModalLogIn(false);
+    };
+
+    // function passed to child 'SignUpModal' component to change state from child
+    const closeSignUpModal = () => {
+        setOpenedModalSignUp(false);
+    };
+
     return (
         <header>
             <div className="top-container">
@@ -82,7 +92,7 @@ const Header: FC = () => {
                                     navigateToSignUpHandler={modalNavigateToSignUp}
                                     modalOnCloseHandler={modalOnCloseHandler}
                                 />
-                                <LogInModal />
+                                <LogInModal isAuth={isAuth} closeModal={closeLogInModal} />
                             </div>
                         </div>
                     )}
@@ -97,7 +107,7 @@ const Header: FC = () => {
                                     navigateToSignUpHandler={modalNavigateToSignUp}
                                     modalOnCloseHandler={modalOnCloseHandler}
                                 />
-                                <SignUpModal />
+                                <SignUpModal isAuth={isAuth} closeModal={closeSignUpModal} />
                             </div>
                         </div>
                     )}

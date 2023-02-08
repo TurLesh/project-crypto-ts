@@ -28,13 +28,11 @@ body {
   margin: 0;
   background-color: rgb(227, 237, 245);
   text-align: center;
-  -webkit-text-decoration-color: #1058f5;
-          text-decoration-color: #1058f5;
+  text-decoration-color: #1058f5;
 }
 
 .dark {
   background-color: #1f212b;
   color: aliceblue;
-  -webkit-text-decoration-color: #e26411;
-          text-decoration-color: #e26411;
+  text-decoration-color: #e26411;
 }/*# sourceMappingURL=index.css.map */

@@ -1,22 +1,31 @@
-.login-modal-wrapper .modal-form-container .login-form {
+.login-modal-wrapper .modal-success-wrapper {
+  height: 294px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-modal-wrapper .modal-success-wrapper .to-the-moon-gif {
+  width: 60%;
+}
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   text-align: left !important;
 }
-.login-modal-wrapper .modal-form-container .login-form .email-lable {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-lable {
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
   display: flex;
 }
-.login-modal-wrapper .modal-form-container .login-form .email-lable .email-err-icon {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-lable .email-err-icon {
   margin-left: 3px;
   margin-right: 5px;
   font-size: 16px;
   color: #fb3131;
 }
-.login-modal-wrapper .modal-form-container .login-form .email-lable .email-error {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-lable .email-error {
   border: 1px solid #fb3131;
   padding: 1px 5px;
   display: flex;
@@ -24,13 +33,13 @@
   background-color: rgb(227, 237, 245);
   position: absolute;
 }
-.login-modal-wrapper .modal-form-container .login-form .email-lable .email-error .email-error-msg {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-lable .email-error .email-error-msg {
   margin: 0px;
   font-family: "Work Sans", sans-serif;
   font-size: 12px;
   font-weight: 500;
 }
-.login-modal-wrapper .modal-form-container .login-form .email-input {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-input {
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 5px;
@@ -44,27 +53,27 @@
   border: 1px solid #d9d9d9;
   background-color: aliceblue;
 }
-.login-modal-wrapper .modal-form-container .login-form .email-input:focus {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-input:focus {
   border: 1px solid #1058f5;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-top-info {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-top-info {
   display: flex;
   justify-content: space-between;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-top-info .pass-lable {
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
   display: flex;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-err-icon {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-err-icon {
   margin-left: 3px;
   margin-right: 5px;
   font-size: 16px;
   color: #fb3131;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error {
   border: 1px solid #fb3131;
   padding: 1px 5px;
   display: flex;
@@ -72,13 +81,13 @@
   background-color: rgb(227, 237, 245);
   position: absolute;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error .pass-error-msg {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error .pass-error-msg {
   margin: 0px;
   font-family: "Work Sans", sans-serif;
   font-size: 12px;
   font-weight: 500;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-forgot {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-top-info .pass-forgot {
   background-color: transparent;
   border: none;
   font-family: "Work Sans", sans-serif;
@@ -88,7 +97,7 @@
   align-self: flex-end;
   cursor: pointer;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-input-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -99,7 +108,7 @@
   border-radius: 5px;
   transition: 0.5s;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-input {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-input {
   width: 100%;
   border-radius: 5px;
   font-family: "Work Sans", sans-serif;
@@ -110,16 +119,16 @@
   background-color: aliceblue;
   border: none;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .icon-visibility {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-input-wrapper .icon-visibility {
   color: #8e8e8e;
   margin-right: 20px;
   cursor: pointer;
 }
-.login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {
   border: 1px solid #1058f5;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
 }
-.login-modal-wrapper .modal-form-container .login-form .submit-login-form-button {
+.login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .submit-login-form-button {
   background-color: #1058f5;
   border: 0;
   border-radius: 5px;
@@ -130,13 +139,13 @@
   color: aliceblue;
   cursor: pointer;
 }
-.login-modal-wrapper .modal-continuewith-container .continue-with-or {
+.login-modal-wrapper .modal-form-wrapper .modal-continuewith-container .continue-with-or {
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   font-weight: 500;
   cursor: default;
 }
-.login-modal-wrapper .modal-continuewith-container .continue-with-button {
+.login-modal-wrapper .modal-form-wrapper .modal-continuewith-container .continue-with-button {
   width: 100%;
   background-color: aliceblue;
   border-radius: 5px;
@@ -150,40 +159,40 @@
   justify-content: center;
   cursor: pointer;
 }
-.login-modal-wrapper .modal-continuewith-container .continue-with-button .continue-with-icon {
+.login-modal-wrapper .modal-form-wrapper .modal-continuewith-container .continue-with-button .continue-with-icon {
   width: 20px;
   padding-right: 5px;
 }
 
-.dark .login-modal-wrapper .modal-form-container .login-form .email-lable .email-error {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-lable .email-error {
   background-color: #2a2c3b;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .email-input {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-input {
   background-color: #2a2c3b;
   border: 1px solid #757566;
   color: aliceblue;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .email-input:focus {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-input:focus {
   border: 1px solid #e26411;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-top-info .pass-lable .pass-error {
   background-color: #2a2c3b;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-input-wrapper {
   background-color: #2a2c3b;
   border: 1px solid #757566;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-input {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-input-wrapper .pass-input {
   background-color: #2a2c3b;
   color: aliceblue;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {
   border: 1px solid #e26411;
 }
-.dark .login-modal-wrapper .modal-form-container .login-form .submit-login-form-button {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .submit-login-form-button {
   background-color: #e26411;
 }
-.dark .login-modal-wrapper .modal-continuewith-container .continue-with-button {
+.dark .login-modal-wrapper .modal-form-wrapper .modal-continuewith-container .continue-with-button {
   background-color: #2a2c3b;
   color: aliceblue;
   border: 1px solid #8e8e8e;

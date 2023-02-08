@@ -1,70 +1,40 @@
 @import '../../../assets/styles/StyleAssets.scss';
 
 .login-modal-wrapper {
-    .modal-form-container {
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            text-align: left !important;
+    .modal-success-wrapper {
+        height: 294px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-            .email-lable {
-                font-family: $contentFont;
-                font-size: 16px;
-                font-weight: 500;
+        .to-the-moon-gif {
+            width: 60%;
+        }
+    }
+
+    .modal-form-wrapper {
+        .modal-form-container {
+            .login-form {
                 display: flex;
-                // align-items: center;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: left !important;
 
-                .email-err-icon {
-                    margin-left: 3px;
-                    margin-right: 5px;
-                    font-size: 16px;
-                    color: $redColor;
-                }
-
-                .email-error {
-                    border: 1px solid $redColor;
-                    padding: 1px 5px;
-                    display: flex;
-                    border-radius: 5px;
-                    background-color: $bg-light;
-                    position: absolute;
-
-                    .email-error-msg {
-                        margin: 0px;
-                        font-family: $contentFont;
-                        font-size: 12px;
-                        font-weight: 500;
-                    }
-                }
-            }
-
-            .email-input {
-                @include AuthInputAsset();
-            }
-
-            .email-input:focus {
-                @include AuthInputFocus();
-            }
-
-            .pass-top-info {
-                display: flex;
-                justify-content: space-between;
-
-                .pass-lable {
+                .email-lable {
                     font-family: $contentFont;
                     font-size: 16px;
                     font-weight: 500;
                     display: flex;
+                    // align-items: center;
 
-                    .pass-err-icon {
+                    .email-err-icon {
                         margin-left: 3px;
                         margin-right: 5px;
                         font-size: 16px;
                         color: $redColor;
                     }
 
-                    .pass-error {
+                    .email-error {
                         border: 1px solid $redColor;
                         padding: 1px 5px;
                         display: flex;
@@ -72,7 +42,7 @@
                         background-color: $bg-light;
                         position: absolute;
 
-                        .pass-error-msg {
+                        .email-error-msg {
                             margin: 0px;
                             font-family: $contentFont;
                             font-size: 12px;
@@ -81,73 +51,116 @@
                     }
                 }
 
-                .pass-forgot {
-                    background-color: transparent;
-                    border: none;
-                    font-family: $contentFont;
-                    color: $gray2Color;
-                    font-size: 12px;
-                    font-weight: 700;
-                    align-self: flex-end;
+                .email-input {
+                    @include AuthInputAsset();
+                }
+
+                .email-input:focus {
+                    @include AuthInputFocus();
+                }
+
+                .pass-top-info {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .pass-lable {
+                        font-family: $contentFont;
+                        font-size: 16px;
+                        font-weight: 500;
+                        display: flex;
+
+                        .pass-err-icon {
+                            margin-left: 3px;
+                            margin-right: 5px;
+                            font-size: 16px;
+                            color: $redColor;
+                        }
+
+                        .pass-error {
+                            border: 1px solid $redColor;
+                            padding: 1px 5px;
+                            display: flex;
+                            border-radius: 5px;
+                            background-color: $bg-light;
+                            position: absolute;
+
+                            .pass-error-msg {
+                                margin: 0px;
+                                font-family: $contentFont;
+                                font-size: 12px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    .pass-forgot {
+                        background-color: transparent;
+                        border: none;
+                        font-family: $contentFont;
+                        color: $gray2Color;
+                        font-size: 12px;
+                        font-weight: 700;
+                        align-self: flex-end;
+                        cursor: pointer;
+                    }
+                }
+
+                .pass-input-wrapper {
+                    @include AuthInputWrapperWithIcon();
+
+                    .pass-input {
+                        @include AuthInputWithIcon();
+                    }
+
+                    .icon-visibility {
+                        color: $gray2Color;
+                        margin-right: 20px;
+                        cursor: pointer;
+                    }
+                }
+
+                .pass-input-wrapper-focused {
+                    @include AuthInputFocus();
+                }
+
+                .submit-login-form-button {
+                    background-color: $accentColor;
+                    border: 0;
+                    border-radius: 5px;
+                    padding: 10px 0px;
+                    font-family: $mainFont;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: $mainColor;
                     cursor: pointer;
                 }
             }
+        }
 
-            .pass-input-wrapper {
-                @include AuthInputWrapperWithIcon();
-
-                .pass-input {
-                    @include AuthInputWithIcon();
-                }
-
-                .icon-visibility {
-                    color: $gray2Color;
-                    margin-right: 20px;
-                    cursor: pointer;
-                }
-            }
-
-            .pass-input-wrapper-focused {
-                @include AuthInputFocus();
-            }
-
-            .submit-login-form-button {
-                background-color: $accentColor;
-                border: 0;
-                border-radius: 5px;
-                padding: 10px 0px;
+        .modal-continuewith-container {
+            .continue-with-or {
                 font-family: $mainFont;
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 500;
-                color: $mainColor;
-                cursor: pointer;
+                cursor: default;
             }
-        }
-    }
 
-    .modal-continuewith-container {
-        .continue-with-or {
-            font-family: $mainFont;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: default;
-        }
+            .continue-with-button {
+                width: 100%;
+                background-color: $mainColor;
+                border-radius: 5px;
+                font-family: $mainFont;
+                font-size: 16px;
+                font-weight: 400;
+                padding: 10px 0px;
+                border: 1px solid $gray2Color;
+                @include JustifyCenter();
+                cursor: pointer;
 
-        .continue-with-button {
-            width: 100%;
-            background-color: $mainColor;
-            border-radius: 5px;
-            font-family: $mainFont;
-            font-size: 16px;
-            font-weight: 400;
-            padding: 10px 0px;
-            border: 1px solid $gray2Color;
-            @include JustifyCenter();
-            cursor: pointer;
-
-            .continue-with-icon {
-                width: 20px;
-                padding-right: 5px;
+                .continue-with-icon {
+                    width: 20px;
+                    padding-right: 5px;
+                }
             }
         }
     }
@@ -155,57 +168,59 @@
 //dark mode styles
 .dark {
     .login-modal-wrapper {
-        .modal-form-container {
-            .login-form {
-                .email-lable {
-                    .email-error {
-                        background-color: $mainColorDark;
-                    }
-                }
-
-                .email-input {
-                    background-color: $mainColorDark;
-                    border: 1px solid $gray3Color;
-                    color: $mainColor;
-                }
-
-                .email-input:focus {
-                    border: 1px solid $accentColorDark;
-                }
-
-                .pass-top-info {
-                    .pass-lable {
-                        .pass-error {
+        .modal-form-wrapper {
+            .modal-form-container {
+                .login-form {
+                    .email-lable {
+                        .email-error {
                             background-color: $mainColorDark;
                         }
                     }
-                }
 
-                .pass-input-wrapper {
-                    background-color: $mainColorDark;
-                    border: 1px solid $gray3Color;
-
-                    .pass-input {
+                    .email-input {
                         background-color: $mainColorDark;
+                        border: 1px solid $gray3Color;
                         color: $mainColor;
                     }
-                }
 
-                .pass-input-wrapper-focused {
-                    border: 1px solid $accentColorDark;
-                }
+                    .email-input:focus {
+                        border: 1px solid $accentColorDark;
+                    }
 
-                .submit-login-form-button {
-                    background-color: $accentColorDark;
+                    .pass-top-info {
+                        .pass-lable {
+                            .pass-error {
+                                background-color: $mainColorDark;
+                            }
+                        }
+                    }
+
+                    .pass-input-wrapper {
+                        background-color: $mainColorDark;
+                        border: 1px solid $gray3Color;
+
+                        .pass-input {
+                            background-color: $mainColorDark;
+                            color: $mainColor;
+                        }
+                    }
+
+                    .pass-input-wrapper-focused {
+                        border: 1px solid $accentColorDark;
+                    }
+
+                    .submit-login-form-button {
+                        background-color: $accentColorDark;
+                    }
                 }
             }
-        }
 
-        .modal-continuewith-container {
-            .continue-with-button {
-                background-color: $mainColorDark;
-                color: $mainColor;
-                border: 1px solid $gray2Color;
+            .modal-continuewith-container {
+                .continue-with-button {
+                    background-color: $mainColorDark;
+                    color: $mainColor;
+                    border: 1px solid $gray2Color;
+                }
             }
         }
     }

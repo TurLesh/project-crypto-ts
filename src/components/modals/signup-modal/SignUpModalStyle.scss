@@ -1,184 +1,197 @@
 @import '../../../assets/styles/StyleAssets.scss';
 
 .signup-modal-wrapper {
-    .modal-form-container {
-        .signup-form {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            text-align: left !important;
+    .modal-success-wrapper {
+        height: 370px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-            .email-lable {
-                font-family: $contentFont;
-                font-size: 16px;
-                font-weight: 500;
-                display: flex;
-
-                .email-err-icon {
-                    margin-left: 3px;
-                    margin-right: 5px;
-                    font-size: 16px;
-                    color: $redColor;
-                }
-
-                .email-error {
-                    border: 1px solid $redColor;
-                    padding: 1px 5px;
-                    display: flex;
-                    border-radius: 5px;
-                    background-color: $bg-light;
-                    position: absolute;
-
-                    .email-error-msg {
-                        margin: 0px;
-                        font-family: $contentFont;
-                        font-size: 12px;
-                        font-weight: 500;
-                    }
-                }
-            }
-
-            .email-input {
-                @include AuthInputAsset();
-            }
-
-            .email-input:focus {
-                @include AuthInputFocus();
-            }
-
-            .pass-lable {
-                font-family: $contentFont;
-                font-size: 16px;
-                font-weight: 500;
-                display: flex;
-
-                .pass-err-icon {
-                    margin-left: 3px;
-                    margin-right: 5px;
-                    font-size: 16px;
-                    color: $redColor;
-                }
-
-                .pass-error {
-                    border: 1px solid $redColor;
-                    padding: 1px 5px;
-                    display: flex;
-                    border-radius: 5px;
-                    background-color: $bg-light;
-                    position: absolute;
-
-                    .pass-error-msg {
-                        margin: 0px;
-                        font-family: $contentFont;
-                        font-size: 12px;
-                        font-weight: 500;
-                    }
-                }
-            }
-
-            .pass-input-wrapper {
-                @include AuthInputWrapperWithIcon();
-
-                .pass-input {
-                    @include AuthInputWithIcon();
-                }
-
-                .icon-visibility {
-                    color: $gray2Color;
-                    margin-right: 20px;
-                    cursor: pointer;
-                }
-            }
-
-            .pass-input-wrapper-focused {
-                @include AuthInputFocus();
-            }
-
-            .confirm-lable {
-                font-family: $contentFont;
-                font-size: 16px;
-                font-weight: 500;
-                display: flex;
-
-                .confirm-err-icon {
-                    margin-left: 3px;
-                    margin-right: 5px;
-                    font-size: 16px;
-                    color: $redColor;
-                }
-
-                .confirm-error {
-                    border: 1px solid $redColor;
-                    padding: 1px 5px;
-                    display: flex;
-                    border-radius: 5px;
-                    background-color: $bg-light;
-                    position: absolute;
-
-                    .confirm-error-msg {
-                        margin: 0px;
-                        font-family: $contentFont;
-                        font-size: 12px;
-                        font-weight: 500;
-                    }
-                }
-            }
-
-            .confirm-input-wrapper {
-                @include AuthInputWrapperWithIcon();
-
-                .confirm-input {
-                    @include AuthInputWithIcon();
-                }
-
-                .icon-visibility {
-                    color: $gray2Color;
-                    margin-right: 20px;
-                    cursor: pointer;
-                }
-            }
-
-            .confirm-input-wrapper-focused {
-                @include AuthInputFocus();
-            }
-
-            .submit-signup-form-button {
-                background-color: $accentColor;
-                border: 0;
-                border-radius: 5px;
-                padding: 10px 0px;
-                font-family: $mainFont;
-                font-size: 18px;
-                font-weight: 500;
-                color: $mainColor;
-                cursor: pointer;
-            }
+        .to-the-moon-gif {
+            width: 70%;
         }
     }
 
-    .modal-continuewith-container {
-        .continue-with-or {
-            font-family: $mainFont;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: default;
+    .modal-form-wrapper {
+        .modal-form-container {
+            .signup-form {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: left !important;
+
+                .email-lable {
+                    font-family: $contentFont;
+                    font-size: 16px;
+                    font-weight: 500;
+                    display: flex;
+
+                    .email-err-icon {
+                        margin-left: 3px;
+                        margin-right: 5px;
+                        font-size: 16px;
+                        color: $redColor;
+                    }
+
+                    .email-error {
+                        border: 1px solid $redColor;
+                        padding: 1px 5px;
+                        display: flex;
+                        border-radius: 5px;
+                        background-color: $bg-light;
+                        position: absolute;
+
+                        .email-error-msg {
+                            margin: 0px;
+                            font-family: $contentFont;
+                            font-size: 12px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+
+                .email-input {
+                    @include AuthInputAsset();
+                }
+
+                .email-input:focus {
+                    @include AuthInputFocus();
+                }
+
+                .pass-lable {
+                    font-family: $contentFont;
+                    font-size: 16px;
+                    font-weight: 500;
+                    display: flex;
+
+                    .pass-err-icon {
+                        margin-left: 3px;
+                        margin-right: 5px;
+                        font-size: 16px;
+                        color: $redColor;
+                    }
+
+                    .pass-error {
+                        border: 1px solid $redColor;
+                        padding: 1px 5px;
+                        display: flex;
+                        border-radius: 5px;
+                        background-color: $bg-light;
+                        position: absolute;
+
+                        .pass-error-msg {
+                            margin: 0px;
+                            font-family: $contentFont;
+                            font-size: 12px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+
+                .pass-input-wrapper {
+                    @include AuthInputWrapperWithIcon();
+
+                    .pass-input {
+                        @include AuthInputWithIcon();
+                    }
+
+                    .icon-visibility {
+                        color: $gray2Color;
+                        margin-right: 20px;
+                        cursor: pointer;
+                    }
+                }
+
+                .pass-input-wrapper-focused {
+                    @include AuthInputFocus();
+                }
+
+                .confirm-lable {
+                    font-family: $contentFont;
+                    font-size: 16px;
+                    font-weight: 500;
+                    display: flex;
+
+                    .confirm-err-icon {
+                        margin-left: 3px;
+                        margin-right: 5px;
+                        font-size: 16px;
+                        color: $redColor;
+                    }
+
+                    .confirm-error {
+                        border: 1px solid $redColor;
+                        padding: 1px 5px;
+                        display: flex;
+                        border-radius: 5px;
+                        background-color: $bg-light;
+                        position: absolute;
+
+                        .confirm-error-msg {
+                            margin: 0px;
+                            font-family: $contentFont;
+                            font-size: 12px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+
+                .confirm-input-wrapper {
+                    @include AuthInputWrapperWithIcon();
+
+                    .confirm-input {
+                        @include AuthInputWithIcon();
+                    }
+
+                    .icon-visibility {
+                        color: $gray2Color;
+                        margin-right: 20px;
+                        cursor: pointer;
+                    }
+                }
+
+                .confirm-input-wrapper-focused {
+                    @include AuthInputFocus();
+                }
+
+                .submit-signup-form-button {
+                    background-color: $accentColor;
+                    border: 0;
+                    border-radius: 5px;
+                    padding: 10px 0px;
+                    font-family: $mainFont;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: $mainColor;
+                    cursor: pointer;
+                }
+            }
         }
 
-        .continue-with-button {
-            width: 100%;
-            background-color: $mainColor;
-            border-radius: 5px;
-            font-family: $mainFont;
-            font-size: 16px;
-            font-weight: 400;
-            padding: 10px 0px;
-            border: 1px solid $gray2Color;
-            @include JustifyCenter();
-            cursor: pointer;
+        .modal-continuewith-container {
+            .continue-with-or {
+                font-family: $mainFont;
+                font-size: 16px;
+                font-weight: 500;
+                cursor: default;
+            }
 
-            .continue-with-icon {
-                width: 20px;
-                padding-right: 5px;
+            .continue-with-button {
+                width: 100%;
+                background-color: $mainColor;
+                border-radius: 5px;
+                font-family: $mainFont;
+                font-size: 16px;
+                font-weight: 400;
+                padding: 10px 0px;
+                border: 1px solid $gray2Color;
+                @include JustifyCenter();
+                cursor: pointer;
+
+                .continue-with-icon {
+                    width: 20px;
+                    padding-right: 5px;
+                }
             }
         }
     }
@@ -186,75 +199,77 @@
 //dark mode styles
 .dark {
     .signup-modal-wrapper {
-        .modal-form-container {
-            .signup-form {
-                .email-lable {
-                    .email-error {
-                        background-color: $mainColorDark;
+        .modal-form-wrapper {
+            .modal-form-container {
+                .signup-form {
+                    .email-lable {
+                        .email-error {
+                            background-color: $mainColorDark;
+                        }
                     }
-                }
 
-                .email-input {
-                    background-color: $mainColorDark;
-                    border: 1px solid $gray3Color;
-                    color: $mainColor;
-                }
-
-                .email-input:focus {
-                    border: 1px solid $accentColorDark;
-                }
-
-                .pass-lable {
-                    .pass-error {
+                    .email-input {
                         background-color: $mainColorDark;
-                    }
-                }
-
-                .pass-input-wrapper {
-                    background-color: $mainColorDark;
-                    border: 1px solid $gray3Color;
-
-                    .pass-input {
-                        background-color: $mainColorDark;
+                        border: 1px solid $gray3Color;
                         color: $mainColor;
                     }
-                }
 
-                .pass-input-wrapper-focused {
-                    border: 1px solid $accentColorDark;
-                }
-
-                .confirm-lable {
-                    .confirm-error {
-                        background-color: $mainColorDark;
+                    .email-input:focus {
+                        border: 1px solid $accentColorDark;
                     }
-                }
 
-                .confirm-input-wrapper {
-                    background-color: $mainColorDark;
-                    border: 1px solid $gray3Color;
-
-                    .confirm-input {
-                        background-color: $mainColorDark;
-                        color: $mainColor;
+                    .pass-lable {
+                        .pass-error {
+                            background-color: $mainColorDark;
+                        }
                     }
-                }
 
-                .confirm-input-wrapper-focused {
-                    border: 1px solid $accentColorDark;
-                }
+                    .pass-input-wrapper {
+                        background-color: $mainColorDark;
+                        border: 1px solid $gray3Color;
 
-                .submit-signup-form-button {
-                    background-color: $accentColorDark;
+                        .pass-input {
+                            background-color: $mainColorDark;
+                            color: $mainColor;
+                        }
+                    }
+
+                    .pass-input-wrapper-focused {
+                        border: 1px solid $accentColorDark;
+                    }
+
+                    .confirm-lable {
+                        .confirm-error {
+                            background-color: $mainColorDark;
+                        }
+                    }
+
+                    .confirm-input-wrapper {
+                        background-color: $mainColorDark;
+                        border: 1px solid $gray3Color;
+
+                        .confirm-input {
+                            background-color: $mainColorDark;
+                            color: $mainColor;
+                        }
+                    }
+
+                    .confirm-input-wrapper-focused {
+                        border: 1px solid $accentColorDark;
+                    }
+
+                    .submit-signup-form-button {
+                        background-color: $accentColorDark;
+                    }
                 }
             }
-        }
 
-        .modal-continuewith-container {
-            .continue-with-button {
-                background-color: $mainColorDark;
-                color: $mainColor;
-                border: 1px solid $gray2Color;
+            .modal-continuewith-container {
+                .continue-with-button {
+                    background-color: $mainColorDark;
+                    color: $mainColor;
+                    border: 1px solid $gray2Color;
+                }
             }
         }
     }
