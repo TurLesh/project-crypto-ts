@@ -75,6 +75,8 @@
   font-weight: 500;
   margin: 0px;
   border-bottom: 1px solid #2a2c3b;
+  text-decoration: none;
+  color: black;
 }
 .account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-info-tile .account-info-icon {
   font-size: 14px;
@@ -90,6 +92,7 @@
   width: 100%;
   cursor: pointer;
   display: flex;
+  text-decoration: none;
 }
 .account-dd-wrapper .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn .account-dd-panel-btn-text {
   display: flex;
@@ -123,6 +126,7 @@
 }
 .dark .account-dd-panel-wrapper .account-dd-panel-container .account-info-tile {
   border-bottom: 1px solid aliceblue;
+  color: aliceblue;
 }
 .dark .account-dd-panel-wrapper .account-dd-panel-container .account-dd-panel-tile .account-dd-panel-btn {
   background-color: #2a2c3b;

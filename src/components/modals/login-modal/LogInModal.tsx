@@ -1,12 +1,13 @@
 import { FC, ChangeEvent, useState, useEffect, SyntheticEvent } from 'react';
 import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { useTranslation } from 'react-i18next';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../../../firebase';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
-import ToTheMoonGif from '../../../assets/images/to-the-moon.gif';
+import SuccessGif from '../../../assets/images/success.gif';
 import './LoginModalStyle.css';
 
 import { setUser } from '../../../services/store/slices/userSlice';
@@ -71,6 +72,22 @@ const LogInModal: FC<ILogInModal> = (props) => {
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 console.log('logged in: ', user);
+                dispatch(
+                    setUser({
+                        email: user.email,
+                        token: user.refreshToken,
+                        id: user.uid
+                    })
+                );
+            })
+            .catch(console.error);
+    };
+
+    // log in with google handler
+    const logInWithGoogle = () => {
+        signInWithPopup(auth, provider)
+            .then(({ user }) => {
+                console.log('google loged in user: ', user);
                 dispatch(
                     setUser({
                         email: user.email,
@@ -170,7 +187,7 @@ const LogInModal: FC<ILogInModal> = (props) => {
         <div className="login-modal-wrapper">
             {showSuccessLogIn ? (
                 <div className="modal-success-wrapper">
-                    <img src={ToTheMoonGif} className="to-the-moon-gif" alt="to-the-moon-gif" />
+                    <img src={SuccessGif} className="to-the-moon-gif" alt="to-the-moon-gif" />
                 </div>
             ) : (
                 <div className="modal-form-wrapper">
@@ -259,7 +276,7 @@ const LogInModal: FC<ILogInModal> = (props) => {
                     </div>
                     <div className="modal-continuewith-container">
                         <p className="continue-with-or">{t('modal_login_signup.or')}</p>
-                        <button className="continue-with-button">
+                        <button className="continue-with-button" onClick={() => logInWithGoogle()}>
                             <img src={GoogleIcon} className="continue-with-icon" alt="continue-with-icon" />
                             {t('modal_login_signup.continue_with')}
                         </button>

@@ -1,7 +1,10 @@
 import { FC, useState, useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { removeUser } from '../../../services/store/slices/userSlice';
 import { CSSTransition } from 'react-transition-group';
+import { listOfPaths } from '../../../configs/listOfPaths';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -15,6 +18,8 @@ interface IAccountDropDown {
 
 const AccountDropDown: FC<IAccountDropDown> = (props) => {
     const { email } = props;
+    const { i18n } = useTranslation();
+    const lang = i18n.language;
     const userName = email.substring(0, email.indexOf('@'));
 
     const accountDropDownRef = useRef<HTMLDivElement>(null);
@@ -47,6 +52,11 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
         setIsAccountExpanded((prevValue) => !prevValue);
     };
 
+    //close on any button click
+    const closeAccountDropDown = () => {
+        setIsAccountExpanded(false);
+    };
+
     const accountArrow = isAccountExpanded ? (
         <ArrowDropUpIcon className="account-dd-arrow" />
     ) : (
@@ -62,17 +72,25 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
                 <div className="account-dd-panel-wrapper">
                     <div className="account-dd-panel-triangle" />
                     <div className="account-dd-panel-container">
-                        <div className="account-info-tile">
+                        <NavLink
+                            to={`/${lang}/${listOfPaths.accountPath}`}
+                            className="account-info-tile"
+                            onClick={closeAccountDropDown}
+                        >
                             <AccountCircleIcon className="account-info-icon" />
                             {userName}
-                        </div>
+                        </NavLink>
                         <div className="account-dd-panel-tile">
-                            <button className="account-dd-panel-btn">
+                            <NavLink
+                                to={`/${lang}/${listOfPaths.watchlistPath}`}
+                                className="account-dd-panel-btn"
+                                onClick={closeAccountDropDown}
+                            >
                                 <p className="account-dd-panel-btn-text">
                                     My watchlist
                                     <StarIcon className="account-dd-panel-btn-icon" />
                                 </p>
-                            </button>
+                            </NavLink>
                         </div>
                         <div className="account-dd-panel-tile">
                             <button className="account-dd-panel-btn" onClick={() => logOutHandler()}>

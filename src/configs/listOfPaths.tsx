@@ -3,5 +3,7 @@ export const listOfPaths = {
     exchangesPath: 'exchanges',
     analyticsPath: 'analytics',
     newsPath: 'news',
-    learnPath: 'learn'
+    learnPath: 'learn',
+    accountPath: 'account',
+    watchlistPath: 'watchlist'
 };

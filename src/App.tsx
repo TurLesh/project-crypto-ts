@@ -10,6 +10,8 @@ import Error from './pages/error/ErrorPage';
 import Exchanges from './pages/exchanges/ExchangesPage';
 import Learn from './pages/learn/LearnPage';
 import News from './pages/news/NewsPage';
+import AccountPage from './pages/account/AccountPage';
+import WatchlistPage from './pages/watchlist/WatchlistPage';
 import ThemeProvider from './providers/ThemeProvider';
 
 import TestPage from './pages/test/TestPage';
@@ -73,6 +75,8 @@ const App: FC = () => {
                         <Route path={`/:param/${listOfPaths.analyticsPath}`} element={<Analytics />} />
                         <Route path={`/:param/${listOfPaths.newsPath}`} element={<News />} />
                         <Route path={`/:param/${listOfPaths.learnPath}`} element={<Learn />} />
+                        <Route path={`/:param/${listOfPaths.accountPath}`} element={<AccountPage />} />
+                        <Route path={`/:param/${listOfPaths.watchlistPath}`} element={<WatchlistPage />} />
 
                         <Route path={`/:param/test`} element={<TestPage />} />
 
