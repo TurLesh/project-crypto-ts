@@ -1,5 +1,4 @@
 import { FC, ChangeEvent, useState, useEffect, SyntheticEvent } from 'react';
-import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { useTranslation } from 'react-i18next';
 import { getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../../../firebase';
@@ -9,8 +8,6 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
 import SuccessGif from '../../../assets/images/success.gif';
 import './LoginModalStyle.css';
-
-import { setUser } from '../../../services/store/slices/userSlice';
 
 interface ILogInModal {
     isAuth: boolean;
@@ -25,7 +22,6 @@ interface ILogInData {
 const LogInModal: FC<ILogInModal> = (props) => {
     const { isAuth, closeModal } = props;
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
 
     const [valuesLogIn, setValuesLogIn] = useState<ILogInData>({
         emailLogIn: '',
@@ -72,13 +68,7 @@ const LogInModal: FC<ILogInModal> = (props) => {
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 console.log('logged in: ', user);
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        token: user.refreshToken,
-                        id: user.uid
-                    })
-                );
+                //////////////////////////////////////////////////////////////////////
             })
             .catch(console.error);
     };
@@ -88,13 +78,7 @@ const LogInModal: FC<ILogInModal> = (props) => {
         signInWithPopup(auth, provider)
             .then(({ user }) => {
                 console.log('google loged in user: ', user);
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        token: user.refreshToken,
-                        id: user.uid
-                    })
-                );
+                //////////////////////////////////////////////////////////////////////
             })
             .catch(console.error);
     };

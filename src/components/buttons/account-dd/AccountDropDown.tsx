@@ -1,8 +1,7 @@
 import { FC, useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
-import { removeUser } from '../../../services/store/slices/userSlice';
+import AuthActions from '../../../services/auth/AuthActions';
 import { CSSTransition } from 'react-transition-group';
 import { listOfPaths } from '../../../configs/listOfPaths';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -25,11 +24,9 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
     const accountDropDownRef = useRef<HTMLDivElement>(null);
     const [isAccountExpanded, setIsAccountExpanded] = useState(false);
 
-    const dispatch = useAppDispatch();
-
     //logout on btn click
     const logOutHandler = () => {
-        dispatch(removeUser());
+        AuthActions('logout');
     };
 
     // close dd on click out of dd panel

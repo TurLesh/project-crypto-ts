@@ -3,7 +3,7 @@ import { currencyReducer } from './reducers/currencyReducer';
 import { chartTypeReducer } from './reducers/chartTypeReducer';
 import { showRowsReducer } from './reducers/showRowsReducer';
 import { categoriesReducer } from './reducers/categoriesReducer';
-import userReducer from './slices/userSlice';
+import { userReducer } from './reducers/userReducer';
 
 export const store = configureStore({
     reducer: {

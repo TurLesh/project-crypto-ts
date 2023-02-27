@@ -1,6 +1,6 @@
 import AuthService from './AuthService';
 import { useAppDispatch } from '../hooks/useTypedSelector';
-import { setUser, removeUser } from '../store/slices/userSlice';
+import { SET_USER, REMOVE_USER } from '../store/reducers/userReducer';
 
 const AuthActions = (action: string, email?: string, password?: string) => {
     const dispatch = useAppDispatch();
@@ -10,13 +10,12 @@ const AuthActions = (action: string, email?: string, password?: string) => {
             const response = await AuthService.login(email, password);
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
-            dispatch(
-                setUser({
-                    email: response.data.user.email,
-                    token: response.data.accessToken,
-                    id: response.data.user.id
-                })
-            );
+            const user = {
+                email: response.data.user.email,
+                token: response.data.accessToken,
+                id: response.data.user.id
+            };
+            dispatch({ type: SET_USER, payload: user });
         } catch (error: any) {
             console.log(error.response.data.message);
         }
@@ -27,13 +26,12 @@ const AuthActions = (action: string, email?: string, password?: string) => {
             const response = await AuthService.registration(email, password);
             console.log(response);
             localStorage.setItem('token', response.data.accessToken);
-            dispatch(
-                setUser({
-                    email: response.data.user.email,
-                    token: response.data.accessToken,
-                    id: response.data.user.id
-                })
-            );
+            const user = {
+                email: response.data.user.email,
+                token: response.data.accessToken,
+                id: response.data.user.id
+            };
+            dispatch({ type: SET_USER, payload: user });
         } catch (error: any) {
             console.log(error.response.data.message);
         }
@@ -44,7 +42,7 @@ const AuthActions = (action: string, email?: string, password?: string) => {
             const response = await AuthService.logout();
             console.log(response);
             localStorage.removeItem('token');
-            dispatch(removeUser());
+            dispatch({ type: REMOVE_USER });
         } catch (error: any) {
             console.log(error.response.data.message);
         }
