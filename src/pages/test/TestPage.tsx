@@ -1,8 +1,6 @@
 import { useState, ChangeEvent, FC, SyntheticEvent } from 'react';
-import { useAppDispatch } from '../../services/hooks/useTypedSelector';
 import { useAuth } from '../../services/hooks/useAuth';
-import { removeUser, setUser } from '../../services/store/slices/userSlice';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import AuthActions from '../../services/auth/AuthActions';
 
 interface ILogInData {
     emailLogIn: string;
@@ -15,8 +13,6 @@ interface ISignUpData {
 }
 
 const TestPage: FC = () => {
-    const dispatch = useAppDispatch();
-
     const { isAuth, email } = useAuth();
 
     const [valuesLogIn, setValuesLogIn] = useState<ILogInData>({
@@ -29,11 +25,11 @@ const TestPage: FC = () => {
         passwordSignUp: ''
     });
 
-    const signOutHandler = () => {
-        dispatch(removeUser());
+    const logOutHandler = () => {
+        AuthActions('logout');
     };
 
-    //log in handlers
+    //log in data change handlers
     const logInEmailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setValuesLogIn({ ...valuesLogIn, emailLogIn: event.target.value });
     };
@@ -42,7 +38,7 @@ const TestPage: FC = () => {
         setValuesLogIn({ ...valuesLogIn, passwordLogIn: event.target.value });
     };
 
-    //signup handlers
+    //sign up data change handlers
     const signUpEmailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setValuesSignUp({ ...valuesSignUp, emailSignUp: event.target.value });
     };
@@ -51,48 +47,21 @@ const TestPage: FC = () => {
         setValuesSignUp({ ...valuesSignUp, passwordSignUp: event.target.value });
     };
 
-    console.log('log in data: ', valuesLogIn);
-    console.log('sign up data: ', valuesSignUp);
-
     const handleLogIn = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-            .then(({ user }) => {
-                console.log('logged in as: ', user);
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        token: user.refreshToken,
-                        id: user.uid
-                    })
-                );
-            })
-            .catch(console.error);
+        AuthActions('login', email, password);
     };
 
     const handleSignUp = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(({ user }) => {
-                console.log('registered user: ', user);
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        token: user.refreshToken,
-                        id: user.uid
-                    })
-                );
-            })
-            .catch(console.error);
+        AuthActions('signup', email, password);
     };
 
     return (
         <div>
             {isAuth ? (
                 <div>
-                    <div>Welcome, {email} </div> <button onClick={() => signOutHandler()}>Sign out</button>
+                    <div>Welcome, {email} </div> <button onClick={logOutHandler}>Sign out</button>
                 </div>
             ) : (
                 <div>You are not logged in!</div>
