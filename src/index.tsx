@@ -8,14 +8,18 @@ import './i18n';
 import './firebase';
 import './index.css';
 
+const AppWrapper = () => {
+    return (
+        <Provider store={store}>
+            <Suspense fallback={<I18nSuspense />}>
+                <React.StrictMode>
+                    <App />
+                </React.StrictMode>
+            </Suspense>
+        </Provider>
+    );
+};
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-root.render(
-    <Provider store={store}>
-        <Suspense fallback={<I18nSuspense />}>
-            <React.StrictMode>
-                <App />
-            </React.StrictMode>
-        </Suspense>
-    </Provider>
-);
+root.render(AppWrapper());

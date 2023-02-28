@@ -1,6 +1,8 @@
 import { useState, ChangeEvent, FC, SyntheticEvent } from 'react';
 import { useAuth } from '../../services/hooks/useAuth';
 import AuthActions from '../../services/auth/AuthActions';
+import { useAppDispatch } from '../../services/hooks/useTypedSelector';
+import { SET_USER, REMOVE_USER } from '../../services/store/reducers/userReducer';
 
 interface ILogInData {
     emailLogIn: string;
@@ -14,6 +16,7 @@ interface ISignUpData {
 
 const TestPage: FC = () => {
     const { isAuth, email } = useAuth();
+    const dispatch = useAppDispatch();
 
     const [valuesLogIn, setValuesLogIn] = useState<ILogInData>({
         emailLogIn: '',
@@ -26,7 +29,8 @@ const TestPage: FC = () => {
     });
 
     const logOutHandler = () => {
-        AuthActions('logout');
+        // AuthActions('logout');
+        dispatch({ type: REMOVE_USER });
     };
 
     //log in data change handlers
@@ -49,11 +53,23 @@ const TestPage: FC = () => {
 
     const handleLogIn = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
-        AuthActions('login', email, password);
+        const user = {
+            email: 'login123@gmail.com',
+            token: 'huyhuyhuytoken',
+            id: '228228'
+        };
+        dispatch({ type: SET_USER, payload: user });
+        // AuthActions('login', email, password);
     };
 
     const handleSignUp = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
+        // const user = {
+        //     email: 'signedup123@gmail.com',
+        //     token: 'huyhuyhuytoken',
+        //     id: '123123'
+        // };
+        // dispatch({ type: SET_USER, payload: user });
         AuthActions('signup', email, password);
     };
 
