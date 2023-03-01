@@ -1,8 +1,6 @@
 import { FC, ChangeEvent, useState, useEffect, SyntheticEvent } from 'react';
 import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { useTranslation } from 'react-i18next';
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../../../firebase';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -10,7 +8,7 @@ import GoogleIcon from '../../../assets/images/google-icon.png';
 import SuccessGif from '../../../assets/images/success.gif';
 import './SignUpModalStyle.css';
 
-import { setUser } from '../../../services/store/slices/userSlice';
+import { signupUser } from '../../../services/store/slices/userSlice';
 
 interface ISignUpModal {
     isAuth: boolean;
@@ -74,35 +72,16 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
     // sign up handler
     const handleSignUp = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(({ user }) => {
-                console.log('registered user: ', user);
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        token: user.refreshToken,
-                        id: user.uid
-                    })
-                );
-            })
-            .catch(console.error);
+        const userData = {
+            email,
+            password
+        };
+        dispatch(signupUser(userData));
     };
 
     // sign up with google handler
     const signUpWithGoogle = () => {
-        signInWithPopup(auth, provider)
-            .then(({ user }) => {
-                console.log('google signed in user: ', user);
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        token: user.refreshToken,
-                        id: user.uid
-                    })
-                );
-            })
-            .catch(console.error);
+        console.log('Sign Up with Google will be here');
     };
 
     //functions to track input.validity.valid values (true/false); it was used for displaying error icons

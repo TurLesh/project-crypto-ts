@@ -1,6 +1,8 @@
 import { useState, ChangeEvent, FC, SyntheticEvent } from 'react';
-import { useAuth } from '../../services/hooks/useAuth';
-import AuthActions from '../../services/auth/AuthActions';
+import { useAuth } from '../../services/hooks/useAuth'; /////////////////////////////////
+import { useAppDispatch } from '../../services/hooks/useTypedSelector';
+import { loginUser, signupUser, logoutUser } from '../../services/store/slices/userSlice';
+import _ from 'lodash';
 
 interface ILogInData {
     emailLogIn: string;
@@ -13,7 +15,8 @@ interface ISignUpData {
 }
 
 const TestPage: FC = () => {
-    const { isAuth, email } = useAuth();
+    const dispatch = useAppDispatch();
+    const { isAuth, email, status, error } = useAuth();
 
     const [valuesLogIn, setValuesLogIn] = useState<ILogInData>({
         emailLogIn: '',
@@ -24,10 +27,6 @@ const TestPage: FC = () => {
         emailSignUp: '',
         passwordSignUp: ''
     });
-
-    const logOutHandler = () => {
-        AuthActions('logout');
-    };
 
     //log in data change handlers
     const logInEmailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -49,23 +48,42 @@ const TestPage: FC = () => {
 
     const handleLogIn = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
-        AuthActions('login', email, password);
+        //can only pass 1 prop into user actions, so cover multiple into object
+        const userData = {
+            email,
+            password
+        };
+        dispatch(loginUser(userData));
+        // AuthActions('login', email, password);
     };
 
     const handleSignUp = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
-        AuthActions('signup', email, password);
+        //can only pass 1 prop into user actions, so cover multiple into object
+        const userData = {
+            email,
+            password
+        };
+        dispatch(signupUser(userData));
+        // AuthActions('signup', email, password);
+    };
+
+    const handleLogOut = () => {
+        dispatch(logoutUser());
+        // AuthActions('logout');
     };
 
     return (
         <div>
             {isAuth ? (
                 <div>
-                    <div>Welcome, {email} </div> <button onClick={logOutHandler}>Sign out</button>
+                    <div>Welcome, {email} </div> <button onClick={handleLogOut}>Sign out</button>
                 </div>
             ) : (
                 <div>You are not logged in!</div>
             )}
+            {status === 'pending' && <h2>Loading...</h2>}
+            {!_.isEmpty(error) && <h2>Error occured: {error}</h2>}
             <div>
                 <div>Log In Form</div>
                 <form

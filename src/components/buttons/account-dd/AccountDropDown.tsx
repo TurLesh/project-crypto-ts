@@ -2,9 +2,9 @@ import { FC, useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
-import { removeUser } from '../../../services/store/slices/userSlice';
 import { CSSTransition } from 'react-transition-group';
 import { listOfPaths } from '../../../configs/listOfPaths';
+import { logoutUser } from '../../../services/store/slices/userSlice';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -29,7 +29,7 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
 
     //logout on btn click
     const logOutHandler = () => {
-        dispatch(removeUser());
+        dispatch(logoutUser());
     };
 
     // close dd on click out of dd panel
