@@ -1,17 +1,61 @@
 @import '../../../assets/styles/StyleAssets.scss';
 
-.login-modal-wrapper {
-    .modal-success-wrapper {
-        height: 294px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.modal-loading-wrapper {
+    height: 294px;
+    @include JustifyCenter();
 
-        .to-the-moon-gif {
-            width: 60%;
-        }
+    .lds-dual-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
     }
 
+    .lds-dual-ring:after {
+        content: ' ';
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid $accentColorDark;
+        border-color: $accentColorDark transparent $accentColorDark transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.modal-success-wrapper {
+    height: 294px;
+    @include JustifyCenter();
+    flex-direction: column;
+
+    .success-img {
+        max-height: 200px;
+    }
+
+    .success-text {
+        color: $greenColor;
+    }
+}
+
+.modal-error-wrapper {
+    height: 294px;
+    @include JustifyCenter();
+
+    .error-text {
+        color: $redColor;
+    }
+}
+
+.login-modal-wrapper {
     .modal-form-wrapper {
         .modal-form-container {
             .login-form {

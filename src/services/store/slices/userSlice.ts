@@ -86,6 +86,8 @@ const userSlice = createSlice({
             state.email = '';
             state.token = '';
             state.id = '';
+            state.status = '';
+            state.error = '';
         }
     },
     extraReducers: (builder) => {

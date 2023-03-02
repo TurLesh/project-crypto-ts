@@ -92,7 +92,7 @@ const Header: FC = () => {
                                     navigateToSignUpHandler={modalNavigateToSignUp}
                                     modalOnCloseHandler={modalOnCloseHandler}
                                 />
-                                <LogInModal isAuth={isAuth} closeModal={closeLogInModal} />
+                                <LogInModal closeModal={closeLogInModal} />
                             </div>
                         </div>
                     )}

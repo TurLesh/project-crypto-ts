@@ -1,14 +1,15 @@
 import { FC, ChangeEvent, useState, useEffect, SyntheticEvent } from 'react';
+import _ from 'lodash';
 import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
+import { useAuth } from '../../../services/hooks/useAuth';
+import { removeUser, signupUser } from '../../../services/store/slices/userSlice';
 import { useTranslation } from 'react-i18next';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
-import SuccessGif from '../../../assets/images/success.gif';
+import CheckMark from '../../../assets/images/check-mark.png';
 import './SignUpModalStyle.css';
-
-import { signupUser } from '../../../services/store/slices/userSlice';
 
 interface ISignUpModal {
     isAuth: boolean;
@@ -22,7 +23,8 @@ interface ISignUpData {
 }
 
 const SignUpModal: FC<ISignUpModal> = (props) => {
-    const { isAuth, closeModal } = props;
+    const { closeModal } = props;
+    const { email, status, error } = useAuth();
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
@@ -50,24 +52,37 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
     const [isPassInputValid, setIsPassInputValid] = useState(true);
     const [isConfirmInputValid, setIsConfirmInputValid] = useState(true);
 
-    const [showSuccessSignUp, setShowSuccessSignUp] = useState(false);
+    const [showItem, setShowItem] = useState<string>('modal');
 
-    // use effect to show gif and close modal every time user sign up
+    // useEffect to change showItem state every time user status change
     useEffect(() => {
-        if (isAuth) {
-            setShowSuccessSignUp(true);
-            const timer = setTimeout(() => {
-                closeModal();
-                setShowSuccessSignUp(false);
-            }, 1000);
-            return () => clearTimeout(timer);
-        }
+        if (!_.isEmpty(status)) {
+            if (status === 'pending') {
+                setShowItem('loading');
+            }
 
-        if (!isAuth) {
-            setShowSuccessSignUp(false);
+            if (status === 'resolved') {
+                setShowItem('success');
+                const timer = setTimeout(() => {
+                    closeModal();
+                }, 2000);
+                return () => clearTimeout(timer);
+            }
+
+            if (status === 'rejected') {
+                setShowItem('error');
+                const timer = setTimeout(() => {
+                    dispatch(removeUser());
+                }, 2000);
+                return () => clearTimeout(timer);
+            }
+        } else {
+            setShowItem('modal');
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuth]);
+    }, [status]);
+
+    console.log(showItem);
 
     // sign up handler
     const handleSignUp = (e: SyntheticEvent, email: string, password: string) => {
@@ -214,13 +229,34 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
     const passInputPlaceholder: string = t('modal_login_signup.pass_input_placeholder');
     const confirmInputPlaceholder: string = t('modal_login_signup.pass_confirm_placeholder');
 
-    return (
-        <div className="signup-modal-wrapper">
-            {showSuccessSignUp ? (
-                <div className="modal-success-wrapper">
-                    <img src={SuccessGif} className="to-the-moon-gif" alt="to-the-moon-gif" />
-                </div>
-            ) : (
+    const showLoading = () => {
+        return (
+            <div className="modal-loading-wrapper">
+                <div className="lds-dual-ring"></div>
+            </div>
+        );
+    };
+
+    const showSuccessfulLogIn = () => {
+        return (
+            <div className="modal-success-wrapper">
+                <img className="success-img" alt="check-mark" src={CheckMark} />
+                <h2 className="success-text">Welcome, {email}</h2>
+            </div>
+        );
+    };
+
+    const showError = () => {
+        return (
+            <div className="modal-error-wrapper">
+                <h2 className="error-text">{error}</h2>
+            </div>
+        );
+    };
+
+    const showModal = () => {
+        return (
+            <div className="signup-modal-wrapper">
                 <div className="modal-form-wrapper">
                     <div className="modal-form-container">
                         <form
@@ -348,9 +384,22 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                         </button>
                     </div>
                 </div>
-            )}
-        </div>
-    );
+            </div>
+        );
+    };
+
+    switch (showItem) {
+        case 'modal':
+            return showModal();
+        case 'loading':
+            return showLoading();
+        case 'success':
+            return showSuccessfulLogIn();
+        case 'error':
+            return showError();
+        default:
+            return showModal();
+    }
 };
 
 export default SignUpModal;

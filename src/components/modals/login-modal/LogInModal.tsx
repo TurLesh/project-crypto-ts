@@ -1,16 +1,17 @@
 import { FC, ChangeEvent, useState, useEffect, SyntheticEvent } from 'react';
-import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
+import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
-import { loginUser } from '../../../services/store/slices/userSlice';
+import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
+import { useAuth } from '../../../services/hooks/useAuth';
+import { removeUser, loginUser } from '../../../services/store/slices/userSlice';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
-import SuccessGif from '../../../assets/images/success.gif';
+import CheckMark from '../../../assets/images/check-mark.png';
 import './LoginModalStyle.css';
 
 interface ILogInModal {
-    isAuth: boolean;
     closeModal: () => void;
 }
 
@@ -20,7 +21,8 @@ interface ILogInData {
 }
 
 const LogInModal: FC<ILogInModal> = (props) => {
-    const { isAuth, closeModal } = props;
+    const { closeModal } = props;
+    const { email, status, error } = useAuth();
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
@@ -43,24 +45,35 @@ const LogInModal: FC<ILogInModal> = (props) => {
     const [isEmailInputValid, setIsEmailInputValid] = useState(true);
     const [isPassInputValid, setIsPassInputValid] = useState(true);
 
-    const [showSuccessLogIn, setShowSuccessLogIn] = useState(false);
+    const [showItem, setShowItem] = useState<string>('modal');
 
-    // use effect to show gif and close modal every time user log in
+    // useEffect to change showItem state every time user status change
     useEffect(() => {
-        if (isAuth) {
-            setShowSuccessLogIn(true);
-            const timer = setTimeout(() => {
-                closeModal();
-                setShowSuccessLogIn(false);
-            }, 1000);
-            return () => clearTimeout(timer);
-        }
+        if (!_.isEmpty(status)) {
+            if (status === 'pending') {
+                setShowItem('loading');
+            }
 
-        if (!isAuth) {
-            setShowSuccessLogIn(false);
+            if (status === 'resolved') {
+                setShowItem('success');
+                const timer = setTimeout(() => {
+                    closeModal();
+                }, 2000);
+                return () => clearTimeout(timer);
+            }
+
+            if (status === 'rejected') {
+                setShowItem('error');
+                const timer = setTimeout(() => {
+                    dispatch(removeUser());
+                }, 2000);
+                return () => clearTimeout(timer);
+            }
+        } else {
+            setShowItem('modal');
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuth]);
+    }, [status]);
 
     // log in handler
     const handleLogIn = (e: SyntheticEvent, email: string, password: string) => {
@@ -161,13 +174,34 @@ const LogInModal: FC<ILogInModal> = (props) => {
     const emailInputPlaceholder: string = t('modal_login_signup.email_input_placeholder');
     const passInputPlaceholder: string = t('modal_login_signup.pass_input_placeholder');
 
-    return (
-        <div className="login-modal-wrapper">
-            {showSuccessLogIn ? (
-                <div className="modal-success-wrapper">
-                    <img src={SuccessGif} className="to-the-moon-gif" alt="to-the-moon-gif" />
-                </div>
-            ) : (
+    const showLoading = () => {
+        return (
+            <div className="modal-loading-wrapper">
+                <div className="lds-dual-ring"></div>
+            </div>
+        );
+    };
+
+    const showSuccessfulLogIn = () => {
+        return (
+            <div className="modal-success-wrapper">
+                <img alt="check-mark" className="success-img" src={CheckMark} />
+                <h2 className="success-text">Welcome, {email}</h2>
+            </div>
+        );
+    };
+
+    const showError = () => {
+        return (
+            <div className="modal-error-wrapper">
+                <h2 className="error-text">{error}</h2>
+            </div>
+        );
+    };
+
+    const showModal = () => {
+        return (
+            <div className="login-modal-wrapper">
                 <div className="modal-form-wrapper">
                     <div className="modal-form-container">
                         <form
@@ -260,9 +294,22 @@ const LogInModal: FC<ILogInModal> = (props) => {
                         </button>
                     </div>
                 </div>
-            )}
-        </div>
-    );
+            </div>
+        );
+    };
+
+    switch (showItem) {
+        case 'modal':
+            return showModal();
+        case 'loading':
+            return showLoading();
+        case 'success':
+            return showSuccessfulLogIn();
+        case 'error':
+            return showError();
+        default:
+            return showModal();
+    }
 };
 
 export default LogInModal;
