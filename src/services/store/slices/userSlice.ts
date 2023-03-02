@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import AuthService from '../../auth/AuthService';
+import axios from 'axios';
 
 interface IUserData {
     email: string;
@@ -29,8 +30,12 @@ export const loginUser = createAsyncThunk('user/login', async function (userData
 
         return data;
     } catch (error) {
-        if (error instanceof Error) {
-            return rejectWithValue(error.message);
+        if (axios.isAxiosError(error) && error.response) {
+            const message = error.response.data.message;
+            return rejectWithValue(message);
+        } else {
+            const message = String(error);
+            return rejectWithValue(message);
         }
     }
 });
@@ -50,8 +55,12 @@ export const signupUser = createAsyncThunk('user/signup', async function (userDa
 
         return data;
     } catch (error) {
-        if (error instanceof Error) {
-            return rejectWithValue(error.message);
+        if (axios.isAxiosError(error) && error.response) {
+            const message = error.response.data.message;
+            return rejectWithValue(message);
+        } else {
+            const message = String(error);
+            return rejectWithValue(message);
         }
     }
 });
@@ -67,8 +76,12 @@ export const logoutUser = createAsyncThunk('user/logout', async function (_, { r
         localStorage.removeItem('token');
         dispatch(removeUser());
     } catch (error) {
-        if (error instanceof Error) {
-            return rejectWithValue(error.message);
+        if (axios.isAxiosError(error) && error.response) {
+            const message = error.response.data.message;
+            return rejectWithValue(message);
+        } else {
+            const message = String(error);
+            return rejectWithValue(message);
         }
     }
 });
@@ -95,6 +108,7 @@ const userSlice = createSlice({
         builder.addCase(loginUser.pending, (state) => {
             // status change
             state.status = 'pending';
+            // clear error data if status changed
             state.error = '';
         });
         builder.addCase(loginUser.fulfilled, (state, action) => {
@@ -110,11 +124,6 @@ const userSlice = createSlice({
             }
         });
         builder.addCase(loginUser.rejected, (state, action) => {
-            // if (action.error.message) {
-            //     state.error = action.error.message;
-            // } else {
-            //     state.error = 'unexpected error';
-            // }
             //status cahnge
             state.status = 'rejected';
             state.error = action.payload as string;
@@ -123,6 +132,7 @@ const userSlice = createSlice({
         builder.addCase(signupUser.pending, (state) => {
             // status change
             state.status = 'pending';
+            // clear error data if status changed
             state.error = '';
         });
         builder.addCase(signupUser.fulfilled, (state, action) => {
@@ -138,11 +148,6 @@ const userSlice = createSlice({
             }
         });
         builder.addCase(signupUser.rejected, (state, action) => {
-            // if (action.error.message) {
-            //     state.error = action.error.message;
-            // } else {
-            //     state.error = 'unexpected error';
-            // }
             //status cahnge
             state.status = 'rejected';
             state.error = action.payload as string;

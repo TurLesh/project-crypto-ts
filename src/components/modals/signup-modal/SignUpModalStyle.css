@@ -1,5 +1,5 @@
 .modal-loading-wrapper {
-  height: 294px;
+  height: 370px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +30,7 @@
 }
 
 .modal-success-wrapper {
-  height: 294px;
+  height: 370px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +44,7 @@
 }
 
 .modal-error-wrapper {
-  height: 294px;
+  height: 370px;
   display: flex;
   align-items: center;
   justify-content: center;

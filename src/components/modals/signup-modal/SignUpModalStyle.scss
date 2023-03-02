@@ -1,7 +1,7 @@
 @import '../../../assets/styles/StyleAssets.scss';
 
 .modal-loading-wrapper {
-    height: 294px;
+    height: 370px;
     @include JustifyCenter();
 
     .lds-dual-ring {
@@ -33,7 +33,7 @@
 }
 
 .modal-success-wrapper {
-    height: 294px;
+    height: 370px;
     @include JustifyCenter();
     flex-direction: column;
 
@@ -47,7 +47,7 @@
 }
 
 .modal-error-wrapper {
-    height: 294px;
+    height: 370px;
     @include JustifyCenter();
 
     .error-text {

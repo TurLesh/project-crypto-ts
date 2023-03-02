@@ -82,8 +82,6 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
 
-    console.log(showItem);
-
     // sign up handler
     const handleSignUp = (e: SyntheticEvent, email: string, password: string) => {
         e.preventDefault();
