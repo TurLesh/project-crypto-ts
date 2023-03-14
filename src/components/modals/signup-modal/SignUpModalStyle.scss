@@ -1,57 +1,42 @@
 @import '../../../assets/styles/StyleAssets.scss';
 
-.modal-loading-wrapper {
+.signup-modal-loading-wrapper {
     height: 370px;
     @include JustifyCenter();
-
-    .lds-dual-ring {
-        display: inline-block;
-        width: 80px;
-        height: 80px;
-    }
-
-    .lds-dual-ring:after {
-        content: ' ';
-        display: block;
-        width: 64px;
-        height: 64px;
-        margin: 8px;
-        border-radius: 50%;
-        border: 6px solid $accentColorDark;
-        border-color: $accentColorDark transparent $accentColorDark transparent;
-        animation: lds-dual-ring 1.2s linear infinite;
-    }
-
-    @keyframes lds-dual-ring {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
 }
 
-.modal-success-wrapper {
+.signup-modal-success-wrapper {
     height: 370px;
     @include JustifyCenter();
     flex-direction: column;
 
-    .success-img {
-        max-height: 200px;
+    .signup-modal-success-animation {
+        @include JustifyCenter();
     }
 
     .success-text {
         color: $greenColor;
+        font-family: $contentFont;
+        font-size: 24px;
+        font-weight: 500;
     }
 }
 
-.modal-error-wrapper {
+.signup-modal-error-wrapper {
     height: 370px;
     @include JustifyCenter();
+    flex-direction: column;
+
+    .signup-modal-error-animation {
+        height: 370px;
+        @include JustifyCenter();
+    }
 
     .error-text {
         color: $redColor;
+        font-family: $contentFont;
+        font-size: 24px;
+        font-weight: 500;
     }
 }
 

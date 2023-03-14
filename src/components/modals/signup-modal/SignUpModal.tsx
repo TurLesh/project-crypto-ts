@@ -4,11 +4,13 @@ import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { useAuth } from '../../../services/hooks/useAuth';
 import { removeUser, signupUser } from '../../../services/store/slices/userSlice';
 import { useTranslation } from 'react-i18next';
+import LoadingAnimation from '../../../assets/css-animations/loading-animation/LoadingAnimation';
+import SuccessAnimation from '../../../assets/css-animations/success-animation/SuccessAnimation';
+import ErrorAnimation from '../../../assets/css-animations/error-animation/ErrorAnimation';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
-import CheckMark from '../../../assets/images/check-mark.png';
 import './SignUpModalStyle.css';
 
 interface ISignUpModal {
@@ -27,6 +29,7 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
     const { email, status, error } = useAuth();
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
+    const userName = email.substring(0, email.indexOf('@'));
 
     const [valuesSignUp, setValuesSignUp] = useState<ISignUpData>({
         emailSignUp: '',
@@ -229,25 +232,30 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
 
     const showLoading = () => {
         return (
-            <div className="modal-loading-wrapper">
-                <div className="lds-dual-ring"></div>
+            <div className="signup-modal-loading-wrapper">
+                <LoadingAnimation />
             </div>
         );
     };
 
     const showSuccessfulLogIn = () => {
         return (
-            <div className="modal-success-wrapper">
-                <img className="success-img" alt="check-mark" src={CheckMark} />
-                <h2 className="success-text">Welcome, {email}</h2>
+            <div className="signup-modal-success-wrapper">
+                <div className="signup-modal-success-animation">
+                    <SuccessAnimation />
+                </div>
+                <h2 className="success-text">Welcome, {userName}</h2>
             </div>
         );
     };
 
     const showError = () => {
         return (
-            <div className="modal-error-wrapper">
-                <h2 className="error-text">{error}</h2>
+            <div className="signup-modal-error-wrapper">
+                <div className="signup-modal-error-animation">
+                    <ErrorAnimation />
+                </div>
+                <div className="error-text">{error}</div>
             </div>
         );
     };

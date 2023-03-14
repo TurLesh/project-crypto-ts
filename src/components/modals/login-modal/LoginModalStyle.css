@@ -1,56 +1,47 @@
-.modal-loading-wrapper {
+.login-modal-loading-wrapper {
   height: 294px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.modal-loading-wrapper .lds-dual-ring {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-}
-.modal-loading-wrapper .lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  border: 6px solid #e26411;
-  border-color: #e26411 transparent #e26411 transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
-.modal-success-wrapper {
+.login-modal-success-wrapper {
   height: 294px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.modal-success-wrapper .success-img {
-  max-height: 200px;
+.login-modal-success-wrapper .login-modal-success-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.modal-success-wrapper .success-text {
+.login-modal-success-wrapper .success-text {
   color: #0d9b44;
+  font-family: "Work Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
 }
 
-.modal-error-wrapper {
+.login-modal-error-wrapper {
+  height: 294px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.login-modal-error-wrapper .login-modal-error-animation {
   height: 294px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.modal-error-wrapper .error-text {
+.login-modal-error-wrapper .error-text {
   color: #fb3131;
+  font-family: "Work Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form {

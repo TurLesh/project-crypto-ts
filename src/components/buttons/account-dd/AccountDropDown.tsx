@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { CSSTransition } from 'react-transition-group';
 import { listOfPaths } from '../../../configs/listOfPaths';
-import { logoutUser } from '../../../services/store/slices/userSlice';
+import { useAuth } from '../../../services/hooks/useAuth';
+import { removeUser } from '../../../services/store/slices/userSlice';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -19,6 +20,7 @@ interface IAccountDropDown {
 const AccountDropDown: FC<IAccountDropDown> = (props) => {
     const { email } = props;
     const { i18n } = useTranslation();
+    const { id } = useAuth();
     const lang = i18n.language;
     const userName = email.substring(0, email.indexOf('@'));
 
@@ -29,7 +31,8 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
 
     //logout on btn click
     const logOutHandler = () => {
-        dispatch(logoutUser());
+        localStorage.removeItem('token');
+        dispatch(removeUser());
     };
 
     // close dd on click out of dd panel
@@ -73,7 +76,7 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
                     <div className="account-dd-panel-triangle" />
                     <div className="account-dd-panel-container">
                         <NavLink
-                            to={`/${lang}/${listOfPaths.accountPath}`}
+                            to={`/${lang}/${listOfPaths.accountPath}/${id}`}
                             className="account-info-tile"
                             onClick={closeAccountDropDown}
                         >
@@ -82,7 +85,7 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
                         </NavLink>
                         <div className="account-dd-panel-tile">
                             <NavLink
-                                to={`/${lang}/${listOfPaths.watchlistPath}`}
+                                to={`/${lang}/${listOfPaths.watchlistPath}/${id}`}
                                 className="account-dd-panel-btn"
                                 onClick={closeAccountDropDown}
                             >

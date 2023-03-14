@@ -1,0 +1,64 @@
+.error-animation-wrapper .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.error-animation-wrapper .circle,
+.error-animation-wrapper .circle-border {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.error-animation-wrapper .circle {
+  z-index: 1;
+  position: relative;
+  background: #1f212b;
+  transform: scale(1);
+  animation: success-anim 700ms ease;
+}
+.error-animation-wrapper .circle-border {
+  z-index: 0;
+  position: absolute;
+  transform: scale(1.1);
+  animation: circle-anim 400ms ease;
+  background: #fb3131;
+}
+@keyframes success-anim {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes circle-anim {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+.error-animation-wrapper .error::before,
+.error-animation-wrapper .error::after {
+  content: "";
+  display: block;
+  height: 8px;
+  background: #fb3131;
+  position: absolute;
+}
+.error-animation-wrapper .error::before {
+  width: 75px;
+  top: 48%;
+  left: 25%;
+  transform: rotateZ(50deg);
+}
+.error-animation-wrapper .error::after {
+  width: 75px;
+  top: 48%;
+  left: 25%;
+  transform: rotateZ(-50deg);
+}/*# sourceMappingURL=ErrorAnimationStyle.css.map */

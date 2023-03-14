@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { useAuth } from '../../../services/hooks/useAuth';
 import { removeUser, loginUser } from '../../../services/store/slices/userSlice';
+import SuccessAnimation from '../../../assets/css-animations/success-animation/SuccessAnimation';
+import ErrorAnimation from '../../../assets/css-animations/error-animation/ErrorAnimation';
+import LoadingAnimation from '../../../assets/css-animations/loading-animation/LoadingAnimation';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import GoogleIcon from '../../../assets/images/google-icon.png';
-import CheckMark from '../../../assets/images/check-mark.png';
 import './LoginModalStyle.css';
 
 interface ILogInModal {
@@ -25,6 +27,7 @@ const LogInModal: FC<ILogInModal> = (props) => {
     const { email, status, error } = useAuth();
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
+    const userName = email.substring(0, email.indexOf('@'));
 
     const [valuesLogIn, setValuesLogIn] = useState<ILogInData>({
         emailLogIn: '',
@@ -176,24 +179,29 @@ const LogInModal: FC<ILogInModal> = (props) => {
 
     const showLoading = () => {
         return (
-            <div className="modal-loading-wrapper">
-                <div className="lds-dual-ring"></div>
+            <div className="login-modal-loading-wrapper">
+                <LoadingAnimation />
             </div>
         );
     };
 
     const showSuccessfulLogIn = () => {
         return (
-            <div className="modal-success-wrapper">
-                <img alt="check-mark" className="success-img" src={CheckMark} />
-                <h2 className="success-text">Welcome, {email}</h2>
+            <div className="login-modal-success-wrapper">
+                <div className="login-modal-success-animation">
+                    <SuccessAnimation />
+                </div>
+                <div className="success-text">Welcome, {userName}</div>
             </div>
         );
     };
 
     const showError = () => {
         return (
-            <div className="modal-error-wrapper">
+            <div className="login-modal-error-wrapper">
+                <div className="login-modal-error-animation">
+                    <ErrorAnimation />
+                </div>
                 <h2 className="error-text">{error}</h2>
             </div>
         );

@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from './services/hooks/useAuth';
 import { listOfPaths } from './configs/listOfPaths';
+// import { useAppDispatch } from './services/hooks/useTypedSelector';
+// import { loginUser } from './services/store/slices/userSlice';
 import Layout from './components/layout/Layout';
 import Analytics from './pages/analytics/AnalyticsPage';
 import CryptocurrencyPage from './pages/cryptocurrency/CryptocurrencyPage';
@@ -18,6 +20,7 @@ import TestPage from './pages/test/TestPage';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
+    // const dispatch = useAppDispatch();
 
     //temporary
     const { isAuth, email } = useAuth();
@@ -51,6 +54,13 @@ const App: FC = () => {
         }
     });
 
+    // useEffect(() => {
+    //     if (localStorage.getItem('token')) {
+    //         dispatch(loginUser());
+    //     }
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
+
     return (
         <ThemeProvider>
             <BrowserRouter>
@@ -75,8 +85,8 @@ const App: FC = () => {
                         <Route path={`/:param/${listOfPaths.analyticsPath}`} element={<Analytics />} />
                         <Route path={`/:param/${listOfPaths.newsPath}`} element={<News />} />
                         <Route path={`/:param/${listOfPaths.learnPath}`} element={<Learn />} />
-                        <Route path={`/:param/${listOfPaths.accountPath}`} element={<AccountPage />} />
-                        <Route path={`/:param/${listOfPaths.watchlistPath}`} element={<WatchlistPage />} />
+                        <Route path={`/:param/${listOfPaths.accountPath}/:param`} element={<AccountPage />} />
+                        <Route path={`/:param/${listOfPaths.watchlistPath}/:param`} element={<WatchlistPage />} />
 
                         <Route path={`/:param/test`} element={<TestPage />} />
 
