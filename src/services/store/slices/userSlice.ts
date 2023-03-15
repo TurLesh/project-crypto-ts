@@ -1,9 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import AuthService from '../../auth/AuthService';
 import axios from 'axios';
-import _ from 'lodash';
-// import { IAuthResponse } from '../../../configs/interfaces/AuthResponseInterfaces';
-// import { API_URL } from '../../../configs/http';
 
 interface IUserData {
     email: string;
@@ -29,7 +26,7 @@ export const loginUser = createAsyncThunk('auth/login', async function (userData
             const message = error.response.data.message;
             if (!message) {
                 const messageArr = error.response.data;
-                if (_.isArray(messageArr)) {
+                if (Array.isArray(messageArr)) {
                     return rejectWithValue(messageArr[0]);
                 } else {
                     return rejectWithValue('Unexpected error occured');
@@ -56,7 +53,7 @@ export const signupUser = createAsyncThunk('auth/signup', async function (userDa
             console.log(message);
             if (!message) {
                 const messageArr = error.response.data;
-                if (_.isArray(messageArr)) {
+                if (Array.isArray(messageArr)) {
                     return rejectWithValue(messageArr[0]);
                 } else {
                     return rejectWithValue('Unexpected error occured');
@@ -70,25 +67,31 @@ export const signupUser = createAsyncThunk('auth/signup', async function (userDa
     }
 });
 
-// export const checkAuth = createAsyncThunk('user/check-auth', async function (_, { rejectWithValue }) {
-//     try {
-//         const response = await axios.get<IAuthResponse>(`${API_URL}/refresh`, { withCredentials: true });
-
-//         localStorage.setItem('token', response.data.accessToken);
-//         const data = response.data;
-//         console.log(response);
-
-//         return data;
-//     } catch (error) {
-//         if (axios.isAxiosError(error) && error.response) {
-//             const message = error.response.data.message;
-//             return rejectWithValue(message);
-//         } else {
-//             const message = String(error);
-//             return rejectWithValue(message);
-//         }
-//     }
-// });
+export const checkAuth = createAsyncThunk('auth/check', async function (token: string, { rejectWithValue }) {
+    try {
+        const response = await AuthService.check(token);
+        console.log('CHECK AUTH RESPONSE: ', response);
+        const data = response.data;
+        return data;
+    } catch (error) {
+        console.log(error);
+        if (axios.isAxiosError(error) && error.response) {
+            const message = error.response.data.message;
+            console.log(message);
+            if (!message) {
+                const messageArr = error.response.data;
+                if (Array.isArray(messageArr)) {
+                } else {
+                    return rejectWithValue('Unexpected error occured');
+                }
+            }
+            return rejectWithValue(message);
+        } else {
+            const message = String(error);
+            return rejectWithValue(message);
+        }
+    }
+});
 
 const userSlice = createSlice({
     name: 'user',
@@ -117,7 +120,7 @@ const userSlice = createSlice({
             if (action.payload) {
                 const user = action.payload.user;
                 state.email = user.email;
-                state.id = user.id;
+                state.id = user.id.toString();
             }
         });
         builder.addCase(loginUser.rejected, (state, action) => {
@@ -141,7 +144,7 @@ const userSlice = createSlice({
                 localStorage.setItem('token', action.payload.token);
                 const user = action.payload.user;
                 state.email = user.email;
-                state.id = user.id;
+                state.id = user.id.toString();
             }
         });
         builder.addCase(signupUser.rejected, (state, action) => {
@@ -150,30 +153,29 @@ const userSlice = createSlice({
             state.error = action.payload as string;
         });
 
-        // refresh cases
-        // builder.addCase(checkAuth.pending, (state) => {
-        //     // status change
-        //     state.status = 'pending';
-        //     // clear error data if status changed
-        //     state.error = '';
-        // });
-        // builder.addCase(checkAuth.fulfilled, (state, action) => {
-        //     //status cahnge
-        //     state.status = 'resolved';
+        //check cases
+        builder.addCase(checkAuth.pending, (state) => {
+            // status change
+            state.status = 'pending';
+            // clear error data if status changed
+            state.error = '';
+        });
+        builder.addCase(checkAuth.fulfilled, (state, action) => {
+            //status cahnge
+            state.status = 'resolved';
 
-        //     //passing data to state
-        //     if (action.payload) {
-        //         const user = action.payload.user;
-        //         state.email = user.email;
-        //         state.id = user.id;
-        //         state.token = action.payload.accessToken;
-        //     }
-        // });
-        // builder.addCase(checkAuth.rejected, (state, action) => {
-        //     //status cahnge
-        //     state.status = 'rejected';
-        //     state.error = action.payload as string;
-        // });
+            //passing data to state
+            if (action.payload) {
+                const user = action.payload;
+                state.email = user.email;
+                state.id = user.id.toString();
+            }
+        });
+        builder.addCase(checkAuth.rejected, (state, action) => {
+            //status cahnge
+            state.status = 'rejected';
+            state.error = action.payload as string;
+        });
     }
 });
 

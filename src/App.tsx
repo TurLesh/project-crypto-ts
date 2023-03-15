@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from './services/hooks/useAuth';
 import { listOfPaths } from './configs/listOfPaths';
-// import { useAppDispatch } from './services/hooks/useTypedSelector';
-// import { loginUser } from './services/store/slices/userSlice';
+import { useAppDispatch } from './services/hooks/useTypedSelector';
+import { checkAuth } from './services/store/slices/userSlice';
 import Layout from './components/layout/Layout';
 import Analytics from './pages/analytics/AnalyticsPage';
 import CryptocurrencyPage from './pages/cryptocurrency/CryptocurrencyPage';
@@ -20,7 +20,7 @@ import TestPage from './pages/test/TestPage';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
     //temporary
     const { isAuth, email } = useAuth();
@@ -54,12 +54,13 @@ const App: FC = () => {
         }
     });
 
-    // useEffect(() => {
-    //     if (localStorage.getItem('token')) {
-    //         dispatch(loginUser());
-    //     }
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch(checkAuth(token));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <ThemeProvider>
