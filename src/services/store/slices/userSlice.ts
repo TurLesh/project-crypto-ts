@@ -118,6 +118,7 @@ const userSlice = createSlice({
 
             //passing data to state
             if (action.payload) {
+                localStorage.setItem('token', action.payload.token);
                 const user = action.payload.user;
                 state.email = user.email;
                 state.id = user.id.toString();
@@ -173,8 +174,9 @@ const userSlice = createSlice({
         });
         builder.addCase(checkAuth.rejected, (state, action) => {
             //status cahnge
-            state.status = 'rejected';
-            state.error = action.payload as string;
+            state.status = '';
+            localStorage.removeItem('token');
+            // state.error = action.payload as string;
         });
     }
 });

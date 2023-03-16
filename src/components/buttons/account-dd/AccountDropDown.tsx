@@ -76,7 +76,7 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
                     <div className="account-dd-panel-triangle" />
                     <div className="account-dd-panel-container">
                         <NavLink
-                            to={`/${lang}/${listOfPaths.accountPath}/${id}`}
+                            to={`/${lang}/${listOfPaths.accountPath}`}
                             className="account-info-tile"
                             onClick={closeAccountDropDown}
                         >
