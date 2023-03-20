@@ -312,7 +312,7 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                                     {isHoveringPassIcon && (
                                         <div className="pass-error">
                                             <p className="pass-error-msg">
-                                                8-20 characters, only letters and numbers, both required
+                                                6-20 characters, only letters and numbers, both required
                                             </p>
                                         </div>
                                     )}
@@ -330,7 +330,7 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                                     id="new-password"
                                     name="new-password"
                                     value={valuesSignUp.passwordSignUp}
-                                    pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,20}$"
+                                    pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,20}$"
                                     required
                                 />
                                 {isPassVisible ? (

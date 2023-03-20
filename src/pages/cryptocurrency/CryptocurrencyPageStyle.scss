@@ -66,16 +66,6 @@
     }
 }
 
-// @media screen and (max-width: 1720px) {
-//     .cryptocurrency-page-wrapper {
-//         .slider-wrapper {
-//             .currency-slider-container {
-//                 width: 95%;
-//             }
-//         }
-//     }
-// }
-
 @media screen and (max-width: 1536px) {
     .cryptocurrency-page-wrapper {
         .slider-wrapper {
@@ -86,22 +76,12 @@
     }
 }
 
-// @media screen and (max-width: 1440px) {
-//     .cryptocurrency-page-wrapper {
-//         .slider-wrapper {
-//             .currency-slider-container {
-//                 width: 94%;
-//             }
-//         }
-//     }
-// }
-
-// @media screen and (max-width: 1024px) {
-//     .cryptocurrency-page-wrapper {
-//         .slider-wrapper {
-//             .currency-slider-container {
-//                 width: 86%;
-//             }
-//         }
-//     }
-// }
+@media screen and (max-width: 1024px) {
+    .cryptocurrency-page-wrapper {
+        .slider-wrapper {
+            .currency-slider-container {
+                width: 86%;
+            }
+        }
+    }
+}

@@ -1,10 +1,25 @@
-import SuccessAnimation from '../../assets/css-animations/success-animation/SuccessAnimation';
-import LoadingAnimation from '../../assets/css-animations/loading-animation/LoadingAnimation';
+import axios from 'axios';
+
 const TestPage = () => {
+    const URL = 'http://localhost:5000/aboba';
+    const makeRequest = () => {
+        const promise = axios.get(URL);
+        return promise;
+    };
+
+    const promiseResolve = () => {
+        const promise = makeRequest();
+
+        promise.then((response) => {
+            console.log(response.data);
+        });
+        promise.catch((error) => {
+            console.log(error);
+        });
+    };
     return (
         <div>
-            <SuccessAnimation />
-            <LoadingAnimation />
+            <button onClick={() => promiseResolve()}>Get Data</button>
         </div>
     );
 };

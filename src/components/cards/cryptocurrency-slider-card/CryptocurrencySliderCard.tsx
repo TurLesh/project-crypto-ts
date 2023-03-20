@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import ReactApexCharts from 'react-apexcharts';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -46,7 +46,6 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
         }
     ];
 
-    //refactoring
     const getCurrencyPrefix = (activeCurrency: string) => {
         switch (activeCurrency) {
             case 'usd':

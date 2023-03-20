@@ -25,6 +25,8 @@ const CryptocurrencyPage: FC = () => {
     const [categoryData, setCategoryData] = useState<ICoinListData[]>([]);
     const [isCategorySelected, setIsCategorySelected] = useState(false);
 
+    const [dataGetError, setDataGetError] = useState(false);
+
     //get active currency value from storage
     const activeCurrencyStateObject = useSelector((state: RootState) => state.currency);
     const activeCurrencyState: string = activeCurrencyStateObject.activeCurrency;
@@ -115,10 +117,8 @@ const CryptocurrencyPage: FC = () => {
     useEffect(() => {
         async function getData(activeCurrency: string, activeRowsAmount: number) {
             const rowsAmountStr = activeRowsAmount.toString();
-            const coinListDataGet = await getDataByCurrency(activeCurrency, rowsAmountStr);
-            if (coinListDataGet !== undefined) {
-                setCoinListData(coinListDataGet.data);
-            }
+            const coinListData = await getDataByCurrency(activeCurrency, rowsAmountStr);
+            setCoinListData(coinListData);
         }
 
         getData(activeCurrencyState, activeRowsAmountState);
@@ -127,8 +127,14 @@ const CryptocurrencyPage: FC = () => {
 
     //get data by active currency value and rows amount value
     const getDataByCurrency = async (activeCurrency: string, rowsAmountStr: string) => {
-        const coinListDataGet = getCoinListData(activeCurrency, rowsAmountStr);
-        return Promise.resolve(coinListDataGet);
+        try {
+            const coinListDataResponse = await getCoinListData(activeCurrency, rowsAmountStr);
+            const coinListData = coinListDataResponse.data;
+            return coinListData;
+        } catch (error) {
+            setDataGetError(true);
+            return [];
+        }
     };
 
     /////////////////////// CATEGORIES BLOCK STARTS HERE ///////////////////////////////
@@ -177,7 +183,7 @@ const CryptocurrencyPage: FC = () => {
         <div className="cryptocurrency-page-wrapper">
             <div className="slider-wrapper">
                 <div className="currency-slider-container">
-                    <CryptocurrencySliderContainer coinListData={coinListData} />
+                    <CryptocurrencySliderContainer coinListData={coinListData} activeCurrency={activeCurrencyState} />
                 </div>
             </div>
             <div className="list-filters-wrapper">

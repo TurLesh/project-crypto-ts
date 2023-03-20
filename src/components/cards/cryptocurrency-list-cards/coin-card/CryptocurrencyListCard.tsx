@@ -1,4 +1,8 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect, useRef } from 'react';
+import { useAuth } from '../../../../services/hooks/useAuth';
+import { useAppDispatch } from '../../../../services/hooks/useTypedSelector';
+import { addItemToWatchlist, removeItemFromWatchlist } from '../../../../services/store/slices/userSlice';
+import { CSSTransition } from 'react-transition-group';
 import ReactApexCharts from 'react-apexcharts';
 import { listChartOptions } from '../../../../configs/listChartConfigs';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -9,6 +13,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './CryptocurrencyListCardStyle.css';
 
 type CoinListDataType = {
+    itemId: string;
     numerationNumber?: number;
     icon: string;
     symbol: string;
@@ -32,6 +37,7 @@ type CoinListDataType = {
 
 const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
     const {
+        itemId,
         symbol,
         name,
         numerationNumber,
@@ -52,11 +58,47 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
         chartType,
         candlestickChartData
     } = props;
+    const { isAuth, id, watchlist } = useAuth();
+    const dispatch = useAppDispatch();
+    const nodeRef = useRef(null);
 
-    const [isStarActive, setIsStartActive] = useState(false);
+    const starState = () => {
+        if (watchlist.includes(itemId)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    const [isStarActive, setIsStartActive] = useState(starState());
+    const [showAlert, setShowAlert] = useState(false);
+
+    useEffect(() => {
+        setIsStartActive(starState());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [watchlist]);
+
+    useEffect(() => {
+        if (showAlert) {
+            const timer = setTimeout(() => {
+                setShowAlert(false);
+            }, 2000);
+            return () => clearTimeout(timer);
+        }
+    }, [showAlert]);
 
     const starClickHandler = () => {
-        setIsStartActive((prevState) => !prevState);
+        if (isAuth) {
+            const userId = Number(id);
+            const item = itemId;
+            if (isStarActive) {
+                dispatch(removeItemFromWatchlist({ userId, item }));
+            } else {
+                dispatch(addItemToWatchlist({ userId, item }));
+            }
+        } else {
+            setShowAlert(true);
+        }
     };
 
     const activeStar = isStarActive ? <StarIcon /> : <StarBorderIcon />;
@@ -150,6 +192,12 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
             <div className="star-container" onClick={starClickHandler}>
                 {activeStar}
             </div>
+            <CSSTransition nodeRef={nodeRef} in={showAlert} timeout={200} classNames="display" unmountOnExit>
+                <div ref={nodeRef} className="error-info-panel">
+                    <div className="error-info-panel-container">Log in to edit your watchlist.</div>
+                    <div className="error-info-panel-triangle" />
+                </div>
+            </CSSTransition>
             <div className="numeration-container">{checkNumerationNymber()}</div>
             <div className="name-wrapper">
                 <div className="icon-container">

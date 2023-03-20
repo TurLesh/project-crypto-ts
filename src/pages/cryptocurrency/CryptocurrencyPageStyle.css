@@ -53,4 +53,9 @@
   .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container {
     width: 93.6%;
   }
+}
+@media screen and (max-width: 1024px) {
+  .cryptocurrency-page-wrapper .slider-wrapper .currency-slider-container {
+    width: 86%;
+  }
 }/*# sourceMappingURL=CryptocurrencyPageStyle.css.map */

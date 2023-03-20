@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import AuthService from '../../auth/AuthService';
 import axios from 'axios';
+import { IWatchlistItemActionData } from '../../../configs/interfaces/AuthResponseInterfaces';
 
 interface IUserData {
     email: string;
@@ -10,6 +11,7 @@ interface IUserData {
 const initialState = {
     email: '',
     id: '',
+    watchlist: [] as string[],
     status: '',
     error: ''
 };
@@ -93,6 +95,70 @@ export const checkAuth = createAsyncThunk('auth/check', async function (token: s
     }
 });
 
+export const addItemToWatchlist = createAsyncThunk(
+    'watchlist/add-item',
+    async function (addItemToWatchlistData: IWatchlistItemActionData, { rejectWithValue }) {
+        try {
+            const response = await AuthService.addItemToWatchlist(
+                addItemToWatchlistData.userId,
+                addItemToWatchlistData.item
+            );
+            console.log('ADD ITEM TO USER`S WATCHLIST RESPONSE: ', response);
+            const data = response.data;
+            return data;
+        } catch (error) {
+            console.log(error);
+            if (axios.isAxiosError(error) && error.response) {
+                const message = error.response.data.message;
+                console.log(message);
+                if (!message) {
+                    const messageArr = error.response.data;
+                    if (Array.isArray(messageArr)) {
+                    } else {
+                        return rejectWithValue('Unexpected error occured while trying to add item to watchlist');
+                    }
+                }
+                return rejectWithValue(message);
+            } else {
+                const message = String(error);
+                return rejectWithValue(message);
+            }
+        }
+    }
+);
+
+export const removeItemFromWatchlist = createAsyncThunk(
+    'watchlist/remove-item',
+    async function (removeItemToWatchlistData: IWatchlistItemActionData, { rejectWithValue }) {
+        try {
+            const response = await AuthService.removeItemFromWatchlist(
+                removeItemToWatchlistData.userId,
+                removeItemToWatchlistData.item
+            );
+            console.log('REMOVE ITEM FROM USER`S WATCHLIST RESPONSE: ', response);
+            const data = response.data;
+            return data;
+        } catch (error) {
+            console.log(error);
+            if (axios.isAxiosError(error) && error.response) {
+                const message = error.response.data.message;
+                console.log(message);
+                if (!message) {
+                    const messageArr = error.response.data;
+                    if (Array.isArray(messageArr)) {
+                    } else {
+                        return rejectWithValue('Unexpected error occured while trying to add item to watchlist');
+                    }
+                }
+                return rejectWithValue(message);
+            } else {
+                const message = String(error);
+                return rejectWithValue(message);
+            }
+        }
+    }
+);
+
 const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -100,6 +166,7 @@ const userSlice = createSlice({
         removeUser(state) {
             state.email = '';
             state.id = '';
+            state.watchlist = [];
             state.status = '';
             state.error = '';
         }
@@ -122,6 +189,7 @@ const userSlice = createSlice({
                 const user = action.payload.user;
                 state.email = user.email;
                 state.id = user.id.toString();
+                state.watchlist = action.payload.watchlist;
             }
         });
         builder.addCase(loginUser.rejected, (state, action) => {
@@ -129,6 +197,7 @@ const userSlice = createSlice({
             state.status = 'rejected';
             state.error = action.payload as string;
         });
+
         // sign up cases
         builder.addCase(signupUser.pending, (state) => {
             // status change
@@ -167,16 +236,60 @@ const userSlice = createSlice({
 
             //passing data to state
             if (action.payload) {
-                const user = action.payload;
+                const user = action.payload.user;
                 state.email = user.email;
                 state.id = user.id.toString();
+                state.watchlist = action.payload.watchlist;
             }
         });
-        builder.addCase(checkAuth.rejected, (state, action) => {
+        builder.addCase(checkAuth.rejected, (state) => {
             //status cahnge
             state.status = '';
             localStorage.removeItem('token');
-            // state.error = action.payload as string;
+        });
+
+        // add item to watchlist cases
+        builder.addCase(addItemToWatchlist.pending, (state) => {
+            // status change
+            state.status = 'pending';
+            // clear error data if status changed
+            state.error = '';
+        });
+        builder.addCase(addItemToWatchlist.fulfilled, (state, action) => {
+            //status cahnge
+            state.status = 'resolved';
+
+            //passing data to state
+            if (action.payload) {
+                state.watchlist = action.payload.items;
+            }
+        });
+        builder.addCase(addItemToWatchlist.rejected, (state) => {
+            //status cahnge
+            state.status = '';
+            window.alert('Something went wrong while trying to add item to watchlist.');
+        });
+
+        // remove item from watchlist cases
+        builder.addCase(removeItemFromWatchlist.pending, (state) => {
+            // status change
+            state.status = 'pending';
+            // clear error data if status changed
+            state.error = '';
+        });
+        builder.addCase(removeItemFromWatchlist.fulfilled, (state, action) => {
+            //status cahnge
+            state.status = 'resolved';
+
+            //passing data to state
+            if (action.payload) {
+                state.watchlist = action.payload.items;
+            }
+        });
+        builder.addCase(removeItemFromWatchlist.rejected, (state) => {
+            //status cahnge
+            state.status = '';
+            window.alert('Something went wrong while trying to remove item from watchlist.');
         });
     }
 });

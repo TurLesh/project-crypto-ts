@@ -102,6 +102,7 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
         return (
             <CryptocurrencyListCard
                 key={item.id}
+                itemId={item.id}
                 icon={item.image}
                 symbol={transformedDataObject.symbolInUpper}
                 name={item.name}
@@ -131,6 +132,7 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
         return (
             <CryptocurrencyListCard
                 key={item.id}
+                itemId={item.id}
                 icon={item.image}
                 symbol={transformedDataObject.symbolInUpper}
                 name={item.name}

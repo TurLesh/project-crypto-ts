@@ -16,6 +16,32 @@
   transform: scale(1.1);
   transition-duration: 0.2s;
 }
+.cryptocurrency-list-card-wrapper .error-info-panel {
+  z-index: 101;
+  position: absolute;
+  margin-bottom: 70px;
+}
+.cryptocurrency-list-card-wrapper .error-info-panel .error-info-panel-container {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  border: 1px solid #fb3131;
+  border-radius: 5px;
+  background-color: #f5d418;
+  padding: 5px 5px;
+  font-size: 14px;
+}
+.cryptocurrency-list-card-wrapper .error-info-panel .error-info-panel-triangle {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #f5d418;
+  border-right: 1px solid #fb3131;
+  border-bottom: 1px solid #fb3131;
+  position: absolute;
+  left: 20px;
+  bottom: -3px;
+}
 .cryptocurrency-list-card-wrapper .numeration-container {
   width: 4%;
   margin-right: 10px;
@@ -95,10 +121,24 @@
 .dark .cryptocurrency-list-card-wrapper {
   border-bottom: 1px solid #1f212b;
 }
+.dark .error-info-panel .error-info-panel-container {
+  background-color: #2a2c3b;
+}
+.dark .error-info-panel .error-info-panel-triangle {
+  background-color: #2a2c3b;
+}
 
+@media screen and (max-width: 1720px) {
+  .cryptocurrency-list-card-wrapper .error-info-panel .error-info-panel-triangle {
+    left: 17px;
+  }
+}
 @media screen and (max-width: 1536px) {
   .cryptocurrency-list-card-wrapper .star-container {
     width: 2%;
+  }
+  .cryptocurrency-list-card-wrapper .error-info-panel .error-info-panel-triangle {
+    left: 9px;
   }
   .cryptocurrency-list-card-wrapper .numeration-container {
     width: 3%;
