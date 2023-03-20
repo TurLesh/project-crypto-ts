@@ -8,15 +8,20 @@ interface IListData {
     chartType: string;
     isCategorySelected: boolean;
     categoryData: ICoinListData[];
+    dataGetError: {
+        isError: boolean;
+        message: string;
+    };
 }
 
 const CryptocurrencyListContainer: FC<IListData> = (props) => {
-    const { coinListData, candlestickChartData, chartType, isCategorySelected, categoryData } = props;
+    const { coinListData, candlestickChartData, chartType, isCategorySelected, categoryData, dataGetError } = props;
 
     const transformData = (item: ICoinListData) => {
         const symbolInUpper = item.symbol.toUpperCase();
         const marketCapWithSeparatop = item.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         const volume24hWithSeparator = item.total_volume.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        const slicedCandlestickChartData = candlestickChartData.slice(-7);
 
         //1h
         let isChange1hRisingValue: boolean;
@@ -90,7 +95,8 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
             priceChangePercentage7dRounded: priceChangePercentage7dRounded,
             isChange30dRisingValue: isChange30dRisingValue,
             priceChangePercentage30dRounded: priceChangePercentage30dRounded,
-            activeCurrency: getActiveCurrency()
+            activeCurrency: getActiveCurrency(),
+            slicedCandlestickChartData: slicedCandlestickChartData
         };
 
         return transformedDataObject;
@@ -121,7 +127,7 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
                 coinHistory7dData={item.sparkline_in_7d.price}
                 activeCurrency={transformedDataObject.activeCurrency}
                 chartType={chartType}
-                candlestickChartData={candlestickChartData}
+                candlestickChartData={transformedDataObject.slicedCandlestickChartData}
             />
         );
     });
@@ -151,7 +157,7 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
                 coinHistory7dData={item.sparkline_in_7d.price}
                 activeCurrency={transformedDataObject.activeCurrency}
                 chartType={chartType}
-                candlestickChartData={candlestickChartData}
+                candlestickChartData={transformedDataObject.slicedCandlestickChartData}
             />
         );
     });
@@ -164,7 +170,15 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
         }
     };
 
-    return <div className="coins-list-map-wrapper">{mapListFunc()}</div>;
+    const renderer = () => {
+        if (dataGetError.isError) {
+            return <div>{dataGetError.message}</div>;
+        } else {
+            return <div className="coins-list-map-wrapper">{mapListFunc()}</div>;
+        }
+    };
+
+    return renderer();
 };
 
 export default CryptocurrencyListContainer;

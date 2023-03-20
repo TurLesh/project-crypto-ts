@@ -44,6 +44,7 @@
                 "volume-24h-help-panel-1": "Displays amount of traded cryptocurrency in the last 24 hours."
             }
         },
-        "chart-info": "Last 7 Days"
+        "chart-info-7d": "Last 7 Days",
+        "chart-info-7h": "Last 7 Hours"
     }
 }

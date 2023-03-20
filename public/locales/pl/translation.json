@@ -44,6 +44,7 @@
                 "volume-24h-help-panel-1": "Wyświetla kwotę kryptowaluty będącej przedmiotem obrotu w ciągu ostatnich 24 godzin."
             }
         },
-        "chart-info": "Ostatnie 7 Dni"
+        "chart-info-7d": "Ostatnie 7 Dni",
+        "chart-info-7h": "Ostatnie 7 Godzin"
     }
 }

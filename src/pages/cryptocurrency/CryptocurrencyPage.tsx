@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import _ from 'lodash';
+import { AxiosError } from 'axios';
 import { ICoinListData } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
 import { ICategoriesList } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
 import { ICategoryState } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
@@ -25,7 +26,10 @@ const CryptocurrencyPage: FC = () => {
     const [categoryData, setCategoryData] = useState<ICoinListData[]>([]);
     const [isCategorySelected, setIsCategorySelected] = useState(false);
 
-    const [dataGetError, setDataGetError] = useState(false);
+    const [dataGetError, setDataGetError] = useState({
+        isError: false,
+        message: ''
+    });
 
     //get active currency value from storage
     const activeCurrencyStateObject = useSelector((state: RootState) => state.currency);
@@ -132,7 +136,12 @@ const CryptocurrencyPage: FC = () => {
             const coinListData = coinListDataResponse.data;
             return coinListData;
         } catch (error) {
-            setDataGetError(true);
+            const err = error as AxiosError;
+            const errorInfo = {
+                isError: true,
+                message: err.message
+            };
+            setDataGetError(errorInfo);
             return [];
         }
     };
@@ -183,7 +192,11 @@ const CryptocurrencyPage: FC = () => {
         <div className="cryptocurrency-page-wrapper">
             <div className="slider-wrapper">
                 <div className="currency-slider-container">
-                    <CryptocurrencySliderContainer coinListData={coinListData} activeCurrency={activeCurrencyState} />
+                    <CryptocurrencySliderContainer
+                        coinListData={coinListData}
+                        activeCurrency={activeCurrencyState}
+                        dataGetError={dataGetError}
+                    />
                 </div>
             </div>
             <div className="list-filters-wrapper">
@@ -192,7 +205,7 @@ const CryptocurrencyPage: FC = () => {
             </div>
             <div className="content-wrapper">
                 <div className="cryptocurrency-list-info-container">
-                    <CryptocurrencyListInfo />
+                    <CryptocurrencyListInfo chartType={activeChartTypeState} />
                 </div>
                 <div className="cryptocurrency-list-container">
                     <CryptocurrencyListContainer
@@ -201,6 +214,7 @@ const CryptocurrencyPage: FC = () => {
                         chartType={activeChartTypeState}
                         isCategorySelected={isCategorySelected}
                         categoryData={categoryData}
+                        dataGetError={dataGetError}
                     />
                 </div>
             </div>

@@ -1,10 +1,15 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef, FC } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useTranslation } from 'react-i18next';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './CryptocurrencyListInfoStyle.css';
 
-const CryptocurrencyListInfo = () => {
+interface IListInfo {
+    chartType: string;
+}
+
+const CryptocurrencyListInfo: FC<IListInfo> = (props) => {
+    const { chartType } = props;
     const [isHoveringFavouritesInfoIcon, setIsHoveringFavouritesInfoIcon] = useState(false);
     const [isHoveringMarketCapInfoIcon, setIsHoveringMarketCapInfoIcon] = useState(false);
     const [isHoveringVolume24hInfoIcon, setIsHoveringVolume24hInfoIcon] = useState(false);
@@ -42,9 +47,23 @@ const CryptocurrencyListInfo = () => {
         setIsHoveringVolume24hInfoIcon(false);
     };
 
+    // if line -> "Last 7d", if candlestick -> "Last 7h"
+    const getLastNTimeInfo = () => {
+        switch (chartType) {
+            case 'line':
+                return t('cryptocurrency-info-panel.chart-info-7d');
+            case 'candlestick':
+                return t('cryptocurrency-info-panel.chart-info-7h');
+            default:
+                return t('cryptocurrency-info-panel.chart-info-7d');
+        }
+    };
+
     const favouritesHelpPanelClassName = `favourites-help-panel favourites-help-panel-${lang}`;
     const marketCapHelpPanelClassName = `market-cap-help-panel market-cap-help-panel-${lang}`;
     const volume24hHelpPanelClassName = `volume-24h-help-panel volume-24h-help-panel-${lang}`;
+
+    const lastNTimeInfo = getLastNTimeInfo();
 
     return (
         <div className="list-info-wrapper">
@@ -150,7 +169,7 @@ const CryptocurrencyListInfo = () => {
                     </CSSTransition>
                 </div>
             </div>
-            <div className="chart-info">{t('cryptocurrency-info-panel.chart-info')}</div>
+            <div className="chart-info">{lastNTimeInfo}</div>
             {/* <div className="show-more-space"></div> */}
         </div>
     );

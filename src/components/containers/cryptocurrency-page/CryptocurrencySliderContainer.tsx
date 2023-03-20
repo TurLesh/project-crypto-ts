@@ -11,10 +11,14 @@ import { getSliderCoinsData } from '../../../services/requests/GetSliderData';
 interface ICoinsData {
     coinListData: ICoinListData[];
     activeCurrency: string;
+    dataGetError: {
+        isError: boolean;
+        message: string;
+    };
 }
 
 const CryptocurrencySliderContainer: FC<ICoinsData> = (props) => {
-    const { coinListData, activeCurrency } = props;
+    const { coinListData, activeCurrency, dataGetError } = props;
     const { isAuth, watchlist } = useAuth();
 
     const [sliderCoinsData, setSliderCoinsData] = useState<ICoinListData[]>([]);
@@ -177,7 +181,15 @@ const CryptocurrencySliderContainer: FC<ICoinsData> = (props) => {
         );
     });
 
-    return <Slider {...sliderSettings}>{sliderMapFunc}</Slider>;
+    const renderer = () => {
+        if (dataGetError.isError) {
+            return <div>{dataGetError.message}</div>;
+        } else {
+            return <Slider {...sliderSettings}>{sliderMapFunc}</Slider>;
+        }
+    };
+
+    return renderer();
 };
 
 export default CryptocurrencySliderContainer;
