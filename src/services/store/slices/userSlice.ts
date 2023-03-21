@@ -163,6 +163,9 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        removeStatus(state) {
+            state.status = '';
+        },
         removeUser(state) {
             state.email = '';
             state.id = '';
@@ -294,6 +297,6 @@ const userSlice = createSlice({
     }
 });
 
-export const { removeUser } = userSlice.actions;
+export const { removeUser, removeStatus } = userSlice.actions;
 
 export default userSlice.reducer;

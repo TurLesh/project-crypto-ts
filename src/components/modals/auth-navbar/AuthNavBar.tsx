@@ -10,7 +10,13 @@ type Props = {
     modalOnCloseHandler: () => void;
 };
 
-const AuthNavBar: FC<Props> = ({ modalLogInState, navigateToLogInHandler, modalSignUpState, navigateToSignUpHandler, modalOnCloseHandler }) => {
+const AuthNavBar: FC<Props> = ({
+    modalLogInState,
+    navigateToLogInHandler,
+    modalSignUpState,
+    navigateToSignUpHandler,
+    modalOnCloseHandler
+}) => {
     const modalNavBarLogInClassName: string = modalLogInState ? 'modal-nav-login' : 'modal-nav-login-unactive';
     const modalNavBarSignUpClassName: string = modalSignUpState ? 'modal-nav-signup' : 'modal-nav-signup-unactive';
 

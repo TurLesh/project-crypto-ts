@@ -49,6 +49,7 @@ const LogInModal: FC<ILogInModal> = (props) => {
     const [isPassInputValid, setIsPassInputValid] = useState(true);
 
     const [showItem, setShowItem] = useState<string>('modal');
+    console.log(showItem);
 
     // useEffect to change showItem state every time user status change
     useEffect(() => {

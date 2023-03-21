@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../services/hooks/useTheme';
 import { useAuth } from '../../../services/hooks/useAuth';
+import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
+import { removeStatus } from '../../../services/store/slices/userSlice';
 import LanguageDropDown from '../../buttons/language-dd/LanguageDropDown';
 import CurrencyDropDown from '../../buttons/currency-dd/CurrencyDropDown';
 import LogInModal from '../../modals/login-modal/LogInModal';
@@ -23,6 +25,7 @@ const Header: FC = () => {
     const { isAuth, email } = useAuth();
     const { i18n, t } = useTranslation();
     const lang = i18n.language;
+    const dispatch = useAppDispatch();
 
     const { currentTheme, changeCurrentTheme } = useTheme();
 
@@ -41,6 +44,7 @@ const Header: FC = () => {
 
     const modalOnCloseHandler = () => {
         isOpenedModalLogIn === true ? setOpenedModalLogIn(false) : setOpenedModalSignUp(false);
+        dispatch(removeStatus());
     };
 
     // modal navigate through event handlers
