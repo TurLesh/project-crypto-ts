@@ -12,7 +12,6 @@
     .coin-searchfield {
         background-color: $accent2Color;
         font-family: $contentFont;
-        color: $gray3Color;
         font-size: 14px;
         font-weight: 500;
         border: none;
@@ -22,12 +21,16 @@
         width: 150px !important;
     }
 
+    .coin-searchfield::placeholder {
+        color: #4a4a4a;
+    }
+
     .coin-searchfield:focus {
         color: black;
     }
 
     .coin-seach-icon {
-        color: $gray3Color;
+        color: #4a4a4a;
         cursor: pointer;
         margin-right: 5px;
     }

@@ -36,7 +36,7 @@
                 content: '';
                 height: 100px;
                 position: absolute;
-                background: $bg-dark;
+                background: $mainColor;
                 transform: rotate(-45deg);
             }
 
@@ -85,7 +85,7 @@
                 height: 85px;
                 position: absolute;
                 transform: rotate(-45deg);
-                background-color: $bg-dark;
+                background-color: $mainColor;
             }
         }
     }
@@ -153,6 +153,23 @@
             width: 47px;
             right: 8px;
             top: 38px;
+        }
+    }
+}
+
+.dark {
+    .success-animation-wrapper {
+        .success-checkmark {
+            .check-icon {
+                &::before,
+                &::after {
+                    background: $bg-dark;
+                }
+
+                .icon-fix {
+                    background-color: $bg-dark;
+                }
+            }
         }
     }
 }

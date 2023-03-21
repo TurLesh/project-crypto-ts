@@ -5,8 +5,7 @@
 
     .category-searchfield {
         width: 90%;
-        background-color: $bg-light;
-        color: $gray3Color;
+        background-color: $accent2Color;
         font-family: $contentFont;
         font-size: 14px;
         font-weight: 500;
@@ -17,8 +16,12 @@
         text-align: center;
     }
 
+    .category-searchfield::placeholder {
+        color: #4a4a4a;
+    }
+
     .category-searchfield:focus {
-        outline: 1px solid $mainColorDark;
+        outline: 2px solid $mainColorDark;
         color: black;
     }
 }

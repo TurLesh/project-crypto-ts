@@ -15,8 +15,8 @@
 
         .chart-type-dd-wrapper {
             display: flex;
-            border: none;
-            background-color: $accent2Color;
+            background-color: $accentColor;
+            border: 1px solid $accent2Color;
             border-radius: 5px;
             @include JustifyCenter();
             cursor: pointer;
@@ -39,7 +39,6 @@
         }
 
         .chart-type-dd-wrapper:hover {
-            color: $accentColor;
             transform: scale(1.05);
             transition-duration: 0.2s;
         }
@@ -59,9 +58,9 @@
             width: 6px;
             height: 6px;
             transform: rotate(45deg);
-            background-color: $accent2Color;
-            border-left: 1px solid black;
-            border-top: 1px solid black;
+            background-color: $accentColor;
+            border-left: 1px solid $accent2Color;
+            border-top: 1px solid $accent2Color;
             position: absolute;
             top: 2px;
         }
@@ -69,18 +68,19 @@
         .chart-type-dd-panel-container {
             display: flex;
             flex-direction: column;
-            border: 1px solid black;
+            border: 1px solid $accent2Color;
             border-radius: 5px;
             margin-top: 6px;
-            background-color: $accent2Color;
+            background-color: $accentColor;
 
             .chart-type-dd-panel-tile {
-                padding: 5px 0px;
                 width: 40px;
+                border-radius: 5px;
+                border: 1px solid $accentColor;
 
                 .chart-type-dd-panel-btn {
                     border: none;
-                    background-color: $accent2Color;
+                    background-color: $accentColor;
                     padding: 0px;
                     width: 100%;
                     cursor: pointer;
@@ -98,7 +98,6 @@
                 .chart-type-dd-panel-btn:hover {
                     .chart-type-dd-panel-btn-icon {
                         .chart-type-dd-icon {
-                            color: $accentColor;
                             transform: scale(1.1);
                             transition-duration: 0.2s;
                         }
@@ -131,6 +130,8 @@
                 background-color: $mainColorDark;
 
                 .chart-type-dd-panel-tile {
+                    border-radius: 5px;
+                    border: 1px solid $mainColorDark;
                     .chart-type-dd-panel-btn {
                         background-color: $mainColorDark;
 

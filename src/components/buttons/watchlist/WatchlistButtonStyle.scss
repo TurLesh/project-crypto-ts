@@ -11,8 +11,8 @@
         @include JustifyCenter();
         cursor: pointer;
         padding: 3px 7px 3px 3px;
-        background-color: $accent2Color;
-        border: none;
+        background-color: $accentColor;
+        border: 1px solid $accent2Color;
 
         .watchlist-star-icon-container {
             display: flex;
@@ -29,7 +29,6 @@
     }
 
     .watchlist-btn:hover {
-        color: $accentColor;
         transform: scale(1.05);
         transition-duration: 0.2s;
     }

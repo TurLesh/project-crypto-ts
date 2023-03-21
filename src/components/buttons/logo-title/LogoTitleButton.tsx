@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTheme } from '../../../services/hooks/useTheme';
 import { useTranslation } from 'react-i18next';
-import logoYellow from '../../../assets/images/crypto-logo-yellow.png';
+import logoBlack from '../../../assets/images/crypto-logo.png';
 import logoAliceblue from '../../../assets/images/crypto-logo-aliceblue.png';
 import './LogoTitleButtonStyle.css';
 
@@ -15,7 +15,11 @@ const LogoTitleButton: FC = () => {
         <div className="logo-title-container">
             <div className="logo-container">
                 <NavLink to={`/${lang}/cryptocurrency`} className="logo-nav">
-                    {currentTheme === 'light' ? <img src={logoYellow} alt="logo" className="logo" /> : <img src={logoAliceblue} alt="logo" className="logo" />}
+                    {currentTheme === 'light' ? (
+                        <img src={logoBlack} alt="logo" className="logo" />
+                    ) : (
+                        <img src={logoAliceblue} alt="logo" className="logo" />
+                    )}
                 </NavLink>
             </div>
             <div className="title-container">

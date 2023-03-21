@@ -11,19 +11,19 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 5px #4a4a4a;
     border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $gray2Color;
+    background: #4a4a4a;
     border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: $gray3Color;
+    background: #3a3a3a;
 }
 
 body {
@@ -32,7 +32,6 @@ body {
     text-align: center;
     text-decoration-color: $accentColor;
 }
-
 .dark {
     background-color: $bg-dark;
     color: $mainColor;

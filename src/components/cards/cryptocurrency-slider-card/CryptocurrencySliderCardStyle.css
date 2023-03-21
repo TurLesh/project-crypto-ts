@@ -1,7 +1,7 @@
 .currency-card-body {
   width: 355px;
   height: 160px;
-  border: 2px solid #1058f5;
+  border: 2px solid #507fe6;
   border-radius: 10px;
   margin-left: 8px;
   margin-right: 8px;
@@ -21,7 +21,7 @@
   display: flex;
 }
 .currency-card-body .currency-info-container {
-  border-bottom: 1px solid #1058f5;
+  border-bottom: 1px solid #507fe6;
   width: 105px;
   height: 40px;
   display: flex;

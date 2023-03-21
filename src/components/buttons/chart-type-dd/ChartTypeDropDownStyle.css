@@ -12,8 +12,8 @@
 }
 .chart-type-wrapper .chart-type-btn-wrapper .chart-type-dd-wrapper {
   display: flex;
-  border: none;
-  background-color: #f5d418;
+  background-color: #7099f0;
+  border: 1px solid #3f79f6;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -35,7 +35,6 @@
   font-size: 16px;
 }
 .chart-type-wrapper .chart-type-btn-wrapper .chart-type-dd-wrapper:hover {
-  color: #1058f5;
   transform: scale(1.05);
   transition-duration: 0.2s;
 }
@@ -65,27 +64,28 @@
   width: 6px;
   height: 6px;
   transform: rotate(45deg);
-  background-color: #f5d418;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+  background-color: #7099f0;
+  border-left: 1px solid #3f79f6;
+  border-top: 1px solid #3f79f6;
   position: absolute;
   top: 2px;
 }
 .chart-type-wrapper .chart-type-dd-panel-wrapper .chart-type-dd-panel-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid #3f79f6;
   border-radius: 5px;
   margin-top: 6px;
-  background-color: #f5d418;
+  background-color: #7099f0;
 }
 .chart-type-wrapper .chart-type-dd-panel-wrapper .chart-type-dd-panel-container .chart-type-dd-panel-tile {
-  padding: 5px 0px;
   width: 40px;
+  border-radius: 5px;
+  border: 1px solid #7099f0;
 }
 .chart-type-wrapper .chart-type-dd-panel-wrapper .chart-type-dd-panel-container .chart-type-dd-panel-tile .chart-type-dd-panel-btn {
   border: none;
-  background-color: #f5d418;
+  background-color: #7099f0;
   padding: 0px;
   width: 100%;
   cursor: pointer;
@@ -98,7 +98,6 @@
   font-size: 16px;
 }
 .chart-type-wrapper .chart-type-dd-panel-wrapper .chart-type-dd-panel-container .chart-type-dd-panel-tile .chart-type-dd-panel-btn:hover .chart-type-dd-panel-btn-icon .chart-type-dd-icon {
-  color: #1058f5;
   transform: scale(1.1);
   transition-duration: 0.2s;
 }
@@ -116,6 +115,10 @@
 .dark .chart-type-wrapper .chart-type-dd-panel-wrapper .chart-type-dd-panel-container {
   border: 1px solid aliceblue;
   background-color: #2a2c3b;
+}
+.dark .chart-type-wrapper .chart-type-dd-panel-wrapper .chart-type-dd-panel-container .chart-type-dd-panel-tile {
+  border-radius: 5px;
+  border: 1px solid #2a2c3b;
 }
 .dark .chart-type-wrapper .chart-type-dd-panel-wrapper .chart-type-dd-panel-container .chart-type-dd-panel-tile .chart-type-dd-panel-btn {
   background-color: #2a2c3b;

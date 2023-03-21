@@ -1,5 +1,5 @@
 header .top-container {
-  background-color: #1058f5;
+  background-color: #7099f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,7 +48,7 @@ header .top-container .header-buttons-container .auth-modal-body {
   padding: 20px;
 }
 header .bottom-container {
-  background-color: #f5d418;
+  background-color: #3f79f6;
   height: 40px;
 }
 header .bottom-container .header-nav-list {
@@ -81,7 +81,7 @@ header .bottom-container .header-nav-list .not-active-item {
   text-decoration: none;
 }
 header .bottom-container .header-nav-list .active-item {
-  color: #1058f5;
+  color: aliceblue;
   font-size: 20px;
   font-family: "Nunito", sans-serif;
   text-decoration: none;

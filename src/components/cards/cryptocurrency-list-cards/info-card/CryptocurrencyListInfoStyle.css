@@ -41,7 +41,7 @@
   width: 6px;
   height: 6px;
   transform: rotate(45deg);
-  background-color: #f5d418;
+  background-color: #3f79f6;
   border-left: 1px solid black;
   border-top: 1px solid black;
   position: absolute;
@@ -55,7 +55,7 @@
   border: 1px solid black;
   border-radius: 5px;
   margin-top: 6px;
-  background-color: #f5d418;
+  background-color: #3f79f6;
   padding: 5px 5px;
 }
 .list-info-wrapper .favourites-help-panel .favourites-help-panel-container .favourites-help-panel-text {
@@ -104,7 +104,7 @@
   width: 6px;
   height: 6px;
   transform: rotate(45deg);
-  background-color: #f5d418;
+  background-color: #3f79f6;
   border-left: 1px solid black;
   border-top: 1px solid black;
   position: absolute;
@@ -118,7 +118,7 @@
   border: 1px solid black;
   border-radius: 5px;
   margin-top: 6px;
-  background-color: #f5d418;
+  background-color: #3f79f6;
   width: 342px;
   padding: 5px 5px;
 }
@@ -149,7 +149,7 @@
   width: 6px;
   height: 6px;
   transform: rotate(45deg);
-  background-color: #f5d418;
+  background-color: #3f79f6;
   border-left: 1px solid black;
   border-top: 1px solid black;
   position: absolute;
@@ -163,7 +163,7 @@
   border: 1px solid black;
   border-radius: 5px;
   margin-top: 6px;
-  background-color: #f5d418;
+  background-color: #3f79f6;
   width: 317px;
   padding: 5px 5px;
 }

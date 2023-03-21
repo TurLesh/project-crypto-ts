@@ -12,8 +12,8 @@
 }
 .show-rows-wrapper .show-rows-btn-wrapper .show-rows-dd-wrapper {
   display: flex;
-  border: none;
-  background-color: #f5d418;
+  background-color: #7099f0;
+  border: 1px solid #3f79f6;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -35,7 +35,6 @@
   font-size: 16px;
 }
 .show-rows-wrapper .show-rows-dd-wrapper:hover {
-  color: #1058f5;
   transform: scale(1.05);
   transition-duration: 0.2s;
 }
@@ -65,19 +64,19 @@
   width: 6px;
   height: 6px;
   transform: rotate(45deg);
-  background-color: #f5d418;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+  background-color: #7099f0;
+  border-left: 1px solid #3f79f6;
+  border-top: 1px solid #3f79f6;
   position: absolute;
   top: 2px;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid #3f79f6;
   border-radius: 5px;
   margin-top: 6px;
-  background-color: #f5d418;
+  background-color: #7099f0;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile {
   padding: 5px;
@@ -85,7 +84,7 @@
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile .show-rows-dd-panel-btn {
   border: none;
-  background-color: #f5d418;
+  background-color: #7099f0;
   padding: 0px;
   width: 100%;
   cursor: pointer;
@@ -97,12 +96,6 @@
   margin: 0px;
 }
 .show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile .show-rows-dd-panel-btn:hover .show-rows-dd-panel-btn-text {
-  color: #1058f5;
-  transform: scale(1.1);
-  transition-duration: 0.2s;
-}
-.show-rows-wrapper .show-rows-dd-panel-wrapper .show-rows-dd-panel-container .show-rows-dd-panel-tile .show-rows-dd-panel-btn:hover .show-rows-dd-panel-btn-icon .show-rows-dd-icon {
-  color: #1058f5;
   transform: scale(1.1);
   transition-duration: 0.2s;
 }

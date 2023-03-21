@@ -30,7 +30,7 @@
   content: "";
   height: 100px;
   position: absolute;
-  background: #1f212b;
+  background: aliceblue;
   transform: rotate(-45deg);
 }
 .success-animation-wrapper .success-checkmark .check-icon .icon-line {
@@ -74,7 +74,7 @@
   height: 85px;
   position: absolute;
   transform: rotate(-45deg);
-  background-color: #1f212b;
+  background-color: aliceblue;
 }
 @keyframes rotate-circle {
   0% {
@@ -138,4 +138,11 @@
     right: 8px;
     top: 38px;
   }
+}
+
+.dark .success-animation-wrapper .success-checkmark .check-icon::before, .dark .success-animation-wrapper .success-checkmark .check-icon::after {
+  background: #1f212b;
+}
+.dark .success-animation-wrapper .success-checkmark .check-icon .icon-fix {
+  background-color: #1f212b;
 }/*# sourceMappingURL=SuccessAnimationStyle.css.map */

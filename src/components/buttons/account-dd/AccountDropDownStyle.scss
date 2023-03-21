@@ -90,6 +90,7 @@
 
                     .account-dd-panel-btn-text {
                         display: flex;
+                        color: black;
                         font-family: $nameAndButtonFont;
                         font-size: 12px;
                         font-weight: 500;
@@ -104,7 +105,6 @@
 
                 .account-dd-panel-btn:hover {
                     .account-dd-panel-btn-text {
-                        color: $accentColor;
                         transform: scale(1.1);
                         transition-duration: 0.2s;
                     }

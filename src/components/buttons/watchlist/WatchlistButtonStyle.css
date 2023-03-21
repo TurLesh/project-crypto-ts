@@ -11,8 +11,8 @@
   justify-content: center;
   cursor: pointer;
   padding: 3px 7px 3px 3px;
-  background-color: #f5d418;
-  border: none;
+  background-color: #7099f0;
+  border: 1px solid #3f79f6;
 }
 .watchlist-btn-wrapper .watchlist-btn .watchlist-star-icon-container {
   display: flex;
@@ -26,7 +26,6 @@
   font-family: "Inter", sans-serif;
 }
 .watchlist-btn-wrapper .watchlist-btn:hover {
-  color: #1058f5;
   transform: scale(1.05);
   transition-duration: 0.2s;
 }

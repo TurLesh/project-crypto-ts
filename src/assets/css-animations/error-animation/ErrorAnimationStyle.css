@@ -12,7 +12,7 @@
 .error-animation-wrapper .circle {
   z-index: 1;
   position: relative;
-  background: #1f212b;
+  background: aliceblue;
   transform: scale(1);
   animation: success-anim 700ms ease;
 }
@@ -61,4 +61,8 @@
   top: 48%;
   left: 25%;
   transform: rotateZ(-50deg);
+}
+
+.dark .error-animation-wrapper .circle {
+  background: #1f212b;
 }/*# sourceMappingURL=ErrorAnimationStyle.css.map */

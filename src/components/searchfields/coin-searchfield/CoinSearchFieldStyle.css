@@ -1,5 +1,5 @@
 .coin-searchfield-container {
-  background-color: #f5d418;
+  background-color: #3f79f6;
   position: absolute;
   margin: 0 auto;
   left: calc(50% - 97px);
@@ -8,9 +8,8 @@
   border-radius: 5px;
 }
 .coin-searchfield-container .coin-searchfield {
-  background-color: #f5d418;
+  background-color: #3f79f6;
   font-family: "Work Sans", sans-serif;
-  color: #757566;
   font-size: 14px;
   font-weight: 500;
   border: none;
@@ -19,11 +18,17 @@
   border-radius: 5px;
   width: 150px !important;
 }
+.coin-searchfield-container .coin-searchfield::-moz-placeholder {
+  color: #4a4a4a;
+}
+.coin-searchfield-container .coin-searchfield::placeholder {
+  color: #4a4a4a;
+}
 .coin-searchfield-container .coin-searchfield:focus {
   color: black;
 }
 .coin-searchfield-container .coin-seach-icon {
-  color: #757566;
+  color: #4a4a4a;
   cursor: pointer;
   margin-right: 5px;
 }

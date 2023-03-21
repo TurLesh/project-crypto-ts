@@ -27,7 +27,7 @@
   text-align: start;
   border: 1px solid #fb3131;
   border-radius: 5px;
-  background-color: #f5d418;
+  background-color: #3f79f6;
   padding: 5px 5px;
   font-size: 14px;
 }
@@ -35,7 +35,7 @@
   width: 6px;
   height: 6px;
   transform: rotate(45deg);
-  background-color: #f5d418;
+  background-color: #3f79f6;
   border-right: 1px solid #fb3131;
   border-bottom: 1px solid #fb3131;
   position: absolute;

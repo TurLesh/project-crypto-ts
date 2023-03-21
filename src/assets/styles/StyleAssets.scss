@@ -9,8 +9,8 @@ $errWindowColor: rgb(212, 236, 255);
 
 //Colors for light Theme
 $bg-light: rgb(227, 237, 245);
-$accentColor: #1058f5;
-$accent2Color: #f5d418;
+$accentColor: #7099f0;
+$accent2Color: #3f79f6;
 
 //Colors for Dark Theme
 $bg-dark: #1f212b;
@@ -52,7 +52,7 @@ $nameAndButtonFont: 'Inter', sans-serif;
     font-weight: 700;
     text-decoration: underline;
     text-decoration-style: solid;
-    text-decoration-color: $accentColor;
+    text-decoration-color: $accent2Color;
 }
 
 @mixin NavUnactive {
@@ -105,7 +105,7 @@ $nameAndButtonFont: 'Inter', sans-serif;
 }
 
 @mixin AuthInputFocus {
-    border: 1px solid $accentColor;
+    border: 1px solid $accent2Color;
     box-shadow: 5px 5px rgb(0 0 0 / 0.6);
 }
 

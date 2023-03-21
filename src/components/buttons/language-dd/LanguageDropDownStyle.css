@@ -2,7 +2,7 @@
   border: none;
   padding: 0px;
   border-radius: 5px;
-  background-color: #f5d418;
+  background-color: #3f79f6;
   width: 60px;
   height: 28px;
   display: flex;
@@ -59,7 +59,7 @@
   width: 6px;
   height: 6px;
   transform: rotate(45deg);
-  background-color: #f5d418;
+  background-color: #3f79f6;
   border-left: 1px solid black;
   border-top: 1px solid black;
   position: absolute;
@@ -73,14 +73,14 @@
   width: 60px;
   border-radius: 5px;
   margin-top: 6px;
-  background-color: #f5d418;
+  background-color: #3f79f6;
 }
 .language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile {
   padding: 5px 0px 5px 0px;
 }
 .language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn {
   border: none;
-  background-color: #f5d418;
+  background-color: #3f79f6;
   padding: 0px;
   width: 100%;
   cursor: pointer;
@@ -92,7 +92,6 @@
   margin: 0px;
 }
 .language-dd-wrapper .language-dd-panel-wrapper .language-dd-panel-container .language-dd-panel-tile .language-dd-panel-btn:hover .language-dd-panel-btn-text {
-  color: #1058f5;
   transform: scale(1.1);
   transition-duration: 0.2s;
 }

@@ -7,8 +7,8 @@
 
     .category-dd-btn {
         display: flex;
-        border: none;
-        background-color: $accent2Color;
+        background-color: $accentColor;
+        border: 1px solid $accent2Color;
         padding: 0px;
         border-radius: 5px;
         @include JustifyCenter();
@@ -24,7 +24,6 @@
     }
 
     .category-dd-btn:hover {
-        color: $accentColor;
         transform: scale(1.05);
         transition-duration: 0.2s;
     }
@@ -43,9 +42,9 @@
             width: 6px;
             height: 6px;
             transform: rotate(45deg);
-            background-color: $accent2Color;
-            border-left: 1px solid black;
-            border-top: 1px solid black;
+            background-color: $accentColor;
+            border-left: 1px solid $accent2Color;
+            border-top: 1px solid $accent2Color;
             position: absolute;
             top: 2px;
         }
@@ -54,11 +53,11 @@
             width: 250px;
             display: flex;
             flex-direction: column;
-            border: 1px solid black;
-            padding: 0px 5px;
+            border: 1px solid $accent2Color;
+            padding: 1px 5px 0px 5px;
             border-radius: 5px;
             margin-top: 6px;
-            background-color: $accent2Color;
+            background-color: $accentColor;
             max-height: 200px;
             overflow-y: scroll;
             overflow-x: hidden;
@@ -68,7 +67,7 @@
 
                 .category-dd-panel-btn {
                     border: none;
-                    background-color: $accent2Color;
+                    background-color: $accentColor;
                     padding: 0px;
                     width: 100%;
                     cursor: pointer;
@@ -83,7 +82,6 @@
 
                 .category-dd-panel-btn:hover {
                     .category-dd-panel-btn-text {
-                        color: $accentColor;
                         transform: scale(1.1);
                         transition-duration: 0.2s;
                     }

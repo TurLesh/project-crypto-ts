@@ -53,6 +53,7 @@ header {
             }
         }
     }
+
     .bottom-container {
         background-color: $accent2Color;
         height: 40px;
@@ -82,7 +83,7 @@ header {
                 @include DecorNone(black, 20px, $mainFont);
             }
             .active-item {
-                @include DecorNone($accentColor, 20px, $mainFont);
+                @include DecorNone($mainColor, 20px, $mainFont);
             }
         }
     }

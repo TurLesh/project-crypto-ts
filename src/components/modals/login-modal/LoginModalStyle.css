@@ -91,7 +91,7 @@
   background-color: aliceblue;
 }
 .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .email-input:focus {
-  border: 1px solid #1058f5;
+  border: 1px solid #3f79f6;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
 }
 .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-top-info {
@@ -162,11 +162,11 @@
   cursor: pointer;
 }
 .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .pass-input-wrapper-focused {
-  border: 1px solid #1058f5;
+  border: 1px solid #3f79f6;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
 }
 .login-modal-wrapper .modal-form-wrapper .modal-form-container .login-form .submit-login-form-button {
-  background-color: #1058f5;
+  background-color: #3f79f6;
   border: 0;
   border-radius: 5px;
   padding: 10px 0px;
