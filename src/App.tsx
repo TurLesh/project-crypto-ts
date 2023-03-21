@@ -87,7 +87,7 @@ const App: FC = () => {
                         <Route path={`/:param/${listOfPaths.newsPath}`} element={<News />} />
                         <Route path={`/:param/${listOfPaths.learnPath}`} element={<Learn />} />
                         <Route path={`/:param/${listOfPaths.accountPath}`} element={<AccountPage />} />
-                        <Route path={`/:param/${listOfPaths.watchlistPath}/:param`} element={<WatchlistPage />} />
+                        <Route path={`/:param/${listOfPaths.watchlistPath}`} element={<WatchlistPage />} />
 
                         <Route path={`/:param/test`} element={<TestPage />} />
 

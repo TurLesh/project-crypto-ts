@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { CSSTransition } from 'react-transition-group';
 import { listOfPaths } from '../../../configs/listOfPaths';
-import { useAuth } from '../../../services/hooks/useAuth';
 import { removeUser } from '../../../services/store/slices/userSlice';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -20,7 +19,6 @@ interface IAccountDropDown {
 const AccountDropDown: FC<IAccountDropDown> = (props) => {
     const { email } = props;
     const { i18n } = useTranslation();
-    const { id } = useAuth();
     const lang = i18n.language;
     const userName = email.substring(0, email.indexOf('@'));
 
@@ -85,7 +83,7 @@ const AccountDropDown: FC<IAccountDropDown> = (props) => {
                         </NavLink>
                         <div className="account-dd-panel-tile">
                             <NavLink
-                                to={`/${lang}/${listOfPaths.watchlistPath}/${id}`}
+                                to={`/${lang}/${listOfPaths.watchlistPath}`}
                                 className="account-dd-panel-btn"
                                 onClick={closeAccountDropDown}
                             >
