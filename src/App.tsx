@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from './services/hooks/useAuth';
 import { listOfPaths } from './configs/listOfPaths';
 import { useAppDispatch } from './services/hooks/useTypedSelector';
 import { checkAuth } from './services/store/slices/userSlice';
@@ -21,20 +20,6 @@ import TestPage from './pages/test/TestPage';
 const App: FC = () => {
     const { i18n } = useTranslation();
     const dispatch = useAppDispatch();
-
-    //temporary
-    const { isAuth, email } = useAuth();
-
-    useEffect(() => {
-        if (isAuth) {
-            console.log('Welcome', email, 'you have successfully loged in!');
-        } else {
-            console.log('You haven`t logged in!');
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuth]);
-
-    //temporary
 
     useEffect(() => {
         const arrayOfPaths = Object.values(listOfPaths);

@@ -26,12 +26,7 @@ const CryptocurrencySliderContainer: FC<ICoinsData> = (props) => {
     useEffect(() => {
         getCoinsData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        getCoinsData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuth, watchlist]);
+    }, [isAuth, watchlist, coinListData]);
 
     const getCoinsData = async () => {
         const coinsDataTopFive = coinListData.slice(0, 5);
