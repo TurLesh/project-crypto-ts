@@ -20,10 +20,8 @@ export const loginUser = createAsyncThunk('auth/login', async function (userData
     try {
         const response = await AuthService.login(userData.email, userData.password);
         const data = response.data;
-        console.log(response);
         return data;
     } catch (error) {
-        console.log(error);
         if (axios.isAxiosError(error) && error.response) {
             const message = error.response.data.message;
             if (!message) {
@@ -46,13 +44,10 @@ export const signupUser = createAsyncThunk('auth/signup', async function (userDa
     try {
         const response = await AuthService.registration(userData.email, userData.password);
         const data = response.data;
-        console.log(response);
         return data;
     } catch (error) {
-        console.log(error);
         if (axios.isAxiosError(error) && error.response) {
             const message = error.response.data.message;
-            console.log(message);
             if (!message) {
                 const messageArr = error.response.data;
                 if (Array.isArray(messageArr)) {
@@ -72,14 +67,11 @@ export const signupUser = createAsyncThunk('auth/signup', async function (userDa
 export const checkAuth = createAsyncThunk('auth/check', async function (token: string, { rejectWithValue }) {
     try {
         const response = await AuthService.check(token);
-        console.log('CHECK AUTH RESPONSE: ', response);
         const data = response.data;
         return data;
     } catch (error) {
-        console.log(error);
         if (axios.isAxiosError(error) && error.response) {
             const message = error.response.data.message;
-            console.log(message);
             if (!message) {
                 const messageArr = error.response.data;
                 if (Array.isArray(messageArr)) {
@@ -103,14 +95,11 @@ export const addItemToWatchlist = createAsyncThunk(
                 addItemToWatchlistData.userId,
                 addItemToWatchlistData.item
             );
-            console.log('ADD ITEM TO USER`S WATCHLIST RESPONSE: ', response);
             const data = response.data;
             return data;
         } catch (error) {
-            console.log(error);
             if (axios.isAxiosError(error) && error.response) {
                 const message = error.response.data.message;
-                console.log(message);
                 if (!message) {
                     const messageArr = error.response.data;
                     if (Array.isArray(messageArr)) {
@@ -135,14 +124,11 @@ export const removeItemFromWatchlist = createAsyncThunk(
                 removeItemToWatchlistData.userId,
                 removeItemToWatchlistData.item
             );
-            console.log('REMOVE ITEM FROM USER`S WATCHLIST RESPONSE: ', response);
             const data = response.data;
             return data;
         } catch (error) {
-            console.log(error);
             if (axios.isAxiosError(error) && error.response) {
                 const message = error.response.data.message;
-                console.log(message);
                 if (!message) {
                     const messageArr = error.response.data;
                     if (Array.isArray(messageArr)) {

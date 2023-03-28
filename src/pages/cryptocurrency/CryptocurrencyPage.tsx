@@ -126,7 +126,6 @@ const CryptocurrencyPage: FC = () => {
         }
 
         if (isCategorySelected && activeChartTypeState === 'line') {
-            console.log('block triggered');
             getCategoryDataFunc(selectedCategoryState.category_id, activeCurrencyState, activeRowsAmountState);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
