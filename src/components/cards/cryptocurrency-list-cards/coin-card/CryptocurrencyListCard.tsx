@@ -5,6 +5,7 @@ import { addItemToWatchlist, removeItemFromWatchlist } from '../../../../service
 import { CSSTransition } from 'react-transition-group';
 import ReactApexCharts from 'react-apexcharts';
 import { listChartOptions } from '../../../../configs/listChartConfigs';
+import { getCurrencyPrefix } from '../../cryptocurrency-slider-card/CryptocurrencySliderCardFuncs';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -154,27 +155,6 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
             data: candlestickChartData as any[]
         }
     ];
-
-    // get currency symbol/prefix by currency
-    const getCurrencyPrefix = (activeCurrency: string) => {
-        switch (activeCurrency) {
-            case 'usd':
-                const currencyPrefixUSD = '$';
-                return currencyPrefixUSD;
-            case 'eur':
-                const currencyPrefixEUR = '€';
-                return currencyPrefixEUR;
-            case 'uah':
-                const currencyPrefixUAH = '₴';
-                return currencyPrefixUAH;
-            case 'pln':
-                const currencyPrefixPLN = 'zł';
-                return currencyPrefixPLN;
-            default:
-                const currencyPrefixDefault = '$';
-                return currencyPrefixDefault;
-        }
-    };
 
     const currencyPrefix = getCurrencyPrefix(activeCurrency);
 

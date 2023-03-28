@@ -5,8 +5,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './ShowRowsDropDownStyle.css';
 
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../services/store';
+import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
 import { CHANGE_ROWS_AMOUNT } from '../../../services/store/reducers/showRowsReducer';
 
 const ShowRowsDropDown: FC = () => {
@@ -32,7 +31,7 @@ const ShowRowsDropDown: FC = () => {
         }
     }, [isShowRowsExpanded]);
 
-    const dispatch: AppDispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // change amount of rows on number click inside dd panel and close panel
     const changeRowsAmount = (number: number) => {

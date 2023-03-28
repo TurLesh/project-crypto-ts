@@ -14,11 +14,6 @@ const CategorySearchField: FC<IInputChange> = (props) => {
         setIsFocusedCategorySearchField((prevIsFocusedCategorySearchField) => !prevIsFocusedCategorySearchField);
     };
 
-    // // listen to input value change + set input value to 'inputText' state
-    // const inputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    //     setInputText(e.currentTarget.value);
-    // };
-
     const inputPlaceholder: string | undefined = isFocusedCategorySearchField ? undefined : 'Find category...';
 
     return (

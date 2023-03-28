@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from 'react';
-import _ from 'lodash';
+import { FC } from 'react';
 import { ICategoriesList } from '../../../configs/interfaces/CryptocurrencyPageInterfaces';
 import WatchlistButton from '../../buttons/watchlist/WatchlistButton';
 import ShowRowsDropDown from '../../buttons/show-rows-dd/ShowRowsDropDown';
@@ -9,19 +8,14 @@ import './CryptocurrencyListFiltersStyle.css';
 
 interface IFiltersList {
     categoriesListData: ICategoriesList[];
+    categoriesListDataGetError: {
+        isError: boolean;
+        message: string;
+    };
 }
 
 const CryptocurrencyListFilters: FC<IFiltersList> = (props) => {
-    const { categoriesListData } = props;
-    const [isCategoriesArrayEmpty, setIsCategoriesArrayEmpty] = useState<boolean>();
-
-    useEffect(() => {
-        if (!_.isEmpty(categoriesListData)) {
-            setIsCategoriesArrayEmpty(false);
-        } else {
-            setIsCategoriesArrayEmpty(true);
-        }
-    }, [categoriesListData]);
+    const { categoriesListData, categoriesListDataGetError } = props;
 
     return (
         <div className="filters-wrapper">
@@ -30,7 +24,10 @@ const CryptocurrencyListFilters: FC<IFiltersList> = (props) => {
             </div>
             <div className="filters-right-panel">
                 <div className="right-panel-item">
-                    {!isCategoriesArrayEmpty && <CategoryDropDown categoriesListData={categoriesListData} />}
+                    <CategoryDropDown
+                        categoriesListData={categoriesListData}
+                        categoriesListDataGetError={categoriesListDataGetError}
+                    />
                 </div>
                 <div className="right-panel-item">
                     <ShowRowsDropDown />

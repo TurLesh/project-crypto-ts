@@ -1,15 +1,15 @@
 import { FC } from 'react';
+import { listChartOptions } from '../../../configs/listChartConfigs';
 import ReactApexCharts from 'react-apexcharts';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { listChartOptions } from '../../../configs/listChartConfigs';
-import { CryptocurrencySliderCardFuncs } from './CryptocurrencySliderCardFuncs';
-import './CryptocurrencySliderCardStyle.css';
+import { CryptocurrencySliderCardFuncs } from '../../cards/cryptocurrency-slider-card/CryptocurrencySliderCardFuncs';
+import '../../cards/cryptocurrency-slider-card/CryptocurrencySliderCardStyle.css';
 
-type CryptocurrencySliderCardDataType = {
+interface ICryptocurrencySliderErrorCardData {
     name: string;
     symbol: string;
-    currentPrice: number;
+    currentPrice: string;
     isChange24hRising: boolean;
     priceChangePercentage24h: string;
     isChange7dRising: boolean;
@@ -18,9 +18,9 @@ type CryptocurrencySliderCardDataType = {
     priceChangePercentage30d: string;
     priceHistory7dData: number[];
     activeCurrency: string;
-};
+}
 
-const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) => {
+const CryptocurrencySliderErrorCard: FC<ICryptocurrencySliderErrorCardData> = (props) => {
     const {
         symbol,
         currentPrice,
@@ -110,4 +110,4 @@ const CryptocurrencySliderCard: FC<CryptocurrencySliderCardDataType> = (props) =
     );
 };
 
-export default CryptocurrencySliderCard;
+export default CryptocurrencySliderErrorCard;

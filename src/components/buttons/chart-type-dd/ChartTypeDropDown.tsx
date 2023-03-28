@@ -15,6 +15,7 @@ const ChartTypeDropDown: FC = () => {
     const [isChartTypeExpanded, setIsChartTypeExpanded] = useState(false);
     const chartTypeDropDownRef = useRef<HTMLDivElement>(null);
     const chartTypeList: string[] = chartTypeConfigs;
+    const dispatch: AppDispatch = useDispatch();
 
     const [selectedChartType, setSelectedChartType] = useState('line');
 
@@ -32,8 +33,6 @@ const ChartTypeDropDown: FC = () => {
             };
         }
     }, [isChartTypeExpanded]);
-
-    const dispatch: AppDispatch = useDispatch();
 
     // change chart type on icon click inside dd panel and close panel
     const changeChartTypeHandler = (item: string) => {

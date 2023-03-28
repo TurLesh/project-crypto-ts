@@ -3,10 +3,22 @@ interface ICurrencyAction {
     payload?: any;
 }
 
+const getActiveCurrencyFromLocalStorage = () => {
+    const activeCurrencyGet = localStorage.getItem('activeCurrency');
+
+    if (activeCurrencyGet) {
+        const activeCurrency: string = activeCurrencyGet;
+        return activeCurrency;
+    } else {
+        const activeCurrency = 'usd';
+        return activeCurrency;
+    }
+};
+
 export const CHANGE_ACTIVE_CURRENCY = 'CHANGE_ACTIVE_CURRENCY';
 
 const defaultState = {
-    activeCurrency: localStorage.getItem('activeCurrency')
+    activeCurrency: getActiveCurrencyFromLocalStorage()
 };
 
 export const currencyReducer = (state = defaultState, action: ICurrencyAction) => {

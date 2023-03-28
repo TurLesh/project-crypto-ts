@@ -49,12 +49,29 @@
             top: 2px;
         }
 
+        .category-dd-panel-container-loading {
+            display: flex;
+            border: 1px solid $accent2Color;
+            border-radius: 5px;
+            background-color: $accentColor;
+            margin-top: 6px;
+        }
+
+        .category-dd-panel-container-error {
+            display: flex;
+            border: 1px solid $accent2Color;
+            border-radius: 5px;
+            background-color: $accentColor;
+            margin-top: 6px;
+            padding: 5px;
+        }
+
         .category-dd-panel-container {
             width: 250px;
             display: flex;
             flex-direction: column;
             border: 1px solid $accent2Color;
-            padding: 1px 5px 0px 5px;
+            padding: 1px 5px 5px 5px;
             border-radius: 5px;
             margin-top: 6px;
             background-color: $accentColor;
@@ -104,6 +121,16 @@
                 background-color: $mainColorDark;
                 border-left: 1px solid $mainColor;
                 border-top: 1px solid $mainColor;
+            }
+
+            .category-dd-panel-container-loading {
+                border: 1px solid $mainColor;
+                background-color: $mainColorDark;
+            }
+
+            .category-dd-panel-container-error {
+                border: 1px solid $mainColor;
+                background-color: $mainColorDark;
             }
 
             .category-dd-panel-container {

@@ -106,8 +106,16 @@
 .cryptocurrency-list-card-wrapper .market-info-wrapper .market-info-item {
   width: 50%;
 }
+.cryptocurrency-list-card-wrapper .chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .cryptocurrency-list-card-wrapper .chart-container .chart {
   min-height: 80px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .cryptocurrency-list-card-wrapper .more-icon-container {
   cursor: pointer;
