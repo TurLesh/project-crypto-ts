@@ -6,6 +6,12 @@ export const listChartOptions = {
     chart: {
         toolbar: {
             show: false
+        },
+        animations: {
+            enabled: false
+        },
+        zoom: {
+            enabled: false
         }
     },
     grid: {

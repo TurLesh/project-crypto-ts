@@ -5,7 +5,6 @@ import { store } from './services/store';
 import App from './App';
 import I18nSuspense from './components/suspense/i18nSuspense';
 import './i18n';
-import './firebase';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
