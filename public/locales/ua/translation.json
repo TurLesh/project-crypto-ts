@@ -6,18 +6,34 @@
     "analytics": "Аналітика",
     "news": "Новини",
     "learn": "Навчання",
-    "coin_searchfield": "Знайти мою монету...",
+    "coin-searchfield": "Знайти мою монету...",
 
-    "modal_login_signup": {
+    "modal-login-signup": {
         "email": "Електронна адреса",
-        "email_input_placeholder": "Введіть електронну адресу",
+        "email-input-placeholder": "Введіть електронну адресу",
+        "email-input-error": "Має бути валідна електронна адреса!",
         "pass": "Пароль",
-        "pass_input_placeholder": "Введіть пароль",
-        "pass_confirm": "Підтвердження паролю",
-        "pass_confirm_placeholder": "Підтвердіть ваш пароль",
-        "pass_forgot": "Забули пароль?",
+        "pass-input-placeholder": "Введіть пароль",
+        "pass-input-error": "6-20 символів, лише літери та цифри, обидва обов’язкові",
+        "pass-confirm": "Підтвердження паролю",
+        "pass-confirm-placeholder": "Підтвердіть ваш пароль",
+        "pass-confirm-error": "Паролі не співпадають!",
+        "pass-forgot": "Забули пароль?",
         "or": "АБО",
-        "continue_with": "Продовжити з Google"
+        "continue-with": "Продовжити з Google"
+    },
+
+    "cryptocurrency-filters-panel": {
+        "watchlist": {
+            "watchlist-btn": "Обране",
+            "watchlist-error": "Увійдіть, щоб показати свій список обраного."
+        },
+        "categories": {
+            "categories-btn": "Категорії",
+            "categories-input-placeholder": "Знайти категорію..."
+        },
+        "show-rows-btn": "Відображати елементи:",
+        "chart-type-btn": "Тип графіка:"
     },
 
     "cryptocurrency-info-panel": {
@@ -46,5 +62,9 @@
         },
         "chart-info-7d": "Останні 7 Днів",
         "chart-info-7h": "Останні 7 Годин"
+    },
+
+    "cryptocurrency-list-panel": {
+        "watchlist-actions-error": "Увійдіть, щоб редагувати свій список обраного."
     }
 }

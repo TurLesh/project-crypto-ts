@@ -14,6 +14,6 @@ const getLink = (currency: string, ids: string[]) => {
     return `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${getIdStringForLink()}&order=market_cap_desc&per_page=${rows}&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d%2C30d`;
 };
 
-export const getSliderCoinsData = (currency: string, ids: string[]) => {
+export const getWatchlistCoinsData = (currency: string, ids: string[]) => {
     return axios.get(getLink(currency, ids));
 };

@@ -32,6 +32,36 @@
         transform: scale(1.05);
         transition-duration: 0.2s;
     }
+
+    .error-info-panel {
+        z-index: 101;
+        position: absolute;
+        margin-top: 33px;
+
+        .error-info-panel-triangle {
+            width: 6px;
+            height: 6px;
+            transform: rotate(45deg);
+            background-color: $accent2Color;
+            border-left: 1px solid $redColor;
+            border-top: 1px solid $redColor;
+            position: absolute;
+            left: 9px;
+            top: -3px;
+        }
+
+        .error-info-panel-container {
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+            border: 1px solid $redColor;
+            border-radius: 5px;
+            background-color: $accent2Color;
+            padding: 5px 5px;
+            font-size: 14px;
+            bottom: 10px;
+        }
+    }
 }
 
 .dark {
@@ -40,6 +70,15 @@
             background-color: $mainColorDark;
             color: $mainColor;
             border: 1px solid $mainColor;
+        }
+    }
+
+    .error-info-panel {
+        .error-info-panel-triangle {
+            background-color: $mainColorDark;
+        }
+        .error-info-panel-container {
+            background-color: $mainColorDark;
         }
     }
 }

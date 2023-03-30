@@ -226,9 +226,9 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
         : 'confirm-input-wrapper';
 
     //input placeholders with i18n
-    const emailInputPlaceholder: string = t('modal_login_signup.email_input_placeholder');
-    const passInputPlaceholder: string = t('modal_login_signup.pass_input_placeholder');
-    const confirmInputPlaceholder: string = t('modal_login_signup.pass_confirm_placeholder');
+    const emailInputPlaceholder: string = t('modal-login-signup.email-input-placeholder');
+    const passInputPlaceholder: string = t('modal-login-signup.pass-input-placeholder');
+    const confirmInputPlaceholder: string = t('modal-login-signup.pass-confirm-placeholder');
 
     const showLoading = () => {
         return (
@@ -271,7 +271,7 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                             onSubmit={(e) => handleSignUp(e, valuesSignUp.emailSignUp, valuesSignUp.passwordSignUp)}
                         >
                             <label htmlFor="email" className="email-lable">
-                                {t('modal_login_signup.email')}
+                                {t('modal-login-signup.email')}
                                 {!isEmailInputValid && (
                                     <InfoOutlinedIcon
                                         className="email-err-icon"
@@ -282,7 +282,9 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                                 <div>
                                     {isHoveringEmailIcon && (
                                         <div className="email-error">
-                                            <p className="email-error-msg">It should be a valid email address!</p>
+                                            <p className="email-error-msg">
+                                                {t('modal-login-signup.email-input-error')}
+                                            </p>
                                         </div>
                                     )}
                                 </div>
@@ -300,7 +302,7 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                                 required
                             />
                             <label htmlFor="password" className="pass-lable">
-                                {t('modal_login_signup.pass')}
+                                {t('modal-login-signup.pass')}
                                 {!isPassInputValid && (
                                     <InfoOutlinedIcon
                                         className="pass-err-icon"
@@ -311,9 +313,7 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                                 <div>
                                     {isHoveringPassIcon && (
                                         <div className="pass-error">
-                                            <p className="pass-error-msg">
-                                                6-20 characters, only letters and numbers, both required
-                                            </p>
+                                            <p className="pass-error-msg">{t('modal-login-signup.pass-input-error')}</p>
                                         </div>
                                     )}
                                 </div>
@@ -340,7 +340,7 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                                 )}
                             </div>
                             <label htmlFor="password" className="confirm-lable">
-                                {t('modal_login_signup.pass_confirm')}
+                                {t('modal-login-signup.pass-confirm')}
                                 {!isConfirmInputValid && (
                                     <InfoOutlinedIcon
                                         className="confirm-err-icon"
@@ -351,7 +351,9 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                                 <div>
                                     {isHoveringConfirmIcon && (
                                         <div className="confirm-error">
-                                            <p className="confirm-error-msg">Passwords don't match!</p>
+                                            <p className="confirm-error-msg">
+                                                {t('modal-login-signup.pass-confirm-error')}
+                                            </p>
                                         </div>
                                     )}
                                 </div>
@@ -383,10 +385,10 @@ const SignUpModal: FC<ISignUpModal> = (props) => {
                         </form>
                     </div>
                     <div className="modal-continuewith-container">
-                        <p className="continue-with-or">{t('modal_login_signup.or')}</p>
+                        <p className="continue-with-or">{t('modal-login-signup.or')}</p>
                         <button className="continue-with-button" onClick={() => signUpWithGoogle()}>
                             <img src={GoogleIcon} className="continue-with-icon" alt="continue-with-icon" />
-                            {t('modal_login_signup.continue_with')}
+                            {t('modal-login-signup.continue-with')}
                         </button>
                     </div>
                 </div>

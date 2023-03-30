@@ -6,18 +6,34 @@
     "analytics": "Аналитика",
     "news": "Новости",
     "learn": "Учеба",
-    "coin_searchfield": "Найти мою монету...",
+    "coin-searchfield": "Найти мою монету...",
 
-    "modal_login_signup": {
+    "modal-login-signup": {
         "email": "Электронная почта",
-        "email_input_placeholder": "Введите электронную почту",
+        "email-input-placeholder": "Введите электронную почту",
+        "email-input-error": "Должен быть валидный адрес электронной почты!",
         "pass": "Пароль",
-        "pass_input_placeholder": "Введите ваш пароль",
-        "pass_confirm": "Подтверждение пароля",
-        "pass_confirm_placeholder": "Подтвердите свой пароль",
-        "pass_forgot": "Забыли пароль?",
+        "pass-input-placeholder": "Введите ваш пароль",
+        "pass-input-error": "6-20 символов, только буквы и цифры, оба обязательные",
+        "pass-confirm": "Подтверждение пароля",
+        "pass-confirm-placeholder": "Подтвердите свой пароль",
+        "pass-confirm-error": "Пароли не совпадают!",
+        "pass-forgot": "Забыли пароль?",
         "or": "ИЛИ",
-        "continue_with": "Продолжить с Google"
+        "continue-with": "Продолжить с Google"
+    },
+
+    "cryptocurrency-filters-panel": {
+        "watchlist": {
+            "watchlist-btn": "Избранное",
+            "watchlist-error": "Войдите, чтобы показать свой список избранного."
+        },
+        "categories": {
+            "categories-btn": "Категории",
+            "categories-input-placeholder": "Найти категорию..."
+        },
+        "show-rows-btn": "Отображать элементы:",
+        "chart-type-btn": "Тип графика:"
     },
 
     "cryptocurrency-info-panel": {
@@ -46,5 +62,9 @@
         },
         "chart-info-7d": "Последние 7 Дней",
         "chart-info-7h": "Последние 7 Часов"
+    },
+
+    "cryptocurrency-list-panel": {
+        "watchlist-actions-error": "Войдите, чтобы редактировать свой список избранного."
     }
 }

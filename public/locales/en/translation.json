@@ -6,18 +6,34 @@
     "analytics": "Analytics",
     "news": "News",
     "learn": "Learn",
-    "coin_searchfield": "Search for my coin...",
+    "coin-searchfield": "Search for my coin...",
 
-    "modal_login_signup": {
+    "modal-login-signup": {
         "email": "Email Address",
-        "email_input_placeholder": "Enter your email",
+        "email-input-placeholder": "Enter your email",
+        "email-input-error": "It should be a valid email address!",
         "pass": "Password",
-        "pass_input_placeholder": "Enter your password",
-        "pass_confirm": "Confirm password",
-        "pass_confirm_placeholder": "Confirm your password",
-        "pass_forgot": "Forgot password?",
+        "pass-input-placeholder": "Enter your password",
+        "pass-input-error": "6-20 characters, only letters and numbers, both required",
+        "pass-confirm": "Confirm password",
+        "pass-confirm-placeholder": "Confirm your password",
+        "pass-confirm-error": "Password mismatch!",
+        "pass-forgot": "Forgot password?",
         "or": "OR",
-        "continue_with": "Continue with Google"
+        "continue-with": "Continue with Google"
+    },
+
+    "cryptocurrency-filters-panel": {
+        "watchlist": {
+            "watchlist-btn": "Watchlist",
+            "watchlist-error": "Log in to show your watchlist."
+        },
+        "categories": {
+            "categories-btn": "Categories",
+            "categories-input-placeholder": "Find category..."
+        },
+        "show-rows-btn": "Show rows:",
+        "chart-type-btn": "Chart type:"
     },
 
     "cryptocurrency-info-panel": {
@@ -46,5 +62,9 @@
         },
         "chart-info-7d": "Last 7 Days",
         "chart-info-7h": "Last 7 Hours"
+    },
+
+    "cryptocurrency-list-panel": {
+        "watchlist-actions-error": "Log in to edit your watchlist."
     }
 }

@@ -1,20 +1,21 @@
 import { FC, useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CSSTransition } from 'react-transition-group';
 import { showRowsConfigs } from '../../../configs/ddConfigs';
+import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
+import { CHANGE_ROWS_AMOUNT } from '../../../services/store/reducers/showRowsReducer';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './ShowRowsDropDownStyle.css';
 
-import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
-import { CHANGE_ROWS_AMOUNT } from '../../../services/store/reducers/showRowsReducer';
-
 const ShowRowsDropDown: FC = () => {
+    const { t } = useTranslation();
+    const dispatch = useAppDispatch();
+
     const [isShowRowsExpanded, setIsShowRowsExpanded] = useState(false);
+    const [selectedShowRows, setSelectedShowRows] = useState(20);
     const showRowsDropDownRef = useRef<HTMLDivElement>(null);
     const showRowsList: number[] = showRowsConfigs;
-
-    // temporary
-    const [selectedShowRows, setSelectedShowRows] = useState(20);
 
     // close dd on click out of dd panel
     useEffect(() => {
@@ -30,8 +31,6 @@ const ShowRowsDropDown: FC = () => {
             };
         }
     }, [isShowRowsExpanded]);
-
-    const dispatch = useAppDispatch();
 
     // change amount of rows on number click inside dd panel and close panel
     const changeRowsAmount = (number: number) => {
@@ -71,7 +70,7 @@ const ShowRowsDropDown: FC = () => {
     return (
         <div ref={showRowsDropDownRef} className="show-rows-wrapper">
             <div className="show-rows-btn-wrapper">
-                <div className="show-rows-text">Show rows:</div>
+                <div className="show-rows-text">{t('cryptocurrency-filters-panel.show-rows-btn')}</div>
                 <button className="show-rows-dd-wrapper" onClick={expandShowRowsHandler}>
                     <div className="show-rows-dd-number">{selectedShowRows}</div>
                     <div className="show-rows-dd-arrow-container">{showRowsArrow}</div>

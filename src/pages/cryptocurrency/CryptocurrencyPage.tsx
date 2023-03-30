@@ -1,4 +1,5 @@
 import { FC, useState, useEffect } from 'react';
+// import { useAuth } from '../../services/hooks/useAuth';
 import _ from 'lodash';
 import { AxiosError } from 'axios';
 import { ICoinListData } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
@@ -9,6 +10,7 @@ import { getCoinListData } from '../../services/requests/GetCoinListData';
 import { getCandlestickChartData } from '../../services/requests/GetCandlestickData';
 import { getCategoriesList } from '../../services/requests/GetCategoriesList';
 import { getCategoryData } from '../../services/requests/GetCategoryData';
+// import { joinWatchlistData } from '../../services/watchlist/JoinWatchlistData';
 import CryptocurrencySliderContainer from '../../components/containers/cryptocurrency-page/cryptocurrency-slider-container';
 import CryptocurrencyListFilters from '../../components/cards/cryptocurrency-list-filters/CryptocurrencyListFilters';
 import CryptocurrencyListCategories from '../../components/cards/cryptocurrency-list-categories/CryptocurrencyListCategories';
@@ -20,11 +22,15 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../services/store';
 
 const CryptocurrencyPage: FC = () => {
+    // const { isAuth, watchlist } = useAuth();
+
     const [coinListData, setCoinListData] = useState<ICoinListData[]>([]);
     const [candlestickSeriesData, setCandlestickSeriesData] = useState<object[]>([]);
     const [categoriesListData, setCategoriesListData] = useState<ICategoriesList[]>([]);
     const [categoryData, setCategoryData] = useState<ICoinListData[]>([]);
     const [isCategorySelected, setIsCategorySelected] = useState(false);
+    // const [showWatchlist, setShowWatchlist] = useState(false);
+    // const [watchlistData, setWatchlistData] = useState<ICoinListData[]>([]);
 
     const [dataGetError, setDataGetError] = useState({
         isError: false,
@@ -61,6 +67,24 @@ const CryptocurrencyPage: FC = () => {
     //get chart type value from storage
     const activeChartTypeObject = useSelector((state: RootState) => state.chartType);
     const activeChartTypeState: string = activeChartTypeObject.selectedChartType;
+
+    /////////////////////// WATCHLIST BLOCK STARTS HERE ///////////////////////////////
+
+    // useEffect(() => {
+    //     async function getWatchlistData() {
+    //         const watchlistData = await joinWatchlistData(coinListData, watchlist, activeCurrencyState);
+    //         setWatchlistData(watchlistData);
+    //     }
+
+    //     if (showWatchlist) {
+    //         getWatchlistData();
+    //     }
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [showWatchlist]);
+
+    // const showWatchlistHandler = () => {
+    //     setShowWatchlist((prev) => !prev);
+    // };
 
     /////////////////////// CATEGORIES LIST GET BLOCK STARTS HERE ///////////////////////////////
 

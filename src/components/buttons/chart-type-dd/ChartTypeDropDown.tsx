@@ -1,23 +1,23 @@
 import { FC, useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CSSTransition } from 'react-transition-group';
 import { chartTypeConfigs } from '../../../configs/ddConfigs';
+import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
+import { CHANGE_CHART_TYPE } from '../../../services/store/reducers/chartTypeReducer';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import CandlestickChartIcon from '@mui/icons-material/CandlestickChart';
 import './ChartTypeDropDownStyle.css';
 
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../services/store';
-import { CHANGE_CHART_TYPE } from '../../../services/store/reducers/chartTypeReducer';
-
 const ChartTypeDropDown: FC = () => {
+    const { t } = useTranslation();
+    const dispatch = useAppDispatch();
+
     const [isChartTypeExpanded, setIsChartTypeExpanded] = useState(false);
+    const [selectedChartType, setSelectedChartType] = useState('line');
     const chartTypeDropDownRef = useRef<HTMLDivElement>(null);
     const chartTypeList: string[] = chartTypeConfigs;
-    const dispatch: AppDispatch = useDispatch();
-
-    const [selectedChartType, setSelectedChartType] = useState('line');
 
     // close dd on click out of dd panel
     useEffect(() => {
@@ -89,7 +89,7 @@ const ChartTypeDropDown: FC = () => {
     return (
         <div ref={chartTypeDropDownRef} className="chart-type-wrapper">
             <div className="chart-type-btn-wrapper">
-                <div className="chart-type-text">Chart type: </div>
+                <div className="chart-type-text">{t('cryptocurrency-filters-panel.chart-type-btn')}</div>
                 <button className="chart-type-dd-wrapper" onClick={expandChartTypeHandler}>
                     <div className="chart-type-dd-icon-container">{activeChartIcon}</div>
                     <div className="chart-type-dd-arrow-container">{chartTypeArrow}</div>

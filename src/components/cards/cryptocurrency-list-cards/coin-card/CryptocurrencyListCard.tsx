@@ -1,4 +1,5 @@
 import { FC, useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../../../services/hooks/useAuth';
 import { useAppDispatch } from '../../../../services/hooks/useTypedSelector';
 import { addItemToWatchlist, removeItemFromWatchlist } from '../../../../services/store/slices/userSlice';
@@ -59,9 +60,9 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
         chartType,
         candlestickChartData
     } = props;
+    const { t } = useTranslation();
     const { isAuth, id, watchlist } = useAuth();
     const dispatch = useAppDispatch();
-    const nodeRef = useRef(null);
 
     const starState = () => {
         if (watchlist.includes(itemId)) {
@@ -70,9 +71,9 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
             return false;
         }
     };
-
     const [isStarActive, setIsStartActive] = useState(starState());
     const [showAlert, setShowAlert] = useState(false);
+    const nodeRef = useRef(null);
 
     useEffect(() => {
         setIsStartActive(starState());
@@ -174,7 +175,9 @@ const CryptocurrencyListCard: FC<CoinListDataType> = (props) => {
             </div>
             <CSSTransition nodeRef={nodeRef} in={showAlert} timeout={200} classNames="display" unmountOnExit>
                 <div ref={nodeRef} className="error-info-panel">
-                    <div className="error-info-panel-container">Log in to edit your watchlist.</div>
+                    <div className="error-info-panel-container">
+                        {t('cryptocurrency-list-panel.watchlist-actions-error')}
+                    </div>
                     <div className="error-info-panel-triangle" />
                 </div>
             </CSSTransition>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../../../services/hooks/useAuth';
 import { ICoinListData } from '../../../../configs/interfaces/CryptocurrencyPageInterfaces';
-import { getSliderCoinsData } from '../../../../services/requests/GetSliderData';
+import { joinWatchlistData } from '../../../../services/watchlist/JoinWatchlistData';
 
 export const useGetSliderCoinsData = (coinListData: ICoinListData[], activeCurrency: string) => {
     const { isAuth, watchlist } = useAuth();
@@ -23,9 +23,10 @@ export const useGetSliderCoinsData = (coinListData: ICoinListData[], activeCurre
                     const watchlistItemsOutOfTopFive = getWatchlistItemsOutOfTopFive(coinsDataTopFive);
                     if (watchlistItemsOutOfTopFive.length !== 0) {
                         const coinsDataExceptTopFive = coinListData.slice(5);
-                        const userSliderCoinsData = await getUserSliderCoinsData(
+                        const userSliderCoinsData = await joinWatchlistData(
                             coinsDataExceptTopFive,
-                            watchlistItemsOutOfTopFive
+                            watchlistItemsOutOfTopFive,
+                            activeCurrency
                         );
                         const topFiveAndUserCoins = [...coinsDataTopFive, ...userSliderCoinsData];
                         setSliderCoinsData(topFiveAndUserCoins);
@@ -34,7 +35,7 @@ export const useGetSliderCoinsData = (coinListData: ICoinListData[], activeCurre
                     }
                 }
             } else {
-                const userSliderCoinsData = await getUserSliderCoinsData(coinListData, watchlist);
+                const userSliderCoinsData = await joinWatchlistData(coinListData, watchlist, activeCurrency);
                 if (userSliderCoinsData.length < 4) {
                     setSliderCoinsData(coinsDataTopFive);
                 } else {
@@ -56,39 +57,6 @@ export const useGetSliderCoinsData = (coinListData: ICoinListData[], activeCurre
             }
         });
         return watchlistItemsNotInTopFive;
-    };
-
-    // fist step - check for coin data in object given by parent
-    // second step - get unfound coin data from api (in no unfound -> return coin data from prev step)
-    // third step - get all objects into one array, using spread operator
-    const getUserSliderCoinsData = async (coinsDataFromParent: ICoinListData[], watchlistItems: string[]) => {
-        let coinsData: ICoinListData[] = [];
-        let unfoundItems: string[] = [];
-        watchlistItems.forEach((element) => {
-            let obj = coinsDataFromParent.find((x) => x.id === element);
-            if (obj) {
-                coinsData = [...coinsData, obj];
-            } else {
-                unfoundItems = [...unfoundItems, element];
-            }
-        });
-        if (unfoundItems.length === 0) {
-            return coinsData;
-        } else {
-            const unfoundCoinsFromApi = await unfoundCoinsResolver(unfoundItems);
-            const userSliderCoinsData = [...coinsData, ...unfoundCoinsFromApi];
-            return userSliderCoinsData;
-        }
-    };
-
-    const unfoundCoinsResolver = async (unfoundItems: string[]) => {
-        try {
-            const unfoundCoinsPromise = await getSliderCoinsData(activeCurrency, unfoundItems);
-            const data: ICoinListData[] = unfoundCoinsPromise.data;
-            return data;
-        } catch (error) {
-            return [];
-        }
     };
 
     return sliderCoinsData;

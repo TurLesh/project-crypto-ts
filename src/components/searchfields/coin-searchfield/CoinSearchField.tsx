@@ -12,7 +12,7 @@ const CoinSearchField: FC = () => {
         setIsFocusedCoinSearchField((prevIsFocusedCoinSearchField) => !prevIsFocusedCoinSearchField);
     };
 
-    const placeholderTranslation = t('coin_searchfield');
+    const placeholderTranslation = t('coin-searchfield');
 
     //classNames with conditional(ternary) operator
     const containerClassName: string = isFocusedCoinSearchField

@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './CategorySearchFieldStyle.css';
 
 interface IInputChange {
@@ -8,13 +9,15 @@ interface IInputChange {
 
 const CategorySearchField: FC<IInputChange> = (props) => {
     const { inputText, setInputText } = props;
+    const { t } = useTranslation();
     const [isFocusedCategorySearchField, setIsFocusedCategorySearchField] = useState(false);
 
     const inputFocusAndBlurHandler = () => {
         setIsFocusedCategorySearchField((prevIsFocusedCategorySearchField) => !prevIsFocusedCategorySearchField);
     };
 
-    const inputPlaceholder: string | undefined = isFocusedCategorySearchField ? undefined : 'Find category...';
+    const inputPlaceholderText = t('cryptocurrency-filters-panel.categories.categories-input-placeholder');
+    const inputPlaceholder: string | undefined = isFocusedCategorySearchField ? undefined : inputPlaceholderText;
 
     return (
         <div className="category-searchfield-wrapper">

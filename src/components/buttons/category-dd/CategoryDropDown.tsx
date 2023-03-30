@@ -1,5 +1,6 @@
 import { FC, useState, useEffect, useRef } from 'react';
 import _ from 'lodash';
+import { useTranslation } from 'react-i18next';
 import { CSSTransition } from 'react-transition-group';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../services/store';
@@ -21,6 +22,7 @@ interface ICategoriesDD {
 
 const CategoryDropDown: FC<ICategoriesDD> = (props) => {
     const { categoriesListData, categoriesListDataGetError } = props;
+    const { t } = useTranslation();
 
     const [categoriesList, setCategoriesList] = useState<ICategoriesList[]>(categoriesListData);
     const [isCategoryExpanded, setIsCategoryExpanded] = useState(false);
@@ -149,7 +151,7 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
     return (
         <div ref={categoryDropDownRef} className="category-dd-wrapper">
             <button className="category-dd-btn" onClick={expandCategoryHandler}>
-                Category {categoryArrow}
+                {t('cryptocurrency-filters-panel.categories.categories-btn')} {categoryArrow}
             </button>
             <CSSTransition in={isCategoryExpanded} timeout={200} classNames="display" unmountOnExit>
                 <div className="category-dd-panel-wrapper">

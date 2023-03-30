@@ -174,8 +174,8 @@ const LogInModal: FC<ILogInModal> = (props) => {
         : 'pass-input-wrapper';
 
     //input placeholders with i18n
-    const emailInputPlaceholder: string = t('modal_login_signup.email_input_placeholder');
-    const passInputPlaceholder: string = t('modal_login_signup.pass_input_placeholder');
+    const emailInputPlaceholder: string = t('modal-login-signup.email-input-placeholder');
+    const passInputPlaceholder: string = t('modal-login-signup.pass-input-placeholder');
 
     const showLoading = () => {
         return (
@@ -218,7 +218,7 @@ const LogInModal: FC<ILogInModal> = (props) => {
                             onSubmit={(e) => handleLogIn(e, valuesLogIn.emailLogIn, valuesLogIn.passwordLogIn)}
                         >
                             <label htmlFor="email" className="email-lable">
-                                {t('modal_login_signup.email')}
+                                {t('modal-login-signup.email')}
                                 {!isEmailInputValid && (
                                     <InfoOutlinedIcon
                                         className="email-err-icon"
@@ -229,7 +229,9 @@ const LogInModal: FC<ILogInModal> = (props) => {
                                 <div>
                                     {isHoveringEmailIcon && (
                                         <div className="email-error">
-                                            <p className="email-error-msg">It should be a valid email address!</p>
+                                            <p className="email-error-msg">
+                                                {t('modal-login-signup.email-input-error')}
+                                            </p>
                                         </div>
                                     )}
                                 </div>
@@ -248,7 +250,7 @@ const LogInModal: FC<ILogInModal> = (props) => {
                             />
                             <div className="pass-top-info">
                                 <label htmlFor="password" className="pass-lable">
-                                    {t('modal_login_signup.pass')}
+                                    {t('modal-login-signup.pass')}
                                     {!isPassInputValid && (
                                         <InfoOutlinedIcon
                                             className="pass-err-icon"
@@ -260,13 +262,13 @@ const LogInModal: FC<ILogInModal> = (props) => {
                                         {isHoveringPassIcon && (
                                             <div className="pass-error">
                                                 <p className="pass-error-msg">
-                                                    6-20 characters, only letters and numbers, both required
+                                                    {t('modal-login-signup.pass-input-error')}
                                                 </p>
                                             </div>
                                         )}
                                     </div>
                                 </label>
-                                <button className="pass-forgot">{t('modal_login_signup.pass_forgot')}</button>
+                                <button className="pass-forgot">{t('modal-login-signup.pass-forgot')}</button>
                             </div>
                             <div className={passInputWrapperClassName}>
                                 <input
@@ -295,10 +297,10 @@ const LogInModal: FC<ILogInModal> = (props) => {
                         </form>
                     </div>
                     <div className="modal-continuewith-container">
-                        <p className="continue-with-or">{t('modal_login_signup.or')}</p>
+                        <p className="continue-with-or">{t('modal-login-signup.or')}</p>
                         <button className="continue-with-button" onClick={() => logInWithGoogle()}>
                             <img src={GoogleIcon} className="continue-with-icon" alt="continue-with-icon" />
-                            {t('modal_login_signup.continue_with')}
+                            {t('modal-login-signup.continue-with')}
                         </button>
                     </div>
                 </div>

@@ -6,18 +6,34 @@
     "analytics": "Analityka",
     "news": "Aktualności",
     "learn": "Nauczanie",
-    "coin_searchfield": "Znajdź moją monetę...",
+    "coin-searchfield": "Znajdź moją monetę...",
 
-    "modal_login_signup": {
+    "modal-login-signup": {
         "email": "Adres e-mail",
-        "email_input_placeholder": "Wprowadź swój email",
+        "email-input-placeholder": "Wprowadź swój email",
+        "email-input-error": "Powinien to być prawidłowy adres email!",
         "pass": "Hasło",
-        "pass_input_placeholder": "Wprowadź hasło",
-        "pass_confirm": "Potwierdzenie hasła",
-        "pass_confirm_placeholder": "Potwierdź swoje hasło",
-        "pass_forgot": "Zapomniałeś hasła?",
+        "pass-input-placeholder": "Wprowadź hasło",
+        "pass-input-error": "6-20 znaków, tylko litery i cyfry, oba wymagane",
+        "pass-confirm": "Potwierdzenie hasła",
+        "pass-confirm-placeholder": "Potwierdź swoje hasło",
+        "pass-confirm-error": "Hasło różni się!",
+        "pass-forgot": "Zapomniałeś hasła?",
         "or": "LUB",
-        "continue_with": "Kontynuuj z Google"
+        "continue-with": "Kontynuuj z Google"
+    },
+
+    "cryptocurrency-filters-panel": {
+        "watchlist": {
+            "watchlist-btn": "Śledzony",
+            "watchlist-error": "Zaloguj się, aby wyświetlić swoją listę obserwowanych."
+        },
+        "categories": {
+            "categories-btn": "Kategorie",
+            "categories-input-placeholder": "Znajdź kategorię..."
+        },
+        "show-rows-btn": "Pokaż rzędy:",
+        "chart-type-btn": "Typ wykresu:"
     },
 
     "cryptocurrency-info-panel": {
@@ -46,5 +62,9 @@
         },
         "chart-info-7d": "Ostatnie 7 Dni",
         "chart-info-7h": "Ostatnie 7 Godzin"
+    },
+
+    "cryptocurrency-list-panel": {
+        "watchlist-actions-error": "Zaloguj się, aby edytować swoją listę obserwowanych."
     }
 }
