@@ -65,6 +65,7 @@
     },
 
     "cryptocurrency-list-panel": {
-        "watchlist-actions-error": "Log in to edit your watchlist."
+        "watchlist-actions-error": "Log in to edit your watchlist.",
+        "watchlist-no-items": "Looks like no items in watchlist"
     }
 }

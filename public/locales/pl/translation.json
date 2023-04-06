@@ -65,6 +65,7 @@
     },
 
     "cryptocurrency-list-panel": {
-        "watchlist-actions-error": "Zaloguj się, aby edytować swoją listę obserwowanych."
+        "watchlist-actions-error": "Zaloguj się, aby edytować swoją listę obserwowanych.",
+        "watchlist-no-items": "Wygląda na to, że na liście obserwowanych nie ma żadnych elementów"
     }
 }

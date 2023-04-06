@@ -1,28 +1,46 @@
 import { FC } from 'react';
+import _ from 'lodash';
 import { ICoinListData } from '../../../../configs/interfaces/CryptocurrencyPageInterfaces';
 import CryptocurrencyListCard from '../../../cards/cryptocurrency-list-cards/coin-card/CryptocurrencyListCard';
 import { transformCryptocurrencyListData } from './CyptocurrencyListContainerFuncs';
 import CryptocurrencyListError from '../../../errors/cryptocurrency-list-error';
+import CryptocurrencyListLoader from './loader/CryptocurrencyListLoader';
+// import { useTranslation } from 'react-i18next';
 
 interface IListData {
     coinListData: ICoinListData[];
-    dataGetError: {
-        isError: boolean;
-        message: string;
-    };
+    dataGetError: IErrorData;
     candlestickChartData: object[];
-    candlestickDataGetError: {
-        isError: boolean;
-        message: string;
-    };
+    candlestickDataGetError: IErrorData;
     chartType: string;
     isCategorySelected: boolean;
-    selectedCategoryDataGetError: {
-        isError: boolean;
-        message: string;
-    };
+    selectedCategoryDataGetError: IErrorData;
     categoryData: ICoinListData[];
     activeCurrency: string;
+    watchlistCoinsData: ICoinListData[];
+    isShowWatchlist: boolean;
+    watchlistCoinsDataGetError: IErrorData;
+}
+
+interface IErrorData {
+    isError: boolean;
+    message: string;
+}
+
+interface ITransformedDataObj {
+    symbolInUpper: string;
+    marketCapWithSeparatop: string;
+    volume24hWithSeparator: string;
+    isChange1hRisingValue: boolean;
+    priceChangePercentage1hRounded: string;
+    isChange24hRisingValue: boolean;
+    priceChangePercentage24hRounded: string;
+    isChange7dRisingValue: boolean;
+    priceChangePercentage7dRounded: string;
+    isChange30dRisingValue: boolean;
+    priceChangePercentage30dRounded: string;
+    activeCurrency: string;
+    slicedCandlestickChartData: object[];
 }
 
 const CryptocurrencyListContainer: FC<IListData> = (props) => {
@@ -35,12 +53,15 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
         isCategorySelected,
         categoryData,
         activeCurrency,
-        selectedCategoryDataGetError
+        selectedCategoryDataGetError,
+        watchlistCoinsData,
+        isShowWatchlist,
+        watchlistCoinsDataGetError
     } = props;
 
-    const categoryMapFunc = categoryData.map((item) => {
-        const transformedDataObject = transformCryptocurrencyListData(item, candlestickChartData);
+    // const { t } = useTranslation();
 
+    const cryptocurrencyListCardItem = (item: ICoinListData, transformedDataObject: ITransformedDataObj) => {
         return (
             <CryptocurrencyListCard
                 key={item.id}
@@ -66,44 +87,36 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
                 candlestickChartData={transformedDataObject.slicedCandlestickChartData}
             />
         );
+    };
+
+    const categoryMapFunc = categoryData.map((item) => {
+        const transformedDataObject: ITransformedDataObj = transformCryptocurrencyListData(item, candlestickChartData);
+        return cryptocurrencyListCardItem(item, transformedDataObject);
+    });
+
+    const watchlistMapFunc = watchlistCoinsData.map((item) => {
+        const transformedDataObject: ITransformedDataObj = transformCryptocurrencyListData(item, candlestickChartData);
+        return cryptocurrencyListCardItem(item, transformedDataObject);
     });
 
     const listMapFunc = coinListData.map((item) => {
-        const transformedDataObject = transformCryptocurrencyListData(item, candlestickChartData);
-
-        return (
-            <CryptocurrencyListCard
-                key={item.id}
-                itemId={item.id}
-                icon={item.image}
-                symbol={transformedDataObject.symbolInUpper}
-                name={item.name}
-                numerationNumber={item.market_cap_rank}
-                currentPrice={item.current_price}
-                isChange1hRising={transformedDataObject.isChange1hRisingValue}
-                priceChangePercentage1h={transformedDataObject.priceChangePercentage1hRounded}
-                isChange24hRising={transformedDataObject.isChange24hRisingValue}
-                priceChangePercentage24h={transformedDataObject.priceChangePercentage24hRounded}
-                isChange7dRising={transformedDataObject.isChange7dRisingValue}
-                priceChangePercentage7d={transformedDataObject.priceChangePercentage7dRounded}
-                isChange30dRising={transformedDataObject.isChange30dRisingValue}
-                priceChangePercentage30d={transformedDataObject.priceChangePercentage30dRounded}
-                marketCap={transformedDataObject.marketCapWithSeparatop}
-                volume24h={transformedDataObject.volume24hWithSeparator}
-                coinHistory7dData={item.sparkline_in_7d.price}
-                activeCurrency={transformedDataObject.activeCurrency}
-                chartType={chartType}
-                candlestickChartData={transformedDataObject.slicedCandlestickChartData}
-            />
-        );
+        const transformedDataObject: ITransformedDataObj = transformCryptocurrencyListData(item, candlestickChartData);
+        return cryptocurrencyListCardItem(item, transformedDataObject);
     });
 
     const mapListFunc = () => {
         if (isCategorySelected) {
             return categoryMapFunc;
-        } else {
-            return listMapFunc;
         }
+        if (isShowWatchlist) {
+            if (!_.isEmpty(watchlistCoinsData)) {
+                return watchlistMapFunc;
+            } else {
+                return <div>Looks like no items in your watchlist</div>;
+                // return <div>{t('cryptocurrency-list-panel.watchlist-no-items')}</div>;
+            }
+        }
+        return listMapFunc;
     };
 
     const renderer = () => {
@@ -116,7 +129,7 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
             );
         }
 
-        if (!isCategorySelected && dataGetError.isError) {
+        if (!isShowWatchlist && !isCategorySelected && dataGetError.isError) {
             return (
                 <div className="coins-list-map-wrapper">
                     {CryptocurrencyListError(chartType, dataGetError.message, activeCurrency)}
@@ -124,7 +137,15 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
             );
         }
 
-        if (isCategorySelected && selectedCategoryDataGetError.isError) {
+        if (isShowWatchlist && watchlistCoinsDataGetError.isError && !isCategorySelected) {
+            return (
+                <div className="coins-list-map-wrapper">
+                    {CryptocurrencyListError(chartType, watchlistCoinsDataGetError.message, activeCurrency)}
+                </div>
+            );
+        }
+
+        if (isCategorySelected && selectedCategoryDataGetError.isError && !isShowWatchlist) {
             return (
                 <div className="coins-list-map-wrapper">
                     {CryptocurrencyListError(chartType, selectedCategoryDataGetError.message, activeCurrency)}
@@ -132,16 +153,20 @@ const CryptocurrencyListContainer: FC<IListData> = (props) => {
             );
         }
 
-        if (!isCategorySelected && !dataGetError.isError) {
+        if (!isShowWatchlist && !isCategorySelected && !dataGetError.isError) {
             return <div className="coins-list-map-wrapper">{mapListFunc()}</div>;
         }
 
-        if (isCategorySelected && !selectedCategoryDataGetError.isError) {
+        if (isCategorySelected && !selectedCategoryDataGetError.isError && !isShowWatchlist) {
+            return <div className="coins-list-map-wrapper">{mapListFunc()}</div>;
+        }
+
+        if (isShowWatchlist && !watchlistCoinsDataGetError.isError && !isCategorySelected) {
             return <div className="coins-list-map-wrapper">{mapListFunc()}</div>;
         } else {
             return (
                 <div className="coins-list-map-wrapper">
-                    {CryptocurrencyListError(chartType, 'Unexpected Error', activeCurrency)}
+                    <CryptocurrencyListLoader />
                 </div>
             );
         }

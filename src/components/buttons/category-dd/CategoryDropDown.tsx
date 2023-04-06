@@ -18,10 +18,12 @@ interface ICategoriesDD {
         isError: boolean;
         message: string;
     };
+    setShowWatchlistToFalse: () => void;
+    isShowWatchlist: boolean;
 }
 
 const CategoryDropDown: FC<ICategoriesDD> = (props) => {
-    const { categoriesListData, categoriesListDataGetError } = props;
+    const { categoriesListData, categoriesListDataGetError, setShowWatchlistToFalse, isShowWatchlist } = props;
     const { t } = useTranslation();
 
     const [categoriesList, setCategoriesList] = useState<ICategoriesList[]>(categoriesListData);
@@ -105,6 +107,10 @@ const CategoryDropDown: FC<ICategoriesDD> = (props) => {
 
         //set value to storage
         dispatch({ type: CHANGE_SELECTED_CATEGORY, payload: selectedCategoryObject });
+        //this func call used to close watchlist if it was opened
+        if (isShowWatchlist) {
+            setShowWatchlistToFalse();
+        }
     };
 
     //on category dd button click handler

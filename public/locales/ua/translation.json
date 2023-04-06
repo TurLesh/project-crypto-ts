@@ -65,6 +65,7 @@
     },
 
     "cryptocurrency-list-panel": {
-        "watchlist-actions-error": "Увійдіть, щоб редагувати свій список обраного."
+        "watchlist-actions-error": "Увійдіть, щоб редагувати свій список обраного.",
+        "watchlist-no-items": "Схоже, у вашому списку обранного нічого немає"
     }
 }

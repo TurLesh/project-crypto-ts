@@ -12,21 +12,32 @@ interface IFiltersList {
         isError: boolean;
         message: string;
     };
+    triggerShowWatchlist: () => void;
+    isShowWatchlist: boolean;
+    setShowWatchlistToFalse: () => void;
 }
 
 const CryptocurrencyListFilters: FC<IFiltersList> = (props) => {
-    const { categoriesListData, categoriesListDataGetError } = props;
+    const {
+        categoriesListData,
+        categoriesListDataGetError,
+        triggerShowWatchlist,
+        isShowWatchlist,
+        setShowWatchlistToFalse
+    } = props;
 
     return (
         <div className="filters-wrapper">
             <div className="filters-left-panel">
-                <WatchlistButton />
+                <WatchlistButton triggerShowWatchlist={triggerShowWatchlist} isShowWatchlist={isShowWatchlist} />
             </div>
             <div className="filters-right-panel">
                 <div className="right-panel-item">
                     <CategoryDropDown
                         categoriesListData={categoriesListData}
                         categoriesListDataGetError={categoriesListDataGetError}
+                        isShowWatchlist={isShowWatchlist}
+                        setShowWatchlistToFalse={setShowWatchlistToFalse}
                     />
                 </div>
                 <div className="right-panel-item">

@@ -6,7 +6,13 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import './WatchlistButtonStyle.css';
 
-const WatchlistButton: FC = () => {
+interface IWatchlistBtn {
+    triggerShowWatchlist: () => void;
+    isShowWatchlist: boolean;
+}
+
+const WatchlistButton: FC<IWatchlistBtn> = (props) => {
+    const { triggerShowWatchlist, isShowWatchlist } = props;
     const { isAuth } = useAuth();
     const { t } = useTranslation();
 
@@ -25,18 +31,26 @@ const WatchlistButton: FC = () => {
 
     const watchlistBtnClickHandler = () => {
         if (isAuth) {
-            console.log('WATCHLIST SHOW TRIGGER HERE');
+            triggerShowWatchlist();
         } else {
             setShowAlert(true);
         }
     };
 
     const starIconOnMouseOver = () => {
-        setIsStarIconFilled(true);
+        if (isShowWatchlist) {
+            setIsStarIconFilled(false);
+        } else {
+            setIsStarIconFilled(true);
+        }
     };
 
     const starIconOnMouseOut = () => {
-        setIsStarIconFilled(false);
+        if (isShowWatchlist) {
+            setIsStarIconFilled(true);
+        } else {
+            setIsStarIconFilled(false);
+        }
     };
 
     const activeStar = isStarIconFilled ? (

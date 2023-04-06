@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// watchlistArr (passed here as ids[]) have to contain at least 1 element
 const getLink = (currency: string, ids: string[]) => {
     const rows = ids.length.toString();
 

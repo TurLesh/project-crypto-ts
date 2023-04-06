@@ -1,5 +1,9 @@
 import { FC, useState, useEffect } from 'react';
-// import { useAuth } from '../../services/hooks/useAuth';
+import { useAuth } from '../../services/hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../services/hooks/useTypedSelector';
+import { RootState } from '../../services/store';
+import { REMOVE_SELECTED_CATEGORY } from '../../services/store/reducers/categoriesReducer';
 import _ from 'lodash';
 import { AxiosError } from 'axios';
 import { ICoinListData } from '../../configs/interfaces/CryptocurrencyPageInterfaces';
@@ -10,7 +14,7 @@ import { getCoinListData } from '../../services/requests/GetCoinListData';
 import { getCandlestickChartData } from '../../services/requests/GetCandlestickData';
 import { getCategoriesList } from '../../services/requests/GetCategoriesList';
 import { getCategoryData } from '../../services/requests/GetCategoryData';
-// import { joinWatchlistData } from '../../services/watchlist/JoinWatchlistData';
+import { getWatchlistCoinsData } from '../../services/requests/GetWatchlistCoinsData';
 import CryptocurrencySliderContainer from '../../components/containers/cryptocurrency-page/cryptocurrency-slider-container';
 import CryptocurrencyListFilters from '../../components/cards/cryptocurrency-list-filters/CryptocurrencyListFilters';
 import CryptocurrencyListCategories from '../../components/cards/cryptocurrency-list-categories/CryptocurrencyListCategories';
@@ -18,19 +22,17 @@ import CryptocurrencyListInfo from '../../components/cards/cryptocurrency-list-c
 import CryptocurrencyListContainer from '../../components/containers/cryptocurrency-page/cryptocurrency-list-container';
 import './CryptocurrencyPageStyle.css';
 
-import { useSelector } from 'react-redux';
-import { RootState } from '../../services/store';
-
 const CryptocurrencyPage: FC = () => {
-    // const { isAuth, watchlist } = useAuth();
+    const { isAuth, watchlist } = useAuth();
+    const dispatch = useAppDispatch();
 
     const [coinListData, setCoinListData] = useState<ICoinListData[]>([]);
     const [candlestickSeriesData, setCandlestickSeriesData] = useState<object[]>([]);
     const [categoriesListData, setCategoriesListData] = useState<ICategoriesList[]>([]);
     const [categoryData, setCategoryData] = useState<ICoinListData[]>([]);
     const [isCategorySelected, setIsCategorySelected] = useState(false);
-    // const [showWatchlist, setShowWatchlist] = useState(false);
-    // const [watchlistData, setWatchlistData] = useState<ICoinListData[]>([]);
+    const [watchlistCoinsData, setWatchlistCoinsData] = useState<ICoinListData[]>([]);
+    const [isShowWatchlist, setShowWatchlist] = useState(false);
 
     const [dataGetError, setDataGetError] = useState({
         isError: false,
@@ -48,6 +50,11 @@ const CryptocurrencyPage: FC = () => {
     });
 
     const [selectedCategoryDataGetError, setSelectedCategoryDataGetError] = useState({
+        isError: false,
+        message: ''
+    });
+
+    const [watchlistCoinsDataGetError, setWatchlistCoinsDataGetError] = useState({
         isError: false,
         message: ''
     });
@@ -70,21 +77,80 @@ const CryptocurrencyPage: FC = () => {
 
     /////////////////////// WATCHLIST BLOCK STARTS HERE ///////////////////////////////
 
-    // useEffect(() => {
-    //     async function getWatchlistData() {
-    //         const watchlistData = await joinWatchlistData(coinListData, watchlist, activeCurrencyState);
-    //         setWatchlistData(watchlistData);
-    //     }
+    //this func was passed as prop to change state of showWatchlist in child component (filter btns)
+    const setShowWatchlistToFalse = () => {
+        setShowWatchlist(false);
+    };
 
-    //     if (showWatchlist) {
-    //         getWatchlistData();
-    //     }
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [showWatchlist]);
+    //useEffect to close watchlist in cryptocurrency list every time user signed out
+    useEffect(() => {
+        if (!isAuth) {
+            setShowWatchlist(false);
+        }
+    }, [isAuth]);
 
-    // const showWatchlistHandler = () => {
-    //     setShowWatchlist((prev) => !prev);
-    // };
+    useEffect(() => {
+        async function getWatchlistCoinsDataFunc() {
+            const watchlistCoinsDataArr: [] = await resolveWatchlistCoinsResponse(activeCurrencyState, watchlist);
+            if (watchlistCoinsDataArr.length !== 0) {
+                const errorInfo = {
+                    isError: false,
+                    message: ''
+                };
+                setWatchlistCoinsDataGetError(errorInfo);
+            }
+            setWatchlistCoinsData(watchlistCoinsDataArr);
+        }
+
+        if (isAuth && watchlist.length !== 0) {
+            getWatchlistCoinsDataFunc();
+        } else {
+            setWatchlistCoinsData([]);
+        }
+    }, [isAuth, watchlist, activeCurrencyState]);
+
+    //this useEffect was created separately to prevent needless getWatchlistCoinsData requests on setShowWatchlist(false)
+    useEffect(() => {
+        async function getWatchlistCoinsDataFunc() {
+            const watchlistCoinsDataArr: [] = await resolveWatchlistCoinsResponse(activeCurrencyState, watchlist);
+            if (watchlistCoinsDataArr.length !== 0) {
+                const errorInfo = {
+                    isError: false,
+                    message: ''
+                };
+                setWatchlistCoinsDataGetError(errorInfo);
+            }
+            setWatchlistCoinsData(watchlistCoinsDataArr);
+        }
+
+        if (isAuth && watchlist.length !== 0 && isShowWatchlist) {
+            getWatchlistCoinsDataFunc();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isShowWatchlist]);
+
+    const resolveWatchlistCoinsResponse = async (currency: string, watchlist: string[]) => {
+        try {
+            const watchlistCoinsData = await getWatchlistCoinsData(currency, watchlist);
+            const watchlistCoinsDataArr = watchlistCoinsData.data;
+            return watchlistCoinsDataArr;
+        } catch (error) {
+            const err = error as AxiosError;
+            const errorInfo = {
+                isError: true,
+                message: err.message
+            };
+            setWatchlistCoinsDataGetError(errorInfo);
+            return [];
+        }
+    };
+
+    const triggerShowWatchlist = () => {
+        if (selectedCategoryState.category_id !== '' && selectedCategoryState.category_name !== '') {
+            dispatch({ type: REMOVE_SELECTED_CATEGORY });
+        }
+        setShowWatchlist((prev) => !prev);
+    };
 
     /////////////////////// CATEGORIES LIST GET BLOCK STARTS HERE ///////////////////////////////
 
@@ -154,6 +220,32 @@ const CryptocurrencyPage: FC = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeChartTypeState]);
+
+    //useEffect to get new data every time watchlist item list closed
+    useEffect(() => {
+        async function getCandlestickChartData(activeCurrency: string) {
+            await getCandlestickChartDataFunc(activeCurrency);
+        }
+
+        async function getLineChartData(activeCurrency: string, activeRowsAmount: number) {
+            await getDataFunc(activeCurrency, activeRowsAmount);
+        }
+
+        if (!isShowWatchlist) {
+            if (activeChartTypeState === 'candlestick') {
+                getCandlestickChartData(activeCurrencyState);
+            }
+
+            if (!isCategorySelected && activeChartTypeState === 'line') {
+                getLineChartData(activeCurrencyState, activeRowsAmountState);
+            }
+
+            if (isCategorySelected && activeChartTypeState === 'line') {
+                getCategoryDataFunc(selectedCategoryState.category_id, activeCurrencyState, activeRowsAmountState);
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isShowWatchlist]);
 
     async function getCandlestickChartDataFunc(activeCurrency: string) {
         const candlestickData: [] = await getCandlestickDataByCurrency(activeCurrency);
@@ -343,6 +435,8 @@ const CryptocurrencyPage: FC = () => {
         }
     };
 
+    console.log(watchlistCoinsDataGetError);
+
     return (
         <div className="cryptocurrency-page-wrapper">
             <div className="slider-wrapper">
@@ -351,6 +445,8 @@ const CryptocurrencyPage: FC = () => {
                         coinListData={coinListData}
                         activeCurrency={activeCurrencyState}
                         dataGetError={dataGetError}
+                        watchlistCoinsData={watchlistCoinsData}
+                        watchlistCoinsDataGetError={watchlistCoinsDataGetError}
                     />
                 </div>
             </div>
@@ -358,6 +454,9 @@ const CryptocurrencyPage: FC = () => {
                 <CryptocurrencyListFilters
                     categoriesListData={categoriesListData}
                     categoriesListDataGetError={categoriesListDataGetError}
+                    triggerShowWatchlist={triggerShowWatchlist}
+                    isShowWatchlist={isShowWatchlist}
+                    setShowWatchlistToFalse={setShowWatchlistToFalse}
                 />
                 {isCategorySelected && <CryptocurrencyListCategories />}
             </div>
@@ -376,6 +475,9 @@ const CryptocurrencyPage: FC = () => {
                         categoryData={categoryData}
                         dataGetError={dataGetError}
                         activeCurrency={activeCurrencyState}
+                        watchlistCoinsData={watchlistCoinsData}
+                        isShowWatchlist={isShowWatchlist}
+                        watchlistCoinsDataGetError={watchlistCoinsDataGetError}
                     />
                 </div>
             </div>

@@ -1,12 +1,10 @@
 import { FC } from 'react';
-import CancelIcon from '@mui/icons-material/Cancel';
-import './CryptocurrencyListCategoriesStyle.css';
-
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../services/store';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../services/store';
-import { CHANGE_SELECTED_CATEGORY } from '../../../services/store/reducers/categoriesReducer';
+import { useAppDispatch } from '../../../services/hooks/useTypedSelector';
+import { REMOVE_SELECTED_CATEGORY } from '../../../services/store/reducers/categoriesReducer';
+import CancelIcon from '@mui/icons-material/Cancel';
+import './CryptocurrencyListCategoriesStyle.css';
 
 interface ICategoryState {
     category_id: string;
@@ -14,20 +12,15 @@ interface ICategoryState {
 }
 
 const CryptocurrencyListCategories: FC = () => {
+    const dispatch = useAppDispatch();
+
     //get selected category value from storage
     const selectedCategoryObject = useSelector((state: RootState) => state.selectedCategory);
     const selectedCategoryState: ICategoryState = selectedCategoryObject.selectedCategory;
     const selectedCategoryName: string = selectedCategoryState.category_name;
 
-    const dispatch: AppDispatch = useDispatch();
-
     const removeSelectedCategory = () => {
-        const emptyCategoryObject = {
-            category_id: '',
-            category_name: ''
-        };
-
-        dispatch({ type: CHANGE_SELECTED_CATEGORY, payload: emptyCategoryObject });
+        dispatch({ type: REMOVE_SELECTED_CATEGORY });
     };
 
     return (
